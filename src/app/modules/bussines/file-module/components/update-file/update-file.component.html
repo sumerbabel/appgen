@@ -1,0 +1,31 @@
+<div style="width: 720px;">
+    <ui-form-base
+        showCloseButton="true"
+        [titleHeader]="TITLE_HEADER_FORM"
+        [textFooter]="TEXT_FOOTER"
+        (formAction)="actionFormEvent($event)"
+        [actions]="ACTION_FORM"
+        [errors] ="file.errors" 
+    >
+<div *ngIf="file" >
+<ui-input-text-model [(value)]="file.idAsociate" isRequired ="true"  
+placeholder ='IdAsociate' label='IdAsociate' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.idGroupType" isRequired ="true"  
+placeholder ='IdGroupType' label='IdGroupType' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.idFileType" isRequired ="true"  
+placeholder ='IdFileType' label='IdFileType' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.pathBase" isRequired ="true"  
+placeholder ='PathBase' label='PathBase' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.pathRelative" isRequired ="true"  
+placeholder ='PathRelative' label='PathRelative' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.fileName" isRequired ="true"  
+placeholder ='FileName' label='FileName' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.originalFileName" isRequired ="true"  
+placeholder ='OriginalFileName' label='OriginalFileName' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.size" isRequired ="true"  
+placeholder ='Size' label='Size' ></ui-input-text-model>
+<ui-input-text-model [(value)]="file.extencion" isRequired ="true"  
+placeholder ='Extencion' label='Extencion' ></ui-input-text-model>
+</div>
+    </ui-form-base>
+</div>

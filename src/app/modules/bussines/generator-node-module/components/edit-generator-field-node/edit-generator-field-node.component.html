@@ -1,0 +1,74 @@
+<ui-form-base *ngIf="generatorNode" showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+  (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM">
+
+  <ui-tree-generic [treeObject]="[generatorNode]" [templateBody]="templateBody">
+
+    <ng-template let-data #templateBody>
+
+
+      <div style="width: 100%; justify-content: flex-start; display: inline-flex;"
+        *ngIf="data.node.objetGen.level===0">
+        <div style="font-size: 11px; padding-left: 3px; padding-right: 3px; color: #4fd812; height: 18px;">Modelo <span *ngIf="data.node.objetGen.field">{{data.node.objetGen.field}}</span></div>
+      </div>
+
+      <div style="margin-right: 5px" *ngIf="data.node.objetGen.level>0">
+        <ui-input-checkbox [(value)]="data.node.objetGen.selected"></ui-input-checkbox>
+      </div>
+
+      <div style="margin-right:5px; width: 25px;" *ngIf="data.node.objetGen.level>0">
+        <span *ngIf="data.node.objetGen.level===1" class="mini-span">Nvl</span>
+        <ui-input-text-model [(value)]="data.node.objetGen.level" placeholder="Nvl" [disabled]="true"
+          [color]="data.node.objetGen.colorLevel"></ui-input-text-model>
+      </div>
+
+      <div style=" margin-right: 5px; width: 140px;" *ngIf="data.node.objetGen.level>0">
+        <span *ngIf="data.node.objetGen.level===1" class="mini-span">Campo / Tabla *</span>
+        <ui-input-text-model [(value)]="data.node.objetGen.field" isRequired="true" placeholder="Campo / Tabla" cdkFocusInitial>
+        </ui-input-text-model>
+      </div>
+
+      <div style=" margin-right:8px; width: 140px;" *ngIf="data.node.objetGen.level>0">
+        <span *ngIf="data.node.objetGen.level===1" class="mini-span">Nombre *</span>
+        <ui-input-text-model [(value)]="data.node.objetGen.name" isRequired="true" placeholder="Nombre">
+        </ui-input-text-model>
+      </div>
+
+      <div style="margin-right: 8px;" *ngIf="data.node.objetGen.level>0">
+        <span *ngIf="data.node.objetGen.level===1" class="mini-span">Req.</span>
+        <ui-input-checkbox [(value)]="data.node.objetGen.required"></ui-input-checkbox>
+      </div>
+
+      <div style="margin-right:5px; min-width: 120px;" *ngIf="data.node.objetGen.level>0">
+        <span *ngIf="data.node.objetGen.level===1" class="mini-span">Tipo *</span>
+        <ui-input-select-model [(value)]="data.node.objetGen.type" *ngIf="typesItems" [items]="typesItems"
+          placeholder="Tipo">
+        </ui-input-select-model>
+      </div>
+
+      <div style="margin-right:5px; width: 40px;" *ngIf="data.node.objetGen.level>0">
+        <span *ngIf="data.node.objetGen.level===1" class="mini-span">Long.</span>
+        <ui-input-text-model [(value)]="data.node.objetGen.length" placeholder="Lng."></ui-input-text-model>
+      </div>
+
+      <div style="margin-right:5px; width: 35px;" *ngIf="data.node.objetGen.level>0">
+        <span *ngIf="data.node.objetGen.level===1" class="mini-span">Orden</span>
+        <ui-input-text-model [(value)]="data.node.objetGen.order" placeholder="Orden"></ui-input-text-model>
+      </div>
+
+      <ui-button *ngIf="data.node.objetGen.level>0" [actionProperties]="BTN_TOOL" [helipopper]="tpl"
+        helipopperVariation="popper"></ui-button>
+      <ng-template #tpl>
+        <div style="display:flex; width:100%">
+          <ui-button [actionProperties]="BTN_NEW" (on-click)="data.node.addChildren()"></ui-button>
+          <ui-button style="margin-left: 3px;" [actionProperties]="BTN_MULTI_LINES"
+            (on-click)="openToolMultilineString(data.node)"></ui-button>
+
+          <ui-button style="margin-left: 3px;" [actionProperties]="BUTTON_DELETE_NODE"
+            (on-click)="deleteMenuNode(data.node,data.nodeParent)"></ui-button>
+
+        </div>
+      </ng-template>
+    </ng-template>
+
+  </ui-tree-generic>
+</ui-form-base>

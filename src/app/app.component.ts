@@ -59,7 +59,8 @@ export class AppComponent {
   }
 
   menuEvent(event){
-    this.router.navigate(['home']);
+    console.log(event)
+    this.router.navigate([event]);
   }
 
   menuEvent2(event){

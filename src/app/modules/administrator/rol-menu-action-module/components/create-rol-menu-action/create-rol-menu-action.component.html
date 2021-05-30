@@ -1,0 +1,19 @@
+<div style="width: 720px;">
+    <ui-form-base
+        showCloseButton="true"
+        [titleHeader]="TITLE_HEADER_FORM"
+        [textFooter]="TEXT_FOOTER"
+        (formAction)="actionFormEvent($event)"
+        [actions]="ACTION_FORM"
+        [errors] ="rolMenuAction.errors" 
+    >
+<div *ngIf="rolMenuAction" >
+<ui-input-text-model [(value)]="rolMenuAction.idRolMenu" isRequired ="true"  
+placeholder ='IdRolMenu' label='IdRolMenu' ></ui-input-text-model>
+<ui-input-text-model [(value)]="rolMenuAction.idMenu" isRequired ="true"  
+placeholder ='IdMenu' label='IdMenu' ></ui-input-text-model>
+<ui-input-text-model [(value)]="rolMenuAction.action" isRequired ="true"  
+placeholder ='Action' label='Action' ></ui-input-text-model>
+</div>
+    </ui-form-base>
+</div>

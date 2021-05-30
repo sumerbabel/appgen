@@ -1,0 +1,17 @@
+<div style="width: 720px;">
+  <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+    (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM" [errors]="tableItem.errors">
+    <div *ngIf="tableItem">
+      <ui-input-text-model [(value)]="tableItem.name" isRequired="true" placeholder='Name' label='Nombre'>
+      </ui-input-text-model>
+      <ui-input-text-model [(value)]="tableItem.code" isRequired="true" placeholder='Código' label='Código'>
+      </ui-input-text-model>
+      <ui-input-text-model [(value)]="tableItem.value" isRequired="true" placeholder='Value' label='Valor'>
+      </ui-input-text-model>
+      <ui-input-text-model [(value)]="tableItem.order" isRequired="true" placeholder='Orden' label='Orden'>
+      </ui-input-text-model>
+      <ui-input-select-model [(value)]="tableItem.state" isRequired="true" placeholder='Estado' label='Estado'
+      [items]="itemsTable"> </ui-input-select-model>
+    </div>
+  </ui-form-base>
+</div>

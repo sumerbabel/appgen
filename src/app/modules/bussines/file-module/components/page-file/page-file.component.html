@@ -1,0 +1,15 @@
+<div style="min-width: 720px;">
+    <ui-form-base
+    [titleHeader]="TITLE_HEADER_FORM"
+    [showCloseButton]="SHOW_CLOSE_BUTTON_FORM"
+>
+<ui-button  [actionProperties]="ACTION_BUTTON_CREATE" (on-click)="createFileOpenModal()"></ui-button>
+<ui-table
+        *ngIf="tableModelFile"
+    [columns]='tableModelFile.columnArray'
+    [actions]="tableModelFile.actionArray"
+    [data]="tableModelFile.dataArray"
+    (actionEvent)="tableFileActions($event)"
+    ></ui-table>
+</ui-form-base>
+</div>

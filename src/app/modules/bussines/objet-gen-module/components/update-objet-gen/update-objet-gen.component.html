@@ -1,0 +1,31 @@
+<div style="width: 720px;">
+    <ui-form-base
+        showCloseButton="true"
+        [titleHeader]="TITLE_HEADER_FORM"
+        [textFooter]="TEXT_FOOTER"
+        (formAction)="actionFormEvent($event)"
+        [actions]="ACTION_FORM"
+        [errors] ="objetGen.errors" 
+    >
+<div *ngIf="objetGen" >
+<ui-input-text-model [(value)]="objetGen.name" isRequired ="true"  
+placeholder ='Name' label='Name' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.field" isRequired ="true"  
+placeholder ='Field' label='Field' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.content" isRequired ="true"  
+placeholder ='Content' label='Content' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.order" isRequired ="true"  
+placeholder ='Order' label='Order' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.type" isRequired ="true"  
+placeholder ='Type' label='Type' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.length" isRequired ="true"  
+placeholder ='Length' label='Length' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.level" isRequired ="true"  
+placeholder ='Level' label='Level' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.selected" isRequired ="true"  
+placeholder ='Selected' label='Selected' ></ui-input-text-model>
+<ui-input-text-model [(value)]="objetGen.required" isRequired ="true"  
+placeholder ='Required' label='Required' ></ui-input-text-model>
+</div>
+    </ui-form-base>
+</div>

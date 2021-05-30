@@ -1,0 +1,85 @@
+<ui-form-base *ngIf="groupCode" showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+  (formAction)="actionFormEvent($event)" [errors]="listErros">
+
+  <div class="ui-panel" style="margin-bottom: 10px;">
+    <ui-input-text-model [(value)]="groupCode.name" isRequired="true" placeholder='Nombre del generador de código'
+      label='Nombre  del Generador' [labelDirectionLeft]="true">
+    </ui-input-text-model>
+    <div style="display:flex; justify-content: space-between;">
+      <ui-input-text-model style="width: 49%;" [(value)]="groupCode.ruteFileBase" placeholder='Ruta directorio base'
+        label='Ruta Base I' [labelDirectionLeft]="true"></ui-input-text-model>
+      <ui-input-text-model style="width: 49%;" [(value)]="groupCode.ruteImportBase" placeholder='Ruta directorio base'
+        label='Ruta Base II' [labelDirectionLeft]="true"></ui-input-text-model>
+    </div>
+  </div>
+
+
+  <div style="display: flex; justify-content: space-between;">
+    <div class="ui-panel" style="margin-right: 10px;">
+      <div style="display: inline-flex;">
+        <ui-button [actionProperties]="ACTION_BUTTON_FIELD_NEW" (on-click)="newNodeField()" style="margin-right: 5px;">
+        </ui-button>
+        <ui-button [actionProperties]="ACTION_BUTTON_FIELD_ADD" (on-click)="addNodeField()"></ui-button>
+      </div>
+
+      <div *ngIf="groupCode">
+        <ui-table *ngIf="groupCode.groupCodeNodesField.length>0" [columns]='columnsTable' [actions]="actionsTable"
+          [data]="groupCode.groupCodeNodesField" [templateRow]="templateRow" (actionEvent)="tableFIeldActions($event)">
+          <ng-template let-data #templateRow>
+            <td>
+              <ui-input-checkbox [(value)]="data.selected"></ui-input-checkbox>
+            </td>
+            <td>
+              {{data.name}}
+            </td>
+          </ng-template>
+
+        </ui-table>
+      </div>
+
+    </div>
+
+    <div class="ui-panel">
+      <div style="display: inline-flex;">
+        <ui-button [actionProperties]="ACTION_BUTTON_CODE_NEW" (on-click)="newNodeCode()" style="margin-right: 5px;">
+        </ui-button>
+        <ui-button [actionProperties]="ACTION_BUTTON_CODE_ADD" (on-click)="addNodeCode()"></ui-button>
+      </div>
+
+      <div *ngIf="groupCode">
+        <ui-table *ngIf="groupCode.groupCodeNodesCode.length>0" [columns]='columnsTable' [actions]="actionsTable"
+          [data]="groupCode.groupCodeNodesCode" [templateRow]="templateRow" (actionEvent)="tableCodeActions($event)">
+          <ng-template let-data #templateRow>
+            <td>
+              <ui-input-checkbox [(value)]="data.selected"></ui-input-checkbox>
+            </td>
+            <td>
+              {{data.name}}
+            </td>
+          </ng-template>
+
+        </ui-table>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="groupCode" class="ui-panel" style="display: flex; justify-content: center; margin-top: 5px;">
+    <ui-button *ngIf="INITIAL_ACTION ==='NEW'" [actionProperties]="ACTION_SAVE" (on-click)="actionFormEvent($event)" style="margin-right: 15px">
+    </ui-button>
+    <ui-button *ngIf="groupCode.groupCodeNodesCode.length>0" [actionProperties]="ACTION_BUTTON_GENERATE"
+      (on-click)="actionFormEvent($event)" style="margin-right: 15px;"></ui-button>
+  </div>
+
+  <div class="ui-panel" *ngIf="initialProcessGenerate && tableResultGenerate.length>0" style=" margin-top: 5px; width: 100%;">
+    <ui-table [columns]='columnsTableResultGenerate' [actions]="actionsTableGenerate" [data]="tableResultGenerate"
+      (actionEvent)="actionsGenerate($event)">
+    </ui-table>
+  </div>
+
+  <div class="ui-panel" *ngIf="initialProcessGenerate && tableResultGenerate.length>0">
+    <div style="display: flex; width: 100%; max-width: 720px;">
+      <ui-list-files *ngIf="idTableAsociate" [idAsociate]="idTableAsociate"></ui-list-files>
+    </div>
+  </div>
+</ui-form-base>

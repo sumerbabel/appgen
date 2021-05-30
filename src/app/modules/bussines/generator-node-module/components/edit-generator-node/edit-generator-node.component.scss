@@ -1,0 +1,26 @@
+.mini-span {
+  position:absolute;
+  top: -18px;
+  font-size: 10px;
+  color: #4fd812;
+}
+
+.mini-span-title {
+  font-size: 10px;
+  color: #4fd812;
+}
+
+.color-br{
+  color: #f44747;
+}
+
+.item-copy{
+  cursor: pointer;
+  background-color: #1b2226;
+  color: #ff8048;
+  user-select: none;
+  height: 100%;
+}
+.item-copy:hover{
+  background-color: #2d3941;
+}

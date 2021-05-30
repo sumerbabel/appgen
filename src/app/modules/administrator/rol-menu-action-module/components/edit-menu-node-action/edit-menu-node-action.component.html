@@ -1,0 +1,41 @@
+<div style="width: 900px;">
+  <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM"
+    (formAction)="actionFormEvent($event)"
+    [errors]="errorInForm">
+
+    <ui-tree-generic *ngIf="menuNodeToTree" [treeObject]="menuNodeToTree" [templateBody]="templateBody">
+
+      <ng-template let-data #templateBody>
+
+        <div style="width: 150px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Nombre</span>
+          <ui-input-text-model [(value)]="data.node.menu.name" disabled="true"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; width: 100px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Tipo</span>
+          <ui-input-text-model [(value)]="data.node.menu.type" disabled="true"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; min-width: 200px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Ruta web</span>
+          <ui-input-text-model [(value)]="data.node.menu.ruteWeb" disabled="true"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; min-width: 200px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Ruta controlador</span>
+          <ui-input-text-model [(value)]="data.node.menu.ruteController" disabled="true"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; width: 150px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Permisos</span>
+          <ui-input-text-model [(value)]="data.node.menu.actionsRol" disabled="true"></ui-input-text-model>
+        </div>
+
+        <ui-button style="margin-left: 3px;" [actionProperties]="BTN_TOOL" (on-click)="OpenActionSecurity(data.node.menu.id)"
+          ></ui-button>
+      </ng-template>
+
+    </ui-tree-generic>
+  </ui-form-base>
+</div>

@@ -1,0 +1,19 @@
+<div style="width: 720px;">
+    <ui-form-base
+        showCloseButton="true"
+        [titleHeader]="TITLE_HEADER_FORM"
+        [textFooter]="TEXT_FOOTER"
+        (formAction)="actionFormEvent($event)"
+        [actions]="ACTION_FORM"
+        [errors] ="userSecurity.errors" 
+    >
+<div *ngIf="userSecurity" >
+<ui-input-text-model [(value)]="userSecurity.username" isRequired ="true"  
+placeholder ='Username' label='Username' ></ui-input-text-model>
+<ui-input-text-model [(value)]="userSecurity.email" isRequired ="true"  
+placeholder ='Email' label='Email' ></ui-input-text-model>
+<ui-input-text-model [(value)]="userSecurity.emailVerifiedAt" isRequired ="true"  
+placeholder ='EmailVerifiedAt' label='EmailVerifiedAt' ></ui-input-text-model>
+</div>
+    </ui-form-base>
+</div>

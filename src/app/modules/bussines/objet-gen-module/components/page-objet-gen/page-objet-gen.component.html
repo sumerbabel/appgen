@@ -1,0 +1,15 @@
+<div style="min-width: 720px;">
+    <ui-form-base
+    [titleHeader]="TITLE_HEADER_FORM"
+    [showCloseButton]="SHOW_CLOSE_BUTTON_FORM"
+>
+<ui-button  [actionProperties]="ACTION_BUTTON_CREATE" (on-click)="createObjetGenOpenModal()"></ui-button>
+<ui-table
+        *ngIf="tableModelObjetGen"
+    [columns]='tableModelObjetGen.columnArray'
+    [actions]="tableModelObjetGen.actionArray"
+    [data]="tableModelObjetGen.dataArray"
+    (actionEvent)="tableObjetGenActions($event)"
+    ></ui-table>
+</ui-form-base>
+</div>

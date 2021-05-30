@@ -1,0 +1,15 @@
+<div style="min-width: 720px;">
+    <ui-form-base
+    [titleHeader]="TITLE_HEADER_FORM"
+    [showCloseButton]="SHOW_CLOSE_BUTTON_FORM"
+>
+<ui-button  [actionProperties]="ACTION_BUTTON_CREATE" (on-click)="createMenuNodeOpenModal()"></ui-button>
+<ui-table
+        *ngIf="tableModelMenuNode"
+    [columns]='tableModelMenuNode.columnArray'
+    [actions]="tableModelMenuNode.actionArray"
+    [data]="tableModelMenuNode.dataArray"
+    (actionEvent)="tableMenuNodeActions($event)"
+    ></ui-table>
+</ui-form-base>
+</div>

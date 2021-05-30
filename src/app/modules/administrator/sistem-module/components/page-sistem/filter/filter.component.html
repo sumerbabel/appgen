@@ -1,0 +1,7 @@
+<ui-form-base [titleHeader]="TITLE_HEADER_FORM" [showCloseButton]="SHOW_CLOSE_BUTTON_FORM" [actions]="ACTION_FORM"  (formAction)="actionFormEvent($event)">
+  <div style="max-width: 420px;">
+    <ui-input-text-model labelDirectionLeft="true" [label]="filter.name.name"  autoFocus="true" [(value)]="filter.name.value"></ui-input-text-model>
+    <ui-input-date labelDirectionLeft="true" [label]="filter.updateAtIni.name"   [(value)]="filter.updateAtIni.value"></ui-input-date>
+    <ui-input-date labelDirectionLeft="true" [label]="filter.updateAtFin.name"  [(value)]="filter.updateAtFin.value"></ui-input-date>
+  </div>
+</ui-form-base>

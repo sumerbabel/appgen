@@ -1,0 +1,19 @@
+<div style="width: 430px;">
+<ui-form-base showCloseButton="true"
+  [titleHeader]="TITLE_HEADER_FORM"
+  (formAction)="actionFormEvent($event)"
+  [errors]="errorInForm">
+
+  <div style="display: flex; justify-content: space-between;">
+    <div>
+      <ui-input-select-model *ngIf="itemsActions" [(value)]="actionSelected" placeholder='Acciones' label='Acciones'
+        [items]="itemsActions" (itemSelect)="itemSelect($event)"> </ui-input-select-model>
+    </div>
+
+    <ui-table *ngIf="tableModelRolMenuAction" [columns]='tableModelRolMenuAction.columnArray'
+      [actions]="tableModelRolMenuAction.actionArray" [data]="tableModelRolMenuAction.dataArray"
+      (actionEvent)="tableRolMenuActionActions($event)" style="margin-top: 23px;"></ui-table>
+  </div>
+  </ui-form-base>
+</div>
+

@@ -1,0 +1,8 @@
+<div style="min-width: 720px;">
+  <ui-form-base *ngIf="tableModelGeneratorNode" [titleHeader]="TITLE_HEADER_FORM"
+    [showCloseButton]="SHOW_CLOSE_BUTTON_FORM" (formAction)="actionFormEvent($event)">
+
+    <ui-table [columns]='tableModelGeneratorNode.columnArray' [actions]="tableModelGeneratorNode.actionArray"
+      [data]="tableModelGeneratorNode.dataArray" (actionEvent)="tableGeneratorNodeActions($event)"></ui-table>
+  </ui-form-base>
+</div>

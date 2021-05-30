@@ -1,0 +1,21 @@
+<div style="width: 720px;">
+  <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+    (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM" [errors]="securityRol.errors">
+    <div *ngIf="securityRol">
+      <ui-input-select-model [(value)]="securityRol.idSistem" isRequired="true" placeholder='Sistema' label='Sistema'
+        [items]="itemSistem"> </ui-input-select-model>
+
+      <ui-input-text-model [(value)]="securityRol.name" isRequired="true" placeholder='Nombre' label='Nombre'>
+      </ui-input-text-model>
+      <ui-input-text-model [(value)]="securityRol.desciption" isRequired="true" placeholder='Descripción'
+        label='Descripción'></ui-input-text-model>
+
+        <ui-input-select-model *ngIf="listTypeRole" [(value)]="securityRol.type" isRequired="true" placeholder='Tipo'
+        label='Tipo' [items]="listTypeRole"> </ui-input-select-model>
+
+        <ui-input-select-model *ngIf="listStates" [(value)]="securityRol.state" isRequired="true" placeholder='Estado'
+        label='Estado' [items]="listStates "> </ui-input-select-model>
+
+    </div>
+  </ui-form-base>
+</div>

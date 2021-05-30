@@ -1,0 +1,20 @@
+
+  <div style="min-width: 720px; height: 720px;">
+    <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM"
+    (formAction)="actionFormEvent($event)" [showCloseButton]="true">
+
+    <div class="line-detail">
+      <div>
+        {{textFile}}
+      </div>
+      <ui-button [actionProperties]="ButtonAction" (on-click)="copyAction()" tooltip="Copiar al portapapeles" ></ui-button>
+    </div>
+
+     <div style="height: 100%; margin-bottom: 20px;">
+      <ui-editor-code [(value)]="textCode"></ui-editor-code>
+     </div>
+
+
+  </ui-form-base>
+  </div>
+

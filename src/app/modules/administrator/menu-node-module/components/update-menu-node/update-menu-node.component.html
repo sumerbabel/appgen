@@ -1,0 +1,68 @@
+<div style="min-width: 870px;">
+  <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+    (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM" [errors]="errorInForm">
+    <div style="display: flex;">
+      <ui-input-select-model *ngIf="itemSistem" [(value)]="idSistem" isRequired="true" placeholder='Sistema'
+        label='Sistema' [items]="itemSistem" (valueChange)="valueChangeIdSistem()"
+        style="margin-right: 15px; margin-bottom: 15px;"> </ui-input-select-model>
+      <ui-input-select-model *ngIf="itemModule" [(value)]="idModule" isRequired="true" placeholder='Módulo'
+        label='Módulo' [items]="itemModule" (valueChange)="valueChangeIdModule()"> </ui-input-select-model>
+    </div>
+
+
+    <ui-tree-generic *ngIf="menuNodeToTree" [treeObject]="menuNodeToTree" [templateBody]="templateBody">
+
+      <ng-template let-data #templateBody>
+
+        <div style="width: 160px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Nombre*</span>
+          <ui-input-text-model [(value)]="data.node.menu.name" isRequired="true" placeholder="Nombre"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; min-width: 130px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Tipo*</span>
+
+          <ui-input-select-model [(value)]="data.node.menu.type" *ngIf="itemsTable" [items]="itemsTable" placeholder="Tipo">
+          </ui-input-select-model>
+
+        </div>
+
+        <div style="margin-left:3px; min-width: 200px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Ruta Web</span>
+          <ui-input-text-model [(value)]="data.node.menu.ruteWeb" placeholder="Ruta"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; min-width: 200px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Ruta Controlador</span>
+          <ui-input-text-model [(value)]="data.node.menu.ruteController" placeholder="Ruta"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; width: 35px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Orden</span>
+          <ui-input-text-model [(value)]="data.node.menu.order" placeholder="Orden"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; width: 45px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Icono</span>
+          <ui-input-text-model [(value)]="data.node.menu.icon" placeholder="Icono"></ui-input-text-model>
+        </div>
+
+        <div style="margin-left:3px; width: 35px;">
+          <span *ngIf="data.node.menu.level===1" class="mini-span">Nivel</span>
+          <ui-input-text-model [(value)]="data.node.menu.level" placeholder="Nivel"></ui-input-text-model>
+        </div>
+
+        <ui-button style="margin-left: 3px;" [actionProperties]="BTN_TOOL" [helipopper]="tpl"
+          helipopperVariation="popper"></ui-button>
+        <ng-template #tpl>
+          <div style="display:flex; width:100%">
+            <ui-button [actionProperties]="BTN_NEW" (on-click)="data.node.addChildren()"></ui-button>
+            <ui-button style="margin-left: 3px;" [actionProperties]="BUTTON_DELETE_NODE"
+              (on-click)="deleteMenuNode(data.node,data.nodeParent)"></ui-button>
+          </div>
+        </ng-template>
+      </ng-template>
+
+    </ui-tree-generic>
+  </ui-form-base>
+</div>

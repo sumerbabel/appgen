@@ -1,0 +1,11 @@
+<div style="width: 720px;">
+  <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+    (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM" [errors]="module.errors">
+    <div *ngIf="module">
+      <ui-input-select-model *ngIf="itemSistem && module" [(value)]="module.idSistem" isRequired="true" placeholder='IdSistem' label='IdSistem'
+        [items]="itemSistem"> </ui-input-select-model>
+      <ui-input-text-model [(value)]="module.name" isRequired="true" placeholder='Name' label='Name'>
+      </ui-input-text-model>
+    </div>
+  </ui-form-base>
+</div>

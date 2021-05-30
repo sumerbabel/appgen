@@ -1,0 +1,76 @@
+<div style="display: flex;">
+
+  <ui-form-base *ngIf="generatorNode" showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM"
+    (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM">
+<div style="display: flex; width: 100%; justify-content:space-between; margin-bottom: 10px;">
+  <div  style="margin-right:5px; max-width:300px;">
+    <span class="mini-span-title">Nombre / Titulo*</span>
+    <ui-input-text-model [(value)]="generatorNode.objetGen.name" placeholder="Nombre / Titulo del código"
+    ></ui-input-text-model>
+  </div>
+
+  <ui-button [actionProperties]="BTN_HELP" (on-click)="actionFormEventHelp()">Ayuda</ui-button>
+</div>
+
+
+    <ui-tree-generic *ngIf="generatorNode" [treeObject]="[generatorNode]" [templateBody]="templateBody">
+
+      <ng-template let-data #templateBody>
+
+        <div style="display:flex; width: 100%;">
+
+          <div style="margin-right: 5px; margin-left: 3px;">
+            <ui-input-checkbox [(value)]="data.node.objetGen.selected"></ui-input-checkbox>
+          </div>
+
+          <div *ngIf="data.node.objetGen.level>0" style="margin-right:5px; width: 25px;">
+            <span *ngIf="data.node.objetGen.level===1 && data.node.objetGen.order===1" class="mini-span">Nvl</span>
+            <ui-input-text-model [(value)]="data.node.objetGen.level" placeholder="Nvl"
+              [color]="data.node.objetGen.colorLevel"></ui-input-text-model>
+          </div>
+
+          <div *ngIf="data.node.objetGen.level===0" style="margin-right:5px; min-width: 700px;">
+            <span class="mini-span">Ruta y nombre del archivo a generar (/aaaaa/nn@data@.xyz)*</span>
+            <ui-editor-code [(value)]="data.node.objetGen.field"></ui-editor-code>
+          </div>
+
+          <div *ngIf="data.node.objetGen.level>0" style="margin-right:5px; min-width: 700px;">
+            <span *ngIf="data.node.objetGen.level===1 && data.node.objetGen.order===1" class="mini-span">Código</span>
+            <ui-editor-code [(value)]="data.node.objetGen.content"></ui-editor-code>
+          </div>
+
+          <div style="margin-right:5px; width: 35px;">
+            <span *ngIf="data.node.objetGen.level===1 && data.node.objetGen.order===1" class="mini-span">Orden</span>
+            <ui-input-text-model [(value)]="data.node.objetGen.order" placeholder="Orden"></ui-input-text-model>
+          </div>
+
+          <ui-button [actionProperties]="BTN_TOOL" [helipopper]="tpl" helipopperVariation="popper"></ui-button>
+          <ng-template #tpl>
+            <div style="display:flex; width:100%">
+              <ui-button [actionProperties]="BTN_NEW" (on-click)="data.node.addChildren()"></ui-button>
+              <ui-button style="margin-left: 3px;" [actionProperties]="BTN_MULTI_LINES"
+              (on-click)="openToolMultilineString(data.node)"></ui-button>
+
+              <ui-button style="margin-left: 3px;" [actionProperties]="BUTTON_DELETE_NODE"
+                (on-click)="deleteMenuNode(data.node,data.nodeParent)"></ui-button>
+            </div>
+          </ng-template>
+        </div>
+
+      </ng-template>
+
+    </ui-tree-generic>
+  </ui-form-base>
+
+  <div *ngIf="open_help" style="width: 420px; height: 600px; margin-left: 10px;">
+    <ui-form-base showCloseButton="true" (formAction)="actionFormEventHelp()">
+      <span>Lenguaje del generador</span>
+        <table style="border: solid 1px rgb(32, 102, 69); border-radius: 5px; font-size: 11px; width: 100%;">
+          <tr *ngFor="let item of value_legend">
+              <td><div class="item-copy" (click)="itemCopy(item.type)">{{item.type}}</div></td> <td>{{item.description}}</td>
+          </tr>
+        </table>
+    </ui-form-base>
+  </div>
+
+</div>

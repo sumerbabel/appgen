@@ -1,0 +1,17 @@
+<div style="width: 720px;">
+  <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+    (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM" [errors]="rolMenu.errors">
+    <div *ngIf="rolMenu">
+      <ui-input-select-model *ngIf="listSistem" [(value)]="idSistem" isRequired="true" placeholder='Sistema'
+        label='Sistema' [items]="listSistem" (valueChange)="valueChangeIdSistem()"> </ui-input-select-model>
+      <ui-input-select-model *ngIf="listModule" [(value)]="idModule" isRequired="true" placeholder='Módulo'
+        label='Módulo' [items]="listModule" (valueChange)="valueChangeIdModule()"> </ui-input-select-model>
+      <ui-input-select-model *ngIf="listMenuNode" [(value)]="rolMenu.idMenuNode" isRequired="true" placeholder='Menu'
+        label='Menu' [items]="listMenuNode"> </ui-input-select-model>
+      <ui-input-text-model [(value)]="rolMenu.idMenuNode" isRequired="true" placeholder='IdMenu' label='IdMenu'>
+      </ui-input-text-model>
+      <ui-input-text-model [(value)]="rolMenu.action" isRequired="true" placeholder='Action' label='Action'>
+      </ui-input-text-model>
+    </div>
+  </ui-form-base>
+</div>

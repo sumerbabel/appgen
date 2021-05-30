@@ -1,0 +1,10 @@
+<div class="content-files">
+  <div class="item-file" *ngFor="let itemFile of files; let i = index">
+    <div  (click)="downloadFile(itemFile)" >
+      <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+      <p class="file-text">{{i+1}} {{itemFile.extencion}}</p>
+      <p class="file-text">{{itemFile.updatedAt}}</p>
+      </div>
+  </div>
+
+</div>
