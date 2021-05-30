@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     console.log('inicia LOGIN')
     const user = this.accountService.userValue;
     if (user) {
-      //this.router.navigate(['/']);
+      this.router.navigate(['/']);
     }
   }
 

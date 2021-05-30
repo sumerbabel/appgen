@@ -63,6 +63,6 @@ export class AppComponent {
   }
 
   menuEvent2(event){
-    this.router.navigate(['register']);
+    this.router.navigate(['login']);
   }
 }

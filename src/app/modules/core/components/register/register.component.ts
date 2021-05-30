@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
           this.alertService.openAlertSucsses(
             'Registro exitoso!, se envió un link de confirmación a tu correo'
           );
-          this.router.navigate(['/public/login']);
+          this.router.navigate(['/login']);
         });
     }
   }
