@@ -1,0 +1,52 @@
+.ui-view-images {
+   box-sizing : border-box;
+   width: 100%;
+   max-width: 100%;
+}
+.ui-view-images >div>a> img {
+    margin: 3px;
+    max-width: 150px;
+    height: auto;
+}
+
+/*.ui-view-images >div> a> span {
+color: white;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 90px;
+}*/
+
+.ui-view-item{
+    
+    display: flex;  
+}
+
+.ui-item{
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+   width: 100%;
+}
+
+.ui-item >span {
+    font-size: 9px;
+}
+
+a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }

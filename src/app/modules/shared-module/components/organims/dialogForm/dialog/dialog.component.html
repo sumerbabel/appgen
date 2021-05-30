@@ -1,0 +1,12 @@
+<div style="width: 400px; margin-top: 40px;">
+    <div style="position: absolute; width: 400px;"  [ngStyle]="{'left':left,'top':top}">
+        <ui-form-base
+            (formAction)="accionFormulario($event)"
+            [titleHeader]="dataDialog.title"
+            [actions]="actions"
+            [showFooterButtons]="false"
+        >
+            <div [innerHTML]="dataDialog.textDialog"></div>
+        </ui-form-base>
+    </div>
+</div>

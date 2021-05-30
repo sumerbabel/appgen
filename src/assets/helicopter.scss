@@ -1,0 +1,64 @@
+//--------- helicopter popover
+.tippy-content {
+  position: relative;
+}
+
+.tippy-close {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  top: 0px;
+  right: -19px;
+  fill: #9ea0a5;
+  cursor: pointer;
+  background-color: #3f4447;
+  border-radius: 6px;
+  z-index: 1;
+  font-size: 10px;
+  box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
+}
+
+.tippy-close:hover{
+  background-color: brown;
+}
+
+.tippy-box {
+  border-radius: 4px;
+  font-size: 11px;
+
+  .tippy-content {
+    padding: 4px 6px;
+  }
+}
+
+.tippy-box[data-theme~='light'] {
+  font-size: 12px;
+  word-break: break-word;
+  border-radius: 4px;
+  background-color: #3a3e41;
+  box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
+  .tippy-content {
+    padding: 9px 9px 9px 9px;
+  }
+}
+
+.tippy-arrow::before {
+  box-shadow: -4px 4px 14px -4px rgba(0, 0, 0, 0.2);
+}
+
+.tippy-box[data-theme~=light][data-placement^=top]>.tippy-arrow:before {
+  border-top-color: #212427;
+}
+
+//--------
+
+$angenerator-primary: mat-palette($mat-indigo);
+$angenerator-accent: mat-palette($mat-pink, A200, A100, A400);
+$angenerator-warn: mat-palette($mat-red);
+$angenerator-theme: mat-light-theme((
+  color: (
+    primary: $angenerator-primary,
+    accent: $angenerator-accent,
+    warn: $angenerator-warn,
+  )
+));

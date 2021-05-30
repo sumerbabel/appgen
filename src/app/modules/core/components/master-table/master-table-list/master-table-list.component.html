@@ -1,0 +1,13 @@
+<ui-input-select-model
+*ngIf="items_select"
+[(value)]="value"
+[items] ="items_select"
+[placeholder]="placeholder"
+[label]="label"
+[isRequired]="isRequired"
+[multiple]="multiple"
+[disabled]="disabled"
+(nameChange)="nameChangeEvent($event)"
+(valueChange)="changeControlEvent($event)"
+>
+</ui-input-select-model>

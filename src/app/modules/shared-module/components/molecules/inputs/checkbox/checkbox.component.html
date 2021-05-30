@@ -1,0 +1,9 @@
+<div class='input-text'>
+  <div *ngIf="label" class='label-custom'>
+    <label>{{label}}</label>
+</div>
+  <mat-checkbox [ngModel]="value" [disabled]="disabled" (ngModelChange)="changeControlEvent($event)" (blur)="blurInput()" class='label-custom'></mat-checkbox>
+  <div class="conteiner-error" *ngIf ="errors.length > 0">
+    <div class="error-p" *ngFor="let error of errors">{{error}}</div>
+</div>
+</div>

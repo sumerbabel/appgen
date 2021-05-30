@@ -1,0 +1,35 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table,
+td,
+th {
+  border: 1px solid rgb(107, 85, 135);
+}
+
+th {
+  background-color: rgba(85, 54, 116, 0.437);
+}
+
+.order {
+  cursor: pointer;
+  user-select: none;
+}
+
+.ui-json-view{
+  font-size: 12px;
+  max-width: 420px;
+}
+
+.ui-multiline-view{
+  display: flex;
+  width: 100%;
+}
+
+.ui-multiline-conteiner{
+  width: auto;
+}
+
+

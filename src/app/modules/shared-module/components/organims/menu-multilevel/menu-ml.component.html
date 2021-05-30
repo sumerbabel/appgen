@@ -1,0 +1,45 @@
+
+<div  *ngIf="treeData" class="ui-ul">
+
+    <div class="ui-li" [ngClass]="isInitial? 'first-node only-node':'leaf'"  *ngFor="let node of treeData ; let i = index" >
+
+        <div class="tree-node-el" [ngClass]="{'select-menu':itemSelected == i}" [ngStyle]="{'padding-left': 5*nodeLevel +'px'}" (click)="nodeSelected(node,i)">
+
+            <ng-container *ngIf="node._children">
+                <span
+                    *ngIf="node._children.length && node.getIsOpen()"
+                    class="node-expand tree-open"
+                ></span>
+
+                <span
+                    *ngIf="node._children.length && node.getIsOpen()===false "
+                    class="node-expand tree-close"
+                ></span>
+            </ng-container>
+
+
+                <span *ngIf="node" style="width: 100%;">
+                  <div style="width: 100%;">
+                    <span class="node-title">
+                      <ng-container>
+                        <div style="display: flex; justify-content: flex-start; width: 100%; box-sizing: border-box;">
+                          <div class="ui-menu-item-text"> {{node['_menu']._name}} </div>
+                        </div>
+
+                      </ng-container>
+                      </span>
+                  </div>
+
+                </span>
+            </div>
+
+            <ui-menu-ml *ngIf="node._children && node.getIsOpen()"
+                [treeData]="node._children"
+                [isInitial]="false"
+                [nodeLevel]="nodeLevel+3"
+                (nodeEvent) ="nodeSelectEmit($event)"
+            ></ui-menu-ml>
+
+    </div>
+</div>
+

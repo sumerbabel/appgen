@@ -1,0 +1,28 @@
+<div class="main-register">
+  <div class="text-register">
+    <p class="text-title">Construido para</p>
+    <p class="text-title">desarrolladores</p>
+    <div>
+      Automatiza el proceso de escritura de código recurrente,
+      genera código en base a tus modelos de datos,
+      genera código de cualquier lenguaje, en la estructura
+      de directorios que necesites para tus proyectos.
+    </div>
+  </div>
+
+  <div class="form-register">
+    <ui-form-base [showCloseButton]="false" [errors]="userLogin.valueErrors" titleHeader="Login">
+      <ui-input-text-model [labelDirectionLeft]="true" label="Usuario / Correo" placeholder="Usuario / Correo "
+        [(value)]="userLogin.username_or_email"></ui-input-text-model>
+      <ui-input-text-model [labelDirectionLeft]="true" type='password' label="Clave" [(value)]="userLogin.password" (key-press)="login()">
+      </ui-input-text-model>
+      <div style="display:flex;  justify-content: flex-end; width: 100%; margin-top: 23px;">
+        <ui-button [actionProperties]="ACTION_BTN_LOGIN" (on-click)="login()"> </ui-button>
+      </div>
+    </ui-form-base>
+    <div style="color: antiquewhite; font-size: 10px;">*Confirma tu registro con el enlace enviado a tu correo.</div>
+  </div>
+  <div style="display: flex; justify-content: flex-end; width: 100%; color: rgb(141, 187, 214); padding: 5px; font-size: 14px;">
+    <p style="margin-right: 20px;">Para registrarte, <a href="register">Accede Aquí </a> </p>
+   </div>
+</div>

@@ -1,0 +1,70 @@
+<div *ngIf="isInitial">
+    <div
+        *ngIf="!templateHeader"
+        style="display: flex; max-width: 350px; align-items: stretch;"
+    >
+        <ui-button
+            styleClass="minimXs"
+            [color]="colorToggleButton"
+            [icon]="iconToggleButton"
+            (on-click)="toggleNodesTree()"
+        >
+            {{textToogleButton }}
+        </ui-button>
+    </div>
+    <ng-container *ngTemplateOutlet="templateHeader; context {$implicit: tree}"></ng-container>
+</div>
+<ul
+    *ngIf="treeData"
+    class="halo-tree"
+>
+    <li
+        [ngClass]="isInitial? 'first-node only-node':'leaf'"
+        *ngFor="let node of treeData ; let i = index"
+    >
+
+        <div
+            class="tree-node-el"
+            style="display: flex;"
+        >
+            <ng-container *ngIf="node.children">
+                <span
+                    *ngIf="node.children.length && node.getIsOpenNode()"
+                    class="tree-expand tree-open"
+                    (click)="toggleNode(node)"
+                ></span>
+
+                <span
+                    *ngIf="node.children.length && node.getIsOpenNode()===false "
+                    class="tree-expand tree-close"
+                    (click)="toggleNode(node)"
+                ></span>
+            </ng-container>
+
+            <ng-container *ngIf="!templateBody">
+                <span *ngIf="node && node.getIsOpenNode()">
+                    <span
+                        class="node-title"
+                        (click)="nodeSelected(node)"
+                    >
+                        <ng-container *ngFor="let itemkey of node.modelData| keyvalue">{{node.modelData[itemkey.key]}}</ng-container>
+                    </span>
+                </span>
+            </ng-container>
+
+            <ng-container *ngTemplateOutlet="templateBody; context {
+                $implicit: {node:node, nodeParent:treeParent, treeDataComplete:treeDataComplete}}"></ng-container>
+
+        </div>
+
+        <ui-tree-rx
+            *ngIf="node.children && node.isOpen"
+            [treeData]="node.children"
+            [treeParent]="node"
+            [treeDataComplete]="treeDataComplete"
+            [isInitial]="false"
+            [templateBody]="templateBody"
+            (nodeEvent)="nodeSelected($event)"
+        ></ui-tree-rx>
+    </li>
+</ul>

@@ -1,0 +1,53 @@
+.avatar-circle {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 30px;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  vertical-align: middle;
+  text-justify: auto;
+  border:solid 1px #242d31;
+  cursor: pointer;
+
+}
+
+.avatar-circle:hover{
+  background-color: rgb(23, 78, 53);
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+   rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
+}
+
+.initials {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+  user-select: none;
+}
+
+.avatar-name {
+  color: white;
+  font-size: 12px;
+  padding-top: 7px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+.avatar-conteiner {
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-top: -1.5px;
+  border-radius: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+
+}

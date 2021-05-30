@@ -1,0 +1,26 @@
+.filtro{
+  background-color: #9eb1ba00;
+  border: #455e5a 1px solid;
+  border-radius: 10px;
+  color: #eaeaea;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 0px;
+  margin: 2px;
+  font-size: 11px;
+  user-select: none;
+  height: 17px;
+}
+
+.filtro-panel{
+  display: flex;
+  position: relative;
+  max-width: 720px;
+  background-color: #00000017;
+  border-radius: 5px;
+  overflow: auto;
+  padding: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}

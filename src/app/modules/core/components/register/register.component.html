@@ -1,0 +1,45 @@
+<div class="main-register">
+
+  <div class="text-register">
+    <p class="text-title">Construido para</p>
+    <p class="text-title">desarrolladores</p>
+    <div>
+      Automatiza el proceso de escritura de código recurrente,
+      genera código en base a tus modelos de datos,
+      genera código de cualquier lenguaje, en la estructura
+      de directorios que necesites para tus proyectos.
+    </div>
+  </div>
+
+  <div class="form-register">
+    <ui-form-base [showCloseButton]="false" [errors]="userRegister.valueErrors"  [actions]="ACTION_BTN_REGISTER" (formAction) ="register()"
+    textFooter="::." titleHeader ="::. ..:. ..:::.. ..:.. .. .:.. .. ...:: .... ::::..">
+     <ui-input-text-model [labelDirectionLeft]="true" label="Usuario" [(value)]="userRegister.username" height="30px">
+     </ui-input-text-model>
+     <ui-input-text-model [labelDirectionLeft]="true" type='email' label="Correo" height="30px"
+       [(value)]="userRegister.email"></ui-input-text-model>
+     <ui-input-text-model [labelDirectionLeft]="true" type='password' label="Clave" height="30px"
+       [(value)]="userRegister.password"></ui-input-text-model>
+     <ui-input-text-model [labelDirectionLeft]="true" type='password' label="Confirmar Clave" height="30px"
+       [(value)]="userRegister.password_verify"></ui-input-text-model>
+ </ui-form-base>
+ <div style="display: flex; justify-content: flex-end; width: 100%; color: rgb(141, 187, 214); padding: 5px; font-size: 14px;">
+  <p style="margin-right: 20px;"> si ya estas registrado, <a href="login">Accede Aquí </a> </p>
+ </div>
+
+  </div>
+
+  <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+    <div style="box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px; padding: 5px;">
+      <!-- <youtube-player
+      videoId="i_v_FzfYkwg"
+      suggestedQuality="highres"
+      [startSeconds]="0"
+      >
+    </youtube-player> -->
+    </div>
+
+  </div>
+
+
+</div>

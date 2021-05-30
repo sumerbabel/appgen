@@ -1,0 +1,21 @@
+
+<div
+(clickOutside)="clickExternal()"
+clickOutside
+>
+
+
+<ui-button [actionProperties] ="actionProperties" (on-click)="onFocus($event)">
+
+</ui-button>
+
+<div class='ui-panel-select' *ngIf="openPanel">
+   
+    <div class='ui-item-panel'>
+        <ui-button [actionProperties] ="actionProperties">
+
+        </ui-button>
+    </div>
+  </div>
+
+</div>

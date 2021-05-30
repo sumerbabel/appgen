@@ -1,0 +1,62 @@
+<div
+    class="view-layout"
+    cdkDrag
+>
+    <div class='view-header' cdkDragHandle [ngStyle]="{'background': colorHeader}">
+        <div class='title-view'>{{titleHeader}}</div>
+        <div
+            class='btn-view-form'
+            *ngIf="showCloseButton"
+        >
+            <button (click)="actionClose($event)">
+                <div class="icon-close"></div>
+            </button>
+        </div>
+    </div>
+    <div class='view'  [ngStyle]="{'background': backgroundColor}">
+
+        <div class="ui-form-error" *ngIf="errors && errors.length>0">
+            <div
+            class='btn-view-error'
+        >
+            <button  (click)="actionErrorPanel()">
+                <div class="icon-close"></div>
+            </button>
+        </div>
+        <div ><span style="background-color: brown; border-radius: 3px; padding-left: 2px; padding-right: 3px;">Corregir las siguientes observaciones</span> </div>
+            <div class="error-p" *ngFor="let error of errors; index as i">{{i+1}}. {{error}}</div>
+        </div>
+
+        <ng-content></ng-content>
+    </div>
+    <div *ngIf="textFooter ||actions || showFooterButtons" class='view-footer' [ngStyle]="{'background': colorHeader}">
+        <div class='title-footer'>{{textFooter}}</div>
+        <div class='btn-footer'>
+            <ng-container *ngFor="let action of actions">
+                <ui-button
+                *ngIf="action.isVisible !==false"
+                [icon]="action.icon"
+                [color]="action.color"
+                [colorText]="action.colorText"
+                [type]="action.type"
+                [styleClass]="action.styleClass"
+                (on-click)="actionForm(action.action)"
+            >
+                {{action.name}}
+            </ui-button>
+            </ng-container>
+            <ui-button
+                *ngIf="showFooterButtons"
+                [actionProperties] ="ACTION_SAVE"
+                (on-click)="actionForm($event)"
+            >
+            </ui-button>
+            <ui-button
+                *ngIf="showFooterButtons"
+                [actionProperties] ="ACTION_CANCEL"
+                (on-click)="actionForm($event)"
+            >
+            </ui-button>
+        </div>
+    </div>
+</div>

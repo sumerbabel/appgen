@@ -1,0 +1,11 @@
+<div class="view-layout" [ngStyle]="{'background-color':colorPanel}">
+    <div class="ui-barra-contenido">
+        <div style="font-weight: 600; margin-right: 10px;">{{dataAlert.title}}</div>
+        {{dataAlert.textAlert}}
+    </div>
+    <div class='btn-view' [ngStyle]="{'background-color':colorPanel}">
+      <button (click)="actionForm('CERRAR')">
+        <div class="icon-close"></div>
+      </button>
+    </div>
+</div>

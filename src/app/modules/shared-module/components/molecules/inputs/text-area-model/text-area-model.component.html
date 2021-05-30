@@ -1,0 +1,25 @@
+<div class='input-text-area' >
+    <div *ngIf="label" class='label-custom'>
+        <label>{{label}}</label>
+    </div>
+    <div class="input-content">
+    <textarea
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        [cdkAutosizeMinRows]="numeroSaltosLinea"
+        [placeholder]="placeholder"
+        cdkAutosizeMaxRows="50"
+        [ngModel]="value"
+        (ngModelChange)="changeControlEvent($event)"
+        (blur)="blurInput()"
+        [disabled]="disabled"
+        #inpuAreaModel
+    >
+    </textarea>
+
+
+    <div class="conteiner-error" *ngIf ="errors.length > 0">
+        <div class="error-p" *ngFor="let error of errors">{{error}}</div>
+    </div>
+</div>
+</div>

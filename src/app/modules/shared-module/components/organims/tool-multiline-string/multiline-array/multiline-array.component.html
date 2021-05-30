@@ -1,0 +1,53 @@
+<div class="ui-multiline-view" style="display: flex; width: 100%; flex-wrap: wrap;">
+  <div class="ui-multiline-conteiner">
+    <ui-form-base (formAction)="accionFormulario($event)" titleHeader="Dividir Texto"
+      [showCloseButton]="true">
+
+      <div style="display:inline-flex; width: 100%;">
+        <div style="width: 100%;">
+          <text-area-model [(value)]="textInput" (valueChange)="controlChange()" label='Texto a Dividir x Saltos Linea'
+            placeholder='Texto a Dividir x Saltos Linea'></text-area-model>
+        </div>
+
+        <div style="max-width: 250px; min-width: 250px; margin-left: 10px; border-radius: 3px; border: solid 1px rgb(70, 62, 62); background-color: rgba(54, 51, 51, 0.301);" *ngIf="arrayText.length>0">
+          <ui-input-text-model [(value)]="textoEliminar" (valueChange)="controlDeleteChange()" labelDirectionLeft='true'
+            placeholder='texto a eliminar' label='Texto a Eliminar'></ui-input-text-model>
+          <ui-input-text-model [(value)]="textoCorte" (valueChange)="controlCutChange()" labelDirectionLeft='true' placeholder='Texto Corte'
+            label='Texto de corte'></ui-input-text-model>
+          <ui-input-text-model [(value)]="textoIzquierda" (valueChange)="controlAddChangeIzquierda()" labelDirectionLeft='true'
+            placeholder='Texto Izquierda' label='Texto Izquierda'></ui-input-text-model>
+          <ui-input-text-model [(value)]="textoDerecha" (valueChange)="controlAddChangeDerecha()" labelDirectionLeft='true'
+            placeholder='Texto Derecha' label='Texto Derecha'></ui-input-text-model>
+        </div>
+
+      </div>
+      <div style="width: 100%;" *ngIf="arrayText.length>0">
+        <span style="margin-bottom: 10px;">Resultado Json</span>
+        <div class='ui-json-view'>
+        {{objectTree|json}}
+        </div>
+      </div>
+    </ui-form-base>
+
+  </div>
+
+  <div>
+    <ui-form-base *ngIf="arrayText.length>0" titleHeader="Texto Resultante" [actions]="actions" (formAction)="accionFormulario($event)">
+      <table>
+        <th>Nº</th>
+        <th>
+          <div style="display: flex; width: 100%; justify-content:space-between;">
+            <div style="margin-right: 5px;">Texto</div>
+            <ui-button styleClass='ui-min' style="margin: 3px;" color="#3a6683" icon="fa fa-clipboard" name="Copiar"
+              (on-click)="copyActionClipBoard()"></ui-button>
+          </div>
+        </th>
+        <tr *ngFor="let item of arrayText ; index as i">
+          <td class="order">{{i+1}}</td>
+          <td>{{item}}</td>
+        </tr>
+      </table>
+    </ui-form-base>
+  </div>
+
+</div>

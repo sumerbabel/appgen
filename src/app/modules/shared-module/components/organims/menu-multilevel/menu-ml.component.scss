@@ -1,0 +1,76 @@
+.ui-ul {
+  font-size: 16px;
+  font-family: Segoe WPC, Segoe UI, sans-serif;
+  padding: 0px;
+  width: 100%;
+  width: 230px;
+}
+
+.ui-ul .tree-close {
+  margin-right: 8px;
+}
+
+.ui-ul .tree-open {
+  margin-right: 8px;
+}
+
+.ui-ul .tree-open:after {
+  content: ">";
+  display: inline-block;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.ui-ul .tree-close:after {
+  content: ">";
+  display: inline-block;
+}
+
+.ui-ul .ui-li .leaf .tree-node-el {
+  cursor: pointer;
+  user-select: none;
+}
+
+.ui-ul .ui-li .leaf .tree-node-el:hover, .tree-node-el:hover {
+  background-color: #125347;
+  justify-content: end;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
+}
+
+.select-menu {
+  background-color: #125347;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
+}
+
+.tree-node-el {
+  display: flex;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.ui-row-content {
+  display: flex;
+  width: 100%;
+}
+
+.first-node .only-node {
+  margin-right: 5px;
+}
+
+.node-expand .tree-open {
+  cursor: pointer;
+}
+
+.ui-menu-item-text {
+  font-size: 15px;
+  font-family: -webkit-pictograph;
+  font-weight: lighter;
+  letter-spacing: 1.3px;
+  justify-content: end;
+  margin-right: 40px;
+}

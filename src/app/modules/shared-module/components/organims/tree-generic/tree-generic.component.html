@@ -1,0 +1,25 @@
+<div *ngIf="isNodeInitial">
+  <div *ngIf="!templateHeader" style="display: flex; max-width: 350px; align-items: stretch; margin-bottom: 25px;">
+    <ui-button *ngIf="propertiesButton" [actionProperties]="propertiesButton" (on-click)="toggleExpandAll()">
+    </ui-button>
+  </div>
+  <ng-container *ngTemplateOutlet="templateHeader; context {$implicit: treeObject}"></ng-container>
+</div>
+<div class="tree-layout">
+<ul class="halo-tree" *ngIf="treeObject">
+  <li [ngClass]="isNodeInitial? 'first-node only-node':'leaf'" *ngFor="let treeNode of treeObject ; let i = index">
+
+    <div class="tree-node-el" style="display: flex;">
+      <div *ngIf="!templateBody">{{treeNode._id}} add ngtemplate "templateBody" too all properties data (let-data)</div>
+      <ng-container *ngTemplateOutlet="templateBody; context {
+      $implicit: {node:treeNode, nodeParent:treeObjectParent}}">
+      </ng-container>
+    </div>
+
+    <ui-tree-generic *ngIf="treeNode._children.length>0 && treeNode._isOpen" [treeObject]="treeNode._children"
+      [treeObjectParent]="treeNode" [templateBody]="templateBody" [isNodeInitial]="false">
+
+    </ui-tree-generic>
+  </li>
+</ul>
+</div>

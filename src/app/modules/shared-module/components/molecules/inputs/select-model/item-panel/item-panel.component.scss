@@ -1,0 +1,80 @@
+$content-color: #3f4447;
+$iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+  "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+$iu-global-font-color: rgba(255, 255, 255, 0.9);
+$iu-global-borde-input-h: #0c536a;
+$iu-global-borde-input: rgba(15, 15, 15, 0.2);
+$iu-global-input-background: #313437;
+$iu-global-font-size-input: 12px;
+
+
+.ui-panel-select {
+  position: fixed;
+  box-sizing: border-box;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  width: 100%;
+  color: $iu-global-font-color;
+  background: #232527;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+    rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
+  z-index: 3050;
+}
+
+.ui-item-panel {
+  box-sizing: border-box;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  font-size:$iu-global-font-size-input ;
+  padding: 7px;
+}
+
+.ui-item-panel-ini {
+  box-sizing: border-box;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  font-size:$iu-global-font-size-input ;
+  padding: 7px;
+}
+
+.ui-item-panel:hover {
+  background-color: #0f0f0f33;
+}
+
+.input-content {
+  width: 100%;
+  display: block;
+  width: 100% !important;
+  color: $iu-global-font-color;
+  font-family: $iu-global-font;
+  box-sizing: border-box;
+}
+
+.input-content > input {
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 5px;
+  border: solid 1px rgba(15, 15, 15, 0.2);
+  box-shadow: (15, 15, 15, 0.2) 0px 0px 0px 1px inset,
+    rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
+
+  height: 18px;
+  width: 100%;
+  font-size: 10px;
+  color: $iu-global-font-color;
+  //background: $iu-global-input-background;
+  background-color: #1e1f21;
+  cursor: text;
+}
+
+ .input-content > input:focus {
+  outline: none;
+  //border: solid 1px $iu-global-borde-input-h;
+}
+

@@ -1,0 +1,15 @@
+<div class='ui-panel-select' [ngStyle]="{'width': witdthPanel+'px'}">
+<div  class='ui-item-panel-ini'>
+  <div class="input-content" >
+    <input #inputSearch [(ngModel)]="value" cdkFocusInitial>
+  </div>
+
+</div>
+  <div class='ui-item-panel' *ngFor="let intem of items |filter:value" (click)="selectItemPanel(intem)" >
+    {{intem.name}}
+  </div>
+
+  <div  class='ui-item-panel-ini'>
+  </div>
+
+</div>

@@ -1,0 +1,190 @@
+$content-color: #272e31;
+$iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+  "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+$iu-global-font-color: rgba(255, 255, 255, 0.9);
+
+.view-layout {
+  min-width: 360px;
+  box-sizing: border-box;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
+  border:solid 1px #242d31;
+  background-color: $content-color;
+  font-family: $iu-global-font;
+  color: $iu-global-font-color;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 0px;
+  grid-template-areas:
+    "form-header"
+    "form-content"
+    "form-footer";
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.view {
+  grid-area: form-content;
+  box-sizing: border-box;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  max-height: calc(100vh - 170px);
+  overflow: auto;
+  font-family: $iu-global-font;
+  color: $iu-global-font-color;
+  width: 100%;
+}
+
+.view-header {
+  display: flex;
+  grid-area: form-header;
+  height: 28px;
+  cursor: all-scroll;
+  background-color: $content-color;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+ justify-content: space-between;
+}
+
+.title-view {
+  vertical-align: middle;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 5px;
+  line-height: 1.5;
+  user-select: none;
+  font-size: 15px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.btn-view-form > button {
+  display: flex;
+  justify-content: space-evenly;
+  vertical-align: middle;
+  align-items: center;
+  margin-left: auto;
+  background-color: $content-color;
+  border-top-right-radius: 5px;
+  border: none;
+  color: $iu-global-font-color;
+  outline: none;
+  width: 45px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 100;
+}
+
+div.icon-close:after {
+  margin-top: -3px;
+  display: flex;
+  content: "\d7";
+  font-size: 22px;
+  font-weight: 100;
+}
+
+.btn-view-form > button:hover {
+  background-color: #d21010d2;
+  color: white;
+}
+.btn-view-form > button:active {
+  background-color: #d41111ec;
+  color: white;
+}
+
+.view-footer {
+  grid-area: form-footer;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.title-footer {
+  margin-left: 20px;
+  margin: 0px;
+  padding-left: 5px;
+  color: #adadad;
+  user-select: none;
+  font-size: 11px;
+}
+
+.btn-footer {
+  display: flex;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+.btn-footer > ui-button {
+  margin-left: 10px;
+}
+
+.ui-form-error {
+  position: relative;
+  left: 0;
+  border: solid 1px red;
+  background-color: rgba(239, 61, 61, 0.18);
+  width: 100%;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-bottom: 6px;
+  border-radius: 3px;
+  font-family: $iu-global-font;
+  font-size: 11px;
+}
+
+.btn-view-error > button {
+  display: flex;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  justify-content: space-evenly;
+  vertical-align: middle;
+  align-items: center;
+  margin-left: auto;
+  background-color: #06841900;
+
+  border: none;
+  border-radius: 5px;
+  color: $iu-global-font-color;
+  outline: none;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 100;
+}
+
+.header-resalt {
+  background-color: red;
+}
+
+.btn-view-error > button:hover {
+  background-color: #95d4c71c;
+  color: white;
+}
+
+.btn-view-error > button:active {
+  background-color: #6f938c1c;
+  color: white;
+}
+
+.ui-header-active {
+  background-color: $content-color;
+}
+
+.ui-header-active-alert {
+  background-color: #040505;
+}

@@ -1,0 +1,16 @@
+<div class='input-text'>
+    <label *ngIf="!isSelectDirectory" for="file-upload" class="custom-file-upload">
+        <i class="fa fa-cloud-upload"></i> Seleccionar Archivos
+    </label>
+
+    <label *ngIf="isSelectDirectory" for="file-upload-directory" class="custom-file-upload">
+      <i class="fa fa-cloud-upload"></i> Seleccionar Carpeta
+  </label>
+
+  <span style="margin-left: 3px;"> Archivos : {{countArchives}}</span>
+
+    <input id="file-upload" type="file" (change)="changeControlEvent($event)" [multiple]="multiple" [accept]="accept"  />
+    <input  id="file-upload-directory" type="file" (change)="changeControlEvent($event)"  webkitdirectory/>
+</div>
+
+
