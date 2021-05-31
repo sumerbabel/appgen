@@ -35,6 +35,7 @@ export class AppComponent {
       })
       .subscribe((result) => {
         if (result === ActionGeneric.YES) {
+          this.isOpenMenu = false;
           this.accountService.logout();
         }
       });
@@ -61,9 +62,16 @@ export class AppComponent {
   menuEvent(event){
     console.log(event)
     this.router.navigate([event]);
+    this.isOpenMenu =false;
   }
 
-  menuEvent2(event){
-    this.router.navigate(['login']);
-  }
+  ngOnInit() {
+    window.addEventListener("beforeunload", function (e) {
+        var confirmationMessage = "\o/";
+        console.log("cond");
+        e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+        return confirmationMessage;              // Gecko, WebKit, Chrome <34
+    });
+    this.isOpenMenu = false;
+}
 }

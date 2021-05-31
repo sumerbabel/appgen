@@ -1,95 +1,27 @@
-<!-- <div *ngIf="user && isOpenMenu" class="menu-movil">
+<div *ngIf="user" class="menu-movil" [ngClass]="{'menu-visible': isOpenMenu === true, 'menu-no-visible' : isOpenMenu === false }">
   <div class="ui-item-nav-movil">
     <div class="ui-title-app" style="margin-top: 10px;"><span>Sumer Code </span></div>
-
     <div class="close-main" (click)="openMenuMovil()">
       <div class="close" ></div>
     </div>
 
-
   </div>
   <div class="ui-item-nav-movil">
     <div style="display: flex; width: 100%; height:85vh;justify-content:flex-start;">
-
-      <ui-menu (nodeEvent)="nodeEventMenu($event)" ></ui-menu>
-
+       <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)"></ui-menu>
     </div>
   </div>
   <div class="ui-item-nav-movil">
     <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-power-off" (on-click)="logout()"> Cerrar Sesion
     </ui-button>
   </div>
-</div> -->
-
-<!-- <div  class="ui-container">
-  <app-header>
-     <ui-avatar [name]="user.username" (on-click)="openModalUserProfile()"></ui-avatar>
-    <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-align-left" (on-click)="openToolMultilineString()">
-    </ui-button>
-    <div style="display: flex; width: 100%;justify-content: flex-end;">
-      <div class="btn-logout">
-        <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-power-off" (on-click)="logout()">
-        </ui-button>
-      </div>
-
-      <div class="btn-menu-movil">
-        <ui-button styleClass="MINIMXS2" color="#303b43" icon="fa fa-bars" (on-click)="openMenuMovil()">
-        </ui-button>
-      </div>
-    </div>
-  </app-header>
-
-  <app-nav>
-    <div class="ui-item-nav">
-      <div class="ui-title-app"><span>Sumer Code </span></div>
-    </div>
-    <div class="ui-item-nav">
-      <div style="display: flex; width:100%;justify-content:flex-end">
-
-        <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)"></ui-menu>
-      </div>
-    </div>
-  </app-nav>
-
-  <div class="main-content" #mainContentapp>
-    <ui-loader></ui-loader>
-    <div class="modal-content-app">
-    </div>
-    <ui-button styleClass="MINIMXS2" color="#303b43" icon="fa fa-bars" (on-click)=" menuEvent2($event)">
-    </ui-button>
-
-    <div class="router-contend">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  <app-footer></app-footer>
-</div> -->
-
-
-<!-- <div *ngIf="!user">
-  <ui-loader></ui-loader>
-    <div class="modal-content-app" style="border: solid 1px rgb(25, 8, 71); width: auto;">
-    </div>
-<div style="display: flex; flex-direction: column; flex-wrap: nowrap;" >
-  <div style="align-self: center;">
-    <img class="ing-logo" src="assets/zoor.png" width="60px" style="padding: 10px;">
-    <h1 class="name-app">Sumer Code</h1>
-  </div>
-
-  <div class="main-content-public" #mainContentapp>
-    <div class="modal-content-app">
-    </div>
-      <router-outlet  name="public"></router-outlet>
-  </div>
 </div>
-
-</div> -->
 
 
 <!--This is where my before login router stays-->
 <div class="ui-container" *ngIf="user">
   <app-header>
-    <!-- <ui-avatar [name]="user.username" (on-click)="openModalUserProfile()"></ui-avatar> -->
+    <ui-avatar [name]="user.username" (on-click)="openModalUserProfile()"></ui-avatar>
     <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-align-left" (on-click)="openToolMultilineString()">
     </ui-button>
     <div style="display: flex; width: 100%;justify-content: flex-end;">
@@ -121,9 +53,6 @@
     <ui-loader></ui-loader>
     <div class="modal-content-app">
     </div>
-    <ui-button styleClass="MINIMXS2" color="#303b43" icon="fa fa-bars" (on-click)=" menuEvent2($event)">
-    </ui-button>
-
     <div class="router-contend">
       <ng-container *ngTemplateOutlet="template"></ng-container>
     </div>

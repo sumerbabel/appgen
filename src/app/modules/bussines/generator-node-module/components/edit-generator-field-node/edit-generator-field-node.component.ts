@@ -15,7 +15,7 @@ import { TableItemMasterEnum } from 'src/app/modules/administrator/table-module/
 
 @Component({
   selector: 'app-edit-generator-field-node',
-  templateUrl: './edit-generator-field-node.component.html',
+  templateUrl:'./edit-generator-field-node.component.html',
   styleUrls: ['./edit-generator-field-node.component.scss']
 })
 export class EditGeneratorFieldNodeComponent extends Modal implements OnInit {

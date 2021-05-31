@@ -7,7 +7,6 @@ import { ModalService } from '@sharedModule/components/organims/modal/service/mo
 import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { EventAction } from '@sharedModule/models-core/action-model';
-import { DataModel } from '@sharedModule/models-core/data-model';
 import { TableModel } from '@sharedModule/models-core/table-model';
 import { EditGeneratorNodeComponent } from '../edit-generator-node/edit-generator-node.component';
 import { GeneratorNode } from '../../domain/generator-node';

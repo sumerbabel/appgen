@@ -200,3 +200,11 @@ app-footer {
 .close:after {
   transform: rotate(-45deg);
 }
+
+.menu-visible{
+  display: block;
+}
+
+.menu-no-visible{
+  display: none;
+}

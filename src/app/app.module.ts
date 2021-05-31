@@ -12,6 +12,7 @@ import { HttpGenericInterceptor } from './modules/core/http-service/http-generic
 import { HomeComponent } from './modules/core/components/home/home.component';
 import { LoginComponent } from './modules/core/components/login/login.component';
 import { RegisterComponent } from './modules/core/components/register/register.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { RegisterComponent } from './modules/core/components/register/register.c
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    CommonModule,
     HelipopperModule.forRoot(),
     SharedModule
   ],

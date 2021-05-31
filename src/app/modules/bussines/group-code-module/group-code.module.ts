@@ -8,6 +8,8 @@ import { PageGroupCodeComponent } from './components/page-group-code/page-group-
 import { CreateGroupCodeComponent } from './components/create-group-code/create-group-code.component';
 import { ViewCodeComponent } from './components/view-code/view-code.component';
 import { FileModule } from '../file-module/file.module';
+import { GeneratorNodeModule } from '../generator-node-module/generator-node.module';
+
 
 @NgModule({
   declarations: [PageGroupCodeComponent, CreateGroupCodeComponent, ViewCodeComponent],
@@ -16,7 +18,8 @@ import { FileModule } from '../file-module/file.module';
     GroupCodeRoutingModule,
     SharedModule,
     FormsModule,
-    FileModule
+    FileModule,
+    GeneratorNodeModule
   ]
 })
 export class GroupCodeModule { }
