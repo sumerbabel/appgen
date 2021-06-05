@@ -4,6 +4,7 @@ import { DialogService } from '@sharedModule/components/organims/dialogForm/serv
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
 import { MultilineStringService } from '@sharedModule/components/organims/tool-multiline-string/service/multiline-string.service';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
+import { MenuActions } from './modules/core/security/domain/menu-actions';
 import { User } from './modules/core/security/domain/user';
 import { AccountService } from './modules/core/security/service/account.service';
 
@@ -60,8 +61,9 @@ export class AppComponent {
   }
 
   menuEvent(event){
-    console.log(event)
-    this.router.navigate([event]);
+    let menuSession : MenuActions ={menuActual:event['rute'], actions:event['actions_rol']}
+    this.accountService.setMenuSession(menuSession)
+    this.router.navigate([event['rute']]);
     this.isOpenMenu =false;
   }
 

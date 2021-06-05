@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AccountService } from '../../security/service/account.service';
 import { MenuTree } from './domain/menu-tree';
 import { MenuService } from './services/menu.service';
 
@@ -12,7 +11,6 @@ export class MenuComponent implements OnInit {
   menuTree: MenuTree[] = [];
   @Output() nodeEvent = new EventEmitter<any>();
   constructor(
-    private accountService: AccountService,
     private menuService: MenuService
   ) {
   }
@@ -31,7 +29,7 @@ export class MenuComponent implements OnInit {
 
   eventmenu(event: any) {
     if (event['type'] == 'ROUTER') {
-      this.nodeEvent.emit(event['rute']);
+      this.nodeEvent.emit(event);
     }
   }
 }

@@ -31,7 +31,8 @@ export class MenuMlComponent implements OnInit {
   itemSelected=null
   nodeSelected(node: TreeGeneric, index?) {
     let rute ='';
-    let type ='MENU_LEVEL'
+    let type ='MENU_LEVEL';
+    let actions_rol =[];
     if (node['_children']?.length > 0) {
 
       this.toggleNode(node);
@@ -39,8 +40,10 @@ export class MenuMlComponent implements OnInit {
       this.itemSelected =index;
       type ='ROUTER'
       rute = node['_menu']['_ruteWeb'];
+      actions_rol =String(node['_menu']['_actionsRol']).split(",");
+
     }
-    this.nodeSelectEmit({type:type,rute:rute})
+    this.nodeSelectEmit({type:type,rute:rute,actions_rol:actions_rol})
   }
 
   nodeSelectEmit(even){

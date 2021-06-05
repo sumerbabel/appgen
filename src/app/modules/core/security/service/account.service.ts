@@ -2,6 +2,7 @@
 import { Router } from '@angular/router';
 import { LocalStorageService } from '@sharedModule/services/local-storage/local-storage.service';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { MenuActions } from '../domain/menu-actions';
 import { User } from '../domain/user';
 import { UserLogin } from '../domain/user-login';
 import { UserLoginService } from './user-login.service';
@@ -10,8 +11,8 @@ import { UserLoginService } from './user-login.service';
 export class AccountService {
   private userSubject: BehaviorSubject<any>;
   private user: Observable<User|null>;
-  private menu: Observable<Array<any>>;
-  private menuSubject: BehaviorSubject<Array<any>>;
+  private menuActions: Observable<MenuActions>;
+  private menuActionsSubject: BehaviorSubject<MenuActions>;
 
   constructor(
     private router: Router,
@@ -21,21 +22,21 @@ export class AccountService {
   ) {
     let user = this.localStorageService.get('user');
     this.userSubject = new BehaviorSubject<User>(user);
-    this.menuSubject = new BehaviorSubject<Array<any>>([]);
+    this.menuActionsSubject = new BehaviorSubject<MenuActions>(undefined);
     this.user = this.userSubject.asObservable();
-    this.menu = this.menuSubject.asObservable();
+    this.menuActions = this.menuActionsSubject.asObservable();
   }
 
   public get userValue(): User {
     return this.userSubject.value;
   }
 
-  public get menuValue(): Array<any> {
-    return this.menuSubject.value;
+  public getMenuSession(): MenuActions{
+    return this.menuActionsSubject.value;
   }
 
-  public MenuSession(): Observable<Array<any>> {
-    return this.menu;
+  public setMenuSession(menuActions:MenuActions){
+    this.menuActionsSubject.next(menuActions);
   }
 
   public userSession(): Observable<any> {

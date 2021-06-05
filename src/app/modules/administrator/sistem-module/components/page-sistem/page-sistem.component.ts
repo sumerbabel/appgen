@@ -13,6 +13,7 @@ import { UpdateSistemComponent } from '../update-sistem/update-sistem.component'
 import { Sistem } from '../../domain/sistem';
 import { SistemService } from '../../services/sistem.service';
 import { FilterComponent } from './filter/filter.component';
+import { AccountService } from 'src/app/modules/core/security/service/account.service';
 
 @Component({
   selector: 'app-page-sistem',
@@ -45,11 +46,14 @@ export class PageSistemComponent implements OnInit {
     private sistemService: SistemService,
     private alertService: AlertService,
     private dialogService: DialogService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private accountService : AccountService
   ) {}
 
   ngOnInit(): void {
     this.getSitems();
+    console.log('sesion menu',this.accountService.getMenuSession())
+
   }
 
   getSitems() {

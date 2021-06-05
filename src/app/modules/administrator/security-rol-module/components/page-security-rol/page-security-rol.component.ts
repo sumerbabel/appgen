@@ -14,6 +14,7 @@ import { UpdateSecurityRolComponent } from '../update-security-rol/update-securi
 import { SecurityRol } from '../../domain/security-rol';
 import { SecurityRolService } from '../../services/security-rol.service';
 import { PageRolMenuComponent } from '../../../rol-menu-module/components/page-rol-menu/page-rol-menu.component';
+import { AccountService } from 'src/app/modules/core/security/service/account.service';
 
 @Component({
   selector: 'app-page-security-rol',
@@ -47,11 +48,13 @@ export class PageSecurityRolComponent implements OnInit {
     private securityRolService: SecurityRolService,
     private alertService: AlertService,
     private dialogService: DialogService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
     this.getSecurityRolItemsToTable();
+    console.log('sesion menu',this.accountService.getMenuSession())
   }
 
   getSecurityRolItemsToTable() {
