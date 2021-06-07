@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
 import { MultilineStringService } from '@sharedModule/components/organims/tool-multiline-string/service/multiline-string.service';
@@ -26,6 +26,15 @@ export class AppComponent {
       this.user = x;
     });
     console.log('inicia APP COMPONET',  this.user)
+    router.events.subscribe((val) => {
+      // see also 
+      if(val instanceof NavigationEnd){
+        console.log('value router',val.url ) 
+        this.accountService.setMenuSession(val.url)
+      }
+   
+  });
+
   }
 
   logout() {
@@ -61,13 +70,13 @@ export class AppComponent {
   }
 
   menuEvent(event){
-    let menuSession : MenuActions ={menuActual:event['rute'], actions:event['actions_rol']}
-    this.accountService.setMenuSession(menuSession)
+   // this.accountService.setMenuSession(event['rute'])
     this.router.navigate([event['rute']]);
     this.isOpenMenu =false;
   }
 
   ngOnInit() {
+    console.log('inicia_componet app')
     window.addEventListener("beforeunload", function (e) {
         var confirmationMessage = "\o/";
         console.log("cond");

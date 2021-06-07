@@ -253,4 +253,20 @@ export class MenuTree extends formModel implements TreeGeneric {
       }
     });
   }
+
+  public getMenuList():Array<any> {
+    let list=[];
+    list.push({id:this.menu.id,ruteWeb:this.menu.ruteWeb,  actionsRol:this.menu.actionsRol})
+    this.menuListRecursiveAll(this.childrens, list);
+    return list;
+  }
+
+  private menuListRecursiveAll(menuNode: MenuTree[], list:Array<any>) {
+    menuNode.forEach((item) => {
+      list.push({id:item.menu.id,ruteWeb:item.menu.ruteWeb, actionsRol:item.menu.getActionsRolToArray()})
+      if (item.childrens.length > 0) {
+        this.menuListRecursiveAll(item.childrens,list);
+      }
+    });
+  }
 }

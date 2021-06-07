@@ -6,13 +6,12 @@ import { MenuActions } from '../domain/menu-actions';
 import { User } from '../domain/user';
 import { UserLogin } from '../domain/user-login';
 import { UserLoginService } from './user-login.service';
-
 @Injectable({ providedIn: 'root' })
 export class AccountService {
   private userSubject: BehaviorSubject<any>;
   private user: Observable<User|null>;
-  private menuActions: Observable<MenuActions>;
   private menuActionsSubject: BehaviorSubject<MenuActions>;
+  private menuListActionsSubject: BehaviorSubject<Array<MenuActions>>;
 
   constructor(
     private router: Router,
@@ -23,8 +22,8 @@ export class AccountService {
     let user = this.localStorageService.get('user');
     this.userSubject = new BehaviorSubject<User>(user);
     this.menuActionsSubject = new BehaviorSubject<MenuActions>(undefined);
+    this.menuListActionsSubject = new BehaviorSubject<Array<MenuActions>>([]);
     this.user = this.userSubject.asObservable();
-    this.menuActions = this.menuActionsSubject.asObservable();
   }
 
   public get userValue(): User {
@@ -35,8 +34,22 @@ export class AccountService {
     return this.menuActionsSubject.value;
   }
 
-  public setMenuSession(menuActions:MenuActions){
-    this.menuActionsSubject.next(menuActions);
+  public setMenuSession(ruteWeb:string){
+    this.getMenuListSession().forEach(menu=>{
+      if(menu.ruteWeb === ruteWeb){
+        this.menuActionsSubject.next(menu);
+      }
+    })
+ 
+  }
+
+  public getMenuListSession(): Array<MenuActions>{
+    return this.menuListActionsSubject.value;
+  }
+
+  public setMenuListSession(menuActions:Array<MenuActions>){
+    console.log('lista menu actions',menuActions);
+    this.menuListActionsSubject.next(menuActions);
   }
 
   public userSession(): Observable<any> {

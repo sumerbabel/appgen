@@ -130,6 +130,11 @@ export class MenuData extends formModel implements DataModel {
     return this._actionsRol;
   }
 
+  getActionsRolToArray():Array<any>{
+    return String(this._actionsRol).split(",");
+  }
+ 
+
   static createMenu(object: Object): MenuData {
     let menu: MenuData = new MenuData(
       object['id'],

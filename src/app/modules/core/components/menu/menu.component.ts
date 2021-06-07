@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MenuActions } from '../../security/domain/menu-actions';
+import { AccountService } from '../../security/service/account.service';
 import { MenuTree } from './domain/menu-tree';
 import { MenuService } from './services/menu.service';
 
@@ -11,11 +13,13 @@ export class MenuComponent implements OnInit {
   menuTree: MenuTree[] = [];
   @Output() nodeEvent = new EventEmitter<any>();
   constructor(
-    private menuService: MenuService
+    private menuService: MenuService,
+    private accountService: AccountService
   ) {
   }
 
   ngOnInit(): void {
+    console.log('inicia menu node');
     this.menu();
   }
 
@@ -24,6 +28,10 @@ export class MenuComponent implements OnInit {
       menuResult.forEach((item) => {
         this.menuTree.push(MenuTree.createMenuNodeRecursive(item));
       });
+
+      console.log('LISTA MENU',this.menuTree[0].getMenuList())
+let MenuActionsList :Array<MenuActions> =this.menuTree[0].getMenuList();
+      this.accountService.setMenuListSession(MenuActionsList)
     });
   }
 

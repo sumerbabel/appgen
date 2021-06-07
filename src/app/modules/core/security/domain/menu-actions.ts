@@ -1,4 +1,5 @@
 export class MenuActions {
-  menuActual: string;
-  actions: Array<string>;
+  id:string
+  ruteWeb:string
+  actionsRol:Array<string>
 }
