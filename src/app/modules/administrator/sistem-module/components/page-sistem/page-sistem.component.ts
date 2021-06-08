@@ -52,8 +52,6 @@ export class PageSistemComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSitems();
-    console.log('sesion menu',this.accountService.getMenuSession())
-
   }
 
   getSitems() {

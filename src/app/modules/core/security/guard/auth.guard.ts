@@ -14,7 +14,6 @@ export class AuthGuard implements CanActivate {
         let result =false;
         if (user) {
           result = true;
-          console.log('route Data',route.data)
           return result;
        
         }

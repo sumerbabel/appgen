@@ -54,7 +54,6 @@ export class PageSecurityRolComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSecurityRolItemsToTable();
-    console.log('sesion menu',this.accountService.getMenuSession())
   }
 
   getSecurityRolItemsToTable() {

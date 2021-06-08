@@ -19,7 +19,6 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('inicia menu node');
     this.menu();
   }
 
@@ -28,8 +27,6 @@ export class MenuComponent implements OnInit {
       menuResult.forEach((item) => {
         this.menuTree.push(MenuTree.createMenuNodeRecursive(item));
       });
-
-      console.log('LISTA MENU',this.menuTree[0].getMenuList())
 let MenuActionsList :Array<MenuActions> =this.menuTree[0].getMenuList();
       this.accountService.setMenuListSession(MenuActionsList)
     });

@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private accountService: AccountService,
   ) {
-    console.log('inicia LOGIN')
     const user = this.accountService.userValue;
     if (user) {
       this.router.navigate(['/']);

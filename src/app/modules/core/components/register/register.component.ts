@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
     if (user) {
       this.router.navigate(['/']);
     }
-    console.log('inica REGISTER')
   }
 
   ngOnInit() {}

@@ -48,7 +48,6 @@ export class AccountService {
   }
 
   public setMenuListSession(menuActions:Array<MenuActions>){
-    console.log('lista menu actions',menuActions);
     this.menuListActionsSubject.next(menuActions);
   }
 

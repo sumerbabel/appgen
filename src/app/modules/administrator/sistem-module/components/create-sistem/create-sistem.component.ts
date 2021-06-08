@@ -122,12 +122,4 @@ export class CreateSistemComponent extends Modal implements OnInit {
     }
   }
 
-  inicio(){
-console.log('inicio');
-  }
-
-  fin(){
-console.log('fin');
-  }
-
 }

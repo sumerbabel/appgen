@@ -25,14 +25,11 @@ export class AppComponent {
     this.accountService.userSession().subscribe((x) => {
       this.user = x;
     });
-    console.log('inicia APP COMPONET',  this.user)
+
     router.events.subscribe((val) => {
-      // see also 
       if(val instanceof NavigationEnd){
-        console.log('value router',val.url ) 
         this.accountService.setMenuSession(val.url)
       }
-   
   });
 
   }
@@ -70,18 +67,15 @@ export class AppComponent {
   }
 
   menuEvent(event){
-   // this.accountService.setMenuSession(event['rute'])
     this.router.navigate([event['rute']]);
     this.isOpenMenu =false;
   }
 
   ngOnInit() {
-    console.log('inicia_componet app')
     window.addEventListener("beforeunload", function (e) {
         var confirmationMessage = "\o/";
-        console.log("cond");
-        e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
-        return confirmationMessage;              // Gecko, WebKit, Chrome <34
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
     });
     this.isOpenMenu = false;
 }
