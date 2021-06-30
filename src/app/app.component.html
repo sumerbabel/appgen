@@ -1,14 +1,15 @@
-<div *ngIf="user" class="menu-movil" [ngClass]="{'menu-visible': isOpenMenu === true, 'menu-no-visible' : isOpenMenu === false }">
+<div *ngIf="user" class="menu-movil"
+  [ngClass]="{'menu-visible': isOpenMenu === true, 'menu-no-visible' : isOpenMenu === false }">
   <div class="ui-item-nav-movil">
     <div class="ui-title-app" style="margin-top: 10px;"><span>Sumer Code </span></div>
     <div class="close-main" (click)="openMenuMovil()">
-      <div class="close" ></div>
+      <div class="close"></div>
     </div>
 
   </div>
   <div class="ui-item-nav-movil">
     <div style="display: flex; width: 100%; height:85vh;justify-content:flex-start;">
-       <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)"></ui-menu>
+      <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)" [menuTree]="menuTree"></ui-menu>
     </div>
   </div>
   <div class="ui-item-nav-movil">
@@ -43,8 +44,7 @@
     </div>
     <div class="ui-item-nav">
       <div style="display: flex; width:100%;justify-content:flex-end">
-
-        <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)"></ui-menu>
+        <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)" [menuTree]="menuTree"></ui-menu>
       </div>
     </div>
   </app-nav>
@@ -59,29 +59,28 @@
   </div>
   <app-footer></app-footer>
 
-  </div>
+</div>
 
-  <!--This is where my after login router stays-->
-  <div *ngIf="!user">
+<!--This is where my after login router stays-->
+<div *ngIf="!user">
   <ui-loader></ui-loader>
-    <div class="modal-content-app" style="border: solid 1px rgb(25, 8, 71); width: auto;">
-    </div>
-<div style="display: flex; flex-direction: column; flex-wrap: nowrap;" >
-  <div style="align-self: center;">
-    <img class="ing-logo" src="assets/zoor.png" width="60px" style="padding: 10px;">
-    <h1 class="name-app">Sumer Code</h1>
+  <div class="modal-content-app" style="border: solid 1px rgb(25, 8, 71); width: auto;">
   </div>
-
-  <div class="main-content-public" #mainContentapp>
-    <div class="modal-content-app">
+  <div style="display: flex; flex-direction: column; flex-wrap: nowrap;">
+    <div style="align-self: center;">
+      <img class="ing-logo" src="assets/zoor.png" width="60px" style="padding: 10px;">
+      <h1 class="name-app">Sumer Code</h1>
     </div>
-    <ng-container *ngTemplateOutlet="template"></ng-container>
+
+    <div class="main-content-public" #mainContentapp>
+      <div class="modal-content-app">
+      </div>
+      <ng-container *ngTemplateOutlet="template"></ng-container>
+    </div>
   </div>
 </div>
-</div>
 
-
-  <ng-template #template>
-    <router-outlet>
-    </router-outlet>
-  </ng-template>
+<ng-template #template>
+  <router-outlet>
+  </router-outlet>
+</ng-template>

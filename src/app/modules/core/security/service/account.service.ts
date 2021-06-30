@@ -36,11 +36,12 @@ export class AccountService {
 
   public setMenuSession(ruteWeb:string){
     this.getMenuListSession().forEach(menu=>{
+      console.log('menu',menu,'ruteweb',ruteWeb)
       if(menu.ruteWeb === ruteWeb){
         this.menuActionsSubject.next(menu);
+        console.log('this.menuActionsSubject',this.menuActionsSubject.value)
       }
     })
- 
   }
 
   public getMenuListSession(): Array<MenuActions>{
