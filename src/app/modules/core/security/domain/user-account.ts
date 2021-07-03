@@ -32,7 +32,6 @@ export class UserAccount {
       this.errors.push('email esta vacio');
     }
 
-    debugger;
     if(this.email !== ''  && this.validateEmail(this.email)===false){
       this.errors.push('Dato del campo EMAIL no tiene el formato de un correo electrónico');
     }

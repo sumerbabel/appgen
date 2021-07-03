@@ -20,6 +20,7 @@ $iu-global-font-color: rgba(255, 255, 255, 0.9);
   justify-content: space-between;
   overflow-y: auto;
   max-height: 700px;
+  z-index: 100;
 }
 
 .ui-barra-contenido {

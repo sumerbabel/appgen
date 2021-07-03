@@ -26,9 +26,11 @@ export class AppComponent {
     private accountService: AccountService
   ) {
 
-    this.accountService.userSession().subscribe((x) => {
-      this.user = x;
-      this.menu();
+    this.accountService.userSession().subscribe((userData) => {
+      this.user = userData;
+      if (this.user !== null && this.user !== undefined) {
+        this.menu();
+      }
     });
 
     router.events.subscribe((val) => {
@@ -54,6 +56,8 @@ export class AppComponent {
       .subscribe((result) => {
         if (result === ActionGeneric.YES) {
           this.isOpenMenu = false;
+          this.user=null;
+          this.menuTree =[];
           this.accountService.logout();
         }
       });
@@ -83,11 +87,15 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    window.addEventListener("beforeunload", function (e) {
-      var confirmationMessage = "\o/";
-      e.returnValue = confirmationMessage;
-      return confirmationMessage;
-    });
+    // if (this.user !== null && this.user !== undefined) {
+    //   window.addEventListener("beforeunload", function (e) {
+    //     var confirmationMessage = "\o/";
+    //     e.returnValue = confirmationMessage;
+    //     return confirmationMessage;
+    //   });
+
+    // }
+
     this.isOpenMenu = false;
   }
 

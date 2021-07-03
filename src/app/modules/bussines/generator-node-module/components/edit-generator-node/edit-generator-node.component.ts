@@ -288,18 +288,4 @@ export class EditGeneratorNodeComponent extends Modal implements OnInit {
     this.copyClipBoardService.copyTextToClipBoard(itemType);
   }
 
-  // validateFileName(filename: string): boolean {
-  //   const regularExpression = /^\/?([A-z0-9-_+]+\/)*([A-z0-9]+\.([A-Za-z]{2,4}))$/;
-  //   this.value_legend.forEach((item) => {
-  //     filename = filename.replace(item.type, '');
-  //   });
-  //   debugger;
-  //   filename = filename.split('[').join('');
-  //   filename = filename.split(']').join('');
-  //   filename = filename.split('(').join('');
-  //   filename = filename.split(')').join('');
-  //   filename = filename.split('/').join('\\');
-  //   let test = regularExpression.test(String(filename).toLowerCase());
-  //   return test;
-  // }
 }
