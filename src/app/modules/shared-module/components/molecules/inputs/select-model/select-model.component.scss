@@ -12,6 +12,8 @@ $iu-global-font-size-label: 13px;
   color: $iu-global-font-color;
   font-family: $iu-global-font;
   box-sizing: border-box;
+  
+display: flex;
 }
 
 .label-custom {
@@ -19,9 +21,7 @@ $iu-global-font-size-label: 13px;
   font-family: $iu-global-font;
 }
 
-
-
-.div-input{
+.div-input {
   box-sizing: border-box;
   border-radius: 3px;
   border: solid 1px rgba(15, 15, 15, 0.2);
@@ -35,12 +35,13 @@ $iu-global-font-size-label: 13px;
   font-size: 12px;
   color: $iu-global-font-color;
   background: $iu-global-input-background;
-  cursor: pointer;;
+  cursor: pointer;
   display: inline-flex;
   position: relative;
   width: 100%;
   min-width: 50px;
   user-select: none;
+
 }
 
 .input-text > .input-content > input {
@@ -65,9 +66,7 @@ $iu-global-font-size-label: 13px;
   border: solid 1px $iu-global-borde-input-h;
 }
 
-
-
- .ui-icon-select  {
+.ui-icon-select {
   transform: rotate(90deg);
   font-size: 20px;
   font-weight: 100;

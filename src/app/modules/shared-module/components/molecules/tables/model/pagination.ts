@@ -44,10 +44,10 @@ export class Pagination {
       let url: string = item.url;
       let page = url !== null ? url.split('=')[1] : '';
       let label = item.label;
-      if (label == 'Next') {
+      if (label == 'Next &raquo;') {
         label = 'Siguiente >';
       }
-      if (label == 'Previous') {
+      if (label == '&laquo; Previous') {
         label = '< Anterior';
         if (url == '') {
           page = lastPage;

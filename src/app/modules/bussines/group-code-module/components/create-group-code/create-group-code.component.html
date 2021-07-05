@@ -71,15 +71,19 @@
       (on-click)="actionFormEvent($event)" style="margin-right: 15px;"></ui-button>
   </div>
 
+  <div class="ui-panel" *ngIf="initialProcessGenerate && tableResultGenerate.length>0">
+    <p>Archivo Generado</p>
+    <div style="display: flex; width: 100%; max-width: 720px;">
+      <ui-list-files *ngIf="idTableAsociate" [idAsociate]="idTableAsociate"></ui-list-files>
+    </div>
+  </div>
+
   <div class="ui-panel" *ngIf="initialProcessGenerate && tableResultGenerate.length>0" style=" margin-top: 5px; width: 100%;">
+    <p>Lista de Archivos Generados</p>
     <ui-table [columns]='columnsTableResultGenerate' [actions]="actionsTableGenerate" [data]="tableResultGenerate"
       (actionEvent)="actionsGenerate($event)">
     </ui-table>
   </div>
 
-  <div class="ui-panel" *ngIf="initialProcessGenerate && tableResultGenerate.length>0">
-    <div style="display: flex; width: 100%; max-width: 720px;">
-      <ui-list-files *ngIf="idTableAsociate" [idAsociate]="idTableAsociate"></ui-list-files>
-    </div>
-  </div>
+
 </ui-form-base>

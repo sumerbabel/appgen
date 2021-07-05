@@ -14,8 +14,12 @@ export class ModuleService {
   private RESOURCE_RUTE: string = 'modules';
 
   getModule(id: any = ''): Observable<any> {
+    let slash =''
+    if (id){
+      slash='/'
+    }
     return this.httpApiService
-      .getResource(`${this.RESOURCE_RUTE}/${id}`)
+      .getResource(`${this.RESOURCE_RUTE}${slash}${id}`)
       .pipe(map((response: any) => response));
   }
 

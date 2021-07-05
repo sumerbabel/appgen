@@ -15,8 +15,12 @@ export class MenuNodeService {
   private RESOURCE_RUTE: string = 'menuNodes';
 
   getMenuNode(id: any = ''): Observable<any> {
+    let slash =''
+    if (id){
+      slash='/'
+    }
     return this.httpApiService
-      .getResource(`${this.RESOURCE_RUTE}/${id}`)
+      .getResource(`${this.RESOURCE_RUTE}${slash}${id}`)
       .pipe(map((response: any) => response));
   }
 

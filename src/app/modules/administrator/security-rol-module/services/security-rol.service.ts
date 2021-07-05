@@ -14,8 +14,12 @@ export class SecurityRolService {
   private RESOURCE_RUTE: string = 'securityRols';
 
   getSecurityRol(id: any = ''): Observable<any> {
+    let slash =''
+    if (id){
+      slash='/'
+    }
     return this.httpApiService
-      .getResource(`${this.RESOURCE_RUTE}/${id}`)
+      .getResource(`${this.RESOURCE_RUTE}${slash}${id}`)
       .pipe(map((response: any) => response));
   }
 

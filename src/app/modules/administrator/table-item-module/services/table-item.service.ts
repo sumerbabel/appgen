@@ -15,7 +15,11 @@ export class TableItemService {
 private  RESOURCE_RUTE:string = 'tableItems'
 
   getTableItem(id: any =''): Observable<any> {
-    return this.httpApiService.getResource(`${this.RESOURCE_RUTE}/${id}`)
+    let slash =''
+    if (id){
+      slash='/'
+    }
+    return this.httpApiService.getResource(`${this.RESOURCE_RUTE}${slash}${id}`)
       .pipe(
         map((response: any) => response)
       );

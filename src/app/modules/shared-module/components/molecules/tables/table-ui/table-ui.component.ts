@@ -27,7 +27,7 @@ export class TableUiComponent implements OnInit {
 
   ngOnInit(): void {
    if (this.paginationData ==undefined){
-   this.paginationData = new Pagination(1,0,10,0,0,0,[])
+   this.paginationData = new Pagination(1,this.data.length,this.data.length,1,1,1,[])
    }
    this.itemPageSelected =this.paginationData.perPage
   }
