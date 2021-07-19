@@ -3,6 +3,12 @@
   <ui-filter-panel [(searchFilter)]="tableModelSistem.searchFilter" (openFilter)="filterOpenModal()" (cleartFilter)="filterClear()">
   </ui-filter-panel>
 
+  <ui-input-text-date></ui-input-text-date>
+  <input class="input-key">
+  <input class="input-key">
+  <input class="input-key">
+  <input class="input-key">
+
   <ui-table *ngIf="tableModelSistem" [columns]='tableModelSistem.columnArray' [actions]="tableModelSistem.actionArray"
     [data]="tableModelSistem.dataArray" [paginationData]="tableModelSistem.pagination"
     (actionEvent)="tableSistemActions($event)"></ui-table>

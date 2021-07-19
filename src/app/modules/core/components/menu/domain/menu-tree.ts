@@ -256,7 +256,7 @@ export class MenuTree extends formModel implements TreeGeneric {
 
   public getMenuList():Array<any> {
     let list=[];
-    list.push({id:this.menu.id,ruteWeb:this.menu.ruteWeb,  actionsRol:this.menu.actionsRol})
+    list.push({id:this.menu.id,ruteWeb:this.menu.ruteWeb,  actionsRol:this.menu.actionsRol? this.menu.actionsRol:undefined})
     this.menuListRecursiveAll(this.childrens, list);
     return list;
   }

@@ -131,6 +131,10 @@ export class MenuData extends formModel implements DataModel {
   }
 
   getActionsRolToArray():Array<any>{
+
+    if(this._actionsRol==null ||this._actionsRol == undefined ||this._actionsRol == ''){
+    return []
+    }
     return String(this._actionsRol).split(",");
   }
  

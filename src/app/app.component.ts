@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
@@ -17,31 +17,43 @@ import { AccountService } from './modules/core/security/service/account.service'
 })
 export class AppComponent {
   user: User;
+
+  // @HostListener("window:beforeunload", ["$event"]) beforeUnloadHandler(event: Event) {
+  //   console.log("window:beforeunload");
+  //   event.returnValue = "You will leave this page" as any;
+  // }
+
+  // @HostListener("window:unload", ["$event"]) unloadHandler(event: Event) {
+  //   console.log("window:unload");
+  // }
+
+  ruteActual:string;
+  
   constructor(
     private multilineStringService: MultilineStringService,
     private dialogService: DialogService,
     private modalService: ModalService,
     private router: Router,
     private menuService: MenuService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    
   ) {
-
+console.log('1. INICA APP COMPONENT')
     this.accountService.userSession().subscribe((userData) => {
       this.user = userData;
-      if (this.user !== null && this.user !== undefined) {
+      if (this.user !== null && this.user !== undefined && this.user.isExpiredToken ===false) {
         this.menu();
       }
     });
 
-    router.events.subscribe((val) => {
-      if (val instanceof NavigationStart) {
-        console.log('star', val.url)
-        this.accountService.setMenuSession(val.url)
-      }
+    this.router.events.subscribe((val) => {
 
-      if (val instanceof NavigationEnd) {
-        console.log('end', val.url)
-        this.accountService.setMenuSession(val.url)
+      if (val instanceof NavigationStart) {
+        this.accountService.setMenuSession(this.ruteActual)
+      }
+      else if (val instanceof NavigationEnd) {
+        this.ruteActual =val.url;
+        this.accountService.setMenuSession(this.ruteActual)
       }
     });
 
@@ -87,15 +99,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    // if (this.user !== null && this.user !== undefined) {
-    //   window.addEventListener("beforeunload", function (e) {
-    //     var confirmationMessage = "\o/";
-    //     e.returnValue = confirmationMessage;
-    //     return confirmationMessage;
-    //   });
-
-    // }
-
+console.log('carga el app component');
     this.isOpenMenu = false;
   }
 
@@ -107,6 +111,7 @@ export class AppComponent {
       });
       let MenuActionsList: Array<MenuActions> = this.menuTree[0].getMenuList();
       this.accountService.setMenuListSession(MenuActionsList)
+      this.accountService.setMenuSession(this.ruteActual)
     });
   }
 

@@ -1,0 +1,9 @@
+<ui-form-base [showCloseButton]="false" [errors]="userLogin.valueErrors" titleHeader="Acceso">
+    <p>Usuario : {{userLogin.username_or_email}}</p>
+    <p>La sesion a expirado, si desea contuniar en el sistema ingrese su clave de acceso.</p>
+    <ui-input-text-model [labelDirectionLeft]="true" type='password' label="Clave" [(value)]="userLogin.password" (key-press)="loginRefresh()">
+    </ui-input-text-model>
+    <div style="display:flex;  justify-content: flex-end; width: 100%; margin-top: 23px;">
+      <ui-button [actionProperties]="ACTION_BTN_LOGIN" (on-click)="loginRefresh()"> </ui-button>
+    </div>
+</ui-form-base>

@@ -13,6 +13,7 @@ import { HomeComponent } from './modules/core/components/home/home.component';
 import { LoginComponent } from './modules/core/components/login/login.component';
 import { RegisterComponent } from './modules/core/components/register/register.component';
 import { CommonModule } from '@angular/common';
+import { LoginExpiredTokenComponent } from './modules/core/components/login-expired-token/login-expired-token.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
     MenuComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginExpiredTokenComponent,
   ],
   imports: [
     BrowserModule,

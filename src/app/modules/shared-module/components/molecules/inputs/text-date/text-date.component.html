@@ -1,0 +1,54 @@
+<div class="input-text" [ngClass]="styleClassText">
+  <div *ngIf="label" [ngClass]="styleClassLabel">
+    <label>{{ label }}</label>
+  </div>
+  <div class="input-content">
+    <input
+      #inpuTextModel1
+      [type]="type"
+      [(ngModel)]="date_value[0]"
+      (ngModelChange)="changeControlEvent1($event)"
+      (blur)="blurInput()"
+      (keyup.enter)="keyPress($event)"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [ngStyle]="{ height: height }"
+      [ngStyle]="{ color: color }"
+      [pattern]="pattern"
+    />
+    <div>/</div>
+    <input
+      #inpuTextModel2
+      [type]="type"
+      [(ngModel)]="date_value[1]"
+      (ngModelChange)="changeControlEvent2($event)"
+      (blur)="blurInput()"
+      (keyup.enter)="keyPress($event)"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [ngStyle]="{ height: height }"
+      [ngStyle]="{ color: color }"
+      [pattern]="pattern"
+    />
+    <div>/</div>
+    <input
+      #inpuTextModel3
+      [type]="type"
+      [(ngModel)]="date_value[2]"
+      (ngModelChange)="changeControlEvent3($event)"
+      (blur)="blurInput()"
+      (keyup.enter)="keyPress($event)"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [ngStyle]="{ height: height }"
+      [ngStyle]="{ color: color }"
+      [pattern]="pattern"
+    />
+
+    <div class="conteiner-error" *ngIf="errors.length > 0">
+      <div class="error-p" *ngFor="let error of errors">
+        {{ error }}
+      </div>
+    </div>
+  </div>
+</div>

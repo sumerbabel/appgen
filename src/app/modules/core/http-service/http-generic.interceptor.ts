@@ -13,6 +13,8 @@ import { Injectable } from '@angular/core';
 import { LoaderService } from '@sharedModule/components/organims/loader/loader.service';
 import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
 import { User } from '../security/domain/user';
+import { LoginExpiredTokenService } from '../components/login-expired-token/service/login-expired-token.service';
+import { AccountService } from '../security/service/account.service';
 
 
 @Injectable({
@@ -20,7 +22,7 @@ import { User } from '../security/domain/user';
 })
 export class HttpGenericInterceptor implements HttpInterceptor {
 
-  constructor(private localStorageService: LocalStorageService,private loaderService:LoaderService,private alertService:AlertService) {
+  constructor(private localStorageService: LocalStorageService,private loaderService:LoaderService,private alertService:AlertService,private loginExpiredTokenService:LoginExpiredTokenService, private accountService: AccountService) {
 
   }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -46,12 +48,29 @@ export class HttpGenericInterceptor implements HttpInterceptor {
               if(typeof error ==='string'){
                 this.alertService.openAlertWarning(error);
               } else {
-                this.alertService.openAlertWarning('error de conexión / servidor, intente nuevamente');
+
+                if(error['status'] ==='401-expired'){
+                  if(this.accountService.userValue.isExpiredToken === false){
+                    this.loginExpiredTokenService.openDialog();
+                  }
+               
+
+                  this.accountService.setUserTokenStatus(true);
+                }
+
+                if(error['status'] ==='401'){
+                  this.alertService.openAlertWarning(error['message']);
+                }
+
+                if(!error['status']){
+                  this.alertService.openAlertWarning('error de conexión / servidor, intente nuevamente');
+                }
               }
                 return throwError(error);
           }
           catch(e){
-            const error ='error de conexión / servidor, intente nuevamente'
+            console.log(e)
+            const error ='error de conexión / servidor, intente nuevamente *'
             this.alertService.openAlertWarning(error);
             return throwError(error);
           }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
 import { ColumnModel } from '@sharedModule/components/molecules/tables/model/column-model';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
@@ -47,12 +47,28 @@ export class PageSistemComponent implements OnInit {
     private alertService: AlertService,
     private dialogService: DialogService,
     private modalService: ModalService,
-    private accountService : AccountService
-  ) {}
+    private accountService : AccountService,
+    private renderer: Renderer2, private elem: ElementRef
+  ) {
+
+    console.log('4. INICIA PAGE SISTEM')
+  }
 
   ngOnInit(): void {
+
     this.getSitems();
+    const menusession =this.accountService.getMenuSession()
+    console.log({menusession})
+    this.unsetAllOptions()
   }
+
+  unsetAllOptions(){
+    const elements = this.elem.nativeElement.querySelectorAll('.input-key');
+    elements.forEach(element => {
+      element.focus()
+    console.log('elemento',element)
+});
+ }
 
   getSitems() {
     this.sistemService

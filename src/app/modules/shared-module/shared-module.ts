@@ -38,6 +38,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
 import { EditorCodeComponent } from './components/molecules/inputs/editor-code/editor-code.component';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { FilterPanelComponent } from './components/organims/filter-panel/filter-panel.component';
+import { TextDateComponent } from './components/molecules/inputs/text-date/text-date.component';
 @NgModule({
   declarations: [
     UiTemplateDirective,
@@ -72,6 +73,7 @@ import { FilterPanelComponent } from './components/organims/filter-panel/filter-
     ItemPanelComponent,
     EditorCodeComponent,
     FilterPanelComponent,
+    TextDateComponent
   ],
   exports: [
     UiTemplateDirective,
@@ -104,7 +106,8 @@ import { FilterPanelComponent } from './components/organims/filter-panel/filter-
     HelipopperModule,
     ItemPanelComponent,
     EditorCodeComponent,
-    FilterPanelComponent
+    FilterPanelComponent,
+    TextDateComponent
   ],
   imports: [
     MatRippleModule,
