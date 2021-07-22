@@ -9,7 +9,7 @@
 <ul class="halo-tree" *ngIf="treeObject">
   <li [ngClass]="isNodeInitial? 'first-node only-node':'leaf'" *ngFor="let treeNode of treeObject ; let i = index">
 
-    <div class="tree-node-el" style="display: flex;" [ngClass]="treeNode._children.length>0? 'node-parent':'node-child'">
+    <div class="tree-node-el" style="display: flex;" [ngClass]="treeNode._children.length>0 && treeNode._isOpen ? 'node-parent':'node-child'">
       <div *ngIf="!templateBody">{{treeNode._id}} add ngtemplate "templateBody" too all properties data (let-data)</div>
       <ng-container *ngTemplateOutlet="templateBody; context {
       $implicit: {node:treeNode, nodeParent:treeObjectParent}}">

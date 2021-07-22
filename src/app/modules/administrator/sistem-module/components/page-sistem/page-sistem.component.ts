@@ -47,28 +47,131 @@ export class PageSistemComponent implements OnInit {
     private alertService: AlertService,
     private dialogService: DialogService,
     private modalService: ModalService,
-    private accountService : AccountService,
+    private accountService: AccountService,
     private renderer: Renderer2, private elem: ElementRef
   ) {
 
     console.log('4. INICIA PAGE SISTEM')
   }
 
+  length: 0;
+  domEles;
+
   ngOnInit(): void {
 
     this.getSitems();
-    const menusession =this.accountService.getMenuSession()
-    console.log({menusession})
+    const menusession = this.accountService.getMenuSession()
     this.unsetAllOptions()
   }
 
-  unsetAllOptions(){
-    const elements = this.elem.nativeElement.querySelectorAll('.input-key');
-    elements.forEach(element => {
-      element.focus()
-    console.log('elemento',element)
-});
- }
+
+  unsetAllOptions() {
+    let elements = this.elem.nativeElement.querySelectorAll('.input-key');
+    elements.forEach((element, index) => {
+      element.addEventListener('keydown', (e)=>{
+
+        function collectionHas(a, b) { 
+          for(var i = 0, len = a.length; i < len; i ++) {
+              if(a[i] == b) return true;
+          }
+          return false;
+      }
+      
+      function findParentBySelector(elm, selector) {
+          var all = document.querySelectorAll(selector);
+          var cur = elm.parentNode;
+          while(cur && !collectionHas(all, cur)) { 
+              cur = cur.parentNode;
+          }
+          return cur; 
+      }
+
+    const item = findParentBySelector(e.target, '.key-focus')
+    const parent = findParentBySelector(item, '.line-key')
+    const indexLevelOne = Array.from(parent.children).indexOf(item)
+    const lengthLevelOne = parent.children.length;
+    const incrementLevelOne = ((indexLevelOne + 1) <= (lengthLevelOne - 1)) ? (indexLevelOne + 1) : indexLevelOne
+    const decrementLevelOne = ((indexLevelOne - 1) >= (0)) ? (indexLevelOne - 1) : 0
+
+    const parentCero = findParentBySelector(e.target, '.conteiner-key')
+    const itemCero = findParentBySelector(e.target, '.line-key')
+    const indexLevelcero = Array.from(parentCero.children).indexOf(itemCero)
+    const lengthLevelCero = parentCero.children.length;
+
+    const incrementLevelCero = ((indexLevelcero + 1) <= (lengthLevelCero - 1)) ? (indexLevelcero + 1) : indexLevelcero
+    const decrementLevelCero = ((indexLevelcero - 1) >= (0)) ? (indexLevelcero - 1) : 0
+   
+        switch (e.code) {
+          case 'ArrowRight':
+            parent.children[incrementLevelOne].querySelector('.input-key').focus();
+            break;
+          case 'ArrowLeft':
+            parent.children[decrementLevelOne].querySelector('.input-key').focus();
+            break;
+          case 'ArrowDown':
+            parentCero.children[incrementLevelCero].querySelectorAll('.input-key')[indexLevelOne].focus()
+            break;
+          case 'ArrowUp':
+            parentCero.children[decrementLevelCero].querySelectorAll('.input-key')[indexLevelOne].focus()
+            break;
+          default:
+            break;
+        }
+
+      });
+    });
+
+  }
+
+
+//   logKey(e) {
+ 
+//     const indexLevelcero = Array.from(e.target.parentElement.parentElement.children).indexOf(e.target.parentElement)
+//     const lengthLevelCero = e.target.parentElement.parentElement.children.length;
+//     const incrementLevelCero = ((indexLevelcero + 1) <= (lengthLevelCero - 1)) ? (indexLevelcero + 1) : indexLevelcero
+//     const decrementLevelCero = ((indexLevelcero - 1) >= (0)) ? (indexLevelcero - 1) : 0
+//     const indexLevelOne = Array.from(e.target.parentElement.children).indexOf(e.target)
+
+//     const elemento =e.target.parentElement.parentElement.parentElement.parentElement
+
+//     const lengthLevelOne = elemento.children.length;
+//     const incrementLevelOne = ((indexLevelOne + 1) <= (lengthLevelOne - 1)) ? (indexLevelOne + 1) : indexLevelOne
+//     const decrementLevelOne = ((indexLevelOne - 1) >= (0)) ? (indexLevelOne - 1) : 0
+// console.log('1',e)
+// console.log('2',e.target.parentElement)
+// console.log('3',e.target.parentElement.parentElement)
+// console.log('4',e.target.parentElement.parentElement.parentElement)
+
+// const elementoCOntenedor=e.target.parentElement.parentElement.parentElement.parentElement.parentElement
+// console.log('5',e.target.parentElement.parentElement.parentElement.parentElement)
+
+
+// console.log('parent',parent)
+//     switch (e.code) {
+
+//       case 'ArrowRight':
+//         console.log('derecha',elemento.children[incrementLevelOne].querySelector('.input-key'))
+//         elemento.children[incrementLevelOne].querySelector('.input-key').focus();
+        
+//         //children[0].children[0].children[0].focus()
+//         break;
+//       case 'ArrowLeft':
+//         e.target.parentElement.parentElement.parentElement.children[decrementLevelOne].focus()
+//         break;
+
+//       case 'ArrowDown':
+//         e.target.parentElement.parentElement.parentElement.parentElement.children[incrementLevelCero].children[indexLevelOne].focus()
+//         break;
+//       case 'ArrowUp':
+//         e.target.parentElement.parentElement.parentElement.parentElement.children[decrementLevelCero].children[indexLevelOne].focus()
+//         break;
+//       default:
+//         break;
+//     }
+//   }
+
+
+
 
   getSitems() {
     this.sistemService

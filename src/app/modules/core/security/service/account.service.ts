@@ -99,10 +99,10 @@ export class AccountService {
       let dateexpired1 =Date.now();
       const timeout = dateexpired.getTime() - dateexpired1;
       console.log('tiempo cerrar',timeout,dateexpired,dateexpired1)
-       setTimeout(() => {
-          console.log('entra al time out')   
-        alert('token expirado'+'timeout')
-      }, timeout);
+      //  setTimeout(() => {
+      //     console.log('entra al time out')   
+      //   alert('token expirado'+'timeout')
+      // }, timeout);
     }
 
 }
