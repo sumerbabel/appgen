@@ -8,8 +8,7 @@
 
   <ui-input-text-date></ui-input-text-date>
 
-  <div class="conteiner-key">
-    
+  <div class="conteiner-key" keyfocus>
     <div class="line-key" style="display: flex; width: 100%;">
       <ui-input-text-model  isRequired="true" placeholder='Name' label='Name' class="key-focus">
       </ui-input-text-model>
@@ -53,11 +52,7 @@
   <ui-input-text-model  isRequired="true" placeholder='Name' label='Name' class="key-focus">
   </ui-input-text-model>
 </div>
-
-
   </div>
-
-
 
   <ui-table *ngIf="tableModelSistem" [columns]='tableModelSistem.columnArray' [actions]="tableModelSistem.actionArray"
     [data]="tableModelSistem.dataArray" [paginationData]="tableModelSistem.pagination"

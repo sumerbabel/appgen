@@ -39,8 +39,10 @@ import { EditorCodeComponent } from './components/molecules/inputs/editor-code/e
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { FilterPanelComponent } from './components/organims/filter-panel/filter-panel.component';
 import { TextDateComponent } from './components/molecules/inputs/text-date/text-date.component';
+import { KeyfocusDirective } from './directives/keyfocus.directive';
 @NgModule({
   declarations: [
+    KeyfocusDirective,
     UiTemplateDirective,
     AutofocusDirective,
     ButtonComponent,
@@ -73,9 +75,11 @@ import { TextDateComponent } from './components/molecules/inputs/text-date/text-
     ItemPanelComponent,
     EditorCodeComponent,
     FilterPanelComponent,
-    TextDateComponent
+    TextDateComponent,
+
   ],
   exports: [
+    KeyfocusDirective,
     UiTemplateDirective,
     AutofocusDirective,
     ButtonComponent,
