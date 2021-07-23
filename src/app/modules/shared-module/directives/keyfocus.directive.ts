@@ -4,19 +4,22 @@ import { Directive, ElementRef } from '@angular/core';
 @Directive({
   selector: '[keyfocus]'
 })
-export class KeyfocusDirective implements AfterContentInit{
-  constructor(private elem: ElementRef) {
-    console.log('se ejecuta directiva')
+
+export class KeyfocusDirective implements AfterContentInit {
+  constructor(private el: ElementRef) {
     this.suscribeKeyDrownToFocus()
   }
 
-
   ngAfterContentInit(): void {
-    this. suscribeKeyDrownToFocus()
+    setTimeout(() => {
+      this.el.nativeElement.querySelector('.input-key').focus();
+    }, 500);
+
+    this.suscribeKeyDrownToFocus()
   }
 
   suscribeKeyDrownToFocus() {
-    let elements = this.elem.nativeElement.querySelectorAll('.input-key');
+    let elements = this.el.nativeElement.querySelectorAll('.input-key');
     elements.forEach((element, index) => {
       element.addEventListener('keydown', (e) => {
 
@@ -50,9 +53,8 @@ export class KeyfocusDirective implements AfterContentInit{
 
         const incrementLevelCero = ((indexLevelcero + 1) <= (lengthLevelCero - 1)) ? (indexLevelcero + 1) : indexLevelcero
         const decrementLevelCero = ((indexLevelcero - 1) >= (0)) ? (indexLevelcero - 1) : 0
-        console.log(e.code)
+
         switch (e.code) {
-          
           case 'ArrowRight':
             parent.children[incrementLevelOne].querySelector('.input-key').focus();
             break;
