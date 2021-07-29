@@ -43,7 +43,6 @@ export class HttpGenericInterceptor implements HttpInterceptor {
       .pipe(
        catchError((errorResponse: HttpErrorResponse) => {
             try {
-
               const error =errorResponse.error
               if(typeof error ==='string'){
                 this.alertService.openAlertWarning(error);
@@ -54,7 +53,6 @@ export class HttpGenericInterceptor implements HttpInterceptor {
                     this.loginExpiredTokenService.openDialog();
                   }
                
-
                   this.accountService.setUserTokenStatus(true);
                 }
 
@@ -75,7 +73,10 @@ export class HttpGenericInterceptor implements HttpInterceptor {
             return throwError(error);
           }
         }),
-        finalize(()=>this.loaderService.hide())
+        finalize(()=>{
+          this.loaderService.hide()
+        }
+        )
       )
 
   }

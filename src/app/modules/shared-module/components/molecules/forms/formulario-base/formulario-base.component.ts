@@ -26,6 +26,7 @@ export class FormularioBaseComponent implements OnInit {
 
   constructor(
   ) {
+    localStorage.setItem('utimateActionDate', Date.now().toString());
   }
 
   ngOnInit(): void {}

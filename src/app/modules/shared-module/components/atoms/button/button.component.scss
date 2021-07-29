@@ -27,11 +27,28 @@ $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Appl
   cursor: pointer;
   user-select: none;
   width: auto;
+  border: solid rgba(0, 129, 120, 0) 1px;
   &:focus,
-  &:hover {
+  &:hover
+   {
+
     cursor: pointer;
+    border: solid rgb(0, 129, 121) 1px;
   }
 }
+
+.input-key:focus-within{
+  outline: none;
+  border: none;
+}
+
+.input-key:focus-within .ui-button > button
+   {
+    border: solid rgb(0, 129, 121) 1px;
+  }
+
+
+
 
  .ui-default > button {
   min-width: 62px;

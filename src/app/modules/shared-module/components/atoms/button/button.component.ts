@@ -54,4 +54,11 @@ export class ButtonComponent implements OnInit {
   onClic($event) {
     this.onClickEvent.emit(this.action);
   }
+
+  keyPress($event: KeyboardEvent){
+    if ($event.keyCode === 13) {
+      this.onClickEvent.emit(this.action);
+  }
+    
+  }
 }

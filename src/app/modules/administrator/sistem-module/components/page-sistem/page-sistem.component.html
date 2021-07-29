@@ -52,6 +52,11 @@
   <ui-input-text-model  isRequired="true" placeholder='Name' label='Name' class="key-focus">
   </ui-input-text-model>
 </div>
+
+<div class="line-key" style="display: flex; width: 100%;">
+    <ui-button [actionProperties]="ACTION_BUTTON_CREATE" (on-click)="createSistemOpenModal()" class="key-focus"></ui-button>
+</div>
+
   </div>
 
   <ui-table *ngIf="tableModelSistem" [columns]='tableModelSistem.columnArray' [actions]="tableModelSistem.actionArray"

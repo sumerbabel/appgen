@@ -44,7 +44,6 @@ export class AccountService {
     this.getMenuListSession().forEach(menu => {
     
       if (menu.ruteWeb === ruteWeb) {
-        console.log('menu SESION', menu, 'ruteweb', ruteWeb)
         this.menuActionsSubject.next(menu);
       }
     })
@@ -90,20 +89,19 @@ export class AccountService {
   }
 
   private startRefreshTokenTimer() {
-    console.log('inicia funcion tiemr')
-    console.log(this.userSubject.value)
     if(this.userSubject.value){
-      console.log('entra al timer')
       let user:User =  this.userSubject.value;
       let dateexpired = new Date(user.expiredTokenMinutes)
-      let dateexpired1 =Date.now();
-      const timeout = dateexpired.getTime() - dateexpired1;
-      console.log('tiempo cerrar',timeout,dateexpired,dateexpired1)
-      //  setTimeout(() => {
-      //     console.log('entra al time out')   
-      //   alert('token expirado'+'timeout')
-      // }, timeout);
-    }
+      let dateNow =Date.now();
+      const timeout = dateexpired.getTime() - dateNow;
+      console.log('tiempo cerrar',timeout,dateexpired,dateNow)
 
+     const utimateActionDate= new Date(this.localStorageService.get('utimateActionDate'));
+     console.log({utimateActionDate})
+       setTimeout(() => {
+          console.log('entra al time out')   
+        alert('token expirado'+'timeout')
+      }, timeout);
+    }
 }
 }

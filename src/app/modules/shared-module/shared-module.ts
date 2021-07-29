@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { UiTemplateDirective } from './directives/uitemplate-directive.directive';
 import { ButtonComponent } from './components/atoms/button/button.component';
 import { MatRippleModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { DatePickerComponent } from './components/molecules/inputs/date-picker/date-picker.component';
@@ -34,7 +33,6 @@ import { TreeGenericComponent } from './components/organims/tree-generic/tree-ge
 import { HelipopperModule } from '@ngneat/helipopper';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ItemPanelComponent } from './components/molecules/inputs/select-model/item-panel/item-panel.component';
-import { AutofocusDirective } from './directives/autofocus.directive';
 import { EditorCodeComponent } from './components/molecules/inputs/editor-code/editor-code.component';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { FilterPanelComponent } from './components/organims/filter-panel/filter-panel.component';
@@ -43,8 +41,6 @@ import { KeyfocusDirective } from './directives/keyfocus.directive';
 @NgModule({
   declarations: [
     KeyfocusDirective,
-    UiTemplateDirective,
-    AutofocusDirective,
     ButtonComponent,
     DatePickerComponent,
     CheckboxComponent,
@@ -80,8 +76,6 @@ import { KeyfocusDirective } from './directives/keyfocus.directive';
   ],
   exports: [
     KeyfocusDirective,
-    UiTemplateDirective,
-    AutofocusDirective,
     ButtonComponent,
     DatePickerComponent,
     CheckboxComponent,

@@ -14,7 +14,6 @@ export class KeyfocusDirective implements AfterContentInit {
     setTimeout(() => {
       this.el.nativeElement.querySelector('.input-key').focus();
     }, 500);
-
     this.suscribeKeyDrownToFocus()
   }
 
@@ -62,18 +61,18 @@ export class KeyfocusDirective implements AfterContentInit {
             parent.children[decrementLevelOne].querySelector('.input-key').focus();
             break;
           case 'ArrowDown':
+            console.log(parentCero.children[incrementLevelCero].querySelectorAll('.input-key')[indexLevelOne])
             parentCero.children[incrementLevelCero].querySelectorAll('.input-key')[indexLevelOne].focus()
             break;
           case 'ArrowUp':
+            console.log( parentCero.children[decrementLevelCero].querySelectorAll('.input-key')[indexLevelOne])
             parentCero.children[decrementLevelCero].querySelectorAll('.input-key')[indexLevelOne].focus()
             break;
           default:
             break;
         }
-
       });
     });
 
   }
-
 }
