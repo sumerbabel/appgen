@@ -7,7 +7,7 @@ import { Directive, ElementRef } from '@angular/core';
 
 export class KeyfocusDirective implements AfterContentInit {
   constructor(private el: ElementRef) {
-    this.suscribeKeyDrownToFocus()
+    ///this.suscribeKeyDrownToFocus()
   }
 
   ngAfterContentInit(): void {
@@ -16,6 +16,8 @@ export class KeyfocusDirective implements AfterContentInit {
     }, 500);
     this.suscribeKeyDrownToFocus()
   }
+
+  
 
   suscribeKeyDrownToFocus() {
     let elements = this.el.nativeElement.querySelectorAll('.input-key');
@@ -45,9 +47,16 @@ export class KeyfocusDirective implements AfterContentInit {
         const incrementLevelOne = ((indexLevelOne + 1) <= (lengthLevelOne - 1)) ? (indexLevelOne + 1) : indexLevelOne
         const decrementLevelOne = ((indexLevelOne - 1) >= (0)) ? (indexLevelOne - 1) : 0
 
-        const parentCero = findParentBySelector(e.target, '.conteiner-key')
-        const itemCero = findParentBySelector(e.target, '.line-key')
-        const indexLevelcero = Array.from(parentCero.children).indexOf(itemCero)
+        let parentCero = findParentBySelector(e.target, '.conteiner-key')
+        let itemCero = findParentBySelector(e.target, '.line-key')
+        let indexLevelcero = Array.from(parentCero.children).indexOf(itemCero)
+        if (indexLevelcero ===-1){
+          parentCero = findParentBySelector(e.target, '.group-key')
+          //itemCero = findParentBySelector(e.target, '.line-key')
+          //const itemGroupCero= findParentBySelector(itemCero, '.group-key');
+          
+          indexLevelcero =Array.from(parentCero.children).indexOf(itemCero);
+        }
         const lengthLevelCero = parentCero.children.length;
 
         const incrementLevelCero = ((indexLevelcero + 1) <= (lengthLevelCero - 1)) ? (indexLevelcero + 1) : indexLevelcero
@@ -73,6 +82,5 @@ export class KeyfocusDirective implements AfterContentInit {
         }
       });
     });
-
   }
 }

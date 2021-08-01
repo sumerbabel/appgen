@@ -34,31 +34,40 @@
     </thead>
     <tbody *ngIf="data">
       <ng-container *ngFor="let itemTable of  data ; let index = index">
-      <tr [ngClass]="{'select-row': indexSelect == index }">
+      <tr class="line-key" [ngClass]="{'select-row': indexSelect == index }">
+    
         <td *ngIf="viewOrdeColumn"><div class="rownum">{{index+paginationData.rowNum}}</div></td>
         <ng-container *ngIf="!templateRow">
           <td *ngFor="let itemColumn of  columns">
             {{itemTable[itemColumn.key]}}
-            <div *ngIf="itemColumn.actionColum===true" [ngClass]="{'colum-action':itemColumn.actionColum === true}">
-              <ng-container *ngFor="let itemAction of actions">
-                <ui-button style="margin-left: 3px;" [actionProperties]="itemAction"
-                  (on-click)="onClickAction(itemAction.action,itemTable,index)"></ui-button>
-              </ng-container>
-            </div>
+            
+              <div  *ngIf="itemColumn.actionColum===true" [ngClass]="{'colum-action':itemColumn.actionColum === true}"  >
+               
+                <ng-container *ngFor="let itemAction of actions">
+                 
+                  <ui-button class="key-focus" style="margin-left: 3px;" [actionProperties]="itemAction"
+                    (on-click)="onClickAction(itemAction.action,itemTable,index)"></ui-button>
+                  
+                </ng-container>
+              </div>
+            
+
           </td>
         </ng-container>
         <ng-container *ngTemplateOutlet="templateRow; context {$implicit: itemTable}">
         </ng-container>
         <td *ngIf="templateRow">
           <ng-container *ngFor="let itemColumn of  columns">
-            <div *ngIf="itemColumn.actionColum===true" [ngClass]="{'colum-action':itemColumn.actionColum === true}">
-              <ng-container *ngFor="let itemAction of actions">
-                <ui-button style="margin-left: 3px;" [actionProperties]="itemAction"
-                  (on-click)="onClickAction(itemAction.action,itemTable)"></ui-button>
-              </ng-container>
-            </div>
+           
+              <div *ngIf="itemColumn.actionColum===true" [ngClass]="{'colum-action':itemColumn.actionColum === true}"  >
+                <ng-container *ngFor="let itemAction of actions">
+                  <ui-button class="key-focus" style="margin-left: 3px;" [actionProperties]="itemAction"
+                    (on-click)="onClickAction(itemAction.action,itemTable)"></ui-button>
+                </ng-container>
+              </div>
           </ng-container>
         </td>
+     
       </tr>
     </ng-container>
     </tbody>

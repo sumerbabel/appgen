@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 
 @Component({
   selector: 'ui-input-text-model',
@@ -75,7 +76,11 @@ ngAfterViewInit() {
   }
 
   keyPress($event){
-    this.keyPressEvent.emit($event);
+    if ($event.keyCode === 13) {
+      this.keyPressEvent.emit($event);
+    } else{
+      KeyFocus.keyDrownToFocus($event);
+    }  
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import { StyleButtonEnum } from './style-enum/enum-style-button';
 
 @Component({
@@ -55,10 +56,14 @@ export class ButtonComponent implements OnInit {
     this.onClickEvent.emit(this.action);
   }
 
-  keyPress($event: KeyboardEvent){
+  keyPress($event: any){
     if ($event.keyCode === 13) {
       this.onClickEvent.emit(this.action);
+  } else{
+    KeyFocus.keyDrownToFocus($event);
   }
+
+ 
     
   }
 }

@@ -13,7 +13,7 @@
             [ngModel]="value"
             (ngModelChange)="changeControlEvent($event)"
             (blur)="blurInput()"
-            (keyup.enter)="keyPress($event)"
+            (keyup)="keyPress($event)"
             [placeholder]="placeholder"
             [disabled]="disabled"
             [ngStyle]="{'height': height}"
