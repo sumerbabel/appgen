@@ -4,11 +4,12 @@
     {{paginationData.rowNum}} al
     {{paginationData.itemsToPage}}  de
     {{paginationData.total}}</div>
-   <div style="display: flex;" *ngIf="paginationData.pages.length>0">
-    <ui-input-select-model [(value)]="paginationData.perPage" (valueChange)="onClickItemsPage()" placeholder ='Items por página' label=''
+   <div class="line-key" style="display: flex;" *ngIf="paginationData.pages.length>0">
+    <ui-input-select-model
+    [(value)]="paginationData.perPage" (valueChange)="onClickItemsPage()" placeholder ='Items por página' label=''
     [items]="itemsPage" style="margin-right: 5px;"> </ui-input-select-model>
     <ng-container *ngFor="let itemPaginationData of paginationData.pages ; let i = index">
-      <div *ngIf="itemPaginationData['page']!==''  " class="page-item" (click)="onClickPagination(itemPaginationData.page)">
+      <div class="input-key page-item" tabindex="-1"  *ngIf="itemPaginationData['page']!=='' "  (click)="onClickPagination(itemPaginationData.page)" (keydown)="keyPress($event,itemPaginationData.page)">
         <span [ngClass]="{'page-active': itemPaginationData.active}">{{itemPaginationData.label}}</span></div>
         <div *ngIf="itemPaginationData['label'] =='...'  " class="page-item">
           <span>{{itemPaginationData.label}}</span></div>
@@ -45,7 +46,7 @@
                
                 <ng-container *ngFor="let itemAction of actions">
                  
-                  <ui-button class="key-focus" style="margin-left: 3px;" [actionProperties]="itemAction"
+                  <ui-button style="margin-left: 3px;" [actionProperties]="itemAction"
                     (on-click)="onClickAction(itemAction.action,itemTable,index)"></ui-button>
                   
                 </ng-container>
@@ -61,7 +62,7 @@
            
               <div *ngIf="itemColumn.actionColum===true" [ngClass]="{'colum-action':itemColumn.actionColum === true}"  >
                 <ng-container *ngFor="let itemAction of actions">
-                  <ui-button class="key-focus" style="margin-left: 3px;" [actionProperties]="itemAction"
+                  <ui-button style="margin-left: 3px;" [actionProperties]="itemAction"
                     (on-click)="onClickAction(itemAction.action,itemTable)"></ui-button>
                 </ng-container>
               </div>

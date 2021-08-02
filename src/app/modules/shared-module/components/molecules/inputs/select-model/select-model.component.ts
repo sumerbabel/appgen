@@ -10,6 +10,7 @@ import {
   ElementRef,
   ChangeDetectorRef,
 } from '@angular/core';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import { ItemPanelComponent } from './item-panel/item-panel.component';
 
 @Component({
@@ -171,4 +172,12 @@ export class SelectModelComponent implements OnInit {
     this.value = null;
     this.valueChange.emit(this.value);
   }
+
+  keyPress($event: any){
+    if ($event.keyCode === 13) {
+      this.clickspan()
+  } else{
+    KeyFocus.keyDrownToFocus($event);
+  }
+}
 }

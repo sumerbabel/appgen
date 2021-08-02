@@ -1,3 +1,5 @@
+$iu-global-borde-input-h: #0c536a;
+
 .table-conteiner {
 margin-top: 5px;
 box-sizing: border-box;
@@ -109,3 +111,18 @@ box-sizing: border-box;
 .colum-text>span:hover{
   text-decoration:underline;
 }
+
+.input-key:focus-within{
+  outline: none;
+  border: none;
+}
+
+.input-key
+   {
+    border: solid rgba(11, 173, 151, 0) 1px;
+  }
+
+.input-key:focus-within
+   {
+    border: solid rgb(11, 173, 152) 1px;
+  }

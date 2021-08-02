@@ -107,3 +107,19 @@ display: flex;
   min-width: 120px;
   max-width: 180px;
 }
+
+.input-key:focus-within{
+  outline: none;
+  border: none;
+}
+
+
+  .input-key
+   {
+    border: solid rgba(11, 173, 151, 0) 1px;
+  }
+
+.input-key:focus-within
+   {
+    border: solid rgb(11, 173, 152) 1px;
+  }

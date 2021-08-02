@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { EventAction } from '@sharedModule/models-core/action-model';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import { ModelAction } from '../model/action';
 import { ColumnModel } from '../model/column-model';
 import { Pagination } from '../model/pagination';
@@ -87,5 +88,12 @@ export class TableUiComponent implements OnInit {
     }else{ this.direction='desc'}
   }
 
+  keyPress($event: any,paginateData:any){
+    if ($event.keyCode === 13) {
+      this.onClickPagination(paginateData);
+  } else{
+    KeyFocus.keyDrownToFocus($event);
+  }
+}
 
 }
