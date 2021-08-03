@@ -1,15 +1,17 @@
-<div class='ui-panel-select' [ngStyle]="{'width': witdthPanel+'px'}">
-<div  class='ui-item-panel-ini'>
-  <div class="input-content" >
-    <input #inputSearch [(ngModel)]="value" cdkFocusInitial>
+<div class='ui-panel-select conteiner-key' [ngStyle]="{'width': witdthPanel+'px'}">
+<div  class='ui-item-panel-ini line-key'>
+  <div class="input-content">
+    <input class="input-key" #inputSearch [(ngModel)]="value"  cdkFocusInitial (keydown)="keyPress($event,'')">
   </div>
 
 </div>
-  <div class='ui-item-panel' *ngFor="let intem of items |filter:value" (click)="selectItemPanel(intem)" >
-    {{intem.name}}
+<ng-container *ngFor="let item of items |filter:value">
+  <div class="line-key">
+    <div class="ui-item-panel input-key" tabindex="-1" (click)="selectItemPanel(item)" (keydown)="keyPress($event, item)" >
+      {{item.name}}
+    </div>
   </div>
 
-  <div  class='ui-item-panel-ini'>
-  </div>
+</ng-container>
 
 </div>

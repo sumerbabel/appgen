@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 
 @Component({
   selector: 'app-item-panel',
@@ -37,5 +38,15 @@ export class ItemPanelComponent implements OnInit {
     this.value =event
     this.valueChange.emit(this.value)
   }
+
+
+  keyPress($event, item: any){
+    if ($event.keyCode === 13 && item !=='') {
+      let obj = {id:item.id, name:item.name};
+      this.itemSelect.emit(obj);
+  } else{
+    KeyFocus.keyDrownToFocus($event);
+  }
+}
 
 }

@@ -35,7 +35,7 @@ export class KeyFocus {
 
       const incrementLevelCero = ((indexLevelcero + 1) <= (lengthLevelCero - 1)) ? (indexLevelcero + 1) : indexLevelcero
       const decrementLevelCero = ((indexLevelcero - 1) >= (0)) ? (indexLevelcero - 1) : 0
-
+  
       switch (event.key) {
         case 'ArrowRight':
           parentAllItem[incrementLevelOne].focus();

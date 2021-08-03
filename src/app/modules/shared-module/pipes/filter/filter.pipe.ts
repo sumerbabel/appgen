@@ -4,15 +4,21 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-  transform(value: any, arg: string): any {
+  transform(value: Array<SelectObjet>, arg: string): any {
+    console.log('value',value)
     if(!arg) {return value;}
     if (arg === '') return value;
     const resultItems = [];
     for (const item of value) {
-      if (item.name.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+      if (item.name.toString().toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resultItems.push(item);
       };
     };
     return resultItems;
   }
+}
+
+export interface SelectObjet{
+id:string
+name:string
 }
