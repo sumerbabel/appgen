@@ -126,3 +126,11 @@ box-sizing: border-box;
    {
     border: solid rgb(11, 173, 152) 1px;
   }
+
+  .line-key:focus-within , .line-key:hover
+   {
+    border: solid rgba(11, 173, 151, 0.507) 0.1px;
+border-radius: 3px;
+  }
+
+ 

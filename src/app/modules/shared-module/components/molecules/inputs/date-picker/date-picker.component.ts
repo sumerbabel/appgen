@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import * as moment from 'moment';
 @Component({
   selector: 'ui-input-date',
@@ -55,7 +56,13 @@ export class DatePickerComponent implements OnInit {
       this.valueChange.emit(this.value)
     }
 
-    keyPress($event){
-      this.keyPressEvent.emit($event);
+
+    keyPress($event: any){
+      if ($event.keyCode === 13) {
+        //this.clickspan()
+    } else{
+      KeyFocus.keyDrownToFocus($event);
     }
+  }
+
 }

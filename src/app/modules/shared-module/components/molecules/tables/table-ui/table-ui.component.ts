@@ -96,4 +96,12 @@ export class TableUiComponent implements OnInit {
   }
 }
 
+keyPressColumName($event: any,column:ColumnModel){
+  if ($event.keyCode === 13) {
+    this.onClickcolumOrder(column);
+} else{
+  KeyFocus.keyDrownToFocus($event);
+}
+}
+
 }

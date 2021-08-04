@@ -20,14 +20,14 @@
 <div class="table-conteiner">
   <table class="zui-table zui-table-rounded">
     <thead  *ngIf="columns">
-      <tr>
+      <tr class="line-key">
         <th *ngIf="viewOrdeColumn">Nº</th>
         <th *ngFor="let itemColumnTitle of  columns">
-          <div [ngClass]="{'colum-action':itemColumnTitle.actionColum === true}">
-            <div class="colum-text" (click)="onClickcolumOrder(itemColumnTitle)"><span style="user-select: none; margin-right: 5px;">{{itemColumnTitle.title}}</span>
+          <div  [ngClass]="{'colum-action':itemColumnTitle.actionColum === true}">
+            <div class="colum-text input-key" tabindex="-1" (click)="onClickcolumOrder(itemColumnTitle)" (keydown)="keyPressColumName($event,itemColumnTitle)">
+              <span style="user-select: none; margin-right: 5px;">{{itemColumnTitle.title}}</span>
               <i class="fa fa-long-arrow-up" aria-hidden="true" *ngIf="selectColumn === itemColumnTitle.key && direction==='asc'"></i>
               <i class="fa fa-long-arrow-down" aria-hidden="true" *ngIf="selectColumn === itemColumnTitle.key && direction==='desc'"></i>
-
             </div>
           </div>
         </th>

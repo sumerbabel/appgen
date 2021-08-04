@@ -188,3 +188,13 @@ div.icon-close:after {
 .ui-header-active-alert {
   background-color: #040505;
 }
+
+.input-key:focus-within{
+  outline: none;
+  border: none;
+}
+
+.input-key:focus-within button
+   {
+    border: solid rgb(11, 173, 152) 1px;
+  }

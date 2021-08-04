@@ -14,6 +14,7 @@ import { LoginComponent } from './modules/core/components/login/login.component'
 import { RegisterComponent } from './modules/core/components/register/register.component';
 import { CommonModule } from '@angular/common';
 import { LoginExpiredTokenComponent } from './modules/core/components/login-expired-token/login-expired-token.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { LoginExpiredTokenComponent } from './modules/core/components/login-expi
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

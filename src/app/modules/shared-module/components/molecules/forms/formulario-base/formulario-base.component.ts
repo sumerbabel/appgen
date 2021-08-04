@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModelAction } from '../../tables/model/action';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 @Component({
   selector: 'ui-form-base',
   templateUrl: './formulario-base.component.html',
@@ -29,7 +30,7 @@ export class FormularioBaseComponent implements OnInit {
     localStorage.setItem('utimateActionDate', Date.now().toString());
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   actionClose($event) {
     this.formAction.emit(ActionGeneric.CLOSE);
@@ -41,5 +42,13 @@ export class FormularioBaseComponent implements OnInit {
 
   actionErrorPanel() {
     this.errors = [];
+  }
+
+  keyPress($event: any) {
+    if ($event.keyCode === 13) {
+      this.actionClose($event)
+    } else {
+      KeyFocus.keyDrownToFocus($event);
+    }
   }
 }
