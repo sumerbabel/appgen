@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { Modal } from '../model/modal.model';
 import { PositionEnum } from '../enum/position-enum';
+import { HtmlElementService } from '@sharedModule/services/html-element-service/html-element.service';
 
 @Component({
   selector: 'app-container',
@@ -29,7 +30,7 @@ export class ModalContainerComponent implements OnDestroy {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-
+    private htmlElementService :HtmlElementService
   ) {}
 
   createModal<T extends Modal>(
@@ -63,6 +64,9 @@ export class ModalContainerComponent implements OnDestroy {
     if (this.bloquedContent) {
       this.destroyConteinerBloqued();
     }
+    console.log('current',this.htmlElementService.htmlElementCurrent)
+    console.log('previus',this.htmlElementService.htmlElementPrevious)
+    this.htmlElementService.htmlElementPrevious.focus();
   }
 
   private createConteinerNobloqued(): void {

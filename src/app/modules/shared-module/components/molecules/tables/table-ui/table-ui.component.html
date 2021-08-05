@@ -46,7 +46,7 @@
                
                 <ng-container *ngFor="let itemAction of actions">
                  
-                  <ui-button style="margin-left: 3px;" [actionProperties]="itemAction"
+                  <ui-button isActionOpenModal="true" style="margin-left: 3px;" [actionProperties]="itemAction"
                     (on-click)="onClickAction(itemAction.action,itemTable,index)"></ui-button>
                   
                 </ng-container>
@@ -62,7 +62,7 @@
            
               <div *ngIf="itemColumn.actionColum===true" [ngClass]="{'colum-action':itemColumn.actionColum === true}"  >
                 <ng-container *ngFor="let itemAction of actions">
-                  <ui-button style="margin-left: 3px;" [actionProperties]="itemAction"
+                  <ui-button isActionOpenModal="true" style="margin-left: 3px;" [actionProperties]="itemAction"
                     (on-click)="onClickAction(itemAction.action,itemTable)"></ui-button>
                 </ng-container>
               </div>

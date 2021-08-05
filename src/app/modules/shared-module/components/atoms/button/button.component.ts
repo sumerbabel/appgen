@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
+import { HtmlElementService } from '@sharedModule/services/html-element-service/html-element.service';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import { StyleButtonEnum } from './style-enum/enum-style-button';
 
@@ -18,10 +19,11 @@ export class ButtonComponent implements OnInit {
   @Input() color: string;
   @Input() colorText: string;
   @Input() tooltip: string;
+  @Input() isActionOpenModal: boolean = false;
   @Input() styleClass: string[] = [StyleButtonEnum.DEFAULT];
   @Output('on-click') onClickEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
+  constructor(private htmlElementService :HtmlElementService) {}
   statusStyle: boolean = true;
   ngOnInit(): void {
     this.updateProperties();
@@ -53,17 +55,18 @@ export class ButtonComponent implements OnInit {
   }
 
   onClic($event) {
+    if(this.isActionOpenModal){this.htmlElementService.htmlElementPrevious =$event.target;}
+ 
     this.onClickEvent.emit(this.action);
   }
 
   keyPress($event: any){
     if ($event.keyCode === 13) {
+      if(this.isActionOpenModal){this.htmlElementService.htmlElementPrevious =$event.target;}
       this.onClickEvent.emit(this.action);
   } else{
     KeyFocus.keyDrownToFocus($event);
   }
-
  
-    
   }
 }
