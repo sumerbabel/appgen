@@ -1,11 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 @Pipe({
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
   transform(value: Array<SelectObjet>, arg: string): any {
-    console.log('value',value)
     if(!arg) {return value;}
     if (arg === '') return value;
     const resultItems = [];
@@ -17,7 +15,6 @@ export class FilterPipe implements PipeTransform {
     return resultItems;
   }
 }
-
 export interface SelectObjet{
 id:string
 name:string

@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import {  catchError, finalize } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { LocalStorageService } from '../../shared-module/services/local-storage/local-storage.service';
 import { Injectable } from '@angular/core';
 import { LoaderService } from '@sharedModule/components/organims/loader/loader.service';
@@ -22,58 +22,58 @@ import { AccountService } from '../security/service/account.service';
 })
 export class HttpGenericInterceptor implements HttpInterceptor {
 
-  constructor(private localStorageService: LocalStorageService,private loaderService:LoaderService,private alertService:AlertService,private loginExpiredTokenService:LoginExpiredTokenService, private accountService: AccountService) {
+  constructor(private localStorageService: LocalStorageService, private loaderService: LoaderService, private alertService: AlertService, private loginExpiredTokenService: LoginExpiredTokenService) {
 
   }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-   const user:User =this.localStorageService.get('user');
-   let cloned =request;
-   if(user){
-    const token = user.token;
-    cloned = request.clone({
-      headers: request.headers.set("Authorization",
-        "Bearer " + token)
-    });
-   }
+    const user: User = this.localStorageService.get('user');
+    let cloned = request;
+    if (user) {
+      const token = user.token;
+      cloned = request.clone({
+        headers: request.headers.set("Authorization",
+          "Bearer " + token)
+      });
+    }
 
 
-   this.loaderService.show();
+    this.loaderService.show();
 
     return next.handle(cloned)
       .pipe(
-       catchError((errorResponse: HttpErrorResponse) => {
-            try {
-              const error =errorResponse.error
-              if(typeof error ==='string'){
-                this.alertService.openAlertWarning(error);
-              } else {
+        catchError((errorResponse: HttpErrorResponse) => {
+          try {
+            const error = errorResponse.error
+            if (typeof error === 'string') {
+              this.alertService.openAlertWarning(error);
+            } else {
 
-                if(error['status'] ==='401-expired'){
-                  if(this.accountService.userValue.isExpiredToken === false){
-                    this.loginExpiredTokenService.openDialog();
-                  }
-               
-                  this.accountService.setUserTokenStatus(true);
-                }
+              if (error['status'] === '401-expired') {
+                // if (this.accountService.userValue.isExpiredToken === false) {
+                //   this.loginExpiredTokenService.openDialog();
+                // }
 
-                if(error['status'] ==='401'){
-                  this.alertService.openAlertWarning(error['message']);
-                }
-
-                if(!error['status']){
-                  this.alertService.openAlertWarning('error de conexión / servidor, intente nuevamente');
-                }
+                // this.accountService.setUserTokenStatus(true);
               }
-                return throwError(error);
+
+              if (error['status'] === '401') {
+                this.alertService.openAlertWarning(error['message']);
+              }
+
+              if (!error['status']) {
+                this.alertService.openAlertWarning('error de conexión / servidor, intente nuevamente');
+              }
+            }
+            return throwError(error);
           }
-          catch(e){
+          catch (e) {
             console.log(e)
-            const error ='error de conexión / servidor, intente nuevamente *'
+            const error = 'error de conexión / servidor, intente nuevamente *'
             this.alertService.openAlertWarning(error);
             return throwError(error);
           }
         }),
-        finalize(()=>{
+        finalize(() => {
           this.loaderService.hide()
         }
         )

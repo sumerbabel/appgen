@@ -1,5 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HelipopperModule } from '@ngneat/helipopper';
@@ -15,6 +15,8 @@ import { RegisterComponent } from './modules/core/components/register/register.c
 import { CommonModule } from '@angular/common';
 import { LoginExpiredTokenComponent } from './modules/core/components/login-expired-token/login-expired-token.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { appInitializer } from './modules/core/appInicialice/app.initializer';
+import { AccountService } from './modules/core/security/service/account.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule
   ],
   providers: [
+    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpGenericInterceptor,

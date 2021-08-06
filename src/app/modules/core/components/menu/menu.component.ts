@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AccountService } from '../../security/service/account.service';
 import { MenuTree } from './domain/menu-tree';
-import { MenuService } from './services/menu.service';
+
 
 @Component({
   selector: 'ui-menu',

@@ -1,12 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
 import { MultilineStringService } from '@sharedModule/components/organims/tool-multiline-string/service/multiline-string.service';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { MenuTree } from './modules/core/components/menu/domain/menu-tree';
-import { MenuService } from './modules/core/components/menu/services/menu.service';
-import { MenuActions } from './modules/core/security/domain/menu-actions';
 import { User } from './modules/core/security/domain/user';
 import { AccountService } from './modules/core/security/service/account.service';
 
@@ -28,17 +26,14 @@ export class AppComponent {
   // }
 
   ruteActual:string;
-  
   constructor(
     private multilineStringService: MultilineStringService,
     private dialogService: DialogService,
     private modalService: ModalService,
     private router: Router,
-    private menuService: MenuService,
     private accountService: AccountService,
     
   ) {
-console.log('1. INICA APP COMPONENT')
     this.accountService.userSession().subscribe((userData) => {
       this.user = userData;
       if (this.user !== null && this.user !== undefined && this.user.isExpiredToken ===false) {
@@ -99,20 +94,12 @@ console.log('1. INICA APP COMPONENT')
   }
 
   ngOnInit() {
-console.log('carga el app component');
     this.isOpenMenu = false;
   }
 
   menuTree: MenuTree[] = [];
   menu() {
-    this.menuService.getMenuUser().subscribe((menuResult: any[]) => {
-      menuResult.forEach((item) => {
-        this.menuTree.push(MenuTree.createMenuNodeRecursive(item));
-      });
-      let MenuActionsList: Array<MenuActions> = this.menuTree[0].getMenuList();
-      this.accountService.setMenuListSession(MenuActionsList)
-      this.accountService.setMenuSession(this.ruteActual)
-    });
+    this.menuTree= this.accountService.getMenuUser()
   }
 
 }

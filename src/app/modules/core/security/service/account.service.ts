@@ -2,7 +2,9 @@
 import { Router } from '@angular/router';
 import { LocalStorageService } from '@sharedModule/services/local-storage/local-storage.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import { map } from 'rxjs/operators';
+import { MenuTree } from '../../components/menu/domain/menu-tree';
+import { MenuService } from '../../components/menu/services/menu.service';
 
 import { MenuActions } from '../domain/menu-actions';
 import { User } from '../domain/user';
@@ -13,6 +15,7 @@ import { UserLoginService } from './user-login.service';
 
 export class AccountService {
   private userSubject: BehaviorSubject<any>;
+  private menuUser: BehaviorSubject<Array<MenuTree>> = new BehaviorSubject<Array<MenuTree>>([]);;
   private menuActionsSubject: BehaviorSubject<MenuActions>;
   private menuListActionsSubject: BehaviorSubject<Array<MenuActions>>;
 
@@ -20,17 +23,35 @@ export class AccountService {
     private router: Router,
     private userLoginService: UserLoginService,
     private localStorageService: LocalStorageService,
+    private menuService : MenuService
 
   ) {
-    console.log('2. INICA APP ACCOUNT SERVICE')
     let user = this.localStorageService.get('user');
     this.userSubject = new BehaviorSubject<User>(user);
     this.menuActionsSubject = new BehaviorSubject<MenuActions>(undefined);
     this.menuListActionsSubject = new BehaviorSubject<Array<MenuActions>>([]);
 
-    this.startRefreshTokenTimer();
-
+    //this.startRefreshTokenTimer();
   }
+
+public excuteInitalServices():Observable<any>{
+  return this.menuService.getMenuUser()
+  .pipe(map((menuResult: any[]) => {
+
+          menuResult.forEach((item) => {
+        this.menuUser.value.push(MenuTree.createMenuNodeRecursive(item));
+      });
+
+      let MenuActionsList: Array<MenuActions> = this.menuUser.value[0].getMenuList();
+      this.setMenuListSession(MenuActionsList)
+}));
+
+}
+
+public getMenuUser():Array<MenuTree>{
+return this.menuUser.value
+}
+
 
   public get userValue(): User {
     return this.userSubject.value;
@@ -94,13 +115,11 @@ export class AccountService {
       let dateexpired = new Date(user.expiredTokenMinutes)
       let dateNow =Date.now();
       const timeout = dateexpired.getTime() - dateNow;
-      console.log('tiempo cerrar',timeout,dateexpired,dateNow)
+
 
      const utimateActionDate= new Date(this.localStorageService.get('utimateActionDate'));
-     console.log({utimateActionDate})
+
        setTimeout(() => {
-          console.log('entra al time out')   
-        alert('token expirado'+'timeout')
       }, timeout);
     }
 }

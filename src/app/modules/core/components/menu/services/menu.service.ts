@@ -10,6 +10,7 @@ import { HttpApiService } from '../../../http-service/http-api.service';
 export class MenuService {
   constructor(private httpApiService: HttpApiService) {
     this.httpApiService.setUrlBaseResource(environment.apiUrl);
+  
   }
   private RESOURCE_RUTE: string = 'menuNodes';
 
