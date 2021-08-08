@@ -50,4 +50,8 @@ export class LoginExpiredTokenComponent extends Modal implements OnInit {
   });
 }
 
+close(){
+  this.accountService.logout();
+}
+
 }

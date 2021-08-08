@@ -95,6 +95,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.isOpenMenu = false;
+    this.accountService.setAppOnInit(true);
   }
 
   menuTree: MenuTree[] = [];

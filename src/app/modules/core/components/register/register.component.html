@@ -14,13 +14,13 @@
   <div class="form-register">
     <ui-form-base [showCloseButton]="false" [errors]="userRegister.valueErrors"  [actions]="ACTION_BTN_REGISTER" (formAction) ="register()"
     textFooter="::." titleHeader ="::. ..:. ..:::.. ..:.. .. .:.. .. ...:: .... ::::..">
-     <ui-input-text-model [labelDirectionLeft]="true" label="Usuario" [(value)]="userRegister.username" height="30px">
+     <ui-input-text-model class="line-key" [labelDirectionLeft]="true" label="Usuario" [(value)]="userRegister.username" height="30px" autoFocus="true">
      </ui-input-text-model>
-     <ui-input-text-model [labelDirectionLeft]="true" type='email' label="Correo" height="30px"
+     <ui-input-text-model class="line-key" [labelDirectionLeft]="true" type='email' label="Correo" height="30px"
        [(value)]="userRegister.email"></ui-input-text-model>
-     <ui-input-text-model [labelDirectionLeft]="true" type='password' label="Clave" height="30px"
+     <ui-input-text-model class="line-key" [labelDirectionLeft]="true" type='password' label="Clave" height="30px"
        [(value)]="userRegister.password"></ui-input-text-model>
-     <ui-input-text-model [labelDirectionLeft]="true" type='password' label="Confirmar Clave" height="30px"
+     <ui-input-text-model class="line-key" [labelDirectionLeft]="true" type='password' label="Confirmar Clave" height="30px"
        [(value)]="userRegister.password_verify"></ui-input-text-model>
  </ui-form-base>
  <div style="display: flex; justify-content:center; width: 100%; color: rgb(141, 187, 214); padding: 5px; font-size: 14px;">

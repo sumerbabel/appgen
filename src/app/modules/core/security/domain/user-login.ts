@@ -15,7 +15,7 @@ export class UserLogin {
     }
 
     if (this.username_or_email === undefined|| this.username_or_email === '' || this.username_or_email === null) {
-      this.errors.push('claave verficación esta vacio');
+      this.errors.push('Usiario / Correo   esta vacio');
     }
 
     if(this.errors.length>0){

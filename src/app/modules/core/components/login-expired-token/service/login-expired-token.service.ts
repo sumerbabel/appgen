@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { AccountService } from '../../../security/service/account.service';
 import { LoginExpiredTokenComponent } from '../login-expired-token.component';
 
 @Injectable({
@@ -8,10 +9,13 @@ import { LoginExpiredTokenComponent } from '../login-expired-token.component';
 })
 export class LoginExpiredTokenService {
 
-  constructor(private modalService: ModalService) { }
-  
+  constructor(private modalService: ModalService, private accountService: AccountService) { }
+
   openDialog(): Observable<any> {
-    const modalRef = this.modalService.open(LoginExpiredTokenComponent, { data:null },true);
-    return modalRef.onResult()
+    if (this.accountService.getAppOnInit()) {
+      const modalRef = this.modalService.open(LoginExpiredTokenComponent, { data: null }, true);
+      return modalRef.onResult();
+    }
+    return from(Promise.resolve(''));
   }
 }

@@ -49,6 +49,8 @@ export class HttpGenericInterceptor implements HttpInterceptor {
             } else {
 
               if (error['status'] === '401-expired') {
+                console.log('error[status]',error['status'])
+                this.loginExpiredTokenService.openDialog();
                 // if (this.accountService.userValue.isExpiredToken === false) {
                 //   this.loginExpiredTokenService.openDialog();
                 // }

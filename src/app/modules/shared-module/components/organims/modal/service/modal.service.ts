@@ -56,10 +56,7 @@ export class ModalService {
 
     this.modalContainer.className = 'panel-block-modal-service';
     this.modalContainer.style.cssText ='position:relative;';
-
-    document
-      .getElementsByClassName('modal-content-app')[0]
-      .appendChild(this.modalContainer);
+    document.querySelector(".modal-content-app").appendChild(this.modalContainer)
   }
 
   private setupModalContainerFactory(): void {

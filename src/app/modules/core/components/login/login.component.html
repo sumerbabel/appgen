@@ -12,12 +12,18 @@
 
   <div class="form-register">
     <ui-form-base [showCloseButton]="false" [errors]="userLogin.valueErrors" titleHeader="Login">
-      <ui-input-text-model [labelDirectionLeft]="true" label="Usuario / Correo" placeholder="Usuario / Correo "
+      <ui-input-text-model class="line-key" [labelDirectionLeft]="true" label="Usuario / Correo" placeholder="Usuario / Correo "
+      [autoFocus]="focusUserName" 
         [(value)]="userLogin.username_or_email"></ui-input-text-model>
-      <ui-input-text-model [labelDirectionLeft]="true" type='password' label="Clave" [(value)]="userLogin.password" (key-press)="login()">
+      <ui-input-text-model class="line-key" [labelDirectionLeft]="true" type='password' label="Clave" [autoFocus]="focusClave" [(value)]="userLogin.password" (key-press)="login()">
       </ui-input-text-model>
+      <div style="display: flex;width: 100%; color: honeydew; justify-content: flex-end;">
+        <ui-input-checkbox   [(value)]="isRemenberUser"></ui-input-checkbox>
+        <span style="margin-left: 10px;margin-right: 123px; font-size: 12px; margin-top: 5px;">Recordar usuario</span>
+      </div>
+      
       <div style="display:flex;  justify-content: flex-end; width: 100%; margin-top: 23px;">
-        <ui-button [actionProperties]="ACTION_BTN_LOGIN" (on-click)="login()"> </ui-button>
+        <ui-button class="line-key" [actionProperties]="ACTION_BTN_LOGIN" (on-click)="login()"> </ui-button>
       </div>
     </ui-form-base>
     <div style="color: antiquewhite; font-size: 10px;">*Confirma tu registro con el enlace enviado a tu correo.</div>
