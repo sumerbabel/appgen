@@ -1,10 +1,10 @@
-﻿import { HttpErrorResponse } from '@angular/common/http';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+﻿
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '@sharedModule/services/local-storage/local-storage.service';
 import { BehaviorSubject, empty, from, Observable } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import {  map, mergeMap } from 'rxjs/operators';
+import { LoginExpiredTokenService } from '../../components/login-expired-token/service/login-expired-token.service';
 import { MenuTree } from '../../components/menu/domain/menu-tree';
 import { MenuService } from '../../components/menu/services/menu.service';
 
@@ -53,6 +53,7 @@ export class AccountService {
           user.isExpiredToken = false;
           this.localStorageService.set('user', user);
           this.userSubject.next(user);
+          this.startRefreshTokenTimer();
         }
       ),     
       mergeMap((result: any) => this.menuService.getMenuUser()
@@ -129,6 +130,7 @@ export class AccountService {
       this.localStorageService.set('user', user);
 
       this.userSubject.next(user);
+      this.startRefreshTokenTimer();
       if( this.menuUser.value.length===0){
         this.menuService.getMenuUser().subscribe(((menuResult: any[]) => {
           menuResult.forEach((item) => {
@@ -156,20 +158,62 @@ export class AccountService {
     this.router.navigate(['/login']);
     this.localStorageService.remove('user');
     this.userSubject.next(null);
+    this.stopRefreshTokenTimer();
   }
 
-  private startRefreshTokenTimer() {
+
+
+private refreshToken(){
+  return this.refreshTokenService.postRefreshToken().pipe(
+    map(
+      (result: { jwtClaims: { token: string, expiredMinutes: number }; user: { username: string; }; }) => {
+        let user = new User();
+        user.token = result.jwtClaims.token;
+        user.username = result.user.username;
+        user.expiredTokenMinutes = new Date(Date.now() + result.jwtClaims.expiredMinutes * 60000)
+        user.isExpiredToken = false;
+        this.localStorageService.set('user', user);
+        this.userSubject.next(user);
+        this.startRefreshTokenTimer()
+      }
+    )) 
+}
+
+  
+  private refreshTokenTimeout;
+
+  public startRefreshTokenTimer() {
+    console.log('se ejecuta el startRefreshTokenTimer');
     if (this.userSubject.value) {
       let user: User = this.userSubject.value;
       let dateexpired = new Date(user.expiredTokenMinutes)
       let dateNow = Date.now();
-      const timeout = dateexpired.getTime() - dateNow;
+      const minute =60000;
+      const timeout = (dateexpired.getTime() - dateNow) -minute;
 
 
       const utimateActionDate = new Date(this.localStorageService.get('utimateActionDate'));
+      const utimateActionTime = dateNow-utimateActionDate.getTime()
+      let diferencia = timeout-utimateActionTime
+      console.log('utimateActionDate', utimateActionTime)
+      this.refreshTokenTimeout = setTimeout(() =>{
+console.log('diferecnia', diferencia)
+console.log('timeout', timeout)
+        if(diferencia>=0 && diferencia<=(timeout-minute)){
+          console.log('se ejecuta el timeout REFRESH TOKEN');
+          this.refreshToken().subscribe()
+        }else {
+          console.log('no ejecutar REFRESH');
+        }
+        
+      }
+       , timeout);
 
-      setTimeout(() => {
-      }, timeout);
     }
   }
+
+  private stopRefreshTokenTimer() {
+    clearTimeout(this.refreshTokenTimeout);
+}
+
 }

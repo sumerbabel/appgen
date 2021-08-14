@@ -22,7 +22,10 @@ export class LoginExpiredTokenComponent extends Modal implements OnInit {
     private userLoginService : UserLoginService
   ) {
     super();
-    this.userLogin.username_or_email= this.accountService.userValue.username;
+  this.userLogin.username_or_email=null
+  this.userLogin.password=null
+
+    
   }
 
   modalInput(inputs: any): void {
@@ -30,7 +33,7 @@ export class LoginExpiredTokenComponent extends Modal implements OnInit {
   }
 
   ngOnInit() {
-
+    this.userLogin.username_or_email= this.accountService.userValue.username;
   }
 
   loginRefresh() {
@@ -46,6 +49,7 @@ export class LoginExpiredTokenComponent extends Modal implements OnInit {
     user.username = result.user.username;
     user.isExpiredToken = false;
     this.localStorageService.set('user', user);
+    this.accountService.startRefreshTokenTimer();
     this.modalClose(null);
   });
 }
