@@ -46,27 +46,26 @@ export class HttpGenericInterceptor implements HttpInterceptor {
             const error = errorResponse.error
             if (typeof error === 'string') {
               this.alertService.openAlertWarning(error);
+              return throwError(error);
             } else {
 
               if (error['status'] === '401-expired') {
                 console.log('error[status]',error['status'])
                 this.loginExpiredTokenService.openDialog();
-                // if (this.accountService.userValue.isExpiredToken === false) {
-                //   this.loginExpiredTokenService.openDialog();
-                // }
 
-                // this.accountService.setUserTokenStatus(true);
-              }
+              }else
 
               if (error['status'] === '401') {
                 this.alertService.openAlertWarning(error['message']);
-              }
+              }else
 
               if (!error['status']) {
                 this.alertService.openAlertWarning('error de conexión / servidor, intente nuevamente');
               }
+              return throwError(error['message']); 
             }
-            return throwError(error);
+
+
           }
           catch (e) {
             console.log(e)

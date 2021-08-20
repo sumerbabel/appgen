@@ -7,7 +7,7 @@ import { DialogService } from '@sharedModule/components/organims/dialogForm/serv
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { SecurityRol } from '../../domain/security-rol';
 import { SecurityRolService } from '../../services/security-rol.service';
-import { SistemService } from '../../../sistem-module/services/sistem.service';
+import { SistemService } from '../../../sistem-module/Infraestructure/sistem.service';
 import { TableItemService } from '../../../table-item-module/services/table-item.service';
 import { TableMasterEnum } from '../../../table-module/enum/table-master.enum';
 
@@ -39,7 +39,7 @@ export class CreateSecurityRolComponent extends Modal implements OnInit {
   modalInput(): void {}
 
   ngOnInit(): void {
-    this.sistemService.getSistemList().subscribe((result) => {
+    this.sistemService.getByList().subscribe((result) => {
       this.itemSistem = result;
     });
     this.getTableItemServiceTypesRoles();

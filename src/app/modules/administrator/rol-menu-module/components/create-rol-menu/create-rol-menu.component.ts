@@ -9,7 +9,7 @@ import { RolMenu } from '../../domain/rol-menu';
 import { RolMenuService } from '../../services/rol-menu.service';
 import { MenuNodeService } from '../../../menu-node-module/services/menu-node.service';
 import { ModuleService } from '../../../module-module/services/module.service';
-import { SistemService } from '../../../sistem-module/services/sistem.service';
+import { SistemService } from '../../../sistem-module/Infraestructure/sistem.service';
 import { SecurityRol } from '../../../security-rol-module/domain/security-rol';
 
 @Component({
@@ -48,7 +48,7 @@ export class CreateRolMenuComponent extends Modal implements OnInit {
 
 
   getListSistems(){
-    this.sistemService.getSistemList().subscribe((result) => {
+    this.sistemService.getByList().subscribe((result) => {
       this.listSistem = result;
     });
   }

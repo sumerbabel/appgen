@@ -6,9 +6,9 @@ import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { Sistem } from '../../domain/sistem';
-import { SistemService } from '../../services/sistem.service';
 import * as JSZip from 'jszip';
 import { LoaderService } from '@sharedModule/components/organims/loader/loader.service';
+import { SistemUseCases } from '../../use-case/sistem-use-case';
 @Component({
   selector: 'app-create-sistem',
   templateUrl: './create-sistem.component.html',
@@ -19,7 +19,7 @@ export class CreateSistemComponent extends Modal implements OnInit {
   TEXT_FOOTER = '* Campos Obligatorios';
   ACTION_FORM: ModelAction[] = [ActionButton.SAVE, ActionButton.CANCEL];
   constructor(
-    private sistemService: SistemService,
+    private _sistemUseCases:SistemUseCases,
     private alertService: AlertService,
     private dialogService: DialogService,
     private loaderService:LoaderService
@@ -32,7 +32,7 @@ export class CreateSistemComponent extends Modal implements OnInit {
     this.sistem = Sistem.createSistemEmpty();
   }
   createSistem() {
-    this.sistemService.postSistem(this.sistem.toDataPersistJson()).subscribe(
+    this._sistemUseCases.saveNew(this.sistem.toDataPersistJson()).subscribe(
       (resultPost) => {
         this.alertService.openAlertSucsses(resultPost);
         this.modalClose(this.sistem);

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
 import { ColumnModel } from '@sharedModule/components/molecules/tables/model/column-model';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
@@ -11,9 +11,9 @@ import { TableModel } from '@sharedModule/models-core/table-model';
 import { CreateSistemComponent } from '../create-sistem/create-sistem.component';
 import { UpdateSistemComponent } from '../update-sistem/update-sistem.component';
 import { Sistem } from '../../domain/sistem';
-import { SistemService } from '../../services/sistem.service';
 import { FilterComponent } from './filter/filter.component';
 import { AccountService } from 'src/app/modules/core/security/service/account.service';
+import { SistemUseCases } from '../../use-case/sistem-use-case';
 
 @Component({
   selector: 'app-page-sistem',
@@ -43,11 +43,11 @@ export class PageSistemComponent implements OnInit {
   );
 
   constructor(
-    private sistemService: SistemService,
     private alertService: AlertService,
     private dialogService: DialogService,
     private modalService: ModalService,
     private accountService: AccountService,
+    private _sistemUseCases:SistemUseCases
   ) {
 
   }
@@ -60,8 +60,8 @@ export class PageSistemComponent implements OnInit {
   }
 
   getSitems() {
-    this.sistemService
-      .getSistemFilter(this.tableModelSistem.getParametersQueryString())
+    this._sistemUseCases
+      .getByFilter(this.tableModelSistem.getParametersQueryString())
       .subscribe((resultGet) => {
         this.tableModelSistem.setDataTableAndPaginationToResponse(resultGet);
       });
@@ -83,7 +83,7 @@ export class PageSistemComponent implements OnInit {
   }
 
   deleteServiceExecute(sistem: Sistem) {
-    this.sistemService.deleteSistem(sistem.id).subscribe(
+    this._sistemUseCases.deleteById(sistem.id).subscribe(
       (resultDelete) => {
         this.tableModelSistem.pagination.setInitialPage();
         this.getSitems();

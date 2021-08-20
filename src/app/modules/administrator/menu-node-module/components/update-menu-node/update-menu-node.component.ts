@@ -9,7 +9,7 @@ import { MenuNode } from '../../domain/menu-node';
 import { MenuNodeService } from '../../services/menu-node.service';
 import { EventAction } from '@sharedModule/models-core/action-model';
 import { ModuleService } from '../../../module-module/services/module.service';
-import { SistemService } from '../../../sistem-module/services/sistem.service';
+import { SistemService } from '../../../sistem-module/Infraestructure/sistem.service';
 import { TableItemService } from '../../../table-item-module/services/table-item.service';
 import { TableMasterEnum } from '../../../table-module/enum/table-master.enum';
 
@@ -59,7 +59,7 @@ export class UpdateMenuNodeComponent extends Modal implements OnInit {
 
   ngOnInit(): void {
     this.getTableItemService(TableMasterEnum.TIPO_DE_MENU_SEGURIDAD)
-    this.sistemService.getSistemList().subscribe((result) => {
+    this.sistemService.getByList().subscribe((result) => {
       this.itemSistem = result;
     });
 

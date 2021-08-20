@@ -7,7 +7,7 @@ import { DialogService } from '@sharedModule/components/organims/dialogForm/serv
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { Module } from '../../domain/module';
 import { ModuleService } from '../../services/module.service';
-import { SistemService } from '../../../sistem-module/services/sistem.service';
+import { SistemService } from '../../../sistem-module/Infraestructure/sistem.service';
 
 @Component({
   selector: 'app-create-module',
@@ -31,7 +31,7 @@ export class CreateModuleComponent extends Modal implements OnInit {
   modalInput(): void {}
   ngOnInit(): void {
     this.module = Module.createModuleEmpty();
-    this.sistemService.getSistemList().subscribe((result) => {
+    this.sistemService.getByList().subscribe((result) => {
       this.itemSistem = result;
     });
   }

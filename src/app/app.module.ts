@@ -17,6 +17,8 @@ import { LoginExpiredTokenComponent } from './modules/core/components/login-expi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { appInitializer } from './modules/core/appInicialice/app.initializer';
 import { AccountService } from './modules/core/security/service/account.service';
+import { SistemGateway } from './modules/administrator/sistem-module/domain/sistem-gateway';
+import { SistemService } from './modules/administrator/sistem-module/Infraestructure/sistem.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,7 @@ import { AccountService } from './modules/core/security/service/account.service'
       useClass: HttpGenericInterceptor,
       multi: true,
     },
+    {provide: SistemGateway, useClass: SistemService}
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -6,7 +6,7 @@ import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { Sistem } from '../../domain/sistem';
-import { SistemService } from '../../services/sistem.service';
+import { SistemUseCases } from '../../use-case/sistem-use-case';
 @Component({
   selector: 'app-update-sistem',
   templateUrl: './update-sistem.component.html',
@@ -17,7 +17,7 @@ export class UpdateSistemComponent extends Modal implements OnInit {
   TEXT_FOOTER = '* Campos Obligatorios';
   ACTION_FORM: ModelAction[] = [ActionButton.SAVE, ActionButton.CANCEL];
   constructor(
-    private sistemService: SistemService,
+    private _sistemUseCases:SistemUseCases,
     private alertService: AlertService,
     private dialogService: DialogService
   ) {
@@ -31,7 +31,7 @@ export class UpdateSistemComponent extends Modal implements OnInit {
     this.getSistem(this.sistem);
   }
   getSistem(sistem: Sistem) {
-    this.sistemService.getSistem(sistem.id).subscribe(
+    this._sistemUseCases.getById(sistem.id).subscribe(
       (resultGetSistem) => {
         this.sistem = Sistem.createSistem(resultGetSistem);
       },
@@ -41,13 +41,18 @@ export class UpdateSistemComponent extends Modal implements OnInit {
     );
   }
   updateSistem() {
-    this.sistemService.putSistem(this.sistem.toDataPersistJson()).subscribe(
+    this._sistemUseCases.saveChanges(this.sistem.toDataPersistJson()).subscribe(
       (resultPut) => {
         this.alertService.openAlertInfo(resultPut);
         this.modalClose(this.sistem);
       },
-      (errorArray) => {
-        this.sistem.errors = [errorArray];
+      (error) => {
+        if(this.sistem){
+          this.sistem.errors = [error];
+        } else {
+          this.alertService.openAlertWarning(error);
+        }
+        
       }
     );
   }

@@ -9,7 +9,7 @@ import { UserRol } from '../../domain/user-rol';
 import { UserRolService } from '../../services/user-rol.service';
 import { SecurityRolService } from '../../../security-rol-module/services/security-rol.service';
 import { TableItemService } from '../../../table-item-module/services/table-item.service';
-import { SistemService } from '../../../sistem-module/services/sistem.service';
+import { SistemService } from '../../../sistem-module/Infraestructure/sistem.service';
 import { UserSecurity } from '../../../user-security-module/domain/user-security';
 import { TableMasterEnum } from '../../../table-module/enum/table-master.enum';
 
@@ -61,7 +61,7 @@ export class CreateUserRolComponent extends Modal implements OnInit {
 
 
   getListSistems(){
-    this.sistemService.getSistemList().subscribe((result) => {
+    this.sistemService.getByList().subscribe((result) => {
       this.listSistem = result;
     });
   }

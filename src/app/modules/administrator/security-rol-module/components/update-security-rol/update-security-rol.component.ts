@@ -7,7 +7,7 @@ import { DialogService } from '@sharedModule/components/organims/dialogForm/serv
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { SecurityRol } from '../../domain/security-rol';
 import { SecurityRolService } from '../../services/security-rol.service';
-import { SistemService } from '../../../sistem-module/services/sistem.service';
+import { SistemService } from '../../../sistem-module/Infraestructure/sistem.service';
 import { TableItemService } from '../../../table-item-module/services/table-item.service';
 import { TableMasterEnum } from '../../../table-module/enum/table-master.enum';
 
@@ -46,7 +46,7 @@ export class UpdateSecurityRolComponent extends Modal implements OnInit {
     this.getTableItemServiceTypesRoles();
     this.getTableItemServiceStates();
 
-    this.sistemService.getSistemList().subscribe((result) => {
+    this.sistemService.getByList().subscribe((result) => {
       this.itemSistem = result;
     });
     this.getSecurityRol(this.securityRol);
