@@ -117,6 +117,13 @@ box-sizing: border-box;
   border: none;
 }
 
+.line-key
+{
+ border: solid 1px rgba(255, 0, 0, 0);
+
+}
+
+
 .input-key
    {
     border: solid rgba(11, 173, 151, 0) 1px;
@@ -129,8 +136,10 @@ box-sizing: border-box;
 
   .line-key:focus-within , .line-key:hover
    {
-    border: solid rgba(11, 173, 151, 0.507) 0.1px;
+    border: solid rgba(11, 173, 151, 0.507) 1.1px;
 border-radius: 3px;
   }
+
+
 
  
