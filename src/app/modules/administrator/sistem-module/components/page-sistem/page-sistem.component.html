@@ -17,7 +17,17 @@
       </ui-filter-panel>
 
     <ui-input-text-date></ui-input-text-date>
-    <div id="canvas"></div>
+   <div #canvasRef2>
+    <canvas id="canvas" #canvasRef width=300 height=300
+    (onMouseDown)="handleMouseDown($event)"
+    (onMouseMove)="handleMouseDown($event)"
+    (onMouseUp)="handleMouseDown($event)"
+    (onMouseOut)="handleMouseDown($event)"
+    
+    ></canvas>
+   </div>
+ 
+
 
     <div>
       <div class="line-key" style="display: flex; width: 100%">
