@@ -19,6 +19,7 @@ import { appInitializer } from './modules/core/appInicialice/app.initializer';
 import { AccountService } from './modules/core/security/service/account.service';
 import { SistemGateway } from './modules/administrator/sistem-module/domain/sistem-gateway';
 import { SistemService } from './modules/administrator/sistem-module/Infraestructure/sistem.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { SistemService } from './modules/administrator/sistem-module/Infraestruc
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    LoginExpiredTokenComponent,
+    LoginExpiredTokenComponent
   ],
   imports: [
     BrowserModule,

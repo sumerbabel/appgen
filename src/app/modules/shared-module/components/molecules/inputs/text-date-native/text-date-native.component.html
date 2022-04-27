@@ -1,0 +1,36 @@
+<div class="input-text" [ngClass]="styleClassText">
+    <div
+        *ngIf="label"
+        [ngClass]="styleClassLabel"
+    >
+        <label>{{label}}</label>
+    </div>
+    <div class="input-content">
+        <input
+            class="input-key"
+            #inpuTextModel
+            type="date"
+            [ngModel]="value"
+            (ngModelChange)="changeControlEvent($event)"
+            (blur)="blurInput()"
+            (keyup)="keyPress($event)"
+            [placeholder]="placeholder"
+            [disabled]="disabled"
+            [ngStyle]="{'height': height}"
+            [ngStyle]="{'color':color}"
+            [pattern]="pattern"
+        >
+        <div
+            class="conteiner-error"
+            *ngIf="errors.length > 0"
+        >
+            <div
+                class="error-p"
+                *ngFor="let error of errors"
+            >
+                {{error}}
+            </div>
+        </div>
+    </div>
+</div>
+

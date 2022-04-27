@@ -35,7 +35,8 @@ const routes: Routes = [
 { path: 'rol-menu-items', loadChildren: rolMenuActionModule,canActivate: [AuthGuard]},
 { path: 'userSecurity', loadChildren: userSecurityModule,canActivate: [AuthGuard]},
 { path: 'code', loadChildren: groupCodeModule,canActivate: [AuthGuard]},
-{ path: 'files', loadChildren: fileModule,canActivate: [AuthGuard]}
+{ path: 'files', loadChildren: fileModule,canActivate: [AuthGuard]},
+{ path: 'sistem2-module', loadChildren: () => import('./modules/administrator/sistem2-module/sistem2-module.module').then(m => m.Sistem2ModuleModule) }
 
 ];
 @NgModule({
