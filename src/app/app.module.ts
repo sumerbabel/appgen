@@ -19,6 +19,8 @@ import { appInitializer } from './modules/core/appInicialice/app.initializer';
 import { AccountService } from './modules/core/security/service/account.service';
 import { SistemGateway } from './modules/administrator/sistem-module/domain/sistem-gateway';
 import { SistemService } from './modules/administrator/sistem-module/Infraestructure/sistem.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,13 @@ import { SistemService } from './modules/administrator/sistem-module/Infraestruc
     FormsModule,
     CommonModule,
     HelipopperModule.forRoot(),
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
