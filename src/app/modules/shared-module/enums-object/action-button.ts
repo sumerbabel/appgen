@@ -47,6 +47,6 @@ export class ActionButton {
     public static REGISTER= { name: 'Registrarme en Sumer Code',tooltip:'', action: ActionGeneric.NEW, icon:'', color: Colors.GREEN_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
     public static EXPAND= { name: 'Expandir',tooltip:'', action: ActionGeneric.OPEN, icon:Icons.EXPAND, color: Colors.BLUE_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
     public static COMPRESS= { name: 'Contraer',tooltip:'', action: ActionGeneric.CLOSE, icon:Icons.COMPRESS, color: Colors.PURPLE_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
-
+    public static UPDATE= { name: 'Actualizar',tooltip:'Actualizar datos', action: ActionGeneric.OPEN, icon:Icons.UPDATE, color: Colors.BLUE_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
 
 }

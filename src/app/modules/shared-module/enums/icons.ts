@@ -21,7 +21,7 @@ export enum Icons{
     UNSELECTALL = 'UN_SELECT_ALL',
     ACCEPT = 'fa fa-check',
     CREATE ='fa fa-plus-square',
-    UPDATE ='"fa fa-pencil-square-o',
+    UPDATE ='fa fa-refresh',
     COPY='fa fa-clone',
     PASTE='fa fa-clipboard',
     CODE='fa fa-code',

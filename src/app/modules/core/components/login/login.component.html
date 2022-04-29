@@ -1,5 +1,5 @@
 <div class="main-register">
-  <div class="text-register">
+  <!-- <div class="text-register">
     <p class="text-title">Construido para</p>
     <p class="text-title">desarrolladores</p>
     <div>
@@ -30,6 +30,21 @@
     <div style="display: flex;  width: 100%; color: rgb(141, 187, 214); padding: 5px; font-size: 14px;">
       <p style="margin-right: 20px;">Para registrarte, <a href="register" style="color: #07c592;">Accede Aquí </a> </p>
      </div>
+  </div> -->
+
+  <div style="max-width: 720px; display: flex;">
+    <ui-form-base [showCloseButton]="false"  titleHeader="Datos">
+    <ui-button class="line-key" [actionProperties]="ACTION_BTN_UPDATE" (on-click)="updateTest()"> </ui-button>
+    <h3>{{modo}}</h3>
+    <ui-table
+  
+    *ngIf="tableModelSistem"
+    [columns]="tableModelSistem.columnArray"
+    [actions]="tableModelSistem.actionArray"
+    [data]="tableModelSistem.dataArray"
+  ></ui-table>
+</ui-form-base>
+    <!-- {{data|json}} -->
   </div>
 
 </div>
