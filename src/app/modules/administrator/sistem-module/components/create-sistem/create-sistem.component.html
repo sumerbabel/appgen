@@ -1,7 +1,7 @@
 <ui-form-base showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
   (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM" [errors]="sistem.errors">
   <div *ngIf="sistem">
-    <ui-input-text-model [(value)]="sistem.name" isRequired="true" placeholder='Name' label='Name'>
+    <ui-input-text-model [(value)]="sistem.name" isRequired="true" placeholder='Name' label='Name' autoFocus="true">
     </ui-input-text-model>
     <ui-input-file (inputControlChange)="fileImputChange($event)" isSelectDirectory="true"></ui-input-file>
   </div>

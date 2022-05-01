@@ -40,7 +40,7 @@ export class Pagination {
     let perPage = data['per_page'];
     let currentPage = data['current_page'];
     let page =currentPage;
-    let pages = data['links'].map((item) => {
+    let pages = data['links']?.map((item) => {
       let url: string = item.url;
       let page = url !== null ? url.split('=')[1] : '';
       let label = item.label;

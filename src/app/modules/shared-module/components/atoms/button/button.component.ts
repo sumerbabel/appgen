@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { HtmlElementService } from '@sharedModule/services/html-element-service/html-element.service';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
@@ -21,6 +21,7 @@ export class ButtonComponent implements OnInit {
   @Input() tooltip: string;
   @Input() isActionOpenModal: boolean = false;
   @Input() styleClass: string[] = [StyleButtonEnum.DEFAULT];
+  @Input() autoFocus: boolean= false;
   @Output('on-click') onClickEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private htmlElementService :HtmlElementService) {}
@@ -28,6 +29,9 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {
     this.updateProperties();
   }
+
+  @ViewChild("buttonModel") ButtonModel: ElementRef;
+  ngAfterViewInit() {if(this.autoFocus){this.ButtonModel.nativeElement.focus();}}
 
   ngOnChanges() {
     this.updateProperties();

@@ -41,12 +41,7 @@ export class TextModelComponent implements OnInit {
   constructor() { }
 
   @ViewChild("inpuTextModel") InputModel: ElementRef;
-ngAfterViewInit() {
-  if(this.autoFocus){
-    this.InputModel.nativeElement.focus();
-  }
-
-}
+  ngAfterViewInit() {if(this.autoFocus){this.InputModel.nativeElement.focus();}}
 
   ngOnInit(): void {
   if(this.labelDirectionLeft){

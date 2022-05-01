@@ -64,7 +64,7 @@ export class ModalContainerComponent implements OnDestroy {
     if (this.bloquedContent) {
       this.destroyConteinerBloqued();
     }
-    this.htmlElementService.htmlElementPrevious.focus();
+    this.htmlElementService.htmlElementPrevious?.focus();
   }
 
   private createConteinerNobloqued(): void {

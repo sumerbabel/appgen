@@ -1,8 +1,9 @@
 
-<div class="input-key" tabindex="-1" (keydown)="keyPress($event)">
-<div  class="ui-button " [ngClass]="styleClass" style="width: auto;" >
+<div class="input-key" tabindex="-1" (keydown)="keyPress($event)" #buttonModel>
+<div  class="ui-button " [ngClass]="styleClass" style="width: auto;"   >
 <ng-container *ngIf="tooltip">
-  <button 
+  <button
+  
   (keyup.enter)="keyPress($event)"
   matRipple matRippleColor="rgba(255, 255, 255, 0.1)" [helipopper]="tpl"
     [ngStyle]="{'background': color, 'color':colorText}" (click)="onClic($event)"><i class="ui-icon" *ngIf="icon"
@@ -14,6 +15,7 @@
 
 <ng-container *ngIf="!tooltip">
   <button 
+
   matRipple matRippleColor="rgba(255, 255, 255, 0.1)" 
   [ngStyle]="{'background': color, 'color':colorText}"
   (click)="onClic($event)">
@@ -25,19 +27,6 @@
 
 </div>
 </div>
-<!-- <div *ngIf="!tooltip" class="ui-button" [ngClass]="styleClass"   >
-
-
-
-  <button 
-  matRipple matRippleColor="rgba(255, 255, 255, 0.1)" 
-  [ngStyle]="{'background': color, 'color':colorText}"
-  (click)="onClic($event)">
-    <i class="ui-icon" *ngIf="icon" [ngClass]="[icon]"></i>
-    <ng-container *ngIf="statusStyle">{{name}}</ng-container>
-    <ng-content></ng-content>
-  </button>
-</div> -->
 
 <ng-template #tpl>
   <div>

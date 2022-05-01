@@ -56,7 +56,7 @@ export class KeyFocus {
           if ((countItems - 1) < indexLevelOne) {
             indexLevelOne = countItems - 1
           }
-          parentCeroAllItem[decrementLevelCero].querySelectorAll('.input-key')[indexLevelOne].focus()
+          parentCeroAllItem[decrementLevelCero].querySelectorAll('.input-key')[indexLevelOne]?.focus()
           break;
         default:
           break;

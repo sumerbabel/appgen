@@ -16,6 +16,7 @@ export class UserLoginService {
  private  RESOURCE_RUTE:string = 'login'
 
  postUserModelLogin(obj: any): Observable<any> {
+  this.httpApiService.setUrlBaseResource(environment.apiUrl);
     return this.httpApiService.postResource(obj, `${this.RESOURCE_RUTE}`)
       .pipe(
         map((response: any) => response)
