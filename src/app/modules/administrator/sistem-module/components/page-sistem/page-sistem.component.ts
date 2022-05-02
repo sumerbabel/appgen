@@ -331,6 +331,7 @@ ngAfterViewInit(): void {
   this.draw()
 }
 
+ACTION_FORM: ModelAction[] = [ActionButton.SAVE, ActionButton.CANCEL];
 }
 
 

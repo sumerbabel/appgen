@@ -8,4 +8,5 @@ export interface ModelAction {
     colorText?:string
     styleClass?:string[]
     isVisible?:boolean
+    autoFocus?:boolean
 }

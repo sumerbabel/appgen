@@ -34,7 +34,6 @@ $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Appl
 
     cursor: pointer;
     border: solid rgb(11, 173, 152) 1px;
-    //border: solid rgb(0, 129, 121) 1px;
   }
 }
 
@@ -45,7 +44,6 @@ $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Appl
 
 .input-key:focus-within .ui-button > button
    {
-    //border: solid rgb(0, 129, 121) 1px;
     border: solid rgb(11, 173, 152) 1px;
   }
 

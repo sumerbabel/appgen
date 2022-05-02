@@ -52,16 +52,13 @@ public  rects = [];
 
 this.ctx = this.canvas.nativeElement.getContext("2d");
 this.BB = this.canvas.nativeElement.getBoundingClientRect();
-console.log(this.BB)
-console.log( this.canvas)
+
 this.offsetX = this.BB.left;
 this.offsetY = this.BB.top+59;
-console.log('offsetX_INI',this.offsetX);
-console.log('offsetY_INI',this.offsetY);
+
 this.WIDTH = this.canvas.nativeElement.width;
 this.HEIGHT = this.canvas.nativeElement.height;
-console.log('WIDTH',this.WIDTH);
-console.log('HEIGHT',this.HEIGHT);
+
 
 this.rects.push({
   x: 75 - 15,
@@ -138,9 +135,7 @@ this.draw()
  myDown(e:any) {
   e.preventDefault();
   e.stopPropagation();
-// console.log('e.clientX ',e.clientX );
-// console.log('e.clientY ',e.clientY );
-  // get the current mouse position
+
   let mx = parseInt((e.clientX - this.offsetX)+'');
   let my = parseInt((e.clientY - this.offsetY)+'');
 
@@ -148,21 +143,12 @@ this.draw()
   this.dragok = false;
   for (let i = 0; i < this.rects.length; i++) {
       let r = this.rects[i];
-
-    //  console.log('mx',mx);
-    //  console.log('r.x',r.x);
-    //  console.log('r.width',r.width);
-    //  console.log('my',my);
-    //  console.log('r.y',r.y);
-    //  console.log('r.height',r.height);
-
       if (mx > r.x && mx < r.x + r.width && my > r.y && my < r.y + r.height) {
           this.dragok = true;
           r.isDragging = true;
       } 
       
   }
-  // save the current mouse position
   this.startX = mx;
   this.startY = my;
 }
@@ -272,6 +258,7 @@ this.draw()
   }
 
   actionFormEvent($event) {
+    console.log('entra al evento')
     switch ($event) {
       case ActionGeneric.SAVE:
         this.validateSaveRegister();

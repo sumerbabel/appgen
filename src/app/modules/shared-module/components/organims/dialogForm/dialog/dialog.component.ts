@@ -21,6 +21,7 @@ export class DialogComponent extends Modal implements OnInit {
       icon:'YES',
       color: '#27e186',
       colorText:'BLACK',
+      autoFocus:true,
       styleClass:['ui-default']
     }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ButtonComponent } from './components/atoms/button/button.component';
+import { ButtonCloseComponent } from './components/atoms/button-close/button-close.component';
 import { MatRippleModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { DatePickerComponent } from './components/molecules/inputs/date-picker/date-picker.component';
 import { CheckboxComponent } from './components/molecules/inputs/checkbox/checkbox.component';
@@ -73,8 +74,8 @@ import { TextDateNativeComponent } from './components/molecules/inputs/text-date
     EditorCodeComponent,
     FilterPanelComponent,
     TextDateComponent,
-    TextDateNativeComponent
-
+    TextDateNativeComponent,
+    ButtonCloseComponent
   ],
   exports: [
     KeyfocusDirective,
@@ -108,7 +109,8 @@ import { TextDateNativeComponent } from './components/molecules/inputs/text-date
     EditorCodeComponent,
     FilterPanelComponent,
     TextDateComponent,
-    TextDateNativeComponent
+    TextDateNativeComponent,
+    ButtonCloseComponent
   ],
   imports: [
     MatRippleModule,

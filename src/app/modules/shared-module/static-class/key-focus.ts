@@ -1,5 +1,4 @@
 export class KeyFocus {
-
   public static keyDrownToFocus(event: any) {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft' || event.key === 'ArrowDown' || event.key === 'ArrowUp') {
 
@@ -21,7 +20,8 @@ export class KeyFocus {
 
       const item = event.target;
       const parent = findParentBySelector(item, '.line-key')
-      const parentAllItem = parent.querySelectorAll('.input-key')
+      if (parent ==null){return} 
+      const parentAllItem = parent?.querySelectorAll('.input-key')
       let indexLevelOne = Array.from(parentAllItem).indexOf(item)
       const lengthLevelOne = parentAllItem.length;
       const incrementLevelOne = ((indexLevelOne + 1) <= (lengthLevelOne - 1)) ? (indexLevelOne + 1) : indexLevelOne
@@ -38,10 +38,10 @@ export class KeyFocus {
 
       switch (event.key) {
         case 'ArrowRight':
-          parentAllItem[incrementLevelOne].focus();
+          parentAllItem[incrementLevelOne]?.focus();
           break;
         case 'ArrowLeft':
-          parentAllItem[decrementLevelOne].focus();
+          parentAllItem[decrementLevelOne]?.focus();
           break;
         case 'ArrowDown':
         
@@ -49,7 +49,7 @@ export class KeyFocus {
           if ((countItemsDown - 1) < indexLevelOne) {
             indexLevelOne = countItemsDown - 1
           }
-          parentCeroAllItem[incrementLevelCero].querySelectorAll('.input-key')[indexLevelOne].focus()
+          parentCeroAllItem[incrementLevelCero].querySelectorAll('.input-key')[indexLevelOne]?.focus()
           break;
         case 'ArrowUp':
           let countItems = parentCeroAllItem[decrementLevelCero].querySelectorAll('.input-key').length;

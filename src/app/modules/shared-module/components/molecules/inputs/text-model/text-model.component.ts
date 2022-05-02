@@ -70,7 +70,8 @@ export class TextModelComponent implements OnInit {
     this.onBlurEvent.emit(this.value);
   }
 
-  keyPress($event){
+  keyPress2($event){
+    console.log('entra KEY PRESS INPUT TEXT')
     if ($event.keyCode === 13) {
       this.keyPressEvent.emit($event);
     } else{

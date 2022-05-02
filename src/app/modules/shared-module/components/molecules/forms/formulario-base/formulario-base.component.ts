@@ -33,10 +33,12 @@ export class FormularioBaseComponent implements OnInit {
   ngOnInit(): void { }
 
   actionClose($event) {
+    alert('entra a cerrar')
     this.formAction.emit(ActionGeneric.CLOSE);
   }
 
   actionForm(action: any) {
+  console.log('ENTRA ACCION FORM',action)
     this.formAction.emit(action);
   }
 
@@ -44,11 +46,4 @@ export class FormularioBaseComponent implements OnInit {
     this.errors = [];
   }
 
-  keyPress($event: any) {
-    if ($event.keyCode === 13) {
-      this.actionClose($event)
-    } else {
-      KeyFocus.keyDrownToFocus($event);
-    }
-  }
 }

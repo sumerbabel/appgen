@@ -4,7 +4,16 @@
 >
     <div class='view-header line-key' cdkDragHandle [ngStyle]="{'background': colorHeader}">
         <div class='title-view'>{{titleHeader}}</div>
-        <div
+        <div  *ngIf="showCloseButton">
+            <ui-btnclose
+            (on-click-close)="actionForm($event)"
+            >
+            
+                
+            </ui-btnclose>
+        </div>
+
+        <!-- <div
             class='btn-view-form input-key'
             tabindex="-1" (keydown)="keyPress($event)"
             *ngIf="showCloseButton"
@@ -12,7 +21,7 @@
             <button (click)="actionClose($event)">
                 <div class="icon-close"></div>
             </button>
-        </div>
+        </div> -->
     </div>
     <div class='view'  [ngStyle]="{'background': backgroundColor}">
 
@@ -39,6 +48,7 @@
                 [icon]="action.icon"
                 [color]="action.color"
                 [colorText]="action.colorText"
+                [autoFocus]="action.autoFocus"
                 [type]="action.type"
                 [styleClass]="action.styleClass"
                 (on-click)="actionForm(action.action)"
@@ -50,6 +60,7 @@
             <ui-button
                 *ngIf="showFooterButtons"
                 [actionProperties] ="ACTION_SAVE"
+                autoFocus ="true"
                 (on-click)="actionForm($event)"
             >
             </ui-button>
