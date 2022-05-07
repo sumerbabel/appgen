@@ -180,8 +180,7 @@ this.draw()
       // get the current mouse position
       let mx = parseInt((e.clientX - this.offsetX)+'');
       let my = parseInt((e.clientY - this.offsetY)+'');
-      console.log('mx',mx,'my',my)
-
+     
       // calculate the distance the mouse has moved
       // since the last mousemove
       let dx = mx - this.startX;
@@ -258,7 +257,6 @@ this.draw()
   }
 
   actionFormEvent($event) {
-    console.log('entra al evento')
     switch ($event) {
       case ActionGeneric.SAVE:
         this.validateSaveRegister();

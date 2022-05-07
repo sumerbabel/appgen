@@ -6,6 +6,7 @@ import { TreeConvert } from '@sharedModule/code-utils/treeConvert';
 import { AlertService } from '../../alertForm/service/alert.service';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
+import { textConvertToTreeObject } from '@sharedModule/code-utils/textConvertToTreeObject';
 @Component({
   selector: 'ui-multiline-array',
   templateUrl: './multiline-array.component.html',
@@ -74,6 +75,7 @@ export class MultilineArrayComponent extends Modal implements OnInit {
     let textComplit: string;
     textComplit = this.textInput;
     this.objectTree = stringToTreeObect(textComplit,this.textoSaltoLinea)
+    console.log('resultado',textConvertToTreeObject(textComplit,this.textoSaltoLinea))
     this.arrayText=[]
     this.arrayTotree(this.objectTree);
   }
@@ -123,7 +125,6 @@ export class MultilineArrayComponent extends Modal implements OnInit {
  }
 
  AddIzquierdaDerechaTextTotree(tree:TreeConvert[], textoIzquiera:string, textoDerecha:string){
-   console.log({textoIzquiera},{textoDerecha})
    if (textoIzquiera !=null && textoDerecha!=null){
       tree.forEach((itemTres,index)=>{
         tree[index].value =  textoIzquiera+itemTres.value+textoDerecha;

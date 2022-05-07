@@ -32,7 +32,6 @@ export class ButtonCloseComponent implements OnInit {
 
 
 onClic($event) {
-console.log('EMIT CLOSE BUTTON', this.action)
     this.onClickEventClose.emit(this.action);
    
   }

@@ -197,8 +197,7 @@ private refreshToken(){
       let diferencia = timeout-utimateActionTime
       console.log('utimateActionDate', utimateActionTime)
       this.refreshTokenTimeout = setTimeout(() =>{
-console.log('diferecnia', diferencia)
-console.log('timeout', timeout)
+
         if(diferencia>=0 && diferencia<=(timeout-minute)){
           console.log('se ejecuta el timeout REFRESH TOKEN');
           this.refreshToken().subscribe()

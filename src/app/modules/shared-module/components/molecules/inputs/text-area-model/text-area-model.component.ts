@@ -49,7 +49,6 @@ ngAfterViewInit() {
     this.valueChange.emit(this.value)
     this.value = String(this.value);
     let lines = this.value.split(/\r?\n/).length;
-    console.log({lines})
      this.numeroSaltosLinea= this.SIZE_BARE_LINE*lines
     if (this.value==''||this.value==null){
       this.numeroSaltosLinea=1;
@@ -57,12 +56,9 @@ ngAfterViewInit() {
   }
 
   ngOnChanges(): void {
-    // let lines = this.value.split(/\r?\n/).length;
-    console.log(this.value,'chan')
     if (this.value==''||this.value==null){
       this.numeroSaltosLinea=1;
     }
-    //  this.numeroSaltosLinea= this.SIZE_BARE_LINE*lines
 }
 
   isinputBlur =false;

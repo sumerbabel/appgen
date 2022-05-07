@@ -59,7 +59,6 @@ export class ButtonComponent implements OnInit {
   }
 
   onClic($event) {
-    console.log('entra al evento click')
     if(this.isActionOpenModal){this.htmlElementService.htmlElementPrevious =$event.target;}
     this.onClickEvent.emit(this.action);
   }

@@ -50,7 +50,6 @@ export class HttpGenericInterceptor implements HttpInterceptor {
             } else {
 
               if (error['status'] === '401-expired') {
-                console.log('error[status]',error['status'])
                 this.loginExpiredTokenService.openDialog();
 
               }else
@@ -65,10 +64,8 @@ export class HttpGenericInterceptor implements HttpInterceptor {
               return throwError(error['message']); 
             }
 
-
           }
           catch (e) {
-            console.log(e)
             const error = 'error de conexión / servidor, intente nuevamente *'
             this.alertService.openAlertWarning(error);
             return throwError(error);
