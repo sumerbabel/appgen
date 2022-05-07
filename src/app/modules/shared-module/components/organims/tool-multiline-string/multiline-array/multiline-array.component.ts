@@ -17,6 +17,9 @@ export class MultilineArrayComponent extends Modal implements OnInit {
   textoCorte:string
   textoIzquierda:string='';
   textoDerecha:string='';
+  textoReemplazar:string='';
+  textoReemplazarPor:string='';
+  textoSaltoLinea:string='';
   arrayText = [];
   objectTree:TreeConvert[];
   actions: ModelAction[] = [];
@@ -28,19 +31,19 @@ export class MultilineArrayComponent extends Modal implements OnInit {
   }
 
   controlAddChangeDerecha(){
-    if(this.textoDerecha !==''){
+  
       this.AddIzquierdaDerechaTextTotree(this.objectTree,'',this.textoDerecha);
       this.arrayText=[]
       this.arrayTotree(this.objectTree);
-    }
+    
   }
 
   controlAddChangeIzquierda(){
-    if(this.textoIzquierda !==''){
+   
       this.AddIzquierdaDerechaTextTotree(this.objectTree,this.textoIzquierda,'');
       this.arrayText=[]
       this.arrayTotree(this.objectTree);
-    }
+    
   }
 
   controlCutChange(){
@@ -59,13 +62,36 @@ export class MultilineArrayComponent extends Modal implements OnInit {
     }
   }
 
+  controlReplaceAdd(){
+    if(this.textoReemplazar !=null && this.textoReemplazarPor !=null){
+      this.replaceTextTotree(this.objectTree,this.textoReemplazar,this.textoReemplazarPor)
+      this.arrayText=[]
+      this.arrayTotree(this.objectTree);
+    }
+  }
 
   controlChange() {
     let textComplit: string;
     textComplit = this.textInput;
-    this.objectTree = stringToTreeObect(textComplit)
+    this.objectTree = stringToTreeObect(textComplit,this.textoSaltoLinea)
     this.arrayText=[]
     this.arrayTotree(this.objectTree);
+  }
+
+  controlClear(){
+    this.textInput='';
+    this.textoEliminar=''
+    this.textoCorte=''
+    this.textoIzquierda='';
+    this.textoDerecha='';
+    this.textoReemplazar='';
+    this.textoReemplazarPor='';
+    this.textoSaltoLinea='';
+    this.controlChange();
+  }
+
+  controlLineUp(){
+
   }
 
  deleteTextTotree(tree:TreeConvert[], textoEliminar){
@@ -77,6 +103,16 @@ export class MultilineArrayComponent extends Modal implements OnInit {
   })
  }
 
+ replaceTextTotree(tree:TreeConvert[], textoReemplazar,textoReemplazarPor){
+  tree.forEach((itemTres,index)=>{
+     tree[index].value =  itemTres.value.split(textoReemplazar).join(textoReemplazarPor);
+     if(itemTres.hasOwnProperty('children')){
+      this.replaceTextTotree(itemTres['children'],textoReemplazar,textoReemplazarPor)
+     }
+  })
+ }
+
+
  cutTextTotree(tree:TreeConvert[], textoCortar){
   tree.forEach((itemTres,index)=>{
      tree[index].value =  itemTres.value.split(textoCortar)[0];
@@ -87,12 +123,16 @@ export class MultilineArrayComponent extends Modal implements OnInit {
  }
 
  AddIzquierdaDerechaTextTotree(tree:TreeConvert[], textoIzquiera:string, textoDerecha:string){
-  tree.forEach((itemTres,index)=>{
-     tree[index].value =  textoIzquiera+itemTres.value+textoDerecha;
-     if(itemTres.hasOwnProperty('children')){
-      this.AddIzquierdaDerechaTextTotree(itemTres['children'], textoIzquiera, textoDerecha)
-     }
-  })
+   console.log({textoIzquiera},{textoDerecha})
+   if (textoIzquiera !=null && textoDerecha!=null){
+      tree.forEach((itemTres,index)=>{
+        tree[index].value =  textoIzquiera+itemTres.value+textoDerecha;
+        if(itemTres.hasOwnProperty('children')){
+        this.AddIzquierdaDerechaTextTotree(itemTres['children'], textoIzquiera, textoDerecha)
+        }
+    })
+   }
+
  }
 
  arrayTotree(tree:TreeConvert[]){

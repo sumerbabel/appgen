@@ -23,7 +23,7 @@ export class TextAreaModelComponent implements OnInit {
   constructor() { }
 
   numeroSaltosLinea = 0;
-
+  SIZE_BARE_LINE: number = 0.7;
   @ViewChild("inpuAreaModel") InputModel: ElementRef;
 ngAfterViewInit() {
   if(this.autoFocus){
@@ -35,7 +35,6 @@ ngAfterViewInit() {
       this.label = this.label+'*';
     }
 
-
     if (this.value) {
       this.value = String(this.value);
       this.numeroSaltosLinea = this.value.split(/\r?\n/).length;
@@ -43,16 +42,28 @@ ngAfterViewInit() {
         this.numeroSaltosLinea=3;
       }
     }
-
-
   }
 
   changeControlEvent(event: any){
     this.value =event
     this.valueChange.emit(this.value)
     this.value = String(this.value);
-    this.numeroSaltosLinea = this.value.split(/\r?\n/).length;
+    let lines = this.value.split(/\r?\n/).length;
+    console.log({lines})
+     this.numeroSaltosLinea= this.SIZE_BARE_LINE*lines
+    if (this.value==''||this.value==null){
+      this.numeroSaltosLinea=1;
+    }
   }
+
+  ngOnChanges(): void {
+    // let lines = this.value.split(/\r?\n/).length;
+    console.log(this.value,'chan')
+    if (this.value==''||this.value==null){
+      this.numeroSaltosLinea=1;
+    }
+    //  this.numeroSaltosLinea= this.SIZE_BARE_LINE*lines
+}
 
   isinputBlur =false;
   blurInput() {

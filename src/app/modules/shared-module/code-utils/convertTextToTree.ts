@@ -1,8 +1,9 @@
 import { TreeConvert } from './treeConvert';
 
-export function stringToTreeObect(text:string):TreeConvert[]{
+export function stringToTreeObect(text:string,pattern:string ='\n'):TreeConvert[]{
+    if (pattern=='' ||pattern==null ){pattern='\n'}
     let root = node('root');
-    let textArray =text.split('\n').filter(textItem =>  textItem.length>0 )
+    let textArray =text.split(pattern).filter(textItem =>  textItem.length>0 )
     textArray.reduce(append_rec,root); 
 
     return normalizeTreeObject(root.children);
