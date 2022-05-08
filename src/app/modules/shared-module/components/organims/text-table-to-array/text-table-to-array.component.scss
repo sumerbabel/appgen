@@ -1,0 +1,57 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table,
+  td,
+  th {
+    border: 1px solid rgb(107, 85, 135);
+  }
+  
+  th {
+    background-color: rgba(85, 54, 116, 0.437);
+  }
+  
+  .order {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .ui-json-view{
+    font-size: 12px;
+    max-width: 420px;
+  }
+  
+  .ui-multiline-view{
+    display: flex;
+    width: 100%;
+  }
+  
+  .ui-multiline-conteiner{
+    width: auto;
+  }
+  
+  .line-action{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-action{
+   max-width: 250px; 
+   min-width: 250px;
+   margin-left: 10px;
+   border-radius: 3px;
+   border: solid 1px rgb(70, 62, 62);
+   background-color: rgba(54, 51, 51, 0.301);
+   padding: 2px;
+  }
+  .card-lx-action{
+    width: 99%;
+    border-radius: 3px;
+    border: solid 1px rgb(70, 62, 62);
+    background-color: rgba(54, 51, 51, 0.301);
+    padding: 2px;
+   }
+  

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
+import { TextTableToArrayComponent } from '@sharedModule/components/organims/text-table-to-array/text-table-to-array.component';
 import { MultilineStringService } from '@sharedModule/components/organims/tool-multiline-string/service/multiline-string.service';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { MenuTree } from './modules/core/components/menu/domain/menu-tree';
@@ -101,6 +102,10 @@ export class AppComponent {
   menuTree: MenuTree[] = [];
   menu() {
     this.menuTree= this.accountService.getMenuUser()
+  }
+
+  openTextToArray(){
+    this.modalService.open(TextTableToArrayComponent)
   }
 
 }

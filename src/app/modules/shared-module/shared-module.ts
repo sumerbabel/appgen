@@ -40,6 +40,7 @@ import { FilterPanelComponent } from './components/organims/filter-panel/filter-
 import { TextDateComponent } from './components/molecules/inputs/text-date/text-date.component';
 import { KeyfocusDirective } from './directives/keyfocus.directive';
 import { TextDateNativeComponent } from './components/molecules/inputs/text-date-native/text-date-native.component';
+import { TextTableToArrayComponent } from './components/organims/text-table-to-array/text-table-to-array.component';
 @NgModule({
   declarations: [
     KeyfocusDirective,
@@ -75,7 +76,8 @@ import { TextDateNativeComponent } from './components/molecules/inputs/text-date
     FilterPanelComponent,
     TextDateComponent,
     TextDateNativeComponent,
-    ButtonCloseComponent
+    ButtonCloseComponent,
+    TextTableToArrayComponent
   ],
   exports: [
     KeyfocusDirective,
@@ -110,7 +112,8 @@ import { TextDateNativeComponent } from './components/molecules/inputs/text-date
     FilterPanelComponent,
     TextDateComponent,
     TextDateNativeComponent,
-    ButtonCloseComponent
+    ButtonCloseComponent,
+    TextTableToArrayComponent
   ],
   imports: [
     MatRippleModule,

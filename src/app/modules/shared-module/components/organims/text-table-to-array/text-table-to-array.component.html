@@ -1,0 +1,44 @@
+<div class="ui-multiline-view" style="display: flex; width: 100%; flex-wrap: wrap;">
+    <div class="ui-multiline-conteiner">
+      <ui-form-base (formAction)="accionFormulario($event)" titleHeader="Dividir Texto"
+        [showCloseButton]="true">
+  
+        <div style="display:inline-flex; width: 100%;">
+  
+          <div style="width: 100%;">
+            <div class="line-action">
+              <text-area-model [(value)]="textInput" (valueChange)="controlChange()" label='Texto a dividir x saltos linea'
+              ></text-area-model>
+              <ui-button styleClass='ui-min' style="margin: 3px;" color="#3a6683" icon="fa fa-eraser" tooltip ='Limpiar' *ngIf="arrayResult.length>0"
+              (on-click)="controlClear()"></ui-button>
+            </div>
+       
+          </div>
+  
+
+  
+        </div>
+        <div class="card-lx-action" style="margin-top: 10px;" *ngIf="arrayResult.length>0">
+          <span style="margin-bottom: 10px;">Resultado Json</span>
+          <div class='ui-json-view'>
+          {{arrayResult|json}}
+          </div>
+        </div>
+      </ui-form-base>
+  
+    </div>
+  
+    <div>
+      <ui-form-base *ngIf="arrayResult.length>0" titleHeader="Texto Resultante" [actions]="actions" (formAction)="accionFormulario($event)">
+        <ui-table
+        *ngIf="tableResult"
+        [columns]="tableResult.columnArray"
+        [actions]="tableResult.actionArray"
+        [data]="tableResult.dataArray"
+      ></ui-table>
+
+      </ui-form-base>
+    </div>
+  
+  </div>
+  
