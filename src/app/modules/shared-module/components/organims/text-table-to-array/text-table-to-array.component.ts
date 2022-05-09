@@ -63,10 +63,10 @@ export class TextTableToArrayComponent extends Modal implements OnInit {
 
   controlClear(){
     this.columnsTable =[]
-    this.tableResult=undefined
-    
+    this.arrayResult=[] 
+    this.tableResult.setDataTableAndPaginationToResponse({'data':[]})
     this.textInput='';
-    this.controlChange();
+
   }
 
   accionFormulario(event) {
