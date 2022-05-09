@@ -7,7 +7,7 @@
 
         <div style="width: 100%;">
           <div class="line-action">
-            <text-area-model [(value)]="textInput" (valueChange)="controlChange()" label='Texto a dividir x saltos linea'
+            <text-area-model [(value)]="textInput" (valueChange)="controlChange()" autoFocus="true" label='Texto a dividir x saltos linea'
             ></text-area-model>
             <ui-button styleClass='ui-min' style="margin: 3px;" color="#3a6683" icon="fa fa-eraser" tooltip ='Limpiar' *ngIf="arrayText.length>0"
             (on-click)="controlClear()"></ui-button>

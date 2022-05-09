@@ -11,7 +11,6 @@
               (on-click)="controlClear()"></ui-button>
             </div>
           </div>
-  
         </div>
         <div class="card-lx-action" style="margin-top: 10px;" *ngIf="arrayResult.length>0">
           <span style="margin-bottom: 10px;">Resultado Json</span>
@@ -20,7 +19,6 @@
           </div>
         </div>
       </ui-form-base>
-  
     </div>
   
     <div>
@@ -51,28 +49,8 @@
           <ui-input-text-model [(value)]="data.col5"></ui-input-text-model>
         </td>
       </ng-template>
-    
     </ui-table>
-
       </ui-form-base>
     </div>
-  
   </div>
   
-
-
-  <!-- <ui-table [columns]='columnsTable' [actions]="actionsTable"
-    [data]="groupCode.groupCodeNodesField" 
-    [templateRow]="templateRow" 
-    (actionEvent)="tableFIeldActions($event)"
-    >
-    <ng-template let-data #templateRow>
-      <td>
-        <ui-input-checkbox [(value)]="data.selected"></ui-input-checkbox>
-      </td>
-      <td>
-        {{data.name}}
-      </td>
-    </ng-template>
-
-  </ui-table> -->
