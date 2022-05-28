@@ -24,7 +24,7 @@ export class EditorCodeComponent implements OnInit {
     value: '',
   };
 
-  SIZE_BARE_LINE: number = 21;
+  SIZE_BARE_LINE: number = 25;
 
   constructor() {}
 
@@ -59,6 +59,7 @@ export class EditorCodeComponent implements OnInit {
           verticalHasArrows: false,
           horizontalHasArrows: false,
           vertical: 'hidden',
+          horizontal:'hidden',
           arrowSize: 30,
         },
       };

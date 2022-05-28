@@ -1,0 +1,18 @@
+<div style="min-width: 720px">
+  <ui-form-base
+    [titleHeader]="TITLE_HEADER_FORM"
+    [showCloseButton]="SHOW_CLOSE_BUTTON_FORM"
+  >
+    <ui-button
+      [actionProperties]="ACTION_BUTTON_CREATE"
+      (on-click)="createReservaEstadoGeneralOpenModal()"
+    ></ui-button>
+    <ui-table
+      *ngIf="tableModelReservaEstadoGeneral"
+      [columns]="tableModelReservaEstadoGeneral.columnArray"
+      [actions]="tableModelReservaEstadoGeneral.actionArray"
+      [data]="tableModelReservaEstadoGeneral.dataArray"
+      (actionEvent)="tableReservaEstadoGeneralActions($event)"
+    ></ui-table>
+  </ui-form-base>
+</div>

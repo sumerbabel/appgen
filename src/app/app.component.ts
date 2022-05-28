@@ -16,16 +16,6 @@ import { AccountService } from './modules/core/security/service/account.service'
 })
 export class AppComponent {
   user: User;
-
-  // @HostListener("window:beforeunload", ["$event"]) beforeUnloadHandler(event: Event) {
-  //   console.log("window:beforeunload");
-  //   event.returnValue = "You will leave this page" as any;
-  // }
-
-  // @HostListener("window:unload", ["$event"]) unloadHandler(event: Event) {
-  //   console.log("window:unload");
-  // }
-
   ruteActual:string;
   constructor(
     private multilineStringService: MultilineStringService,

@@ -1,7 +1,8 @@
 export class KeyFocus {
   public static keyDrownToFocus(event: any) {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft' || event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-
+      console.log('evento')
+      //debugger;
       function collectionHas(a, b) {
         for (var i = 0, len = a.length; i < len; i++) {
           if (a[i] == b) return true;

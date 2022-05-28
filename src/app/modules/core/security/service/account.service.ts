@@ -188,7 +188,7 @@ private refreshToken(){
       let user: User = this.userSubject.value;
       let dateexpired = new Date(user.expiredTokenMinutes)
       let dateNow = Date.now();
-      const minute =60000;
+      const minute =6*60*60000;
       const timeout = (dateexpired.getTime() - dateNow) -minute;
 
 

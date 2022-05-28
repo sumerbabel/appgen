@@ -1,0 +1,20 @@
+<div style="width: 720px">
+  <ui-form-base
+    showCloseButton="true"
+    [titleHeader]="TITLE_HEADER_FORM"
+    [textFooter]="TEXT_FOOTER"
+    (formAction)="actionFormEvent($event)"
+    [actions]="ACTION_FORM"
+    [errors]="reservaEstadoGeneral.errors"
+  >
+    <div *ngIf="reservaEstadoGeneral">
+      <ui-input-text-model
+        [(value)]="reservaEstadoGeneral.name"
+        isRequired="true"
+        placeholder="Estado general"
+        label="Estado general"
+      >
+      </ui-input-text-model>
+    </div>
+  </ui-form-base>
+</div>

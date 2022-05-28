@@ -54,7 +54,6 @@ export class TextTableToArrayComponent extends Modal implements OnInit {
     this.columnsTable.push({key: value, title: value})
     })
 
-    // this.columnsTable.push({key: 'action', title: 'Actions'})
 
     console.log('ARRAY RESULT',this.arrayResult)
     this.tableResult.setDataTableAndPaginationToResponse({'data':this.arrayResult})
