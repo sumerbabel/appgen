@@ -8,6 +8,12 @@
 @include mat.core();
 @include mat.all-component-themes($angenerator-theme);
 
+:root {
+  --pure-material-primary-rgb: 26, 98, 77; // color fondo seleccionado
+  --pure-material-onprimary-rgb: 255, 255, 255;
+  --pure-material-surface-rgb: 255, 255, 255;
+  --pure-material-onsurface-rgb: 255, 255, 255; //borde
+}
 
 html,
 body { margin: 0px;

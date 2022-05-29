@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 @Component({
   selector: 'ui-input-checkbox',
   templateUrl: './checkbox.component.html',
@@ -12,10 +12,9 @@ export class CheckboxComponent implements OnInit {
   @Input() errors: string[] =[];
   @Input() disabled:boolean = false;
   @Output() valueChange = new EventEmitter<string|boolean>();
-
+  @Output('key-press') keyPressEvent: EventEmitter<any> = new EventEmitter();
   @Output('on-blur') onBlurEvent: EventEmitter<string|boolean> = new EventEmitter();
   constructor() { }
-
 
   ngOnInit(): void {
     if (this.isRequired){
@@ -29,18 +28,10 @@ export class CheckboxComponent implements OnInit {
       if (value=='false' || value=='no' || value=='0'){
         this.value =false}
     }
-
   }
 
   changeControlEvent(event: any){
-    let value =event
-    if (event=='true' || event=='si' || event=='1'){
-      value =true
-    } else {
-      if (event=='false' || event=='no' || event=='o'){
-        value =false}
-    }
-    this.value =value
+    this.value =event
     this.valueChange.emit(this.value)
   }
 
@@ -48,6 +39,16 @@ export class CheckboxComponent implements OnInit {
   blurInput() {
     this.isinputBlur = true;
     this.onBlurEvent.emit(this.value)
+  }
+
+  keyPress($event){
+    if ($event.keyCode === 13) {
+      this.value=!this.value
+      this.valueChange.emit(this.value)
+      this.keyPressEvent.emit($event);
+    } else{
+      KeyFocus.keyDrownToFocus($event);
+    }  
   }
 
 }

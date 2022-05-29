@@ -2,7 +2,19 @@
   <div *ngIf="label" class='label-custom'>
     <label>{{label}}</label>
 </div>
-  <mat-checkbox [ngModel]="value" [disabled]="disabled" (ngModelChange)="changeControlEvent($event)" (blur)="blurInput()" class='label-custom'></mat-checkbox>
+  <label class="pure-material-checkbox">
+    <input 
+    type="checkbox"  
+    [ngModel]="value" 
+    [disabled]="disabled" 
+    (ngModelChange)="changeControlEvent($event)" 
+    (blur)="blurInput()" 
+    (keyup)="keyPress($event)" 
+    class='label-custom input-key'>
+
+    <span style="width:0px;"></span>
+    
+  </label>
   <div class="conteiner-error" *ngIf ="errors.length > 0">
     <div class="error-p" *ngFor="let error of errors">{{error}}</div>
 </div>
