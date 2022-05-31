@@ -2,16 +2,18 @@ $content-color: #3f4447;
 $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
   "Segoe UI Emoji", "Segoe UI Symbol";
 $iu-global-font-color: rgba(255, 255, 255, 0.9);
-$iu-global-borde-input-h:#0c536a;
+$iu-global-borde-input-h: rgb(11, 173, 152);
 $iu-global-input-background:rgba(15, 15, 15, 0.3);
 .input-text-area {
   color: $iu-global-font-color;
   font-family: $iu-global-font;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
  .input-text-area  textarea {
-  height: 25px !important;
+  min-height: 21px ;
 }
 
 textarea {
@@ -23,17 +25,20 @@ textarea {
     padding-top: 0px;
     padding-bottom: 0px;
     padding-right: 5px;
-    height: 32px;
+    min-height: 21px;
     margin-top: 1px;
-    max-height: 100%;
+    max-height: 320px;
     font-size: 12px;
     width: 100%;
     background-color: $iu-global-input-background;
     color: $iu-global-font-color;
     font-family: $iu-global-font;
-    overflow: auto;
+    overflow:hidden;
   }
 
+  textarea.cdk-textarea-autosize {
+    resize: auto;
+}
 
 .input-text-area > .label-custom > label {
   font-size: 13px;
@@ -43,12 +48,29 @@ textarea {
 .label-custom {
   margin-bottom: 3px;
   color: $iu-global-font-color;
+  width: 100%;
 }
 
 textarea:focus {
   outline: none;
   border: solid 1px$iu-global-borde-input-h
 }
+
+textarea:hover {
+  border: solid 1px $iu-global-borde-input-h;
+}
+
+.input-text > .input-content > textarea:focus {
+  outline: none;
+  border: solid 1px $iu-global-borde-input-h;
+}
+
+.input-text > .input-content > textarea:hover {
+  outline: none;
+  border: solid 1px $iu-global-borde-input-h;
+}
+
+
 
 .conteiner-error {
   display: inline-flex;

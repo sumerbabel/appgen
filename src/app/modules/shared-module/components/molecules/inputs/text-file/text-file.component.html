@@ -8,9 +8,22 @@
   </label>
 
   <span style="margin-left: 3px;"> Archivos : {{countArchives}}</span>
-
     <input id="file-upload" type="file" (change)="changeControlEvent($event)" [multiple]="multiple" [accept]="accept"  />
     <input  id="file-upload-directory" type="file" (change)="changeControlEvent($event)"  webkitdirectory/>
 </div>
 
-
+<div   class="contenido">
+<div class="container-drag_drop" drag-and-drop-file (fileDropped)="onFileDropped($event)">
+    <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+    <label style="text-align:center" >
+        <i style="font-size:30px; color: #d4d8d9;" class="fa fa-cloud-upload"></i> Arrastre uno o mas archivos
+    </label>
+</div>
+</div>
+<div>
+    <div *ngFor="let file of filex">
+        <span class="custom-file-upload">{{file['name']}}</span>
+        <span class="custom-file-upload">{{file['type']}}</span>
+        <span class="custom-file-upload">{{file['size']}}</span>
+    </div>
+</div>

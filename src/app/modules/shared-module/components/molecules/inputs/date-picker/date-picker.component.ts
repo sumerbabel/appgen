@@ -57,7 +57,18 @@ export class DatePickerComponent implements OnInit {
     }
 
 
+  
+  isPickerOpen=false;
+  pickerLaunch($picker){
+  this.isPickerOpen=!this.isPickerOpen
+  if (this.isPickerOpen){
+    $picker.open()
+  }
+
+  }
+
     keyPress($event: any){
+      console.log('entra a keypress')
       if ($event.keyCode === 13) {
         //this.clickspan()
     } else{

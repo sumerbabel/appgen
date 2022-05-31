@@ -5,7 +5,7 @@ $iu-global-font-color: rgba(255, 255, 255, 0.9);
 $iu-global-borde-input-h:#0c536a;
 $iu-global-borde-input:rgba(15, 15, 15, 0.2);
 $iu-global-input-background:rgba(15, 15, 15, 0.3);
-
+$iu-global-border-file:#849f3a;
 
 .input-text  {
 
@@ -84,4 +84,48 @@ input[type="file"] {
   //box-shadow: (15, 15, 15, 0.2) 0px 0px 0px 1px inset, rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
   box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
 
+}
+
+.contenido{
+  border:dashed 2px #85a331;
+  border-radius: 3px;
+  display: flex;
+  padding: 4px;
+  box-sizing: border-box;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #0f171aeb;
+}
+
+
+.container-drag_drop{
+  width: 100%;
+  min-height: 70px;
+  display: flex;
+  box-shadow: (15, 15, 15, 0.2) 0px 0px 0px 1px inset,
+  rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
+
+}
+
+.fileover {
+  position: relative;
+  min-height: 70px;
+  width: 100%;
+  background: linear-gradient(90deg, $iu-global-border-file 50%, transparent 50%), 
+              linear-gradient(90deg, $iu-global-border-file 50%, transparent 50%), 
+              linear-gradient(0deg, $iu-global-border-file 50%, transparent 50%), 
+              linear-gradient(0deg, $iu-global-border-file 50%, transparent 50%);
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: 10px 2px, 10px 2px, 2px 10px, 2px 10px;
+  background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+  border-radius: 3px;
+  animation: dash 3s linear infinite;
+}
+
+
+@keyframes dash {
+  to {
+      background-position: 100% 0%, 0% 100%, 0% 0%, 100% 100%;
+  }
 }

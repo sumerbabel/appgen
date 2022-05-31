@@ -63,6 +63,7 @@ ngAfterViewInit() {
   }
 
   changeControlEvent(event: any){
+    console.log('change',event)
     this.value =event
     this.valueChange.emit(this.value)
   }
@@ -74,12 +75,19 @@ ngAfterViewInit() {
     this.valueChange.emit(this.value);
     this.onBlurEvent.emit(this.value);
   }
-
+  count =1
   keyPress($event){
+    console.log('keypress',$event)
     if ($event.keyCode === 13) {
       this.keyPressEvent.emit($event);
     } else{
-      KeyFocus.keyDrownToFocus($event);
+      this.count++;
+      if(this.count%3 ==0){
+        KeyFocus.keyDrownToFocus($event);
+      }
     }  
+  }
+  clickevent($event){
+    console.log('clikk',$event)
   }
 }

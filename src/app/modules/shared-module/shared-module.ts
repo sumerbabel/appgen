@@ -41,6 +41,7 @@ import { TextDateComponent } from './components/molecules/inputs/text-date/text-
 import { KeyfocusDirective } from './directives/keyfocus.directive';
 import { TextDateNativeComponent } from './components/molecules/inputs/text-date-native/text-date-native.component';
 import { TextTableToArrayComponent } from './components/organims/text-table-to-array/text-table-to-array.component';
+import { DragAndDropFileDirective } from './components/molecules/inputs/text-file/directives/drag-and-drop-file.directive';
 @NgModule({
   declarations: [
     KeyfocusDirective,
@@ -77,7 +78,9 @@ import { TextTableToArrayComponent } from './components/organims/text-table-to-a
     TextDateComponent,
     TextDateNativeComponent,
     ButtonCloseComponent,
-    TextTableToArrayComponent
+    TextTableToArrayComponent,
+    DragAndDropFileDirective
+
   ],
   exports: [
     KeyfocusDirective,
@@ -113,7 +116,8 @@ import { TextTableToArrayComponent } from './components/organims/text-table-to-a
     TextDateComponent,
     TextDateNativeComponent,
     ButtonCloseComponent,
-    TextTableToArrayComponent
+    TextTableToArrayComponent,
+    DragAndDropFileDirective
   ],
   imports: [
     MatRippleModule,

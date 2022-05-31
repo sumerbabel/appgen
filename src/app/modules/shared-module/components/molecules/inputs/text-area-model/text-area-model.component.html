@@ -4,6 +4,7 @@
     </div>
     <div class="input-content">
     <textarea
+        class="input-key"
         cdkTextareaAutosize
         #autosize="cdkTextareaAutosize"
         [cdkAutosizeMinRows]="numeroSaltosLinea"
@@ -12,6 +13,7 @@
         [ngModel]="value"
         (ngModelChange)="changeControlEvent($event)"
         (blur)="blurInput()"
+        (keyup)="keyPress($event)"
         [disabled]="disabled"
         #inpuAreaModel
     >

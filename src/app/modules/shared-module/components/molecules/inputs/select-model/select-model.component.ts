@@ -156,12 +156,14 @@ export class SelectModelComponent implements OnInit {
     const component = new ComponentPortal(ItemPanelComponent);
     const componentRef = overlayRef.attach(component);
     componentRef.instance.items = this.items;
+    componentRef.instance.itemValue = {id:this.value, name:this.textName};
     componentRef.instance.witdthPanel = this.inputTextContent.nativeElement.offsetWidth;
     componentRef.instance.itemSelect.subscribe((itemselect) => {
       this.textSelect = itemselect.name;
       this.value = itemselect.id;
       this.valueChange.emit(this.value);
       this.itemSelect.emit(itemselect);
+      this.inputTextContent.nativeElement.focus();
       overlayRef.dispose();
     });
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());

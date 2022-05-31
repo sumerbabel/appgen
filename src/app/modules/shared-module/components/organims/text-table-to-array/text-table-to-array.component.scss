@@ -33,9 +33,9 @@ table {
   }
   
   .line-action{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
   
   .card-action{

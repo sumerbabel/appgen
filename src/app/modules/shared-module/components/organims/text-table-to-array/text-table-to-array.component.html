@@ -5,6 +5,7 @@
         <div style="display:inline-flex; width: 100%;">
           <div style="width: 100%;">
             <div class="line-action">
+              <ui-input-file></ui-input-file>
               <text-area-model [(value)]="textInput" (valueChange)="controlChange()" autoFocus="true" label='Texto a dividir x saltos linea'
               ></text-area-model>
               <ui-button styleClass='ui-min' style="margin: 3px;" color="#3a6683" icon="fa fa-eraser" tooltip ='Limpiar' *ngIf="arrayResult.length>0"
@@ -43,8 +44,7 @@
           <ui-input-date [(value)]="data.col3"></ui-input-date>
         </td>
         <td>
-          <!-- <ui-input-text-model [(value)]="data.col4"></ui-input-text-model> -->
-          <text-date-native [(value)]="data.col4"></text-date-native>
+          <text-area-model [(value)]="data.col4"></text-area-model>
         </td>
         <td>
           <ui-input-text-model [(value)]="data.col5"></ui-input-text-model>

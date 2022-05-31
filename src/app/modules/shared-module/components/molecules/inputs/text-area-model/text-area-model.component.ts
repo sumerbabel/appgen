@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input, ViewChild, ElementRef } from '@angular/core';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { KeyFocus } from '@sharedModule/static-class/key-focus';
 
 @Component({
   selector: 'text-area-model',
@@ -18,7 +19,7 @@ export class TextAreaModelComponent implements OnInit {
   @Input() disabled:boolean = false;
   @Input() autoFocus: boolean= false;
   @Output() valueChange = new EventEmitter<string>();
-
+  @Output('key-press') keyPressEvent: EventEmitter<any> = new EventEmitter();
   @Output('on-blur') onBlurEvent: EventEmitter<string> = new EventEmitter();
   constructor() { }
 
@@ -65,6 +66,14 @@ ngAfterViewInit() {
   blurInput() {
     this.isinputBlur = true;
     this.onBlurEvent.emit(this.value)
+  }
+
+  keyPress($event){
+    if ($event.keyCode === 13) {
+      this.keyPressEvent.emit($event);
+    } else{
+      KeyFocus.keyDrownToFocus($event);
+    }  
   }
 
 }

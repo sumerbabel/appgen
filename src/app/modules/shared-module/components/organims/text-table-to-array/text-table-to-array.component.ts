@@ -15,7 +15,7 @@ import { Modal } from '../modal/model/modal.model';
 })
 export class TextTableToArrayComponent extends Modal implements OnInit {
 
-  textInput:string
+textInput:string
  arrayResult =[]
  
   actions: ModelAction[] = [];
@@ -39,25 +39,23 @@ export class TextTableToArrayComponent extends Modal implements OnInit {
   );
  
   controlChange() {
+ 
    this.arrayResult =textConvertToTreeObject(this.textInput)
     this.generateTable()
   }
 
   generateTable(){
+    if (this.columnsTable.length ==0){
+
+    
     let listKeysArray= Object.keys(this.arrayResult[0])
-    console.log({listKeysArray})
     listKeysArray.forEach((value,index)=>{
       let key =0
-      if(value=='' ||value==undefined || value==null ){
-      value = index+''
-      }
-    this.columnsTable.push({key: value, title: value})
+      if(value=='' ||value==undefined || value==null ){ value = index+''}
+       this.columnsTable.push({key: value, title: value})
     })
-
-
-    console.log('ARRAY RESULT',this.arrayResult)
+  }
     this.tableResult.setDataTableAndPaginationToResponse({'data':this.arrayResult})
-    console.log('DATA',this.tableResult.dataArray)
   }
 
   controlClear(){

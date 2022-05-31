@@ -12,7 +12,6 @@ export function textConvertToTreeObject(text:string,pattern:string ='\n',pattern
       } else {
         headers= headerValue.map((value,index)=>''+index)
       }
-
       const arr = rows.map(function (row) {
         const values = row.split(patternSecondary);
         const el = headers.reduce(function (object, header, index) {
