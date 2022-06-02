@@ -1,12 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { ModelAction } from '../../tables/model/action';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
-import { KeyFocus } from '@sharedModule/static-class/key-focus';
+
 @Component({
   selector: 'ui-form-base',
   templateUrl: './formulario-base.component.html',
   styleUrls: ['./formulario-base.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class FormularioBaseComponent implements OnInit {
   @Input() titleHeader: string;

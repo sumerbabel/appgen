@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 
@@ -7,6 +7,7 @@ import { KeyFocus } from '@sharedModule/static-class/key-focus';
   selector: 'ui-btnclose',
   templateUrl: './button-close.component.html',
   styleUrls: ['./button-close.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ButtonCloseComponent implements OnInit {
   @Input() name: string;
@@ -22,9 +23,9 @@ export class ButtonCloseComponent implements OnInit {
   @Output('on-click-close') onClickEventClose: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
- 
+
   ngOnInit(): void {
-    
+
   }
 
   @ViewChild("buttonModel") ButtonModel: ElementRef;
@@ -33,17 +34,17 @@ export class ButtonCloseComponent implements OnInit {
 
 onClic($event) {
     this.onClickEventClose.emit(this.action);
-   
+
   }
 
   keyPress($event: any){
     if ($event.keyCode === 13) {
-     
+
       this.onClickEventClose.emit(this.action);
   } else{
     KeyFocus.keyDrownToFocus($event);
   }
-    
+
   }
 
 }

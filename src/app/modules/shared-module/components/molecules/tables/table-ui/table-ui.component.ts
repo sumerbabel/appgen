@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { EventAction } from '@sharedModule/models-core/action-model';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
@@ -8,7 +8,8 @@ import { Pagination } from '../model/pagination';
 @Component({
   selector: 'ui-table',
   templateUrl: './table-ui.component.html',
-  styleUrls: ['./table-ui.component.scss']
+  styleUrls: ['./table-ui.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TableUiComponent implements OnInit {
 
@@ -27,10 +28,12 @@ export class TableUiComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-   if (this.paginationData ==undefined){
+    console.log('pagination data',this.paginationData)
+   if (this.paginationData ==undefined ||this.paginationData.pages ==undefined ){
    this.paginationData = new Pagination(1,this.data.length,this.data.length,1,1,1,[])
    }
    this.itemPageSelected =this.paginationData.perPage
+   console.log('pagination data2',this.paginationData)
   }
 
   indexSelect=null;

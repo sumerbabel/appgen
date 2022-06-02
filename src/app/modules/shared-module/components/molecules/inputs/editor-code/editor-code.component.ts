@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CodeModel } from '@ngstack/code-editor';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
   selector: 'ui-editor-code',
   templateUrl: './editor-code.component.html',
   styleUrls: ['./editor-code.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class EditorCodeComponent implements OnInit {
   @Input() value: string = '';

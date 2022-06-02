@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import * as moment from 'moment';
 @Component({
   selector: 'ui-input-date',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.scss']
+  styleUrls: ['./date-picker.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class DatePickerComponent implements OnInit {
 
@@ -57,7 +58,7 @@ export class DatePickerComponent implements OnInit {
     }
 
 
-  
+
   isPickerOpen=false;
   pickerLaunch($picker){
   this.isPickerOpen=!this.isPickerOpen

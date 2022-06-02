@@ -1,9 +1,10 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 @Component({
   selector: 'app-item-panel',
   templateUrl: './item-panel.component.html',
-  styleUrls: ['./item-panel.component.scss']
+  styleUrls: ['./item-panel.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ItemPanelComponent implements OnInit {
   @Input() items: string[];
@@ -17,10 +18,10 @@ export class ItemPanelComponent implements OnInit {
   inputSearch: ElementRef;
 
   constructor() { }
-  
+
   ngOnInit(): void {
   }
-  
+
   ngAfterViewInit(){
     this.inputSearch.nativeElement.focus()
   }

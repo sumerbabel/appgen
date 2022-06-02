@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 
 @Component({
   selector: 'ui-button-select',
   templateUrl: './button-select.component.html',
-  styleUrls: ['./button-select.component.scss']
+  styleUrls: ['./button-select.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ButtonSelectComponent implements OnInit {
 

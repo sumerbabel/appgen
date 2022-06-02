@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,6 +14,7 @@ import { TreeGeneric } from '../tree-generic/domain/tree.generic';
   selector: 'ui-menu-ml',
   templateUrl: './menu-ml.component.html',
   styleUrls: ['./menu-ml.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class MenuMlComponent implements OnInit {
   @Input() isInitial: boolean = true;

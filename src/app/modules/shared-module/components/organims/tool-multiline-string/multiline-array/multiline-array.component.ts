@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Modal } from '../../modal/model/modal.model';
 import { ModelAction } from '../../../molecules/tables/model/action';
 import { stringToTreeObect } from '@sharedModule/code-utils/convertTextToTree';
@@ -10,7 +10,8 @@ import { textConvertToTreeObject } from '@sharedModule/code-utils/textConvertToT
 @Component({
   selector: 'ui-multiline-array',
   templateUrl: './multiline-array.component.html',
-  styleUrls: ['./multiline-array.component.scss']
+  styleUrls: ['./multiline-array.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class MultilineArrayComponent extends Modal implements OnInit {
   textInput:string
@@ -32,19 +33,19 @@ export class MultilineArrayComponent extends Modal implements OnInit {
   }
 
   controlAddChangeDerecha(){
-  
+
       this.AddIzquierdaDerechaTextTotree(this.objectTree,'',this.textoDerecha);
       this.arrayText=[]
       this.arrayTotree(this.objectTree);
-    
+
   }
 
   controlAddChangeIzquierda(){
-   
+
       this.AddIzquierdaDerechaTextTotree(this.objectTree,this.textoIzquierda,'');
       this.arrayText=[]
       this.arrayTotree(this.objectTree);
-    
+
   }
 
   controlCutChange(){

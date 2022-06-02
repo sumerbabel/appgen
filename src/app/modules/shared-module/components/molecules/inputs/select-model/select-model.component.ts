@@ -9,6 +9,7 @@ import {
   ViewChild,
   ElementRef,
   ChangeDetectorRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import { ItemPanelComponent } from './item-panel/item-panel.component';
@@ -17,6 +18,7 @@ import { ItemPanelComponent } from './item-panel/item-panel.component';
   selector: 'ui-input-select-model',
   templateUrl: './select-model.component.html',
   styleUrls: ['./select-model.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class SelectModelComponent implements OnInit {
   @Output() valueChange = new EventEmitter<any>();

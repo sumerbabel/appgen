@@ -101,6 +101,7 @@ export class Pagination {
   }
 
   get  page() {
+    console.log('pagina')
     return this._page
   }
 
@@ -128,6 +129,7 @@ export class Pagination {
     return this._perPage;
   }
   get pages(): Array<PageModel> {
+    console.log('paginas')
     return this._pages;
   }
 

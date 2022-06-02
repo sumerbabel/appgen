@@ -1,10 +1,11 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 
 @Component({
   selector: 'text-date-native',
   templateUrl: './text-date-native.component.html',
-  styleUrls: ['./text-date-native.component.scss']
+  styleUrls: ['./text-date-native.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TextDateNativeComponent implements OnInit {
 
@@ -85,7 +86,7 @@ ngAfterViewInit() {
       if(this.count%3 ==0){
         KeyFocus.keyDrownToFocus($event);
       }
-    }  
+    }
   }
   clickevent($event){
     console.log('clikk',$event)

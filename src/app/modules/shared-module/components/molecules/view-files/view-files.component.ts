@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ViewFileService } from './view-file.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { getMatIconFailedToSanitizeLiteralError } from '@angular/material/icon';
@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'ui-view-file',
   templateUrl: './view-files.component.html',
-  styleUrls: ['./view-files.component.scss']
+  styleUrls: ['./view-files.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ViewFilesComponent implements OnInit {
   @Input() urlsFile: string = environment.apiUrl+'/file/download';
@@ -20,10 +21,10 @@ export class ViewFilesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.filesId.forEach(
       fileId => {
-  
+
         this.getImageFromService(this.urlsFile, fileId);
       }
     )

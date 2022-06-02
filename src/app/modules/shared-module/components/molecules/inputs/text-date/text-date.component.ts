@@ -1,9 +1,10 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'ui-input-text-date',
   templateUrl: './text-date.component.html',
-  styleUrls: ['./text-date.component.scss']
+  styleUrls: ['./text-date.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TextDateComponent implements OnInit {
 

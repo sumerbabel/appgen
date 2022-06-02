@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { textConvertToTreeObject } from '@sharedModule/code-utils/textConvertToTreeObject';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { ColumnModel } from '@sharedModule/components/molecules/tables/model/column-model';
@@ -11,13 +11,14 @@ import { Modal } from '../modal/model/modal.model';
 @Component({
   selector: 'ui-text-table-to-array',
   templateUrl: './text-table-to-array.component.html',
-  styleUrls: ['./text-table-to-array.component.scss']
+  styleUrls: ['./text-table-to-array.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TextTableToArrayComponent extends Modal implements OnInit {
 
 textInput:string
  arrayResult =[]
- 
+
   actions: ModelAction[] = [];
   constructor( private alertService: AlertService) { super() }
 
@@ -37,9 +38,9 @@ textInput:string
     this.columnsTable,
     this.actionsTable
   );
- 
+
   controlChange() {
- 
+
    this.arrayResult =textConvertToTreeObject(this.textInput)
     this.generateTable()
   }
@@ -47,7 +48,7 @@ textInput:string
   generateTable(){
     if (this.columnsTable.length ==0){
 
-    
+
     let listKeysArray= Object.keys(this.arrayResult[0])
     listKeysArray.forEach((value,index)=>{
       let key =0
@@ -60,7 +61,7 @@ textInput:string
 
   controlClear(){
     this.columnsTable =[]
-    this.arrayResult=[] 
+    this.arrayResult=[]
     this.tableResult.setDataTableAndPaginationToResponse({'data':[]})
     this.textInput='';
 

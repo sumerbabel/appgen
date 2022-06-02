@@ -1,11 +1,12 @@
-import { Component, OnInit, EventEmitter, Output, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 
 @Component({
   selector: 'text-area-model',
   templateUrl: './text-area-model.component.html',
-  styleUrls: ['./text-area-model.component.scss']
+  styleUrls: ['./text-area-model.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TextAreaModelComponent implements OnInit {
 
@@ -73,7 +74,7 @@ ngAfterViewInit() {
       this.keyPressEvent.emit($event);
     } else{
       KeyFocus.keyDrownToFocus($event);
-    }  
+    }
   }
 
 }

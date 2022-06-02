@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { SearchFilter } from '@sharedModule/components/organims/filter-panel/domain/search-filter';
 import { Modal } from '@sharedModule/components/organims/modal/model/modal.model';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 @Component({
-  selector: 'app-filter',
+  selector: 'app-filter2',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
-  changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class FilterComponent extends Modal implements OnInit {
+export class Filter2Component extends Modal implements OnInit {
   TITLE_HEADER_FORM = 'Filtros';
   SHOW_CLOSE_BUTTON_FORM = true;
   ACTION_FORM: ModelAction[] = [

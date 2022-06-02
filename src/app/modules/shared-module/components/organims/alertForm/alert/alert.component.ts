@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Alert } from '../domain/alert';
 import { Modal } from '../../modal/model/modal.model';
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss']
+  styleUrls: ['./alert.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AlertComponent extends Modal implements OnInit {
   dataAlert: Alert;

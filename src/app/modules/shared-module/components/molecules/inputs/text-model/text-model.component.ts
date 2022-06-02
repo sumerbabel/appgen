@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 
 @Component({
   selector: 'ui-input-text-model',
   templateUrl: './text-model.component.html',
-  styleUrls: ['./text-model.component.scss']
+  styleUrls: ['./text-model.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TextModelComponent implements OnInit {
 
@@ -58,6 +59,7 @@ export class TextModelComponent implements OnInit {
   }
 
   changeControlEvent(event: any){
+    console.log('change_input',event)
     this.value =event
     this.valueChange.emit(this.value)
   }
@@ -75,6 +77,6 @@ export class TextModelComponent implements OnInit {
       this.keyPressEvent.emit($event);
     } else{
       KeyFocus.keyDrownToFocus($event);
-    }  
+    }
   }
 }

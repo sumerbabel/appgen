@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { UploadFileService } from './upload-file.service';
 import { FormGroup } from '@angular/forms';
 import { IinputControl } from '../inputs/input.interface';
@@ -7,7 +7,8 @@ import { InputControl } from '../inputs/input.model';
 @Component({
   selector: 'ui-upload-file',
   templateUrl: './upload-files.component.html',
-  styleUrls: ['./upload-files.component.scss']
+  styleUrls: ['./upload-files.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UploadFilesComponent implements OnInit {
   @Input() urlSerivceHttp:string ='http://127.0.0.1/uploadfile';
@@ -32,17 +33,17 @@ export class UploadFilesComponent implements OnInit {
 
   uploadFile() {
     const formData = new FormData();
-    for (let index = 0; index < this.files.length; index++)  
-    {  
+    for (let index = 0; index < this.files.length; index++)
+    {
      formData.append('filenames[]', this.files[index]);
      formData.append('uuid', this.uuid);
-    } 
+    }
 
     this.uploadFileService.upload(formData, this.urlSerivceHttp).subscribe(
       (res) => {
              this.ServiceResult.emit(res.data)
       },
-      (err) => { 
+      (err) => {
         console.log(err);
       }
     )

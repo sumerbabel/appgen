@@ -1,4 +1,4 @@
-import { Component,ElementRef,HostListener,OnInit, ViewChild} from '@angular/core';
+import {  ChangeDetectionStrategy, Component,ElementRef,HostListener,OnInit, ViewChild} from '@angular/core';
 import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
 import { ColumnModel } from '@sharedModule/components/molecules/tables/model/column-model';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
@@ -19,6 +19,7 @@ import { SistemUseCases } from '../../use-case/sistem-use-case';
   selector: 'app-page-sistem',
   templateUrl: './page-sistem.component.html',
   styleUrls: ['./page-sistem.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class PageSistemComponent implements OnInit {
   TITLE_HEADER_FORM = 'Lista de Sistems';
@@ -43,9 +44,9 @@ export class PageSistemComponent implements OnInit {
   private ctx: CanvasRenderingContext2D;
 
 private canvas: HTMLElement = document.getElementById("canvas");
-//private ctx 
-private canvasOffset 
-private offsetX 
+//private ctx
+private canvasOffset
+private offsetX
 private offsetY
 private isDown = false;
 private startX;
@@ -196,7 +197,7 @@ onClick = (e: any) => {
 
 
 
- 
+
 
 
   public width: number = 500;
@@ -230,7 +231,7 @@ onClick = (e: any) => {
   ) {
   }
 
- 
+
   ngOnInit(): void {
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
     this.ctx.fillStyle = "skyblue";

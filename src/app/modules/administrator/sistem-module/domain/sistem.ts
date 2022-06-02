@@ -2,7 +2,7 @@ import { DataModel } from '@sharedModule/models-core/data-model';
 import { formModel } from '@sharedModule/models-core/form-model';
 export class Sistem extends formModel implements DataModel {
   public _id: string;
-  private _name: string;
+  public _name: string;
   constructor(id: string, name: string) {
     super();
     this._id = id;
@@ -15,10 +15,12 @@ export class Sistem extends formModel implements DataModel {
   get id(): string {
     return this._id;
   }
-  set name(name: string) {
+  setName(name: string) {
+    console.log('set name', name)
     this._name = name;
   }
   get name(): string {
+    console.log('get name', this)
     return this._name;
   }
   static createSistem(object: Object): Sistem {

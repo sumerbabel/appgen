@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Modal } from '../../modal/model/modal.model';
 import { DialogInterface } from '../domain/dialog-interface';
 import { ModelAction } from '../../../molecules/tables/model/action';
 @Component({
   selector: 'ui-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss']
+  styleUrls: ['./dialog.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class DialogComponent extends Modal implements OnInit {
   dataDialog: DialogInterface;

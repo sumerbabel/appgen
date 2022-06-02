@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
 import { Modal } from '@sharedModule/components/organims/modal/model/modal.model';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
@@ -11,7 +11,7 @@ import { _YAxis } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-update-sistem',
   templateUrl: './update-sistem.component.html',
-  styleUrls: ['./update-sistem.component.scss'],
+  styleUrls: ['./update-sistem.component.scss']
 })
 export class UpdateSistemComponent extends Modal implements OnInit {
   TITLE_HEADER_FORM = 'Actualizar Registro sistems';
@@ -270,7 +270,7 @@ export class UpdateSistemComponent extends Modal implements OnInit {
 //         actor.collisions.push(this.id + updateId);
 //       }
 //     }
-    
+
 //     // setting bounds on the canvas prevents balls from overlapping on update
 //     const upperLimit = new Vector(state.display.canvas.width - this.radius, state.display.canvas.height - this.radius);
 //     const lowerLimit = new Vector(0 + this.radius, 0 + this.radius);

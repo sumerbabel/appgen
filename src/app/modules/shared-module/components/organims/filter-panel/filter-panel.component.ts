@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {  Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { SearchFilter } from '@sharedModule/components/organims/filter-panel/domain/search-filter';

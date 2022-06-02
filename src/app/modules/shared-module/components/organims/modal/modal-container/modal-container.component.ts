@@ -8,15 +8,15 @@ import {
   ComponentRef,
   OnDestroy,
   ElementRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Modal } from '../model/modal.model';
-import { PositionEnum } from '../enum/position-enum';
 import { HtmlElementService } from '@sharedModule/services/html-element-service/html-element.service';
 
 @Component({
   selector: 'app-container',
   templateUrl: './modal-container.component.html',
-  styleUrls: ['./modal-container.component.scss'],
+  styleUrls: ['./modal-container.component.scss']
 })
 
 export class ModalContainerComponent implements OnDestroy {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
 import { Modal } from '@sharedModule/components/organims/modal/model/modal.model';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
@@ -13,202 +13,203 @@ import { SistemUseCases } from '../../use-case/sistem-use-case';
   selector: 'app-create-sistem',
   templateUrl: './create-sistem.component.html',
   styleUrls: ['./create-sistem.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateSistemComponent extends Modal implements OnInit {
   TITLE_HEADER_FORM = 'Nuevo Registro sistems';
   TEXT_FOOTER = '* Campos Obligatorios';
   ACTION_FORM: ModelAction[] = [ActionButton.SAVE, ActionButton.CANCEL];
 
-//--canvas
-@ViewChild('canvasRef', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
-private ctx: CanvasRenderingContext2D;
+  //--canvas
+  @ViewChild('canvasRef', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
+  private ctx: CanvasRenderingContext2D;
 
-private BB
-private offsetX:number
-private offsetY: number;
-private WIDTH :number;
-private HEIGHT:number;
+  private BB
+  private offsetX: number
+  private offsetY: number;
+  private WIDTH: number;
+  private HEIGHT: number;
 
-private dragok = false;
-private startX;
-private startY;
-private startprivate
-public  rects = [];
-//--canvas fin variables
+  private dragok = false;
+  private startX;
+  private startY;
+  private startprivate
+  public rects = [];
+  //--canvas fin variables
 
   constructor(
-    private _sistemUseCases:SistemUseCases,
+    private _sistemUseCases: SistemUseCases,
     private alertService: AlertService,
     private dialogService: DialogService,
-    private loaderService:LoaderService
+    private loaderService: LoaderService
   ) {
-    super();  
+    super();
   }
 
   sistem: Sistem;
-  modalInput(): void {}
+  modalInput(): void { }
   ngOnInit(): void {
 
 
-this.ctx = this.canvas.nativeElement.getContext("2d");
-this.BB = this.canvas.nativeElement.getBoundingClientRect();
+    this.ctx = this.canvas.nativeElement.getContext("2d");
+    this.BB = this.canvas.nativeElement.getBoundingClientRect();
 
-this.offsetX = this.BB.left;
-this.offsetY = this.BB.top+59;
+    this.offsetX = this.BB.left;
+    this.offsetY = this.BB.top + 59;
 
-this.WIDTH = this.canvas.nativeElement.width;
-this.HEIGHT = this.canvas.nativeElement.height;
+    this.WIDTH = this.canvas.nativeElement.width;
+    this.HEIGHT = this.canvas.nativeElement.height;
 
 
-this.rects.push({
-  x: 75 - 15,
-  y: 50 - 15,
-  width: 30,
-  height: 30,
-  fill: "#444444",
-  isDragging: false
-});
+    this.rects.push({
+      x: 75 - 15,
+      y: 50 - 15,
+      width: 30,
+      height: 30,
+      fill: "#444444",
+      isDragging: false
+    });
 
-this.rects.push({
-  x: 75 - 25,
-  y: 50 - 25,
-  width: 30,
-  height: 30,
-  fill: "#ff550d",
-  isDragging: false
-});
+    this.rects.push({
+      x: 75 - 25,
+      y: 50 - 25,
+      width: 30,
+      height: 30,
+      fill: "#ff550d",
+      isDragging: false
+    });
 
-this.rects.push({
-  x: 75 - 35,
-  y: 50 - 35,
-  width: 30,
-  height: 30,
-  fill: "#800080",
-  isDragging: false
-});
+    this.rects.push({
+      x: 75 - 35,
+      y: 50 - 35,
+      width: 30,
+      height: 30,
+      fill: "#800080",
+      isDragging: false
+    });
 
-this.rects.push({
-  x: 75 - 45,
-  y: 50 - 45,
-  width: 30,
-  height: 30,
-  fill: "#0c64e8",
-  isDragging: false
-});
+    this.rects.push({
+      x: 75 - 45,
+      y: 50 - 45,
+      width: 30,
+      height: 30,
+      fill: "#0c64e8",
+      isDragging: false
+    });
 
-this.canvas.nativeElement.addEventListener("mousedown", e => this.myDown(e));
-this.canvas.nativeElement.addEventListener("mousemove", e => this.myMove(e));
-this.canvas.nativeElement.addEventListener("mouseup", e => this.myUp(e));
+    this.canvas.nativeElement.addEventListener("mousedown", e => this.myDown(e));
+    this.canvas.nativeElement.addEventListener("mousemove", e => this.myMove(e));
+    this.canvas.nativeElement.addEventListener("mouseup", e => this.myUp(e));
 
-this.draw()
+    this.draw()
 
     this.sistem = Sistem.createSistemEmpty();
   }
 
-   clear() {
+  clear() {
     this.ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
-}
+  }
 
-// redraw the scene
- rect(x, y, w, h) {
-  this.ctx.beginPath();
-  this.ctx.rect(x, y, w, h);
-  this.ctx.closePath();
-  this.ctx.fill();
-}
+  // redraw the scene
+  rect(x, y, w, h) {
+    this.ctx.beginPath();
+    this.ctx.rect(x, y, w, h);
+    this.ctx.closePath();
+    this.ctx.fill();
+  }
 
- draw() {
+  draw() {
     this.clear();
     this.ctx.fillStyle = "#FAF7F8";
     this.rect(0, 0, this.WIDTH, this.HEIGHT);
 
     for (var i = 0; i < this.rects.length; i++) {
-        var r = this.rects[i];
-        this.ctx.fillStyle = r.fill;
-        this.rect(r.x, r.y, r.width, r.height);
+      var r = this.rects[i];
+      this.ctx.fillStyle = r.fill;
+      this.rect(r.x, r.y, r.width, r.height);
     }
-}
+  }
 
 
-//---------
+  //---------
 
- myDown(e:any) {
-  e.preventDefault();
-  e.stopPropagation();
+  myDown(e: any) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  let mx = parseInt((e.clientX - this.offsetX)+'');
-  let my = parseInt((e.clientY - this.offsetY)+'');
+    let mx = parseInt((e.clientX - this.offsetX) + '');
+    let my = parseInt((e.clientY - this.offsetY) + '');
 
-  // test each rect to see if mouse is inside
-  this.dragok = false;
-  for (let i = 0; i < this.rects.length; i++) {
+    // test each rect to see if mouse is inside
+    this.dragok = false;
+    for (let i = 0; i < this.rects.length; i++) {
       let r = this.rects[i];
       if (mx > r.x && mx < r.x + r.width && my > r.y && my < r.y + r.height) {
-          this.dragok = true;
-          r.isDragging = true;
-      } 
-      
+        this.dragok = true;
+        r.isDragging = true;
+      }
+
+    }
+    this.startX = mx;
+    this.startY = my;
   }
-  this.startX = mx;
-  this.startY = my;
-}
 
 
-// handle mouseup events
- myUp(e:any) {  
-  // tell the browser we're handling this mouse event
-  e.preventDefault();
-  e.stopPropagation();
+  // handle mouseup events
+  myUp(e: any) {
+    // tell the browser we're handling this mouse event
+    e.preventDefault();
+    e.stopPropagation();
 
-  // clear all the dragging flags
-  this.dragok = false;
-  for (let i = 0; i < this.rects.length; i++) {
+    // clear all the dragging flags
+    this.dragok = false;
+    for (let i = 0; i < this.rects.length; i++) {
       this.rects[i].isDragging = false;
+    }
   }
-}
 
 
-// handle mouse moves
- myMove(e) {
-  // if we're dragging anything...
-  if (this.dragok) {
+  // handle mouse moves
+  myMove(e) {
+    // if we're dragging anything...
+    if (this.dragok) {
 
       // tell the browser we're handling this mouse event
       e.preventDefault();
       e.stopPropagation();
 
       // get the current mouse position
-      let mx = parseInt((e.clientX - this.offsetX)+'');
-      let my = parseInt((e.clientY - this.offsetY)+'');
-     
+      let mx = parseInt((e.clientX - this.offsetX) + '');
+      let my = parseInt((e.clientY - this.offsetY) + '');
+
       // calculate the distance the mouse has moved
       // since the last mousemove
       let dx = mx - this.startX;
       let dy = my - this.startY;
 
-      // move each rect that isDragging 
+      // move each rect that isDragging
       // by the distance the mouse has moved
       // since the last mousemove
       for (let i = 0; i < this.rects.length; i++) {
-          let r = this.rects[i];
-          if (r.isDragging) {
-              r.x += dx;
-              r.y += dy;
-          }
+        let r = this.rects[i];
+        if (r.isDragging) {
+          r.x += dx;
+          r.y += dy;
+        }
       }
 
       // redraw the scene with the new rect positions
-  
+
       this.draw();
 
       // reset the starting mouse position for the next mousemove
       this.startX = mx;
       this.startY = my;
 
+    }
   }
-}
 
-//----------
+  //----------
 
 
   createSistem() {
@@ -279,23 +280,25 @@ this.draw()
       const formData = new FormData();
       let zipFile: JSZip = new JSZip();
       for (let index = 0; index < this.files.length; index++) {
-        zipFile.folder('zipFiles').file(this.files[index].name,this.files[index]);
+        zipFile.folder('zipFiles').file(this.files[index].name, this.files[index]);
       }
 
-      zipFile.generateAsync({type: "blob",
-      compression: "STORE"})
-      .then((content)=> {
+      zipFile.generateAsync({
+        type: "blob",
+        compression: "STORE"
+      })
+        .then((content) => {
 
 
-        const url = window.URL.createObjectURL(content);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download ='archivozip.zip';
-        a.click();
-        window.URL.revokeObjectURL(url);
-    }).finally(()=>{
-      this.loaderService.hide();
-    });
+          const url = window.URL.createObjectURL(content);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'archivozip.zip';
+          a.click();
+          window.URL.revokeObjectURL(url);
+        }).finally(() => {
+          this.loaderService.hide();
+        });
 
     } else {
       this.loaderService.hide();

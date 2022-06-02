@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { HtmlElementService } from '@sharedModule/services/html-element-service/html-element.service';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
@@ -8,6 +8,7 @@ import { StyleButtonEnum } from './style-enum/enum-style-button';
   selector: 'ui-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent implements OnInit {
   @Input() name: string;
@@ -70,7 +71,7 @@ export class ButtonComponent implements OnInit {
   } else{
     KeyFocus.keyDrownToFocus($event);
   }
-    
+
   }
 
 }

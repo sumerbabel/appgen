@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 @Component({
   selector: 'ui-input-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+  styleUrls: ['./checkbox.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent implements OnInit {
   @Input() value: string|boolean ='';
@@ -48,7 +49,7 @@ export class CheckboxComponent implements OnInit {
       this.keyPressEvent.emit($event);
     } else{
       KeyFocus.keyDrownToFocus($event);
-    }  
+    }
   }
 
 }
