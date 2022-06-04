@@ -38,7 +38,7 @@ const routes: Routes = [
 { path: 'files', loadChildren: fileModule,canActivate: [AuthGuard]},
 { path: 'sistem2-module', loadChildren: () => import('./modules/administrator/sistem2-module/sistem2-module.module').then(m => m.Sistem2ModuleModule) },
 { path: 'reserva', loadChildren: () => import('./modules/bussines/reserva/reserva-estado-general-module/reserva-estado-general.module').then(m => m.ReservaEstadoGeneralModule) },
-{ path: 'test-programas', loadChildren: () => import('./modules/demo/test-programas/test-programas.module').then(m => m.TestProgramasModule) }
+{ path: 'test-programas', loadChildren: () => import('./modules/demo/test-programas/module/test-programas.module').then(m => m.TestProgramasModule) }
 
 ];
 @NgModule({

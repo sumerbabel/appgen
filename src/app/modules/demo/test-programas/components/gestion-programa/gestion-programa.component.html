@@ -12,6 +12,7 @@
       [autoFocus]="true"
       (on-click)="createSistemOpenModal()"
     ></ui-button>
+    <p>{{programa |json}}</p>
 
     <ui-filter-panel
       [(searchFilter)]="tableModelSistem.searchFilter"

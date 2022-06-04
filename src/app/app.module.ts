@@ -21,7 +21,9 @@ import { SistemGateway } from './modules/administrator/sistem-module/domain/sist
 import { SistemService } from './modules/administrator/sistem-module/Infraestructure/sistem.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PROGRAMA_REPOSITORY_TYPE } from './modules/demo/test-programas/c-infraestructure/programa-respository-type';
 
+import { ProgramaHttpRepository } from './modules/demo/test-programas/c-infraestructure/programa-http-repository';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,10 @@ import { environment } from '../environments/environment';
       useClass: HttpGenericInterceptor,
       multi: true,
     },
-    {provide: SistemGateway, useClass: SistemService}
+    {provide: SistemGateway, useClass: SistemService},
+    {
+      provide: PROGRAMA_REPOSITORY_TYPE,useClass:ProgramaHttpRepository,
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

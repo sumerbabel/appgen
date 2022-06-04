@@ -9,6 +9,9 @@ import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { EventAction } from '@sharedModule/models-core/action-model';
 import { TableModel } from '@sharedModule/models-core/table-model';
 import { AccountService } from 'src/app/modules/core/security/service/account.service';
+import { Programa } from '../../a-domain/programa';
+import { ProgramaDto } from '../../a-domain/programa-dto';
+import { GetPrograma } from '../../b-use-cases/get-programa';
 import { Filter2Component } from '../filter/filter.component';
 
 @Component({
@@ -43,10 +46,11 @@ export class GestionProgramaComponent implements OnInit {
     private dialogService: DialogService,
     private modalService: ModalService,
     private accountService: AccountService,
+    private getPrograma: GetPrograma
   ) {
   }
 
- 
+
   ngOnInit(): void {
 
     this.getSitems();
@@ -56,11 +60,12 @@ export class GestionProgramaComponent implements OnInit {
   getSitems() {
 
         this.tableModelSistem.setDataTableAndPaginationToResponse([]);
-      
+
   }
+  programa :ProgramaDto
 
-  createSistemOpenModal(): void {
-
+  async createSistemOpenModal() {
+    this.programa =await this.getPrograma.internalExecute('0c148c82-45e4-41e2-8135-8a152e4becbd')
   }
 
   updateSistemOpenModal(sistem: any): void {
