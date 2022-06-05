@@ -10,7 +10,6 @@ import { ProgramaRepository } from "../a-domain/programa-repository";
 })
 export class ProgramaHttpRepository implements ProgramaRepository {
 
-
   constructor(private httpApiService: HttpApiService) {
     this.httpApiService.setUrlBaseResource(environment.apiUrl);
   }
@@ -60,19 +59,23 @@ export class ProgramaHttpRepository implements ProgramaRepository {
     return result.toPromise()
   }
 
+  async saveNew(parameter: ProgramaDto): Promise<void> {
+    const result =this.httpApiService.postResource(parameter,this.RESOURCE_RUTE)
+     .pipe(map((response: any) => response));
+    return result.toPromise()
+  }
+
   async findArrayByIds(ids: string[]): Promise<ProgramaDto> {
     throw new Error("Method not implemented.");
   }
   async findList(parameter: string): Promise<ProgramaDto[]> {
     throw new Error("Method not implemented.");
   }
-  async saveNew(parameter: ProgramaDto[]): Promise<void> {
+
+  async saveChanges(parameter: ProgramaDto): Promise<void> {
     throw new Error("Method not implemented.");
   }
-  async saveChanges(parameter: ProgramaDto[]): Promise<void> {
-    throw new Error("Method not implemented.");
-  }
-  async delete(parameter: ProgramaDto[]): Promise<void> {
+  async delete(parameter: ProgramaDto): Promise<void> {
     throw new Error("Method not implemented.");
   }
 

@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { ColumnModel } from '@sharedModule/components/molecules/tables/model/column-model';
-import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
-import { DialogService } from '@sharedModule/components/organims/dialogForm/service/dialog.service';
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { EventAction } from '@sharedModule/models-core/action-model';
 import { TableModel } from '@sharedModule/models-core/table-model';
-import { AccountService } from 'src/app/modules/core/security/service/account.service';
 import { Programa } from '../../a-domain/programa';
 import { ProgramaDto } from '../../a-domain/programa-dto';
+import { CreatePrograma } from '../../b-use-cases/create-programa';
 import { GetPrograma } from '../../b-use-cases/get-programa';
 import { Filter2Component } from '../filter/filter.component';
 
@@ -42,19 +40,29 @@ export class GestionProgramaComponent implements OnInit {
   );
 
   constructor(
-    private alertService: AlertService,
-    private dialogService: DialogService,
     private modalService: ModalService,
-    private accountService: AccountService,
-    private getPrograma: GetPrograma
+    private getPrograma: GetPrograma,
+    private createPrograma: CreatePrograma
   ) {
   }
 
-
+programa: Programa
   ngOnInit(): void {
 
     this.getSitems();
+    this.programa = this.createPrograma.newEmptyPrograma()
 
+  }
+
+  async actionFormEvent($event) {
+    switch ($event) {
+      case ActionGeneric.SAVE:
+      const resultSave= await this.createPrograma.save()
+      const resultGet = await this.createSistemOpenModal(this.programa._id)
+      console.log({resultSave})
+      console.log({resultGet})
+        break;
+    }
   }
 
   getSitems() {
@@ -62,10 +70,10 @@ export class GestionProgramaComponent implements OnInit {
         this.tableModelSistem.setDataTableAndPaginationToResponse([]);
 
   }
-  programa :ProgramaDto
+  programaDto :ProgramaDto
 
-  async createSistemOpenModal() {
-    this.programa =await this.getPrograma.internalExecute('0c148c82-45e4-41e2-8135-8a152e4becbd')
+  async createSistemOpenModal(id:string) {
+    this.programaDto =await this.getPrograma.internalExecute(id)
   }
 
   updateSistemOpenModal(sistem: any): void {
@@ -75,8 +83,6 @@ export class GestionProgramaComponent implements OnInit {
   deleteServiceExecute(sistem: any) {
 
   }
-
-
 
   tableSistemActions($event: EventAction<any>) {
     switch ($event.action) {

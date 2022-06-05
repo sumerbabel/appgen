@@ -22,13 +22,11 @@ export class formModel {
 
     public toDataPersistJson() {
       let objectJsonPersist = {id:''};
-
         Object.keys(this._originalValues).forEach((key) => {
           let key_p=key.replace('_', '');
           objectJsonPersist[key_p] = this[key];
         }
       );
-
       return objectJsonPersist;
     }
 
