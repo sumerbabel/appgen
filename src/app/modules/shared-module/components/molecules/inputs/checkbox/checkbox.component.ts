@@ -15,9 +15,27 @@ export class CheckboxComponent implements OnInit {
   @Output() valueChange = new EventEmitter<string|boolean>();
   @Output('key-press') keyPressEvent: EventEmitter<any> = new EventEmitter();
   @Output('on-blur') onBlurEvent: EventEmitter<string|boolean> = new EventEmitter();
+  @Input() labelDirectionLeft: boolean = false;
+
+  INPUT_TEXT_TOP = 'input-text-top';
+  INPUT_TEXT_LEFT = 'input-text-left';
+  LABEL_CUSTON_LEFT = 'label-left';
+  LABEL_CUSTON_TOP = 'label-top';
+  styleClassText: string;
+  styleClassLabel: string;
   constructor() { }
 
   ngOnInit(): void {
+
+    if (this.labelDirectionLeft) {
+      this.styleClassText = this.INPUT_TEXT_LEFT;
+      this.styleClassLabel = this.LABEL_CUSTON_LEFT;
+    } else {
+      this.styleClassText = this.INPUT_TEXT_TOP;
+      this.styleClassLabel = this.LABEL_CUSTON_TOP;
+    }
+
+
     if (this.isRequired){
       this.label = this.label+'*';
     }

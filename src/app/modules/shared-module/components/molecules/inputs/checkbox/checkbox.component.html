@@ -1,19 +1,19 @@
-<div class='input-text'>
-  <div *ngIf="label" class='label-custom'>
+<div class='input-text' [ngClass]="styleClassText">
+  <div *ngIf="label" [ngClass]="styleClassLabel">
     <label>{{label}}</label>
 </div>
   <label class="pure-material-checkbox">
-    <input 
-    type="checkbox"  
-    [ngModel]="value" 
-    [disabled]="disabled" 
-    (ngModelChange)="changeControlEvent($event)" 
-    (blur)="blurInput()" 
-    (keyup)="keyPress($event)" 
+    <input
+    type="checkbox"
+    [ngModel]="value"
+    [disabled]="disabled"
+    (ngModelChange)="changeControlEvent($event)"
+    (blur)="blurInput()"
+    (keyup)="keyPress($event)"
     class='label-custom input-key'>
 
     <span style="width:0px;"></span>
-    
+
   </label>
   <div class="conteiner-error" *ngIf ="errors.length > 0">
     <div class="error-p" *ngFor="let error of errors">{{error}}</div>

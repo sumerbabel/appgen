@@ -32,6 +32,8 @@ export class ActionButton {
     public static MINI_FILTER = { name: '',tooltip:'Filtros', action: ActionGeneric.OPEN, icon: Icons.FILTER, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
     public static MINI_CLEAR = { name: '',tooltip:'Limpiar', action: ActionGeneric.CLEAR, icon: Icons.CLEAR, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
 
+    public static MINI_SEARCH = { name: '',tooltip:'Buscar', action: ActionGeneric.EXECUTE, icon: Icons.SEARCH, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
+
     public static CLEAR = { name: 'Limpiar',tooltip:'Limpiar Filtros', action: ActionGeneric.CLEAR, icon: Icons.CLEAR, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
     public static SAVE = { name: 'Guardar',tooltip:'Guardar', action: ActionGeneric.SAVE, icon:Icons.SAVE, color: Colors.GREEN_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
     public static CANCEL = { name: 'Cancelar',tooltip:'Cancelar', action: ActionGeneric.CANCEL, icon:Icons.CANCEL, color: Colors.GRAY_LIGHT, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }

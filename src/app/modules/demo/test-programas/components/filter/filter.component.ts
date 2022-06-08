@@ -18,7 +18,25 @@ export class Filter2Component extends Modal implements OnInit {
     ActionButton.CLEAR,
   ];
 
+  listaTiposEntidad =[{id:1,name:'Universidad'}]
+  listaDenominacionesEntidades =[{id:1,name:'Universidad'}]
+  listaTiposAutorizacionEntidad=[{id:1,name:'Universidad'}]
+  listaNivelesAcademicos=[{id:1,name:'Universidad'}]
+  listaTiposAutorizacionPrograma=[{id:1,name:'Universidad'}]
+  listaDenominacionesPrograma=[{id:1,name:'Universidad'}]
+  listaVigencias=[{id:1,name:'Universidad'}]
+
+
   filter = {
+    tipoEntidad: { key: 'tipoEntidad', name: 'Tipo de entidad', value: null },
+    entidad: { key: 'entidad', name: 'Entidad', value: null },
+    tipoAutorizacionEntidad: { key: 'tipoAutorizacionEntidad', name: 'Tipo autorización entidad', value: null },
+    nivelAcademico: { key: 'nivelAcademico', name: 'Nivel académico', value: null },
+    tipoAutorizacionPrograma: { key: 'tipoAutorizacionPrograma', name: 'Tipo de autorización del programa', value: null },
+    programa: { key: 'programa', name: 'Programa', value: null },
+    codigoPrograma: { key: 'codigoPrograma', name: 'Código progama', value: null },
+    vigencia: { key: 'vigencia', name: 'Vigencia', value: null },
+    ofertaActual: { key: 'ofertaActual', name: 'Oferta actual', value: null },
     name: { key: 'name', name: 'Nombre', value: null },
     updateAtIni: {
       key: 'updated_at_ini',
@@ -44,7 +62,7 @@ export class Filter2Component extends Modal implements OnInit {
     super();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   actionFormEvent($event) {
     switch ($event) {

@@ -48,17 +48,14 @@ $iu-global-font-size-label: 13px;
 .label-top {
   font-size: $iu-global-font-size-label;
   margin-top: 7px;
-  min-width: 120px;
-  max-width: 180px;
+
   user-select: none;
 }
 
 .label-left {
   font-size: $iu-global-font-size-label;
   margin-top: 2px;
-  min-width: 150px;
-  max-width: 250px;
-  min-height: 28px;
+  width: 200px;
   user-select: none;
 }
 

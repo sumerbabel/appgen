@@ -18,15 +18,26 @@ import { Filter2Component } from '../filter/filter.component';
 })
 export class GestionProgramaComponent implements OnInit {
 
-  TITLE_HEADER_FORM = 'Lista de Sistems';
+  TITLE_HEADER_FORM = 'Gestión de programas por entidad';
   ACTION_BUTTON_CREATE = ActionButton.CREATE;
+  ACTION_BUTTON_SEARCH = ActionButton.MINI_SHOW
   SHOW_CLOSE_BUTTON_FORM = false;
   sistems: any[] = [];
 
   columnsTable: ColumnModel[] = [
-    { key: 'name', title: 'Name' },
-    { key: 'updated_at', title: 'Fecha Act.' },
-    { key: 'action', title: 'Acción', actionColum: true },
+    { key: 'codigoEntidad', title: 'Código entidad' },
+    { key: 'entidad', title: 'Entidad ' },
+    { key: 'nivelAcademico', title: 'Nivel académico' },
+    { key: 'codigo', title: 'Código' },
+    { key: 'programa', title: 'Denominación del programa' },
+    { key: 'atributoPrograma', title: 'Atributo programa' },
+    { key: 'valorAtributo', title: 'Valor atributo' },
+    { key: 'abreviatruaPrograma', title: 'Abreviatura programa' },
+    { key: 'vigencia', title: 'Vigencia' },
+    { key: 'fechaVigencia', title: 'Fecha de vigencia' },
+    { key: 'modalidades', title: 'Modalidades' },
+    { key: 'fechaRegistro', title: 'Fecha registro' },
+    { key: 'action', title: 'Acción', actionColum: true }
   ];
 
   actionsTable: ModelAction[] = [
@@ -66,8 +77,36 @@ programa: Programa
   }
 
   getSitems() {
+    let dataGrilla ={data:[
+      {codigoEntidad:'001',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'002',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'003',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'004',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'005',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'006',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'007',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'008',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'009',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'010',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'011',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'012',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'013',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'015',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'016',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'017',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'018',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'019',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'020',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'021',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'022',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'023',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'024',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'},
+      {codigoEntidad:'025',entidad:'Universidad General Nacional Mayor',nivelAcademico:'pregrado',codigo:'P001',programa:'Programa superior de administracion 1',atributoPrograma:'Modalidad',valorAtributo:'Presencial',abreviatruaPrograma:'Adultos que trabajan',vigencia:'Vigente', fechaVigencia:'10/01/2021', modalidades:'2',fechaRegistro:'10/01/2022'}
+    ]}
 
-        this.tableModelSistem.setDataTableAndPaginationToResponse([]);
+
+
+        this.tableModelSistem.setDataTableAndPaginationToResponse(dataGrilla);
 
   }
   programaDto :ProgramaDto

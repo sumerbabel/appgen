@@ -102,7 +102,7 @@ export class SelectModelComponent implements OnInit {
           this.textSelect = this.textName;
         }
       });
-    }
+    }else {this.textSelect  = null}
   }
 
   filterText: string;

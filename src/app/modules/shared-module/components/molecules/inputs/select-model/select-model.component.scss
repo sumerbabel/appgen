@@ -12,7 +12,7 @@ $iu-global-font-size-label: 13px;
   color: $iu-global-font-color;
   font-family: $iu-global-font;
   box-sizing: border-box;
-  
+
 display: flex;
 }
 
@@ -41,7 +41,6 @@ display: flex;
   width: 100%;
   min-width: 50px;
   user-select: none;
-
 }
 
 .input-text > .input-content > input {
@@ -96,8 +95,7 @@ display: flex;
 .label-left {
   font-size: $iu-global-font-size-label;
   margin-top: 2px;
-  min-width: 120px;
-  max-width: 180px;
+  width: 200px;
   min-height: 28px;
 }
 

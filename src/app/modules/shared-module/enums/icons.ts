@@ -35,5 +35,6 @@ export enum Icons{
     ALIGN_LEFT='fa fa-align-left',
     HELP='fa fa-question-circle',
     CLEAR='fa fa-eraser',
-    FILTER='fa fa-filter'
+    FILTER='fa fa-filter',
+    SEARCH='fa fa-search'
 }

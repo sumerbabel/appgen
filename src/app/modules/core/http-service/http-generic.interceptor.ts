@@ -14,13 +14,15 @@ import { LoaderService } from '@sharedModule/components/organims/loader/loader.s
 import { AlertService } from '@sharedModule/components/organims/alertForm/service/alert.service';
 import { User } from '../security/domain/user';
 import { LoginExpiredTokenService } from '../components/login-expired-token/service/login-expired-token.service';
-import { AccountService } from '../security/service/account.service';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpGenericInterceptor implements HttpInterceptor {
+
+  private countRequest = 0;
 
   constructor(private localStorageService: LocalStorageService, private loaderService: LoaderService, private alertService: AlertService, private loginExpiredTokenService: LoginExpiredTokenService) {
 
@@ -36,8 +38,10 @@ export class HttpGenericInterceptor implements HttpInterceptor {
       });
     }
 
-
-    this.loaderService.show();
+    if(this.countRequest==0){
+      this.loaderService.show();
+    }
+    this.countRequest++;
 
     return next.handle(cloned)
       .pipe(
@@ -61,7 +65,7 @@ export class HttpGenericInterceptor implements HttpInterceptor {
               if (!error['status']) {
                 this.alertService.openAlertWarning('error de conexión / servidor, intente nuevamente');
               }
-              return throwError(error['message']); 
+              return throwError(error['message']);
             }
 
           }
@@ -72,7 +76,10 @@ export class HttpGenericInterceptor implements HttpInterceptor {
           }
         }),
         finalize(() => {
-          this.loaderService.hide()
+          this.countRequest--;
+          if(this.countRequest==0){
+            this.loaderService.hide()
+          }
         }
         )
       )
