@@ -1,10 +1,9 @@
 <div class='filtro-panel'>
   <div *ngIf="searchFilter.existsFilter()" style="display: flex; flex-wrap:wrap; margin-right: 10px;">
-
     <ng-container *ngFor="let item of searchFilter.filter | keyvalue ">
-      <div class="filtro" *ngIf="item.value['value'] !=null" >
+      <div class="filtro" *ngIf="item.value['textValue'] !=null" >
         <div style="margin-top: -2px;">
-          <span >{{item.value['name']}}: {{item.value['value']}}</span>
+          <span >{{item.value['name']}}: {{item.value['textValue']}}</span>
         </div>
 
       </div>
@@ -13,7 +12,7 @@
   </div>
   <div style="margin-left: auto; display: flex; justify-content: flex-end;">
     <div class="line-key" style="display: inline-flex;">
-      <span *ngIf="searchFilter.existsFilter() ==false" style="color: rgb(197, 202, 202); font-size: 11px; margin-right: 10px;">Filtros de búsqueda</span>
+      <span *ngIf="searchFilter.existsFilter() ==false" class ="panel-text" >Filtros de búsqueda</span>
       <ui-button isActionOpenModal="true" (on-click)="filterOpen()" [actionProperties]="actionFilter" style="margin-right: 5px;"></ui-button>
       <ui-button *ngIf="!searchFilter.existsFilter()" (on-click)="filterSearch()" [actionProperties]="actionSearch"></ui-button>
      <ui-button *ngIf="searchFilter.existsFilter()" (on-click)="filterClear()" [actionProperties]="actionClear"></ui-button>

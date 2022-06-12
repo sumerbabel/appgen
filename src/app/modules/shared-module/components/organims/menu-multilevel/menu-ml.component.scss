@@ -1,3 +1,5 @@
+@import "src/assets/global-values.scss";
+
 .ui-ul {
   font-size: 16px;
   font-family: Segoe WPC, Segoe UI, sans-serif;
@@ -35,13 +37,15 @@
 }
 
 .ui-ul .ui-li .leaf .tree-node-el:hover, .tree-node-el:hover {
-  background-color: #125347;
+  //background-color: #125347;
+  background-color:$background-color-hover;
   justify-content: end;
   box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
 }
 
 .select-menu {
-  background-color: #125347;
+  //background-color: #125347;
+  background-color:$background-color-hover;
   box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
 }
 

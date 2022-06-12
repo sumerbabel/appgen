@@ -28,16 +28,16 @@ export class Filter2Component extends Modal implements OnInit {
 
 
   filter = {
-    tipoEntidad: { key: 'tipoEntidad', name: 'Tipo de entidad', value: null },
-    entidad: { key: 'entidad', name: 'Entidad', value: null },
-    tipoAutorizacionEntidad: { key: 'tipoAutorizacionEntidad', name: 'Tipo autorización entidad', value: null },
-    nivelAcademico: { key: 'nivelAcademico', name: 'Nivel académico', value: null },
-    tipoAutorizacionPrograma: { key: 'tipoAutorizacionPrograma', name: 'Tipo de autorización del programa', value: null },
-    programa: { key: 'programa', name: 'Programa', value: null },
-    codigoPrograma: { key: 'codigoPrograma', name: 'Código progama', value: null },
-    vigencia: { key: 'vigencia', name: 'Vigencia', value: null },
-    ofertaActual: { key: 'ofertaActual', name: 'Oferta actual', value: null },
-    name: { key: 'name', name: 'Nombre', value: null },
+    tipoEntidad: { key: 'tipoEntidad', name: 'Tipo de entidad', value: null, textValue:null },
+    entidad: { key: 'entidad', name: 'Entidad', value: null, textValue:null  },
+    tipoAutorizacionEntidad: { key: 'tipoAutorizacionEntidad', name: 'Tipo autorización entidad', value: null, textValue:null  },
+    nivelAcademico: { key: 'nivelAcademico', name: 'Nivel académico', value: null, textValue:null  },
+    tipoAutorizacionPrograma: { key: 'tipoAutorizacionPrograma', name: 'Tipo de autorización del programa', value: null , textValue:null  },
+    programa: { key: 'programa', name: 'Programa', value: null, textValue:null  },
+    codigoPrograma: { key: 'codigoPrograma', name: 'Código progama', value: null , textValue:null  },
+    vigencia: { key: 'vigencia', name: 'Vigencia', value: null, textValue:null  },
+    ofertaActual: { key: 'ofertaActual', name: 'Oferta actual', value: null, textValue:null  },
+    name: { key: 'name', name: 'Nombre', value: null , textValue:null },
     updateAtIni: {
       key: 'updated_at_ini',
       name: 'Fecha Registro Inicio',
@@ -80,4 +80,16 @@ export class Filter2Component extends Modal implements OnInit {
         break;
     }
   }
+
+  isEditMode = true
+  editModeAction(){
+    this.listaTiposEntidad =[
+      {id:1,name:'Universidad'},
+      {id:2,name:'Escuela de posgrado'},
+      {id:3,name:'Instituto superior'},
+      {id:4,name:'Escuela superior'}
+    ]
+    this.isEditMode = false
+  }
+
 }

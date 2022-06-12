@@ -1,14 +1,15 @@
+@import "src/assets/global-values.scss";
 .filtro{
   // background-color: #9eb1ba00;
-  border: #455e5a 1px solid;
+  border: $iu-global-borde-inverse 1px solid;
   border-radius: 10px;
-  color: #eaeaea;
+  color: $iu-global-font-color;
   padding-left: 6px;
   padding-right: 6px;
   padding-bottom: 0px;
   padding-top: 4px;
   margin: 2px;
-  font-size: 11px;
+  font-size: $iu-global-font-size-input;
   user-select: none;
   height: 17px;
   display: flex;
@@ -22,11 +23,19 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  background-color: #00000017;
+  background-color: $background-color-head;
   border-radius: 5px;
   overflow: auto;
   padding: 3px;
   margin-top: 5px;
   margin-bottom: 5px;
   justify-content: space-between;
+  font-size: $iu-global-font-size-label;
+}
+
+.panel-text{
+  color:$iu-global-font-color-disabled;
+  font-size:$iu-global-font-size-input;
+  margin-right: 10px;
+  margin-left: 10px;
 }

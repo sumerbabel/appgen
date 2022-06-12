@@ -10,6 +10,7 @@ import {
   ElementRef,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
+  SimpleChanges,
 } from '@angular/core';
 import { KeyFocus } from '@sharedModule/static-class/key-focus';
 import { ItemPanelComponent } from './item-panel/item-panel.component';
@@ -22,9 +23,11 @@ import { ItemPanelComponent } from './item-panel/item-panel.component';
 })
 export class SelectModelComponent implements OnInit {
   @Output() valueChange = new EventEmitter<any>();
+  @Output() textSelectChange = new EventEmitter<any>();
   @Output() itemSelect = new EventEmitter<any>();
   @Output('on-blur') onBlurEvent: EventEmitter<any> = new EventEmitter();
   @Input() value: any;
+  @Input() textSelect: any;
   @Input() errors: string[] = [];
   @Input() items: any[] = [];
   @Input() label: string;
@@ -35,9 +38,11 @@ export class SelectModelComponent implements OnInit {
   @Input() autoFocus: boolean = false;
   @Input() multiple: boolean = false;
   @Input() isRequired: boolean = false;
+  @Input() editMode: boolean = false;
+  @Output() editModeAction = new EventEmitter<any>();
   @Input() labelDirectionLeft: boolean = false;
 
-  textSelect: string;
+  //textSelect: string;
   textName: string;
   initialstyle = false;
 
@@ -94,7 +99,18 @@ export class SelectModelComponent implements OnInit {
     }
   }
 
-  ngOnChanges() {
+  ngOnChanges( changes: SimpleChanges) {
+
+
+    const valueEdit =changes['editMode']
+    if(valueEdit){
+      console.log('VALOR ACTUAL', valueEdit['currentValue'])
+      if(!valueEdit['currentValue']){
+        console.log('ENTRO AL VAOR');
+        this.onFocus()
+      };
+    }
+
     if (this.value) {
       this.items.forEach((item) => {
         if (item['id'] === this.value) {
@@ -104,6 +120,8 @@ export class SelectModelComponent implements OnInit {
       });
     }else {this.textSelect  = null}
   }
+
+
 
   filterText: string;
 
@@ -118,23 +136,18 @@ export class SelectModelComponent implements OnInit {
     this.displayOverlay();
   }
 
-  selectItemPanel(item: any) {
-    this.filterText = '';
-    this.value = item.id;
-    this.textSelect = item.name;
-    this.textName = item.name;
-    this.valueChange.emit(this.value);
-    this.itemSelect.emit({ id: this.value, name: this.textName });
-    this.clickExternal();
-  }
-
   clickExternal() {
     this.openPanel = false;
     this.textSelect = this.textName;
   }
 
   clickspan() {
-    this.onFocus();
+    this.editModeAction.emit(this.editMode)
+    if(!this.editMode){
+      console.log('muestra lista de items')
+      this.onFocus();
+    }
+
   }
 
   displayOverlay() {
@@ -165,6 +178,7 @@ export class SelectModelComponent implements OnInit {
       this.value = itemselect.id;
       this.valueChange.emit(this.value);
       this.itemSelect.emit(itemselect);
+      this.textSelectChange.emit(this.textSelect)
       this.inputTextContent.nativeElement.focus();
       overlayRef.dispose();
     });
@@ -174,7 +188,9 @@ export class SelectModelComponent implements OnInit {
   clickClear() {
     this.textSelect = null;
     this.value = null;
+    this.itemSelect.emit(null);
     this.valueChange.emit(this.value);
+    this.textSelectChange.emit(this.textSelect)
   }
 
   keyPress($event: any){

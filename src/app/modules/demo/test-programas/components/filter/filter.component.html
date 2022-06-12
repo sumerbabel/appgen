@@ -5,31 +5,31 @@
   (formAction)="actionFormEvent($event)"
 >
   <div style="max-width: 520px">
-    <ui-input-select-model [(value)]="filter.tipoEntidad.value"
+    <ui-input-select-model [(value)]="filter.tipoEntidad.value" [(textSelect)] ="filter.tipoEntidad.textValue" [editMode] ="isEditMode" (editModeAction)="editModeAction()"
     placeholder ='todos..' [label]="filter.tipoEntidad.name" [items]="listaTiposEntidad" labelDirectionLeft="false">
     </ui-input-select-model>
 
-    <ui-input-select-model [(value)]="filter.entidad.value"
+    <ui-input-select-model [(value)]="filter.entidad.value" [(textSelect)] ="filter.entidad.textValue"
     placeholder ='todos..' [label]="filter.entidad.name" [items]="listaDenominacionesEntidades" labelDirectionLeft="true">
     </ui-input-select-model>
 
-    <ui-input-select-model [(value)]="filter.tipoAutorizacionEntidad.value"
+    <ui-input-select-model [(value)]="filter.tipoAutorizacionEntidad.value" [(textSelect)] ="filter.tipoAutorizacionEntidad.textValue"
     placeholder ='todos..' [label]="filter.tipoAutorizacionEntidad.name" [items]="listaTiposAutorizacionEntidad" labelDirectionLeft="true">
     </ui-input-select-model>
 
-    <ui-input-select-model [(value)]="filter.nivelAcademico.value"
+    <ui-input-select-model [(value)]="filter.nivelAcademico.value" [(textSelect)] ="filter.nivelAcademico.textValue"
     placeholder ='todos..' [label]="filter.nivelAcademico.name" [items]="listaNivelesAcademicos" labelDirectionLeft="true">
     </ui-input-select-model>
 
-    <ui-input-select-model [(value)]="filter.tipoAutorizacionPrograma.value"
+    <ui-input-select-model [(value)]="filter.tipoAutorizacionPrograma.value" [(textSelect)] ="filter.tipoAutorizacionPrograma.textValue"
     placeholder ='todos..' [label]="filter.tipoAutorizacionPrograma.name" [items]="listaTiposAutorizacionPrograma" labelDirectionLeft="true">
     </ui-input-select-model>
 
-    <ui-input-select-model [(value)]="filter.programa.value"
+    <ui-input-select-model [(value)]="filter.programa.value" [(textSelect)] ="filter.programa.textValue"
     placeholder ='todos..' [label]="filter.programa.name" [items]="listaDenominacionesPrograma" labelDirectionLeft="true">
     </ui-input-select-model>
 
-    <ui-input-select-model [(value)]="filter.vigencia.value"
+    <ui-input-select-model [(value)]="filter.vigencia.value" [(textSelect)] ="filter.vigencia.textValue"
     placeholder ='todos..' [label]="filter.vigencia.name" [items]="listaVigencias" labelDirectionLeft="true">
     </ui-input-select-model>
 
@@ -38,6 +38,7 @@
     labelDirectionLeft="true"
     [label]="filter.codigoPrograma.name"
     [(value)]="filter.codigoPrograma.value"
+    [(value)]="filter.codigoPrograma.textValue"
   ></ui-input-text-model>
 
   <ui-input-checkbox
@@ -45,6 +46,7 @@
   labelDirectionLeft="true"
   [label]="filter.ofertaActual.name"
   [(value)]="filter.ofertaActual.value"
+  [(value)]="filter.ofertaActual.textValue"
 ></ui-input-checkbox>
 
   </div>
