@@ -28,7 +28,7 @@ export class Filter2Component extends Modal implements OnInit {
 
 
   filter = {
-    tipoEntidad: { key: 'tipoEntidad', name: 'Tipo de entidad', value: null, textValue:null },
+    tipoEntidad: { key: 'tipoEntidad', name: 'Tipo de entidad', value: 1, textValue:'valor inicial' },
     entidad: { key: 'entidad', name: 'Entidad', value: null, textValue:null  },
     tipoAutorizacionEntidad: { key: 'tipoAutorizacionEntidad', name: 'Tipo autorización entidad', value: null, textValue:null  },
     nivelAcademico: { key: 'nivelAcademico', name: 'Nivel académico', value: null, textValue:null  },

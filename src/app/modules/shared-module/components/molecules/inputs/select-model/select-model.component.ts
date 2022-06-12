@@ -100,13 +100,9 @@ export class SelectModelComponent implements OnInit {
   }
 
   ngOnChanges( changes: SimpleChanges) {
-
-
     const valueEdit =changes['editMode']
     if(valueEdit){
-      console.log('VALOR ACTUAL', valueEdit['currentValue'])
       if(!valueEdit['currentValue']){
-        console.log('ENTRO AL VAOR');
         this.onFocus()
       };
     }
@@ -120,10 +116,6 @@ export class SelectModelComponent implements OnInit {
       });
     }else {this.textSelect  = null}
   }
-
-
-
-  filterText: string;
 
   isinputBlur = false;
   blurInput() {
@@ -144,7 +136,6 @@ export class SelectModelComponent implements OnInit {
   clickspan() {
     this.editModeAction.emit(this.editMode)
     if(!this.editMode){
-      console.log('muestra lista de items')
       this.onFocus();
     }
 
@@ -170,10 +161,10 @@ export class SelectModelComponent implements OnInit {
     });
     const component = new ComponentPortal(ItemPanelComponent);
     const componentRef = overlayRef.attach(component);
-    componentRef.instance.items = this.items;
-    componentRef.instance.itemValue = {id:this.value, name:this.textName};
-    componentRef.instance.witdthPanel = this.inputTextContent.nativeElement.offsetWidth;
-    componentRef.instance.itemSelect.subscribe((itemselect) => {
+      componentRef.instance.items = this.items;
+      componentRef.instance.value =this.value
+      componentRef.instance.witdthPanel = this.inputTextContent.nativeElement.offsetWidth;
+      componentRef.instance.itemSelect.subscribe((itemselect) => {
       this.textSelect = itemselect.name;
       this.value = itemselect.id;
       this.valueChange.emit(this.value);

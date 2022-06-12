@@ -10,13 +10,12 @@ export class ItemPanelComponent implements OnInit {
   @Input() items: string[];
   @Input() witdthPanel:number;
   @Input() value:any;
-  @Input() itemValue:any;
   @Output() valueChange = new EventEmitter<any>();
   @Output() itemSelect = new EventEmitter<any>();
 
   @ViewChild('inputSearch')
   inputSearch: ElementRef;
-
+  valueSearch:string;
   constructor() { }
 
   ngOnInit(): void {
@@ -39,7 +38,7 @@ export class ItemPanelComponent implements OnInit {
   keyPress($event, item: any){
     if ($event.keyCode === 13 && item !=='' || $event.keyCode === 27) {
       if($event.keyCode === 27){
-        this.itemSelect.emit(this.itemValue);
+        this.itemSelect.emit(this.value);
       }else { let obj = {id:item.id, name:item.name};
       this.itemSelect.emit(obj);
     }

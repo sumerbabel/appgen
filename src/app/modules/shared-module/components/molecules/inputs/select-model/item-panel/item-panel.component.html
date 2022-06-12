@@ -1,13 +1,17 @@
 <div class='ui-panel-select conteiner-key' [ngStyle]="{'width': witdthPanel+'px'}">
 <div  class='ui-item-panel-ini line-key'>
   <div class="input-content">
-    <input class="input-key" #inputSearch [(ngModel)]="value"  cdkFocusInitial (keydown)="keyPress($event,'')">
+    <input class="input-key" #inputSearch [(ngModel)]="valueSearch"  cdkFocusInitial (keydown)="keyPress($event,'')">
   </div>
 
 </div>
-<ng-container *ngFor="let item of items |filter:value">
+<ng-container *ngFor="let item of items |filter:valueSearch">
   <div class="line-key">
-    <div class="ui-item-panel input-key" tabindex="-1" (click)="selectItemPanel(item)" (keydown)="keyPress($event, item)" >
+    <div class="ui-item-panel input-key" tabindex="-1"
+    (click)="selectItemPanel(item)"
+    (keydown)="keyPress($event, item)"
+    [ngStyle]="item['id'] == value && { 'background-color': '#0f0f0f33' }"
+    >
       {{item.name}}
     </div>
   </div>
