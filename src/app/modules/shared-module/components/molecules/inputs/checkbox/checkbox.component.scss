@@ -1,23 +1,20 @@
-
-// $iu-global-borde-input-h: rgb(11, 173, 152);
-// $content-color: #202527;
-// $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-//   "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-// $iu-global-font-color: rgba(255, 255, 255, 0.9);
-// $iu-global-borde-input-h: #0c536a;
-// $iu-global-borde-input: rgba(15, 15, 15, 0.2);
-// $iu-global-input-background: #202527;
-// $iu-global-font-size-input: 12px;
-// $iu-global-font-size-label: 13px;
-// $iu-global-font-size-label: 13px;
-
 @import '/src/assets/global-values.scss';
 
 .label-left {
   font-size: $iu-global-font-size-label;
   margin-top: 2px;
-  width: 156px;
+
+  width: 142px;
   min-height: 28px;
+  font-weight: 500;
+}
+
+.label-top {
+  font-size: $iu-global-font-size-label;
+  margin-top: 7px;
+
+  width: 200px;
+  font-weight: 500;
 }
 
 .input-text-left {
@@ -30,6 +27,7 @@
     margin-bottom: 3px;
     font-family:$iu-global-font ;
     color: $iu-global-font-color;
+    font-weight: 500;
 }
 
 .pure-material-checkbox {
@@ -62,6 +60,7 @@
   transform: scale(1);
   pointer-events: none;
   transition: opacity 0.3s, transform 0.2s;
+
 }
 
 /* Span */
@@ -69,6 +68,7 @@
   display: inline-block;
   width: 100%;
   cursor: pointer;
+
 }
 
 /* Box */
@@ -84,6 +84,7 @@
   height: 18px;
   vertical-align: top;
   transition: border-color 0.2s, background-color 0.2s;
+  border: solid 1px rgba(15, 15, 15, 0.2);
 }
 
 /* Checkmark */

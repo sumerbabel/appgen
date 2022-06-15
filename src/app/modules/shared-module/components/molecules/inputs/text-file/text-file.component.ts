@@ -36,21 +36,19 @@ export class TextFileComponent implements OnInit {
   changeControlEvent(event: any) {
     this.inputControlChange.emit(event);
     this.countArchives = event.target.files.length;
-    
+
   }
 
   onFileDropped($event) {
-    console.log('ENVENTO DRAGG', $event)
-
     this.files =$event
-    for (let index = 0; index < this.files.length; index++)  
+    for (let index = 0; index < this.files.length; index++)
     {  let obj={file:this.files[index],name:this.files[index]['name'],size:this.files[index]['size'],type:this.files[index]['type']}
       this.filex.push(obj);
 
-    } 
+    }
 
     console.log('FILES',this.filex)
-   
+
   }
 
   fileBrowseHandler($event){

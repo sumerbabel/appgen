@@ -28,12 +28,10 @@ export class TableUiComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('pagination data',this.paginationData)
    if (this.paginationData ==undefined ||this.paginationData.pages ==undefined ){
    this.paginationData = new Pagination(1,this.data.length,this.data.length,1,1,1,[])
    }
    this.itemPageSelected =this.paginationData.perPage
-   console.log('pagination data2',this.paginationData)
   }
 
   indexSelect=null;

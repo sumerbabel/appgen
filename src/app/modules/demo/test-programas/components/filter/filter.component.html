@@ -8,8 +8,6 @@
     <ui-input-select-model [(value)]="filter.tipoEntidad.value" [(textSelect)] ="filter.tipoEntidad.textValue" [editMode] ="isEditMode" (editModeAction)="editModeAction()"
     placeholder ='todos..' [label]="filter.tipoEntidad.name" [items]="listaTiposEntidad" labelDirectionLeft="false" [useLabelAsKey] ="true">
     </ui-input-select-model>
-    <p>{{filter|json}}</p>
-
     <ui-input-select-model [(value)]="filter.entidad.value" [(textSelect)] ="filter.entidad.textValue"
     placeholder ='todos..' [label]="filter.entidad.name" [items]="listaDenominacionesEntidades" labelDirectionLeft="true">
     </ui-input-select-model>

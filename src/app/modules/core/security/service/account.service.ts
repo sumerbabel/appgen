@@ -55,7 +55,7 @@ export class AccountService {
           this.userSubject.next(user);
           this.startRefreshTokenTimer();
         }
-      ),     
+      ),
       mergeMap((result: any) => this.menuService.getMenuUser()
         .pipe(map((menuResult: any[]) => {
           menuResult.forEach((item) => {
@@ -136,7 +136,7 @@ export class AccountService {
           menuResult.forEach((item) => {
             this.menuUser.value.push(MenuTree.createMenuNodeRecursive(item));
           });
-  
+
           let MenuActionsList: Array<MenuActions> = this.menuUser.value[0].getMenuList();
           this.setMenuListSession(MenuActionsList)
           this.router.navigate(['/']);
@@ -176,14 +176,13 @@ private refreshToken(){
         this.userSubject.next(user);
         this.startRefreshTokenTimer()
       }
-    )) 
+    ))
 }
 
-  
+
   private refreshTokenTimeout;
 
   public startRefreshTokenTimer() {
-    console.log('se ejecuta el startRefreshTokenTimer');
     if (this.userSubject.value) {
       let user: User = this.userSubject.value;
       let dateexpired = new Date(user.expiredTokenMinutes)
@@ -195,16 +194,15 @@ private refreshToken(){
       const utimateActionDate = new Date(this.localStorageService.get('utimateActionDate'));
       const utimateActionTime = dateNow-utimateActionDate.getTime()
       let diferencia = timeout-utimateActionTime
-      console.log('utimateActionDate', utimateActionTime)
+
       this.refreshTokenTimeout = setTimeout(() =>{
 
         if(diferencia>=0 && diferencia<=(timeout-minute)){
-          console.log('se ejecuta el timeout REFRESH TOKEN');
           this.refreshToken().subscribe()
         }else {
           console.log('no ejecutar REFRESH');
         }
-        
+
       }
        , timeout);
 

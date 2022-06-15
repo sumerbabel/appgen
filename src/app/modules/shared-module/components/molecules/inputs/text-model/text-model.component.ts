@@ -59,7 +59,6 @@ export class TextModelComponent implements OnInit {
   }
 
   changeControlEvent(event: any){
-    console.log('change_input',event)
     this.value =event
     this.valueChange.emit(this.value)
   }

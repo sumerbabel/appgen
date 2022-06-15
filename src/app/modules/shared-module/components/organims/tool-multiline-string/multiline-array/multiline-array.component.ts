@@ -76,7 +76,6 @@ export class MultilineArrayComponent extends Modal implements OnInit {
     let textComplit: string;
     textComplit = this.textInput;
     this.objectTree = stringToTreeObect(textComplit,this.textoSaltoLinea)
-    console.log('resultado',textConvertToTreeObject(textComplit,this.textoSaltoLinea))
     this.arrayText=[]
     this.arrayTotree(this.objectTree);
   }

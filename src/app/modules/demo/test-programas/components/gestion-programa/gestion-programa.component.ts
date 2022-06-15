@@ -70,8 +70,6 @@ programa: Programa
       case ActionGeneric.SAVE:
       const resultSave= await this.createPrograma.save()
       const resultGet = await this.createSistemOpenModal(this.programa._id)
-      console.log({resultSave})
-      console.log({resultGet})
         break;
     }
   }

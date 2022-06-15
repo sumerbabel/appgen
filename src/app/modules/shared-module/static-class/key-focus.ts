@@ -1,8 +1,6 @@
 export class KeyFocus {
   public static keyDrownToFocus(event: any) {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft' || event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      console.log('evento')
-      //debugger;
       function collectionHas(a, b) {
         for (var i = 0, len = a.length; i < len; i++) {
           if (a[i] == b) return true;
@@ -21,7 +19,7 @@ export class KeyFocus {
 
       const item = event.target;
       const parent = findParentBySelector(item, '.line-key')
-      if (parent ==null){return} 
+      if (parent ==null){return}
       const parentAllItem = parent?.querySelectorAll('.input-key')
       let indexLevelOne = Array.from(parentAllItem).indexOf(item)
       const lengthLevelOne = parentAllItem.length;
@@ -45,7 +43,7 @@ export class KeyFocus {
           parentAllItem[decrementLevelOne]?.focus();
           break;
         case 'ArrowDown':
-        
+
           let countItemsDown = parentCeroAllItem[incrementLevelCero].querySelectorAll('.input-key').length;
           if ((countItemsDown - 1) < indexLevelOne) {
             indexLevelOne = countItemsDown - 1

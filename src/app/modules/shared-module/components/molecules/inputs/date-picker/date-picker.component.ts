@@ -69,9 +69,7 @@ export class DatePickerComponent implements OnInit {
   }
 
     keyPress($event: any){
-      console.log('entra a keypress')
       if ($event.keyCode === 13) {
-        //this.clickspan()
     } else{
       KeyFocus.keyDrownToFocus($event);
     }

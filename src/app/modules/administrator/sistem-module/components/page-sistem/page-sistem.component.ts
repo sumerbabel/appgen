@@ -137,21 +137,16 @@ onClick = (e: any) => {
 
 
  handleMouseDown(e:any) {
-
     e.preventDefault();
     //debugger;
     this.startX = parseInt(e.clientX - this.offsetX+'');
     this.startY = parseInt(e.clientY - this.offsetY+'');
-  console.log('e.clientX',e.clientX,'e.clientY',e.clientY)
+
     // Put your mousedown stuff here
     let dx = this.startX - this.circle.x;
     let dy = this.startY - this.circle.y;
-    console.log(this.startX,this.startY, dx,dy)
     this.isDown = (dx * dx + dy * dy < this.circle.r * this.circle.r);
-    console.log(this.startX,this.startY, dx,dy)
-    console.log('dx * dx + dy * dy ',dx * dx + dy * dy )
-    console.log('isDown',this.isDown)
-    console.log('this.circle.r * this.circle.r',this.circle.r * this.circle.r)
+
 }
 
  handleMouseUp(e) {
@@ -246,7 +241,6 @@ onClick = (e: any) => {
 
     this.getSitems();
     const menusession = this.accountService.getMenuSession()
-    console.log('4. INICIA PAGE SISTEM MNEU',menusession )
   }
 
   getSitems() {

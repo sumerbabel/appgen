@@ -64,7 +64,6 @@ ngAfterViewInit() {
   }
 
   changeControlEvent(event: any){
-    console.log('change',event)
     this.value =event
     this.valueChange.emit(this.value)
   }
@@ -78,7 +77,7 @@ ngAfterViewInit() {
   }
   count =1
   keyPress($event){
-    console.log('keypress',$event)
+
     if ($event.keyCode === 13) {
       this.keyPressEvent.emit($event);
     } else{
@@ -89,6 +88,5 @@ ngAfterViewInit() {
     }
   }
   clickevent($event){
-    console.log('clikk',$event)
   }
 }

@@ -1,10 +1,11 @@
 
- <div style="width:1600px;">
+
  <ui-form-base
   [titleHeader]="TITLE_HEADER_FORM"
   [showCloseButton]="SHOW_CLOSE_BUTTON_FORM"
   (formAction)="actionFormEvent($event)"
-  [errors]="programa.listErrorsRulesBussines">
+  [errors]="programa.listErrorsRulesBussines"
+  >
 
     <ui-filter-panel [(searchFilter)]="tableModelSistem.searchFilter" (openFilter)="filterOpenModal()" style="width:98% ;"
       (cleartFilter)="filterClear()">
@@ -31,4 +32,4 @@
           [actions]="tableModelSistem.actionArray" [data]="tableModelSistem.dataArray"
           [paginationData]="tableModelSistem.pagination" (actionEvent)="tableSistemActions($event)"></ui-table>
   </ui-form-base>
-</div>
+

@@ -16,11 +16,9 @@ export class Sistem extends formModel implements DataModel {
     return this._id;
   }
   setName(name: string) {
-    console.log('set name', name)
     this._name = name;
   }
   get name(): string {
-    console.log('get name', this)
     return this._name;
   }
   static createSistem(object: Object): Sistem {

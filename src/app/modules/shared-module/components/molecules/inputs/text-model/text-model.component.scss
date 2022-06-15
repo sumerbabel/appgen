@@ -1,19 +1,10 @@
 @import '/src/assets/global-values.scss';
 
-// $content-color: #3f4447;
-// $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-//   "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-// $iu-global-borde-input-h: rgb(11, 173, 152);
-// $iu-global-borde-input: rgba(15, 15, 15, 0.2);
-// $iu-global-input-background: rgba(15, 15, 15, 0.3);
-// $iu-global-font-color: rgba(255, 255, 255, 0.9);
-// $iu-global-font-size-input: 12px;
-// $iu-global-font-size-label: 13px;
-
 .input-text {
   color: $iu-global-font-color;
   font-family: $iu-global-font;
   width: 100%;
+  margin-top: 0px;
 }
 
 .input-text-top {
@@ -39,6 +30,7 @@
   padding-top: 0px;
   padding-bottom: 0px;
   padding-right: 5px;
+  margin-top: 0px;
   height: 21px;
   width: 100%;
   font-size: $iu-global-font-size-input;
@@ -49,16 +41,17 @@
 
 .label-top {
   font-size: $iu-global-font-size-label;
-  margin-top: 7px;
-
+  margin-top: 0px;
+  font-weight: 500;
   user-select: none;
 }
 
 .label-left {
   font-size: $iu-global-font-size-label;
-  margin-top: 2px;
+  margin-top: 0px;
   width: 200px;
   user-select: none;
+  font-weight: 500;
 }
 
 .input-text > .input-content > input:focus {

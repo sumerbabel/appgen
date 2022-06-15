@@ -21,34 +21,35 @@
 
 <!--This is where my before login router stays-->
 <div class="ui-container" *ngIf="user">
-  <app-header>
-    <ui-avatar [name]="user.username" (on-click)="openModalUserProfile()"></ui-avatar>
-    <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-align-left" (on-click)="openToolMultilineString()">
-    </ui-button>
-    <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-align-left" (on-click)="openTextToArray()">
-    </ui-button>
 
-    <div style="display: flex; width: 100%;justify-content: flex-end;">
-      <div class="btn-logout">
-        <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-power-off" (on-click)="logout()">
-        </ui-button>
-      </div>
-
-      <div class="btn-menu-movil">
-        <ui-button styleClass="MINIMXS2" color="#303b43" icon="fa fa-bars" (on-click)="openMenuMovil()">
-        </ui-button>
-      </div>
-    </div>
-  </app-header>
 
   <app-nav>
-    <div class="ui-item-nav">
+    <div class="ui-item-nav-header">
       <div class="ui-title-app"><span>Sumer Code </span></div>
     </div>
-    <div class="ui-item-nav">
-      <div style="display: flex; width:100%;justify-content:flex-end">
-        <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)" [menuTree]="menuTree"></ui-menu>
+    <app-header>
+      <ui-avatar [name]="user.username" (on-click)="openModalUserProfile()"></ui-avatar>
+      <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-align-left" (on-click)="openToolMultilineString()">
+      </ui-button>
+      <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-align-left" (on-click)="openTextToArray()">
+      </ui-button>
+
+      <div style="display: flex; width: 100%;justify-content: flex-end;">
+        <div class="btn-logout">
+          <ui-button styleClass="minimXs" color="#303b43" icon="fa fa-power-off" (on-click)="logout()">
+          </ui-button>
+        </div>
+
+        <div class="btn-menu-movil">
+          <ui-button styleClass="MINIMXS2" color="#303b43" icon="fa fa-bars" (on-click)="openMenuMovil()">
+          </ui-button>
+        </div>
       </div>
+    </app-header>
+
+
+    <div class="ui-item-nav-menu">
+        <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)" [menuTree]="menuTree"></ui-menu>
     </div>
   </app-nav>
 
@@ -60,7 +61,7 @@
       <ng-container *ngTemplateOutlet="template"></ng-container>
     </div>
   </div>
-  <app-footer></app-footer>
+  <!-- <app-footer></app-footer> -->
 
 </div>
 

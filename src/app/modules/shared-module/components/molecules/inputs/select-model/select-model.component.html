@@ -1,22 +1,42 @@
+<div class="input-text" [ngClass]="styleClassText">
 
-<div  class='input-text '  [ngClass]="styleClassText">
- <div *ngIf="label" [ngClass]="styleClassLabel" style="margin-bottom: 3px;">
-    <label >{{label}}</label>
+  <div *ngIf="label" [ngClass]="styleClassLabel" style="margin-bottom: 3px">
+    <label>{{ label }}</label>
   </div>
-
-  <div class="input-key div-input" tabindex="-1"   #inputTextContent (keydown)="keyPress($event)">
-    <div style="width: 100%;height: 100%;" (click)="clickspan()" ><span style="margin-left: 5px;">{{textSelect}}</span>
-    <span *ngIf="!textSelect" style="color: #717174; margin-right: 10px;">{{placeholder}}</span>
+<div class="conteiner-input" style="width: 100%; display: inline;">
+  <div
+    class="input-key div-input"
+    tabindex="-1"
+    #inputTextContent
+    (keydown)="keyPress($event)"
+  >
+    <div style="width: 100%; height: 100%" (click)="clickspan()">
+      <span style="margin-left: 5px">{{ textSelect }}</span>
+      <span *ngIf="!textSelect" style="color: #717174; margin-right: 10px">{{
+        placeholder
+      }}</span>
     </div>
-      <div style="display: flex; width: 35px; height: 100%; justify-content: center;" *ngIf="textSelect"  (click)="clickClear()">
-        <span>x</span>
-      </div>
-     <div (click)="clickspan()" style="height: 100%; width: 35px;display: flex; justify-content: center;">
+    <div
+      style="display: flex; width: 35px; height: 100%; justify-content: center"
+      *ngIf="textSelect"
+      (click)="clickClear()"
+    >
+      <span>x</span>
+    </div>
+    <div
+      (click)="clickspan()"
+      style="height: 100%; width: 35px; display: flex; justify-content: center"
+    >
       <span class="ui-icon-select"></span>
-     </div>
+    </div>
+
   </div>
 
-  <div *ngIf="errors.length>0">
-    <p class="error-p" *ngFor="let error of errors" style="color: brown;">{{error}}</p>
+  <div class="conteiner-error" *ngIf="errors.length > 0">
+    <div class="error-p" *ngFor="let error of errors">
+      {{ error }}
+    </div>
   </div>
 </div>
+</div>
+

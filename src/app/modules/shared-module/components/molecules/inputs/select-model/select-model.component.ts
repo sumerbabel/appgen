@@ -43,7 +43,6 @@ export class SelectModelComponent implements OnInit {
   @Output() editModeAction = new EventEmitter<any>();
   @Input() labelDirectionLeft: boolean = false;
 
-  //textSelect: string;
   textName: string;
   initialstyle = false;
 
@@ -90,48 +89,8 @@ export class SelectModelComponent implements OnInit {
       }
     }
 
-    if (this.value) {
-      let coincidencias =0
-      this.errors=[]
-      this.items.forEach((item) => {
-        let keyValue='id'
-        if(this.useLabelAsKey){
-          keyValue ='name'
-        }
+    this.validateValueInputInItems()
 
-       const comparar = String(item[keyValue]).trim().localeCompare(String(this.value.trim()), 'es', { sensitivity: 'base' })
-
-        if (comparar ==0) {
-          this.value =item['id']
-          this.textName = item['name'];
-          this.textSelect = this.textName;
-          coincidencias++;
-          if(this.useLabelAsKey){
-            this.valueChange.emit(this.value);
-          }
-        }
-      });
-      if (coincidencias==0){
-        this.errors.push('El valor ingresado no corresponde con la lista de valores válidos.')
-      }
-    }else {this.textSelect  = null}
-
-    // if (this.value) {
-    //   this.items.forEach((item) => {
-    //     let keyValue='id'
-    //     if(this.useLabelAsKey){
-    //       keyValue ='name'
-    //     }
-    //      console.log({keyValue})
-    //     if (String(item[keyValue]) === String(this.value)) {
-
-    //       this.value =item['id']
-    //       this.textName = item['name'];
-    //       this.textSelect = this.textName;
-    //       console.log( 'value',this.value)
-    //     }
-    //   });
-    // }
   }
 
   ngOnChanges( changes: SimpleChanges) {
@@ -141,22 +100,45 @@ export class SelectModelComponent implements OnInit {
         this.onFocus()
       };
     }
+    const valueChange =changes['value']
+    if(valueChange){
+      this.validateValueInputInItems()
+    }
+  }
 
+  validateValueInputInItems(){
     if (this.value) {
+      let coincidencias =0
+      this.errors=[]
       this.items.forEach((item) => {
         let keyValue='id'
         if(this.useLabelAsKey){
           keyValue ='name'
         }
-        console.log('comparando',
-        String(item[keyValue]).localeCompare(String(this.value), 'es', { sensitivity: 'base' })
-        );
-        if (item[keyValue] === this.value) {
+
+       const comparar = String(item[keyValue]).trim().localeCompare(String(this.value).trim(), 'es', { sensitivity: 'base' })
+        console.log('comparar',String(item[keyValue]).trim(),String(this.value).trim())
+        if (comparar ==0) {
           this.value =item['id']
           this.textName = item['name'];
           this.textSelect = this.textName;
+          coincidencias++;
+          if(this.useLabelAsKey){
+            this.valueChange.emit(this.value);
+          }
+        } else {
+          const comparar = String(item[keyValue]).trim().localeCompare(String(this.textSelect).trim(), 'es', { sensitivity: 'base' })
+          if (comparar ==0){
+            this.value =item['id']
+            this.textName = item['name'];
+            this.textSelect = this.textName;
+            coincidencias++;
+          }
         }
       });
+      if (coincidencias==0){
+        this.errors.push('El valor ingresado no es válido.')
+      }
     }else {this.textSelect  = null}
   }
 
