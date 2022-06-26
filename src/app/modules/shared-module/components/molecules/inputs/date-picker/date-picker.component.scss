@@ -1,29 +1,28 @@
-// $content-color: #3f4447;
-// $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-//   "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-// $iu-global-borde-input-h: rgb(11, 173, 152);
-// $iu-global-borde-input: rgba(15, 15, 15, 0.2);
-// $iu-global-input-background: rgba(15, 15, 15, 0.3);
-// $iu-global-font-color: rgba(255, 255, 255, 0.9);
-// $iu-global-font-size-input: 12px;
-// $iu-global-font-size-label: 13px;
-// $iu-global-font-size-label: 13px;
-
 @import '/src/assets/global-values.scss';
 
 .input-text {
+  margin-bottom: 3px;
+  margin-top: -3px !important;
   color: $iu-global-font-color;
   font-family: $iu-global-font;
+  display: inline-flex;
+  box-sizing: border-box;
   width: 100%;
+
+  padding: 0px;
+  position: relative;
 }
 
 .input-text-top {
   width: 100%;
+  margin-top: -30px !important;
 }
 
 .input-text-left {
   display: inline-flex;
   width: 100%;
+  margin-bottom: 3px;
+  margin-top: -3px;
 }
 
 .input-content {
@@ -51,18 +50,24 @@
 
 .label-top {
   font-size: $iu-global-font-size-label;
-  margin-top: 7px;
-  min-width: 120px;
-  max-width: 180px;
+  font-weight: 500;
   user-select: none;
 }
 
 .label-left {
   font-size: $iu-global-font-size-label;
-  margin-top: 2px;
-  width: 200px;
-  min-height: 28px;
+  width: 277px;
   user-select: none;
+  font-weight: 500;
+
+  padding: 0px;
+  margin: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 3px;
+  box-sizing: border-box;
+  position: relative;
+
 }
 
 .input-text > .input-content > input:focus {
@@ -90,7 +95,6 @@
   color: rgb(255, 255, 255);
 }
 
-
 ::ng-deep .mat-calendar {
   background:#272e31;
   border-radius: 5px;
@@ -99,7 +103,6 @@
 ::ng-deep .mat-datepicker-content {
   border-radius: 7px !important;
 }
-
 
 ::ng-deep .mat-calendar-header {
   color: #e7e7e7;

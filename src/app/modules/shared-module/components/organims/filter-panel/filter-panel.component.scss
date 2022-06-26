@@ -1,9 +1,9 @@
 @import "src/assets/global-values.scss";
 .filtro{
-  // background-color: #9eb1ba00;
-  border: $iu-global-borde-inverse 1px solid;
-  border-radius: 10px;
-  color: $iu-global-font-color;
+  border: $iu-global-borde-inverse 2px solid;
+  border-radius: 8px;
+  color: $iu-global-font-color-important;
+  font-weight: 500;
   padding-left: 6px;
   padding-right: 6px;
   padding-bottom: 0px;

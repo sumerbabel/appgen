@@ -1,0 +1,78 @@
+<ui-form-base
+  [titleHeader]="TITLE_HEADER_FORM"
+  [showCloseButton]="SHOW_CLOSE_BUTTON_FORM"
+  [actions]="ACTION_FORM"
+  (formAction)="actionFormEvent($event)"
+  [minWidth]="'720px'"
+>
+<div class="ui-header">
+  <span>Entidad : Universidad Nacional del Centro del Perú</span>
+  <span>Nivel académico : Pregrado</span>
+  <span>Programa : Nuevo programa</span>
+</div>
+
+<div class="ui-tab-container">
+  <div class="ui-tab-active"> Datos generales </div>
+  <div class="ui-tab">  Atributos </div>
+  <div class="ui-tab">  Clasificador</div>
+  <div class="ui-tab">  Otros datos</div>
+  </div>
+
+  <div class="ui-section">
+
+    <ui-button [actionProperties]="OTRAS_OPCIONES_BTN"></ui-button>
+  </div>
+
+  <ui-input-select-model
+  placeholder="todos.."
+  label="Tipo de entidad"
+  > </ui-input-select-model>
+
+  <ui-input-select-model
+  placeholder="todos.."
+  label="Entidad"
+  > </ui-input-select-model>
+
+  <ui-input-select-model
+  placeholder="todos.."
+  label="Nivel académico"
+  > </ui-input-select-model>
+
+  <ui-input-select-model
+  placeholder="todos.."
+  label="Denominación del programa"
+  > </ui-input-select-model>
+
+  <ui-input-text-model
+    class="line-key"
+    labelDirectionLeft="true"
+    label="Abreviatura del progama"
+  ></ui-input-text-model>
+
+  <ui-input-select-model
+  placeholder="todos.."
+  label="Vigencia"
+  > </ui-input-select-model>
+
+  <ui-input-date label="Fecha de vigencia" labelDirectionLeft="true">
+  </ui-input-date>
+
+<div class="ui-section">
+  <ui-input-checkbox
+    class="line-key"
+    label="Sólo para admisión y matrícula"
+  ></ui-input-checkbox>
+
+  <ui-input-checkbox
+  class="line-key"
+  label="EFI (Espacio formativo itinerante)"
+></ui-input-checkbox>
+
+
+</div>
+
+<div class="ui-section">
+<ui-button [actionProperties]="DOCUMENTOS_BTN"></ui-button>
+</div>
+
+</ui-form-base>

@@ -18,7 +18,7 @@
 </div>
 
 <div class="table-conteiner">
-  <table class="zui-table zui-table-rounded">
+  <table class="zui-table zui-table-rounded zui-table-highlight">
     <thead  *ngIf="columns">
       <tr class="line-key">
         <th *ngIf="viewOrdeColumn">Nº</th>
@@ -35,24 +35,20 @@
     </thead>
     <tbody *ngIf="data">
       <ng-container *ngFor="let itemTable of  data ; let index = index">
-      <tr class="line-key" [ngClass]="{'select-row': indexSelect == index }">
+      <tr class="line-key line-row" [ngClass]="{'select-row': indexSelect == index }">
 
         <td *ngIf="viewOrdeColumn"><div class="rownum">{{index+paginationData._rowNum}}</div></td>
         <ng-container *ngIf="!templateRow">
           <td *ngFor="let itemColumn of  columns">
-            {{itemTable[itemColumn.key]}}
+
+              {{itemTable[itemColumn.key]}}
 
               <div  *ngIf="itemColumn.actionColum===true" [ngClass]="{'colum-action':itemColumn.actionColum === true}"  >
-
                 <ng-container *ngFor="let itemAction of actions">
-
                   <ui-button isActionOpenModal="true" style="margin-left: 3px;" [actionProperties]="itemAction"
                     (on-click)="onClickAction(itemAction.action,itemTable,index)"></ui-button>
-
                 </ng-container>
               </div>
-
-
           </td>
         </ng-container>
         <ng-container *ngTemplateOutlet="templateRow; context {$implicit: itemTable}">

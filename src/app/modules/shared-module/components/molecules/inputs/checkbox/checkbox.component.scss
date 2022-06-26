@@ -3,32 +3,38 @@
 .label-left {
   font-size: $iu-global-font-size-label;
   margin-top: 2px;
-
-  width: 142px;
+  width: 274px;
   min-height: 28px;
   font-weight: 500;
+  margin-left: 3px;
+  position: relative;
+}
+
+.width-label-max{
+  width: 100%;
 }
 
 .label-top {
   font-size: $iu-global-font-size-label;
-  margin-top: 7px;
-
   width: 200px;
   font-weight: 500;
 }
 
 .input-text-left {
-  display: inline-flex;
+  box-sizing: border-box;
+  display: flex;
   width: 100%;
+  margin-bottom: 3px;
 }
 
 
-.label-custom {
-    margin-bottom: 3px;
-    font-family:$iu-global-font ;
-    color: $iu-global-font-color;
-    font-weight: 500;
-}
+// .label-custom {
+//     margin-bottom: 3px;
+//     font-family:$iu-global-font ;
+//     color: $iu-global-font-color;
+//     font-weight: 500;
+//     width: 200px;
+// }
 
 .pure-material-checkbox {
   z-index: 0;

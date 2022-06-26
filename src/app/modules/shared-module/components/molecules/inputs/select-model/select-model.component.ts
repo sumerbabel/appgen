@@ -31,6 +31,7 @@ export class SelectModelComponent implements OnInit {
   @Input() errors: string[] = [];
   @Input() items: any[] = [];
   @Input() label: string;
+  @Input() labelWidth:string;
   @Input() placeholder: string = '';
   @Input() bindValue: string = 'id';
   @Input() bindLabel: string = 'name';

@@ -1,10 +1,24 @@
 @import '/src/assets/global-values.scss';
 
+// .input-text2{
+//   width: 100%;
+//   height: 21px;
+//   border:solid 1px red;
+//   box-sizing: border-box;
+//   margin-top: -1px;
+//   margin-bottom: 3px;
+//   color:red;
+// }
 .input-text {
   color: $iu-global-font-color;
   font-family: $iu-global-font;
   width: 100%;
-  margin-top: 0px;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: -2px;
+  margin-bottom: 4px;
+  display: flex;
+
 }
 
 .input-text-top {
@@ -13,7 +27,10 @@
 
 .input-text-left {
   display: inline-flex;
+  box-sizing: border-box;
   width: 100%;
+  position: relative;
+  margin-bottom: 4px;
 }
 
 .input-content {
@@ -25,33 +42,40 @@
   border-radius: 3px;
   border: solid 1px rgba(15, 15, 15, 0.2);
   box-shadow: (15, 15, 15, 0.2) 0px 0px 0px 1px inset,
-    rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
+   rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
   padding-left: 5px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-right: 5px;
   margin-top: 0px;
+  margin-bottom: 0px;
+  padding-right: 5px;
   height: 21px;
   width: 100%;
   font-size: $iu-global-font-size-input;
   color: $iu-global-font-color;
   background: $iu-global-input-background;
   cursor: text;
+  position: relative;
 }
 
 .label-top {
   font-size: $iu-global-font-size-label;
-  margin-top: 0px;
   font-weight: 500;
   user-select: none;
+  margin-top: 0px;
+  padding: 0px;
+  margin-bottom: 0px;
 }
 
 .label-left {
   font-size: $iu-global-font-size-label;
-  margin-top: 0px;
-  width: 200px;
+  width: 277px;
   user-select: none;
   font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  margin-left: 3px;
 }
 
 .input-text > .input-content > input:focus {

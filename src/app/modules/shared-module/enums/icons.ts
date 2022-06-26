@@ -36,5 +36,7 @@ export enum Icons{
     HELP='fa fa-question-circle',
     CLEAR='fa fa-eraser',
     FILTER='fa fa-filter',
-    SEARCH='fa fa-search'
+    SEARCH='fa fa-search',
+    ARROW_RIGHT ='fa fa-long-arrow-right',
+    ARROW_LEFT ='fa fa-long-arrow-left'
 }

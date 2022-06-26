@@ -24,4 +24,6 @@ export enum ActionGeneric {
   PAGINATE = 'PAGINATE',
   ORDER_BY = 'ORDER_BY',
   EXECUTE= 'EXECUTE',
+  NEXT='NEXT',
+  PREVIOUS='PREVIOUS'
 }

@@ -54,7 +54,7 @@ box-sizing: border-box;
 
 
 .zui-table {
-  border-collapse: collapse;
+
   border-spacing: 0;
   font: normal 13px Arial, sans-serif;
   width:100%;
@@ -66,11 +66,11 @@ box-sizing: border-box;
 }
 .zui-table thead th {
   background-color: $background-color-head;
-  padding: 5px;
+  padding: 4px;
   text-align: left;
 }
 .zui-table tbody td {
-  padding: 4px;
+  padding: 3px;
 }
 
 .zui-table tbody tr:hover {
@@ -83,13 +83,7 @@ box-sizing: border-box;
   color: $iu-global-font-color-important;
 }
 
-.zui-table-rounded {
-  border: none;
-}
-.zui-table-rounded thead th {
-  //border: none;
-  border: solid 1px #696f6f3e;
-}
+
 .zui-table-rounded thead th:first-child {
   border-radius: 5px 0 0 0;
 }
@@ -98,7 +92,9 @@ box-sizing: border-box;
 }
 .zui-table-rounded tbody td {
   //border: none;
-  border: solid 1px #696f6f3e;
+  background-color: #e6fffa;
+
+  //border: solid 1px #696f6f3e;
 }
 .zui-table-rounded tbody tr:last-child td:first-child {
   border-radius: 0 0 0 5px;
@@ -117,7 +113,6 @@ box-sizing: border-box;
 
 .input-key:focus-within{
   outline: none;
-  border: none;
 }
 
 .line-key
@@ -136,11 +131,6 @@ box-sizing: border-box;
     border: solid rgb(11, 173, 152) 1px;
   }
 
-  .line-key:focus-within , .line-key:hover
-   {
-    border: solid rgba(11, 173, 151, 0.507) 1px;
-border-radius: 3px;
-  }
 
 
 

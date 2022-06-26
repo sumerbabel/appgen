@@ -11,7 +11,7 @@
         (click)="onClic($event)"
       >
         <i class="ui-icon" *ngIf="icon" [ngClass]="[icon]"></i>
-        <ng-container *ngIf="statusStyle">{{ name }}</ng-container>
+        <ng-container *ngIf="statusStyle"><span class="btn-text">{{ name }}</span></ng-container>
         <ng-content></ng-content>
       </button>
     </ng-container>
@@ -27,7 +27,7 @@
         (keyup)="keyPress($event)"
       >
         <i class="ui-icon" *ngIf="icon" [ngClass]="[icon]"></i>
-        <ng-container *ngIf="statusStyle">{{ name }}</ng-container>
+        <ng-container *ngIf="statusStyle"><span class="btn-text">{{ name }}</span></ng-container>
         <ng-content></ng-content>
       </button>
     </ng-container>

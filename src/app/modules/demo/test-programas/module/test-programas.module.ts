@@ -6,12 +6,16 @@ import { GestionProgramaComponent } from '../components/gestion-programa/gestion
 import { SharedModule } from '@sharedModule/shared-module';
 import { FormsModule } from '@angular/forms';
 import { Filter2Component } from '../components/filter/filter.component';
+import { ProgramaRegisterComponent } from '../components/programa-register/programa-register.component';
+
 
 
 @NgModule({
   declarations: [
     GestionProgramaComponent,
-    Filter2Component
+    Filter2Component,
+    ProgramaRegisterComponent
+
   ],
   imports: [
     CommonModule,

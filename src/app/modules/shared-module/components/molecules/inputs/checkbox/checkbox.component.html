@@ -1,8 +1,8 @@
-<div class='input-text' [ngClass]="styleClassText">
+<div [ngClass]="styleClassText">
   <div *ngIf="label" [ngClass]="styleClassLabel">
     <label>{{label}}</label>
 </div>
-  <label class="pure-material-checkbox">
+  <label class="pure-material-checkbox width-label-max">
     <input
     type="checkbox"
     [ngModel]="value"
@@ -10,10 +10,8 @@
     (ngModelChange)="changeControlEvent($event)"
     (blur)="blurInput()"
     (keyup)="keyPress($event)"
-    class='label-custom input-key'>
-
+    class="input-key">
     <span style="width:0px;"></span>
-
   </label>
   <div class="conteiner-error" *ngIf ="errors.length > 0">
     <div class="error-p" *ngFor="let error of errors">{{error}}</div>

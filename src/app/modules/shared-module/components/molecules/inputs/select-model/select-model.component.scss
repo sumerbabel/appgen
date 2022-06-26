@@ -7,6 +7,9 @@
   box-sizing: border-box;
   display: flex;
   width: 100%;
+  margin-bottom: 3px;
+
+
 }
 
 .label-custom {
@@ -26,7 +29,7 @@
   padding-bottom: 0px;
   padding-right: 1px;
   height: 21px;
-  font-size: 12px;
+  font-size: $iu-global-font-size-input;
   color: $iu-global-font-color;
   background: $iu-global-input-background;
   cursor: pointer;
@@ -48,7 +51,7 @@
   padding-bottom: 0px;
   padding-right: 5px;
   height: 21px;
-  font-size: 12px;
+  font-size: $iu-global-font-size-input;
   color: $iu-global-font-color;
   background: $iu-global-input-background;
   cursor: text;
@@ -70,11 +73,10 @@
 }
 
 .label-custom {
-  margin-bottom: 3px;
-  min-width: 120px;
-  max-width: 120px;
+  width: 277px;
   min-height: 28px;
-  padding-left: 3px;
+  margin-left: 3px;
+
 }
 
 .input-text-top {
@@ -89,17 +91,17 @@
 .label-left {
   font-size: $iu-global-font-size-label;
   margin-top: 2px;
-  width: 200px;
+  width: 277px;
   min-height: 28px;
   font-weight: 500;
+  margin-left: 3px;
 }
 
 .label-top {
   font-size: $iu-global-font-size-label;
-  margin-top: 7px;
-  min-width: 120px;
-  max-width: 180px;
+  margin-left: 3px;
   font-weight: 500;
+  width: 277px;
 }
 
 .input-key:focus-within{

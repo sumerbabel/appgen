@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { ColumnModel } from '@sharedModule/components/molecules/tables/model/column-model';
 import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
@@ -11,7 +12,7 @@ import { ProgramaDto } from '../../a-domain/programa-dto';
 import { CreatePrograma } from '../../b-use-cases/create-programa';
 import { GetPrograma } from '../../b-use-cases/get-programa';
 import { Filter2Component } from '../filter/filter.component';
-
+import { ProgramaRegisterComponent } from '../programa-register/programa-register.component';
 @Component({
   templateUrl: './gestion-programa.component.html',
   styleUrls: ['./gestion-programa.component.scss']
@@ -53,16 +54,49 @@ export class GestionProgramaComponent implements OnInit {
   constructor(
     private modalService: ModalService,
     private getPrograma: GetPrograma,
-    private createPrograma: CreatePrograma
+    private createPrograma: CreatePrograma,
+    private route: ActivatedRoute
   ) {
   }
 
+id:number
+path:string =''
 programa: Programa
   ngOnInit(): void {
+
+    this.route.url.subscribe((url)=>{
+      console.log('url ruta',url[0]?.path)
+      this.path =url[0]?.path
+    })
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      console.log('paramteros de ruta',params)
+      this.id = +params.get('id');
+    });
 
     this.getSitems();
     this.programa = this.createPrograma.newEmptyPrograma()
 
+  }
+
+  ngAfterViewInit () {
+    if(this.path=='register'){
+    setTimeout(() =>{
+      this.openRegister()
+    }, 0)
+  }
+  }
+
+
+
+  openRegister(){
+     const modalRef = this.modalService.open(
+      ProgramaRegisterComponent,
+      'data'
+    );
+
+    modalRef.onResult().subscribe(() => {
+      this.getSitems();
+    });
   }
 
   async actionFormEvent($event) {
@@ -114,7 +148,7 @@ programa: Programa
   }
 
   updateSistemOpenModal(sistem: any): void {
-
+    this.openRegister()
   }
 
   deleteServiceExecute(sistem: any) {

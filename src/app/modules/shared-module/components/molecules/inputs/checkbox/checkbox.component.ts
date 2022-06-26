@@ -9,6 +9,7 @@ import { KeyFocus } from '@sharedModule/static-class/key-focus';
 export class CheckboxComponent implements OnInit {
   @Input() value: string|boolean ='';
   @Input() label: string;
+  @Input() labelWidth:string;
   @Input() isRequired: boolean= false;
   @Input() errors: string[] =[];
   @Input() disabled:boolean = false;

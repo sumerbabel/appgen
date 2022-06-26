@@ -12,6 +12,7 @@ export class TextModelComponent implements OnInit {
   @Input() value: any;
   @Input() height:string
   @Input() label: string;
+  @Input() labelWidth:string;
   @Input() labelDirectionLeft: boolean=false;
   @Input() color: string;
   @Input() type: string;

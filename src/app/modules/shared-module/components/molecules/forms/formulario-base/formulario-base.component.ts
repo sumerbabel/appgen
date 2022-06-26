@@ -18,6 +18,7 @@ export class FormularioBaseComponent implements OnInit {
   @Input() actions: ModelAction[];
   @Input() showCloseButton: boolean = false;
   @Input() showFooterButtons: boolean = false;
+  @Input() minWidth: string = '360px';
   @Output() formAction = new EventEmitter<any>();
 
   ACTION_SAVE = ActionButton.SAVE;
