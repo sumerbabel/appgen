@@ -1,0 +1,9 @@
+<div class="ui-tab-container">
+  <ng-template *ngFor="let tab of tabItems">
+    <div *ngIf="tab?.isActive" class="ui-tab-active"> {{tab?.name}} </div>
+    <div class="ui-tab">  {{tab?.name}} </div>
+  </ng-template>
+</div>
+<div>
+  <ng-container *ngTemplateOutlet="templateBody; context {$implicit: tabItems}"></ng-container>
+</div>

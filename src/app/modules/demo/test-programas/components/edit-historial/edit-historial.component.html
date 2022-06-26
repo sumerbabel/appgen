@@ -1,0 +1,19 @@
+<ui-form-base
+  [titleHeader]="TITLE_HEADER_FORM"
+  [showCloseButton]="SHOW_CLOSE_BUTTON_FORM"
+  [actions]="ACTION_FORM"
+  (formAction)="actionFormEvent($event)"
+  [minWidth]="'720px'"
+>
+<div class="ui-header">
+  <span>Entidad : Universidad Nacional del Centro del Perú</span>
+  <span>Nivel académico : Pregrado</span>
+  <span>Programa : Nuevo programa</span>
+</div>
+
+<ui-filter-panel [(searchFilter)]="tableModelSistem.searchFilter"  style="width:98% ;">
+</ui-filter-panel>
+<ui-table *ngIf="tableModelSistem" [columns]="tableModelSistem.columnArray"
+[actions]="tableModelSistem.actionArray" [data]="tableModelSistem.dataArray"
+[paginationData]="tableModelSistem.pagination" (actionEvent)="tableSistemActions($event)"></ui-table>
+</ui-form-base>

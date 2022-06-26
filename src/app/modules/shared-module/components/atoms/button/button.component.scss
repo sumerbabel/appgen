@@ -14,6 +14,9 @@ $iu-global-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Appl
   margin-left: 4px;
 }
 .ui-button > button {
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
   outline: none;
   border: none;
   font-family:$iu-global-font ;

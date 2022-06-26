@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { Modal } from '@sharedModule/components/organims/modal/model/modal.model';
+import { ModalService } from '@sharedModule/components/organims/modal/service/modal.service';
 import { ActionButton } from '@sharedModule/enums-object/action-button';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { EditHistorialComponent } from '../edit-historial/edit-historial.component';
 
 @Component({
   selector: 'app-programa-register',
@@ -21,20 +24,54 @@ export class ProgramaRegisterComponent  extends Modal implements OnInit {
 
   DOCUMENTOS_BTN =ActionButton.DOC
   OTRAS_OPCIONES_BTN =ActionButton.CUSTOM_ACTION_C
+  OPCIONES_EDITAR_BTN ={...ActionButton.CUSTOM_ACTION_B}
+  OPCIONES_CAMBIO_DENOMINACION_BTN ={...ActionButton.CUSTOM_ACTION_B}
+  OPCIONES_CAMBIO_VIGENCIA_BTN ={...ActionButton.CUSTOM_ACTION_B}
+  OPCIONES_HISTORIAL_CAMBIOS_BTN ={...ActionButton.CUSTOM_ACTION_B}
+  OPCIONES_HISTORIAL_EDICION_BTN ={...ActionButton.CUSTOM_ACTION_B}
   modalInput(inputs: any): void {
     console.log(inputs)
   }
 
-  constructor() { super(); }
+  constructor(private modalService: ModalService,) { super(); }
 
   ngOnInit() {
     this.OTRAS_OPCIONES_BTN.name='Opciones'
+    this.OPCIONES_CAMBIO_DENOMINACION_BTN.name='Cambio de denominación del programa'
+    this.OPCIONES_EDITAR_BTN.name='Editar por error'
+    this.OPCIONES_CAMBIO_VIGENCIA_BTN.name='Cambio de vigencia'
+    this.OPCIONES_HISTORIAL_CAMBIOS_BTN.name='Ver historial de cambios'
+    this.OPCIONES_HISTORIAL_EDICION_BTN.name='Ver Historial de ediciones y modificaciones'
     this.ACTION_FORM[0].isVisible=false
-    this.ACTION_FORM[2].isVisible=false
-    this.ACTION_FORM[3].isVisible=false
+    this.ACTION_FORM[1].isVisible=false
+
   }
 
   actionFormEvent($event){
   }
+
+  openEditHistorial(){
+    const modalRef = this.modalService.open(
+      EditHistorialComponent,
+      'data'
+    );
+    modalRef.onResult().subscribe(() => {
+      console.log('actions result')
+    });
+
+  }
+
+  openEditDialog(){
+    const modalRef = this.modalService.open(
+      EditDialogComponent,
+      'data'
+    );
+    modalRef.onResult().subscribe(() => {
+      console.log('actions result')
+    });
+
+  }
+
+
 
 }

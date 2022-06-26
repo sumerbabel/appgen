@@ -1,7 +1,8 @@
-<div class="ui-button" [ngClass]="styleClass" style="width: auto">
+<div class="ui-button" [ngClass]="styleClass" style="width: 100%">
     <ng-container *ngIf="tooltip">
       <button
         class="input-key"
+        style="width: 100%"
         #buttonModel
         (keyup)="keyPress($event)"
         matRipple
@@ -23,6 +24,7 @@
         matRipple
         matRippleColor="rgba(255, 255, 255, 0.1)"
         [ngStyle]="{ background: color, color: colorText }"
+        style="width: 100%"
         (click)="onClic($event)"
         (keyup)="keyPress($event)"
       >

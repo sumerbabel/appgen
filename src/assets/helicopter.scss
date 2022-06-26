@@ -1,5 +1,8 @@
 @use '~@angular/material' as mat;
 //--------- helicopter popover
+@import '/src/assets/global-values.scss';
+
+
 .tippy-content {
   position: relative;
 }
@@ -36,7 +39,7 @@
   font-size: 12px;
   word-break: break-word;
   border-radius: 4px;
-  background-color: #3a3e41;
+  background-color: $background-color-hover; //#3a3e41;
   box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
   .tippy-content {
     padding: 9px 9px 9px 9px;
@@ -48,7 +51,7 @@
 }
 
 .tippy-box[data-theme~=light][data-placement^=top]>.tippy-arrow:before {
-  border-top-color: #212427;
+  border-top-color: $background-color-head//#212427;
 }
 
 //--------
