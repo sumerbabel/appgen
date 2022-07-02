@@ -5,19 +5,14 @@ import { Modal } from '@sharedModule/components/organims/modal/model/modal.model
 import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { TableModel } from '@sharedModule/models-core/table-model';
-
 @Component({
   selector: 'app-edit-historial',
   templateUrl: './edit-historial.component.html',
   styleUrls: ['./edit-historial.component.scss']
 })
 export class EditHistorialComponent extends Modal implements OnInit {
-
   TITLE_HEADER_FORM = 'Historial de ediciones';
   SHOW_CLOSE_BUTTON_FORM = true;
-  ACTION_FORM: ModelAction[] = [
-    ActionButton.CLOSE
-  ];
 
   columnsTable: ColumnModel[] = [
     { key: 'modulo', title: 'Módulo' },
@@ -39,8 +34,8 @@ export class EditHistorialComponent extends Modal implements OnInit {
   ];
 
   actionsTable: ModelAction[] = [
-    ActionButton.MINI_EDIT,
-    ActionButton.MINI_DELETE,
+    ActionButton.MINI_DOCUMENT,
+    ActionButton.MINI_EDIT
   ];
 
   tableModelSistem: TableModel = new TableModel(
@@ -197,10 +192,17 @@ export class EditHistorialComponent extends Modal implements OnInit {
     this.tableModelSistem.setDataTableAndPaginationToResponse(dataGrilla);
   }
 
-  async actionFormEvent($event) {
+  actionFormEvent($event) {
+    console.log('CLOSE', $event)
     switch ($event) {
-      case ActionGeneric.SAVE:
-
+      case ActionGeneric.ACCEPT:
+        this.modalClose({data:'data result'});
+        break;
+      case ActionGeneric.CANCEL:
+        this.modalCancel();
+        break;
+      case ActionGeneric.CLOSE:
+        this.modalCancel();
         break;
     }
   }

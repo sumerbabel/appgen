@@ -13,7 +13,7 @@ export class Filter2Component extends Modal implements OnInit {
   TITLE_HEADER_FORM = 'Filtros';
   SHOW_CLOSE_BUTTON_FORM = true;
   ACTION_FORM: ModelAction[] = [
-    ActionButton.ACCEPT,
+    ActionButton.SEARCH,
     ActionButton.CANCEL,
     ActionButton.CLEAR,
   ];

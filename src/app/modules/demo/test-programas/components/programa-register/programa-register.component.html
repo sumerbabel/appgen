@@ -20,16 +20,14 @@
 
   <div class="ui-section">
 
-    <ui-button [actionProperties]="OTRAS_OPCIONES_BTN" [helipopper]="tpl" helipopperVariation="popper"></ui-button>
-    <!-- <ui-button *ngIf="data.node.objetGen.level>0" [actionProperties]="BTN_TOOL" [helipopper]="tpl"
-      helipopperVariation="popper"></ui-button> -->
+    <ui-button [actionProperties]="OTRAS_OPCIONES_BTN" [helipopper]="tpl" helipopperVariation="popper" #contextPopper="helipopper"></ui-button>
     <ng-template #tpl>
       <div style="display:flex; flex-direction: column;">
         <ui-button [actionProperties]="OPCIONES_CAMBIO_DENOMINACION_BTN"></ui-button>
         <ui-button [actionProperties]="OPCIONES_CAMBIO_VIGENCIA_BTN"></ui-button>
         <ui-button [actionProperties]="OPCIONES_HISTORIAL_CAMBIOS_BTN"></ui-button>
-        <ui-button [actionProperties]="OPCIONES_EDITAR_BTN"  (on-click)="openEditDialog()"></ui-button>
-        <ui-button [actionProperties]="OPCIONES_HISTORIAL_EDICION_BTN"  (on-click)="openEditHistorial()"></ui-button>
+        <ui-button [actionProperties]="OPCIONES_EDITAR_BTN"  (on-click)="openEditDialog(tpl)"></ui-button>
+        <ui-button [actionProperties]="OPCIONES_HISTORIAL_EDICION_BTN"  (on-click)="contextPopper.hide(); openEditHistorial()"></ui-button>
       </div>
     </ng-template>
   </div>

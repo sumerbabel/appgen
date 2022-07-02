@@ -31,8 +31,10 @@ export class ActionButton {
     public static MINI_HELP = { name: '',tooltip:'Ayuda / Información', action: ActionGeneric.OPEN, icon: Icons.HELP, color: Colors.BLUE_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
     public static MINI_FILTER = { name: '',tooltip:'Filtros', action: ActionGeneric.OPEN, icon: Icons.FILTER, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
     public static MINI_CLEAR = { name: '',tooltip:'Limpiar', action: ActionGeneric.CLEAR, icon: Icons.CLEAR, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
-
+    public static MINI_DOCUMENT = { name: '',tooltip:'Documentos', action: ActionGeneric.EXECUTE, icon: Icons.COPY, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
     public static MINI_SEARCH = { name: '',tooltip:'Buscar', action: ActionGeneric.EXECUTE, icon: Icons.SEARCH, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
+    public static MINI_EXPORT = { name: '',tooltip:'Exportar datos en excel', action: ActionGeneric.EXECUTE, icon: Icons.EXCEL_FILE, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.MINIM], isVisible: true }
+
 
     public static CLEAR = { name: 'Limpiar',tooltip:'Limpiar Filtros', action: ActionGeneric.CLEAR, icon: Icons.CLEAR, color: '#3a4a53', colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
     public static SAVE = { name: 'Guardar',tooltip:'Guardar', action: ActionGeneric.SAVE, icon:Icons.SAVE, color: Colors.GREEN_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
@@ -53,4 +55,5 @@ export class ActionButton {
     public static NEXT= { name: 'Siguiente',tooltip:'Siguiente', action: ActionGeneric.NEXT, icon:Icons.ARROW_RIGHT, color: Colors.BLUE_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
     public static PREVIOUS= { name: 'Anterior',tooltip:'Anterior', action: ActionGeneric.PREVIOUS, icon:Icons.ARROW_LEFT, color: Colors.BLUE_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
     public static DOC= { name: 'Documentos',tooltip:'Documentos', action: ActionGeneric.OPEN, icon:Icons.UPLOAD, color: Colors.BLUE_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
+    public static SEARCH = { name: 'Buscar',tooltip:'Buscar registros', action: ActionGeneric.ACCEPT, icon:Icons.SEARCH, color: Colors.GREEN_GRADIENT_METAL, colorText: Colors.WHITE, styleClass: [StyleButtonEnum.DEFAULT], isVisible: true }
   }

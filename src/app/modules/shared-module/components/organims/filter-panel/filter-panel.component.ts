@@ -18,6 +18,7 @@ export class FilterPanelComponent implements OnInit {
   actionFilter:ModelAction = ActionButton.MINI_FILTER;
   actionClear:ModelAction = ActionButton.MINI_CLEAR;
   actionSearch:ModelAction = ActionButton.MINI_SEARCH;
+  actionExport:ModelAction = ActionButton.MINI_EXPORT;
   constructor() { }
 
   ngOnInit(): void {
@@ -33,6 +34,10 @@ export class FilterPanelComponent implements OnInit {
   }
 
   filterSearch() {
+    this.searchAction.emit(this.searchFilter)
+  }
+
+  filterExport(){
     this.searchAction.emit(this.searchFilter)
   }
 

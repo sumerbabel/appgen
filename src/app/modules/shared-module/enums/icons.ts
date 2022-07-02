@@ -38,5 +38,6 @@ export enum Icons{
     FILTER='fa fa-filter',
     SEARCH='fa fa-search',
     ARROW_RIGHT ='fa fa-long-arrow-right',
-    ARROW_LEFT ='fa fa-long-arrow-left'
+    ARROW_LEFT ='fa fa-long-arrow-left',
+    EXCEL_FILE ='fa fa-file-excel-o'
 }
