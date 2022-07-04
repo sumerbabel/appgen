@@ -17,7 +17,7 @@ export class FormularioBaseComponent implements OnInit {
   @Input() errors: string[] = [];
   @Input() actions: ModelAction[];
   @Input() showCloseButton: boolean = false;
-  @Input() showFooterButtons: boolean = false;
+  @Input() showFooterButtons: boolean = true;
   @Input() minWidth: string = '360px';
   @Output() formAction = new EventEmitter<any>();
 

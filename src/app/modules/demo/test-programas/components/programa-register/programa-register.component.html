@@ -4,6 +4,7 @@
   [actions]="ACTION_FORM"
   (formAction)="actionFormEvent($event)"
   [minWidth]="'720px'"
+  [showFooterButtons]="SHOW_FOOTER_BUTTON_FORM"
 >
 <div class="ui-header">
   <span>Entidad : Universidad Nacional del Centro del Perú</span>
@@ -11,12 +12,7 @@
   <span>Programa : Nuevo programa</span>
 </div>
 
-<div class="ui-tab-container">
-  <div class="ui-tab-active"> Datos generales </div>
-  <div class="ui-tab">  Atributos </div>
-  <div class="ui-tab">  Clasificador</div>
-  <div class="ui-tab">  Otros datos</div>
-</div>
+
 
   <div class="ui-section">
 
@@ -82,8 +78,54 @@
 
 </div>
 
-<div class="ui-section">
+<!-- <div class="ui-section">
 <ui-button [actionProperties]="DOCUMENTOS_BTN"></ui-button>
-</div>
+</div> -->
 
+
+<div class="ui-footer-tab" footer>
+
+  <div class="ui-tab-container">
+    <div class="ui-tab-element ui-tab-active">
+      <div class="ui-tab">1</div>
+      <div class="ui-tab-row">
+        <div class="ui-tab-label"> Datos Generales</div>
+        <div class="ui-tab-line">  </div>
+      </div>
+    </div>
+
+    <div class="ui-tab-element">
+      <div class="ui-tab">2</div>
+      <div class="ui-tab-row">
+        <div class="ui-tab-label"> Atributos</div>
+        <div class="ui-tab-line">  </div>
+      </div>
+    </div>
+
+    <div class="ui-tab-element">
+      <div class="ui-tab">3</div>
+      <div class="ui-tab-row">
+        <div class="ui-tab-label"> Datos adicionales</div>
+        <div class="ui-tab-line">  </div>
+      </div>
+    </div>
+
+    <div class="ui-tab-element">
+      <div class="ui-tab">4</div>
+      <div class="ui-tab-row">
+        <div class="ui-tab-label"> Otros</div>
+        <div class="ui-tab-line">  </div>
+
+      </div>
+      <div class="ui-tab-fin"></div>
+
+    </div>
+    <div class="ui-tab-button">Anterior</div>
+    <div class="ui-tab-button">Siguiente</div>
+  </div>
+
+
+
+  <!-- <ui-button [actionProperties]="SIGUIENTE_BTN" [helipopper]="tpl" helipopperVariation="popper" #contextPopper="helipopper" style="margin-left:10px ;"></ui-button> -->
+</div>
 </ui-form-base>

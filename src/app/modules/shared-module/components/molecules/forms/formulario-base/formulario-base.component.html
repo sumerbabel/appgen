@@ -30,7 +30,14 @@
 
         <ng-content></ng-content>
     </div>
-    <div *ngIf="textFooter ||actions || showFooterButtons" class='view-footer' [ngStyle]="{'background': colorHeader}">
+<div></div>
+
+<div class='view-footer footer-bg'>
+  <ng-content select="[footer]"></ng-content>
+</div>
+
+
+    <div *ngIf="textFooter ||(actions && showFooterButtons)" class='view-footer' [ngStyle]="{'background': colorHeader}">
         <div class='title-footer'>{{textFooter}}</div>
         <div class='btn-footer line-key'>
             <ng-container *ngFor="let action of actions">

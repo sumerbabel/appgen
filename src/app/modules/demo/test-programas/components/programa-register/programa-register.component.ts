@@ -16,6 +16,7 @@ import { EditHistorialComponent } from '../edit-historial/edit-historial.compone
 export class ProgramaRegisterComponent  extends Modal implements OnInit {
   TITLE_HEADER_FORM = 'Programa';
   SHOW_CLOSE_BUTTON_FORM = true;
+  SHOW_FOOTER_BUTTON_FORM = false;
   ACTION_FORM: ModelAction[] = [
     ActionButton.PREVIOUS,
     ActionButton.NEXT,
@@ -30,6 +31,7 @@ export class ProgramaRegisterComponent  extends Modal implements OnInit {
   OPCIONES_CAMBIO_VIGENCIA_BTN ={...ActionButton.CUSTOM_ACTION_B}
   OPCIONES_HISTORIAL_CAMBIOS_BTN ={...ActionButton.CUSTOM_ACTION_B}
   OPCIONES_HISTORIAL_EDICION_BTN ={...ActionButton.CUSTOM_ACTION_B}
+  SIGUIENTE_BTN =ActionButton.NEXT
   modalInput(inputs: any): void {
     console.log(inputs)
   }
