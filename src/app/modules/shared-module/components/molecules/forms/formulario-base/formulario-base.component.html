@@ -33,42 +33,40 @@
 <div></div>
 
 <div class='view-footer footer-bg'>
+  <div  *ngIf="textFooter.length>0" class='title-footer'>{{textFooter}}</div>
+  <div class='btn-footer line-key' >
   <ng-content select="[footer]"></ng-content>
+  </div>
+  <div class='btn-footer line-key' >
+      <ng-container *ngIf="actions && showFooterButtons==false">
+        <ng-container *ngFor="let action of actions">
+            <ui-button
+            *ngIf="action.isVisible !==false"
+            [icon]="action.icon"
+            [color]="action.color"
+            [colorText]="action.colorText"
+            [autoFocus]="action.autoFocus"
+            [type]="action.type"
+            [styleClass]="action.styleClass"
+            (on-click)="actionForm(action.action)"
+        >
+            {{action.name}}
+        </ui-button>
+        </ng-container>
+      </ng-container>
+        <ui-button
+            *ngIf="showFooterButtons"
+            [actionProperties] ="ACTION_SAVE"
+            autoFocus ="true"
+            (on-click)="actionForm($event)"
+        >
+        </ui-button>
+        <ui-button
+            *ngIf="showFooterButtons"
+            [actionProperties] ="ACTION_CANCEL"
+            (on-click)="actionForm($event)"
+        >
+        </ui-button>
+  </div>
 </div>
-
-
-    <div *ngIf="textFooter ||(actions && showFooterButtons)" class='view-footer' [ngStyle]="{'background': colorHeader}">
-        <div class='title-footer'>{{textFooter}}</div>
-        <div class='btn-footer line-key'>
-            <ng-container *ngFor="let action of actions">
-                <ui-button
-                *ngIf="action.isVisible !==false"
-                [icon]="action.icon"
-                [color]="action.color"
-                [colorText]="action.colorText"
-                [autoFocus]="action.autoFocus"
-                [type]="action.type"
-                [styleClass]="action.styleClass"
-                (on-click)="actionForm(action.action)"
-            >
-                {{action.name}}
-            </ui-button>
-            </ng-container>
-
-            <ui-button
-                *ngIf="showFooterButtons"
-                [actionProperties] ="ACTION_SAVE"
-                autoFocus ="true"
-                (on-click)="actionForm($event)"
-            >
-            </ui-button>
-            <ui-button
-                *ngIf="showFooterButtons"
-                [actionProperties] ="ACTION_CANCEL"
-                (on-click)="actionForm($event)"
-            >
-            </ui-button>
-
-        </div>
-    </div>
 </div>

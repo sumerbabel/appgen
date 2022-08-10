@@ -114,6 +114,7 @@ div.icon-close:after {
 .footer-bg{
   background-color: #e4e6e6;
   margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .title-footer {
@@ -127,9 +128,6 @@ div.icon-close:after {
 
 .btn-footer {
   display: flex;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 5px;
 }
 
 .btn-footer > ui-button {

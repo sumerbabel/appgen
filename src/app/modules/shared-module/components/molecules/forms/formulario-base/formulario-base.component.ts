@@ -13,11 +13,11 @@ export class FormularioBaseComponent implements OnInit {
   @Input() titleHeader: string;
   @Input() colorHeader: string;
   @Input() backgroundColor: string;
-  @Input() textFooter: string;
+  @Input() textFooter: string='';
   @Input() errors: string[] = [];
   @Input() actions: ModelAction[];
   @Input() showCloseButton: boolean = false;
-  @Input() showFooterButtons: boolean = true;
+  @Input() showFooterButtons: boolean = false;
   @Input() minWidth: string = '360px';
   @Output() formAction = new EventEmitter<any>();
 
