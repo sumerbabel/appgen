@@ -2,7 +2,6 @@
     <ng-container *ngIf="tooltip">
       <button
         class="input-key"
-        style="width: 100%"
         #buttonModel
         (keyup)="keyPress($event)"
         matRipple
@@ -11,9 +10,14 @@
         [ngStyle]="{ background: color, color: colorText }"
         (click)="onClic($event)"
       >
+      <div class="btn-conteiner">
         <i class="ui-icon" *ngIf="icon" [ngClass]="[icon]"></i>
-        <ng-container *ngIf="statusStyle"><span class="btn-text">{{ name }}</span></ng-container>
-        <ng-content></ng-content>
+        <ng-container *ngIf="statusStyle && name.length>0"><span class="btn-text">{{ name }}</span></ng-container>
+        <div class="btn-space" *ngIf="statusStyle != false"></div>
+          <ng-content></ng-content>
+
+      </div>
+
       </button>
     </ng-container>
 
@@ -24,13 +28,16 @@
         matRipple
         matRippleColor="rgba(255, 255, 255, 0.1)"
         [ngStyle]="{ background: color, color: colorText }"
-        style="width: 100%"
         (click)="onClic($event)"
         (keyup)="keyPress($event)"
       >
+      <div class="btn-conteiner">
         <i class="ui-icon" *ngIf="icon" [ngClass]="[icon]"></i>
-        <ng-container *ngIf="statusStyle"><span class="btn-text">{{ name }}</span></ng-container>
-        <ng-content></ng-content>
+        <ng-container *ngIf="statusStyle && name.length>0"><span class="btn-text">{{ name }}</span></ng-container>
+        <div class="btn-space" *ngIf="statusStyle != false"> </div>
+          <ng-content></ng-content>
+
+      </div>
       </button>
     </ng-container>
   </div>

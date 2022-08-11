@@ -48,9 +48,10 @@
             [autoFocus]="action.autoFocus"
             [type]="action.type"
             [styleClass]="action.styleClass"
+            [name]="action.name"
+            [tooltip] ="action.tooltip"
             (on-click)="actionForm(action.action)"
         >
-            {{action.name}}
         </ui-button>
         </ng-container>
       </ng-container>

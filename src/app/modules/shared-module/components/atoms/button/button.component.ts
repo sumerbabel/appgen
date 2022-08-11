@@ -11,7 +11,7 @@ import { StyleButtonEnum } from './style-enum/enum-style-button';
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent implements OnInit {
-  @Input() name: string;
+  @Input() name: string='';
   @Input() disabled: boolean = false;
   @Input() icon: string;
   @Input() actionProperties: ModelAction;

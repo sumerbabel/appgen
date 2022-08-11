@@ -20,8 +20,8 @@ export class DialogComponent extends Modal implements OnInit {
       action:'YES',
       type:'1',
       icon:'YES',
-      color: '#27e186',
-      colorText:'BLACK',
+      color: 'rgb(26, 98, 77)',
+      colorText:'#c9c9c9',
       autoFocus:true,
       styleClass:['ui-default']
     }
@@ -31,7 +31,7 @@ export class DialogComponent extends Modal implements OnInit {
       action:'NO',
       type:'1',
       icon:'YES',
-      color: '#626568',
+      color: 'rgb(58, 74, 83)',
       colorText:'#c9c9c9',
       styleClass:['ui-default']
     }
