@@ -39,11 +39,11 @@ export class PageSistemComponent implements OnInit {
   ];
 
   //camvas
-  @ViewChild('canvasRef', { static: true }) canvasRef: ElementRef<HTMLCanvasElement>;
+//   @ViewChild('canvasRef', { static: true }) canvasRef: ElementRef<HTMLCanvasElement>;
 
-  private ctx: CanvasRenderingContext2D;
+//   private ctx: CanvasRenderingContext2D;
 
-private canvas: HTMLElement = document.getElementById("canvas");
+// private canvas: HTMLElement = document.getElementById("canvas");
 //private ctx
 private canvasOffset
 private offsetX
@@ -66,14 +66,14 @@ private  rect = {
 
 
  draw() {
-    this.ctx.clearRect(0, 0, this.canvasOffset.width, this.canvasOffset.height);
-    this.ctx.beginPath();
-    this.ctx.arc(this.circle.x, this.circle.y, this.circle.r, 0, Math.PI * 2);
-    this.ctx.closePath();
-    this.ctx.fill();
-    this.ctx.strokeStyle = "black";
-    this.ctx.stroke();
-    this.ctx.strokeRect(this.rect.x, this.rect.y, this.rect.w, this.rect.h);
+    // this.ctx.clearRect(0, 0, this.canvasOffset.width, this.canvasOffset.height);
+    // this.ctx.beginPath();
+    // this.ctx.arc(this.circle.x, this.circle.y, this.circle.r, 0, Math.PI * 2);
+    // this.ctx.closePath();
+    // this.ctx.fill();
+    // this.ctx.strokeStyle = "black";
+    // this.ctx.stroke();
+    // this.ctx.strokeRect(this.rect.x, this.rect.y, this.rect.w, this.rect.h);
 }
 
 // return true if the rectangle and circle are colliding
@@ -130,22 +130,22 @@ onMouseOut = (e: any) => {
 
 @HostListener('click', ['$event'])
 onClick = (e: any) => {
-  if (e.target.id === 'canvasId') {
-    this.isAvailabe = !this.isAvailabe;
-  }
+  // if (e.target.id === 'canvasId') {
+  //   this.isAvailabe = !this.isAvailabe;
+  // }
 }
 
 
  handleMouseDown(e:any) {
     e.preventDefault();
     //debugger;
-    this.startX = parseInt(e.clientX - this.offsetX+'');
-    this.startY = parseInt(e.clientY - this.offsetY+'');
+    // this.startX = parseInt(e.clientX - this.offsetX+'');
+    // this.startY = parseInt(e.clientY - this.offsetY+'');
 
-    // Put your mousedown stuff here
-    let dx = this.startX - this.circle.x;
-    let dy = this.startY - this.circle.y;
-    this.isDown = (dx * dx + dy * dy < this.circle.r * this.circle.r);
+    // // Put your mousedown stuff here
+    // let dx = this.startX - this.circle.x;
+    // let dy = this.startY - this.circle.y;
+    // this.isDown = (dx * dx + dy * dy < this.circle.r * this.circle.r);
 
 }
 
@@ -163,25 +163,25 @@ onClick = (e: any) => {
     e.preventDefault();
 
     // Put your mousemove stuff here
-    if (!this.isDown) {
-        return;
-    }
-    let mouseX = parseInt(e.clientX - this.offsetX+'');
-    let mouseY = parseInt(e.clientY - this.offsetY+'');
-    var dx = mouseX - this.startX;
-    var dy = mouseY - this.startY;
-    this.startX = mouseX;
-    this.startY = mouseY;
-    this.circle.x += dx;
-    this.circle.y += dy;
+    // if (!this.isDown) {
+    //     return;
+    // }
+    // let mouseX = parseInt(e.clientX - this.offsetX+'');
+    // let mouseY = parseInt(e.clientY - this.offsetY+'');
+    // var dx = mouseX - this.startX;
+    // var dy = mouseY - this.startY;
+    // this.startX = mouseX;
+    // this.startY = mouseY;
+    // this.circle.x += dx;
+    // this.circle.y += dy;
 
-    if (this.RectCircleColliding(this.circle, this.rect)) {
-        this.ctx.fillStyle = "red";
-    } else {
-        this.ctx.fillStyle = "skyblue";
-    }
+    // if (this.RectCircleColliding(this.circle, this.rect)) {
+    //     this.ctx.fillStyle = "red";
+    // } else {
+    //     this.ctx.fillStyle = "skyblue";
+    // }
 
-    this.draw();
+    //this.draw();
 }
   //camvas 2
 
@@ -228,16 +228,16 @@ onClick = (e: any) => {
 
 
   ngOnInit(): void {
-    this.ctx = this.canvasRef.nativeElement.getContext('2d');
-    this.ctx.fillStyle = "skyblue";
-    this.ctx.strokeStyle = "black";
-    this.canvasOffset = (this.canvasRef.nativeElement as HTMLCanvasElement)
-    //debugger;
-    this.offsetX = this.canvasOffset.clientLeft;
-    this.offsetY = this.canvasOffset.clientTop;
-    this.isDown = false;
-    this.startX;
-    this.startY;
+    // this.ctx = this.canvasRef.nativeElement.getContext('2d');
+    // this.ctx.fillStyle = "skyblue";
+    // this.ctx.strokeStyle = "black";
+    // this.canvasOffset = (this.canvasRef.nativeElement as HTMLCanvasElement)
+    // //debugger;
+    // this.offsetX = this.canvasOffset.clientLeft;
+    // this.offsetY = this.canvasOffset.clientTop;
+    // this.isDown = false;
+    // this.startX;
+    // this.startY;
 
     this.getSitems();
     const menusession = this.accountService.getMenuSession()
@@ -301,6 +301,7 @@ onClick = (e: any) => {
         this.DeleteSistemOpenModal($event.dataModel);
         break;
       case ActionGeneric.PAGINATE:
+        console.log('paginacion',$event)
         this.getSitems();
         break;
     }
@@ -323,7 +324,7 @@ onClick = (e: any) => {
 
 // canvas methods
 ngAfterViewInit(): void {
-  this.draw()
+  //this.draw()
 }
 
 ACTION_FORM: ModelAction[] = [ActionButton.SAVE, ActionButton.CANCEL];

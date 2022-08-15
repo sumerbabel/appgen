@@ -53,8 +53,9 @@ export class TableUiComponent implements OnInit {
     this.actionEvent.emit(actionModel)
   }
 
-  onClickItemsPage(){
-    this.paginationData.setInitialPage()
+  onClickItemsPage($event){
+    this.paginationData.setInitialPage();
+    this.paginationData.perPage=$event;
     let actionModel :EventAction<any> ={
       action:ActionGeneric.PAGINATE,
       dataModel:this.paginationData

@@ -6,7 +6,7 @@
     {{paginationData._total}}</div>
    <div class="line-key" style="display: flex;" *ngIf="paginationData._pages.length>0">
     <ui-input-select-model
-    (value)="paginationData.perPage" [value]="paginationData._perPage" (valueChange)="onClickItemsPage()" placeholder ='Items por página' label=''
+    (value)="paginationData.perPage" [value]="paginationData._perPage" (valueChange)="onClickItemsPage($event)" placeholder ='Items por página' label=''
     [items]="itemsPage" style="margin-right: 5px;"> </ui-input-select-model>
     <ng-container *ngFor="let itemPaginationData of paginationData._pages ; let i = index">
       <div class="input-key page-item" tabindex="-1"  *ngIf="itemPaginationData['page']!=='' "  (click)="onClickPagination(itemPaginationData.page)" (keydown)="keyPress($event,itemPaginationData.page)">
