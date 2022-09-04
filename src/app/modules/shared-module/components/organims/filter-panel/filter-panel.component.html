@@ -13,11 +13,12 @@
   <div style="margin-left: auto; display: flex; justify-content: flex-end;">
     <div class="line-key" style="display: inline-flex;">
       <span *ngIf="searchFilter.existsFilter() ==false" class ="panel-text" >Filtros de búsqueda</span>
+      <div class="filter-action">
       <ui-button isActionOpenModal="true" (on-click)="filterOpen()" [actionProperties]="actionFilter" style="margin-right: 5px;"></ui-button>
       <ui-button *ngIf="searchFilter.existsFilter()" (on-click)="filterClear()" [actionProperties]="actionClear" style="margin-right: 5px;"></ui-button>
       <ui-button  (on-click)="filterSearch()" [actionProperties]="actionSearch" style="margin-right: 5px;"></ui-button>
       <ui-button  (on-click)="filterExport()" [actionProperties]="actionExport" ></ui-button>
-
+      </div>
     </div>
   </div>
 </div>

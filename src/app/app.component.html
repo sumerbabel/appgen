@@ -9,7 +9,7 @@
   </div>
   <div class="ui-item-nav-movil">
     <div style="display: flex; width: 100%; height:85vh;justify-content:flex-start;">
-      <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)" [menuTree]="menuTree"></ui-menu>
+      <ui-menu  (nodeEvent)="menuEvent($event)" [menuTree]="menuTree$|async"></ui-menu>
     </div>
   </div>
   <div class="ui-item-nav-movil">
@@ -49,7 +49,8 @@
 
 
     <div class="ui-item-nav-menu">
-        <ui-menu *ngIf="user" (nodeEvent)="menuEvent($event)" [menuTree]="menuTree"></ui-menu>
+      <!-- <div>componente :{{menuTree$|async|json}}</div> -->
+        <ui-menu  (nodeEvent)="menuEvent($event)" [menuTree]="menuTree$|async"></ui-menu>
     </div>
   </app-nav>
 

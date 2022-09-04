@@ -16,11 +16,12 @@
 
 .item-copy{
   cursor: pointer;
-  background-color: #1b2226;
-  color: #ff8048;
+  background-color: #fafafa;
+  color: #2e4edd;
   user-select: none;
   height: 100%;
+  font-weight: bold;
 }
 .item-copy:hover{
-  background-color: #2d3941;
+  background-color: #c3e5ee;
 }

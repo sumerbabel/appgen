@@ -1,9 +1,10 @@
+@import "src/assets/global-values.scss";
 .ui-header{
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
-  background-color:#0e8373;//#285346; // #1f2325;
+  background-color:$iu-global-header-nav;//#0e8373;//#285346; // #1f2325;
   display: flex;
   align-items: center;
   width: 100%;

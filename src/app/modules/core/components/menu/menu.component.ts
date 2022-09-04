@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MenuTree } from './domain/menu-tree';
 
 
@@ -6,6 +6,8 @@ import { MenuTree } from './domain/menu-tree';
   selector: 'ui-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
+
 })
 export class MenuComponent implements OnInit {
   @Input() menuTree: MenuTree[] = [];
@@ -16,6 +18,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   eventmenu(event: any) {
     if (event['type'] == 'ROUTER') {
       this.nodeEvent.emit(event);

@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class EditorCodeComponent implements OnInit {
   @Input() value: string = '';
   @Input() language: string = 'typescript';
-  @Input() theme: string = 'vs-dark';
+  @Input() theme: string = 'vs-light';
   @Input() options: any;
   @Input() label: string;
   @Input() isRequired: boolean = false;

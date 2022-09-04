@@ -1,8 +1,8 @@
 @import "src/assets/global-values.scss";
 .filtro{
-  border: $iu-global-borde-inverse 2px solid;
+  border: #d1d7d6 1px solid;
   border-radius: 8px;
-  color: $iu-global-font-color-important;
+  color: $iu-global-font-color-inverse;
   font-weight: 500;
   padding-left: 6px;
   padding-right: 6px;
@@ -16,6 +16,7 @@
   position: relative;
   flex-direction: row;
   vertical-align: middle;
+  margin:5px;
 }
 
 .filtro-panel{
@@ -26,7 +27,7 @@
   background-color: $background-color-head;
   border-radius: 5px;
   overflow: auto;
-  padding: 3px;
+  padding: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
   justify-content: space-between;
@@ -35,8 +36,17 @@
 }
 
 .panel-text{
-  color:$iu-global-font-color-disabled;
+  color:$iu-global-font-color-inverse;
   font-size:$iu-global-font-size-input;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.filter-action{
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }

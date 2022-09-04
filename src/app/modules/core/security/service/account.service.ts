@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '@sharedModule/services/local-storage/local-storage.service';
 import { BehaviorSubject, empty, from, Observable } from 'rxjs';
 import {  map, mergeMap } from 'rxjs/operators';
-import { LoginExpiredTokenService } from '../../components/login-expired-token/service/login-expired-token.service';
 import { MenuTree } from '../../components/menu/domain/menu-tree';
 import { MenuService } from '../../components/menu/services/menu.service';
 
@@ -43,6 +42,8 @@ export class AccountService {
     if (!this.userSubject.value) {
       return from(Promise.resolve(true))
     }
+
+    console.log('excuteInitalServices')
     return this.refreshTokenService.postRefreshToken().pipe(
       map(
         (result: { jwtClaims: { token: string, expiredMinutes: number }; user: { username: string; }; }) => {
@@ -79,8 +80,8 @@ export class AccountService {
   }
 
 
-  public getMenuUser(): Array<MenuTree> {
-    return this.menuUser.value
+  public getMenuUser():Observable<Array<MenuTree>> {
+    return this.menuUser.asObservable()
   }
 
 
@@ -133,9 +134,13 @@ export class AccountService {
       this.startRefreshTokenTimer();
       if( this.menuUser.value.length===0){
         this.menuService.getMenuUser().subscribe(((menuResult: any[]) => {
-          menuResult.forEach((item) => {
-            this.menuUser.value.push(MenuTree.createMenuNodeRecursive(item));
+
+
+        let menu=  menuResult.map((item) => {
+            return MenuTree.createMenuNodeRecursive(item);
           });
+
+          this.menuUser.next(menu)
 
           let MenuActionsList: Array<MenuActions> = this.menuUser.value[0].getMenuList();
           this.setMenuListSession(MenuActionsList)

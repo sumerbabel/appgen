@@ -1,4 +1,4 @@
-<ui-form-base *ngIf="generatorNode" showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER"
+<ui-form-base *ngIf="generatorNode" showCloseButton="true" [titleHeader]="TITLE_HEADER_FORM" [textFooter]="TEXT_FOOTER" [minWidth]="'720px'"
   (formAction)="actionFormEvent($event)" [actions]="ACTION_FORM">
 
   <ui-tree-generic [treeObject]="[generatorNode]" [templateBody]="templateBody">
@@ -11,11 +11,11 @@
         <div style="font-size: 11px; padding-left: 3px; padding-right: 3px; color: #4fd812; height: 18px;">Modelo <span *ngIf="data.node.objetGen.field">{{data.node.objetGen.field}}</span></div>
       </div>
 
-      <div style="margin-right: 5px" *ngIf="data.node.objetGen.level>0">
+      <div style="margin-right: 22px" *ngIf="data.node.objetGen.level>0">
         <ui-input-checkbox [(value)]="data.node.objetGen.selected"></ui-input-checkbox>
       </div>
 
-      <div style="margin-right:5px; width: 25px;" *ngIf="data.node.objetGen.level>0">
+      <div style="margin-right:15px; width: 25px;" *ngIf="data.node.objetGen.level>0">
         <span *ngIf="data.node.objetGen.level===1" class="mini-span">Nvl</span>
         <ui-input-text-model [(value)]="data.node.objetGen.level" placeholder="Nvl" [disabled]="true"
           [color]="data.node.objetGen.colorLevel"></ui-input-text-model>

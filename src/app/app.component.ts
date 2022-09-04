@@ -5,6 +5,7 @@ import { ModalService } from '@sharedModule/components/organims/modal/service/mo
 import { TextTableToArrayComponent } from '@sharedModule/components/organims/text-table-to-array/text-table-to-array.component';
 import { MultilineStringService } from '@sharedModule/components/organims/tool-multiline-string/service/multiline-string.service';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
+import { Observable } from 'rxjs';
 import { MenuTree } from './modules/core/components/menu/domain/menu-tree';
 import { User } from './modules/core/security/domain/user';
 import { AccountService } from './modules/core/security/service/account.service';
@@ -23,11 +24,12 @@ export class AppComponent {
     private modalService: ModalService,
     private router: Router,
     private accountService: AccountService,
-    
+
   ) {
     this.accountService.userSession().subscribe((userData) => {
       this.user = userData;
       if (this.user !== null && this.user !== undefined && this.user.isExpiredToken ===false) {
+        console.log('comp:servicio sesion')
         this.menu();
       }
     });
@@ -55,7 +57,7 @@ export class AppComponent {
         if (result === ActionGeneric.YES) {
           this.isOpenMenu = false;
           this.user=null;
-          this.menuTree =[];
+          //this.menuTree =[];
           this.accountService.logout();
         }
       });
@@ -85,13 +87,17 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    console.log('comp:ng-on-init')
     this.isOpenMenu = false;
     this.accountService.setAppOnInit(true);
+    this.menuTree$= this.accountService.getMenuUser()
+    //console.log(this.menuTree$)
+    //this.menu()
   }
 
-  menuTree: MenuTree[] = [];
+  menuTree$: Observable<Array<MenuTree>>
   menu() {
-    this.menuTree= this.accountService.getMenuUser()
+    this.menuTree$= this.accountService.getMenuUser()
   }
 
   openTextToArray(){

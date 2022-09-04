@@ -68,13 +68,14 @@ box-sizing: border-box;
   background-color: $background-color-head;
   padding: 4px;
   text-align: left;
+  color: $iu-global-font-color-inverse;
 }
 .zui-table tbody td {
   padding: 3px;
 }
 
 .zui-table tbody tr:hover {
-  background-color: $background-color-hover;
+  background-color:$background-color-hover;
   color: $iu-global-font-color-important;
 }
 
@@ -92,7 +93,7 @@ box-sizing: border-box;
 }
 .zui-table-rounded tbody td {
   //border: none;
-  background-color: #e6fffa;
+  background-color: $iu-global-table-body;//#e6fffa;
 
   //border: solid 1px #696f6f3e;
 }
