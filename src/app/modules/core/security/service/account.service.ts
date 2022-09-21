@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '@sharedModule/services/local-storage/local-storage.service';
 import { BehaviorSubject, empty, from, Observable } from 'rxjs';
-import {  map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { MenuTree } from '../../components/menu/domain/menu-tree';
 import { MenuService } from '../../components/menu/services/menu.service';
 
@@ -80,7 +80,7 @@ export class AccountService {
   }
 
 
-  public getMenuUser():Observable<Array<MenuTree>> {
+  public getMenuUser(): Observable<Array<MenuTree>> {
     return this.menuUser.asObservable()
   }
 
@@ -114,12 +114,12 @@ export class AccountService {
     return this.userSubject;
   }
 
-  login(userLogin: UserLogin, isRemenberUser:boolean =false) {
+  login(userLogin: UserLogin, isRemenberUser: boolean = false) {
     this.userLoginService.postUserModelLogin(userLogin).subscribe((result: { jwtClaims: { token: string, expiredMinutes: number }; user: { username: string; }; }) => {
 
-      if(isRemenberUser){
+      if (isRemenberUser) {
         this.localStorageService.set('userRemenberMe', userLogin.username_or_email);
-      }else{
+      } else {
         this.localStorageService.remove('userRemenberMe');
       }
 
@@ -132,11 +132,10 @@ export class AccountService {
 
       this.userSubject.next(user);
       this.startRefreshTokenTimer();
-      if( this.menuUser.value.length===0){
+      if (this.menuUser.value.length === 0) {
         this.menuService.getMenuUser().subscribe(((menuResult: any[]) => {
 
-
-        let menu=  menuResult.map((item) => {
+          let menu = menuResult.map((item) => {
             return MenuTree.createMenuNodeRecursive(item);
           });
 
@@ -168,21 +167,21 @@ export class AccountService {
 
 
 
-private refreshToken(){
-  return this.refreshTokenService.postRefreshToken().pipe(
-    map(
-      (result: { jwtClaims: { token: string, expiredMinutes: number }; user: { username: string; }; }) => {
-        let user = new User();
-        user.token = result.jwtClaims.token;
-        user.username = result.user.username;
-        user.expiredTokenMinutes = new Date(Date.now() + result.jwtClaims.expiredMinutes * 60000)
-        user.isExpiredToken = false;
-        this.localStorageService.set('user', user);
-        this.userSubject.next(user);
-        this.startRefreshTokenTimer()
-      }
-    ))
-}
+  private refreshToken() {
+    return this.refreshTokenService.postRefreshToken().pipe(
+      map(
+        (result: { jwtClaims: { token: string, expiredMinutes: number }; user: { username: string; }; }) => {
+          let user = new User();
+          user.token = result.jwtClaims.token;
+          user.username = result.user.username;
+          user.expiredTokenMinutes = new Date(Date.now() + result.jwtClaims.expiredMinutes * 60000)
+          user.isExpiredToken = false;
+          this.localStorageService.set('user', user);
+          this.userSubject.next(user);
+          this.startRefreshTokenTimer()
+        }
+      ))
+  }
 
 
   private refreshTokenTimeout;
@@ -192,30 +191,30 @@ private refreshToken(){
       let user: User = this.userSubject.value;
       let dateexpired = new Date(user.expiredTokenMinutes)
       let dateNow = Date.now();
-      const minute =6*60*60000;
-      const timeout = (dateexpired.getTime() - dateNow) -minute;
+      const minute = 6 * 60 * 60000;
+      const timeout = (dateexpired.getTime() - dateNow) - minute;
 
 
       const utimateActionDate = new Date(this.localStorageService.get('utimateActionDate'));
-      const utimateActionTime = dateNow-utimateActionDate.getTime()
-      let diferencia = timeout-utimateActionTime
+      const utimateActionTime = dateNow - utimateActionDate.getTime()
+      let diferencia = timeout - utimateActionTime
 
-      this.refreshTokenTimeout = setTimeout(() =>{
+      this.refreshTokenTimeout = setTimeout(() => {
 
-        if(diferencia>=0 && diferencia<=(timeout-minute)){
+        if (diferencia >= 0 && diferencia <= (timeout - minute)) {
           this.refreshToken().subscribe()
-        }else {
+        } else {
           console.log('no ejecutar REFRESH');
         }
 
       }
-       , timeout);
+        , timeout);
 
     }
   }
 
   private stopRefreshTokenTimer() {
     clearTimeout(this.refreshTokenTimeout);
-}
+  }
 
 }

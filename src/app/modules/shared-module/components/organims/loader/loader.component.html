@@ -1,4 +1,4 @@
-<div *ngIf="visibleLoader" class="loader-content">
+<div *ngIf="visibleLoader$|async" class="loader-content">
   <div style="padding: 3px; background-color: #272e31d4; height: 30px; border-radius: 4px; margin-top: 3px;">
   <div class="ui-loader">
     <div style="color: white; margin-bottom: 3px;"> Procesando...</div>
