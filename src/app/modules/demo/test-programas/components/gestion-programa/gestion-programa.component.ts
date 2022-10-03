@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ModelAction } from '@sharedModule/components/molecules/tables/model/action';
 import { ColumnModel } from '@sharedModule/components/molecules/tables/model/column-model';
@@ -7,12 +7,15 @@ import { ActionButton } from '@sharedModule/enums-object/action-button';
 import { ActionGeneric } from '@sharedModule/enums/action-generic.enum';
 import { EventAction } from '@sharedModule/models-core/action-model';
 import { TableModel } from '@sharedModule/models-core/table-model';
+import { fromEvent, Subscription } from 'rxjs';
+import { combineLatest, filter, map, mergeMap, skipUntil, startWith, take, tap } from 'rxjs/operators';
 import { Programa } from '../../a-domain/programa';
 import { ProgramaDto } from '../../a-domain/programa-dto';
 import { CreatePrograma } from '../../b-use-cases/create-programa';
 import { GetPrograma } from '../../b-use-cases/get-programa';
 import { Filter2Component } from '../filter/filter.component';
 import { ProgramaRegisterComponent } from '../programa-register/programa-register.component';
+import { CableComponent } from './cable/cable.component';
 @Component({
   templateUrl: './gestion-programa.component.html',
   styleUrls: ['./gestion-programa.component.scss']
@@ -24,6 +27,7 @@ export class GestionProgramaComponent implements OnInit {
   ACTION_BUTTON_SEARCH = ActionButton.MINI_SHOW
   SHOW_CLOSE_BUTTON_FORM = false;
   sistems: any[] = [];
+
 
   columnsTable: ColumnModel[] = [
     { key: 'codigoEntidad', title: 'Código entidad' },

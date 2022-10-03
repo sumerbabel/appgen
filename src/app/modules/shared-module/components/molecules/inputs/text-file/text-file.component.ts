@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { IinputControl } from '../input.interface';
 
 @Component({
@@ -20,7 +21,7 @@ export class TextFileComponent implements OnInit {
   @Input() accept: string = 'image/*,.zip,.doc,.pdf,.docx';
   @Input() isMultiple: boolean = false;
   @Input() isSelectDirectory: boolean = false;
-  constructor() {}
+  constructor(private sanitizer: DomSanitizer) {}
   multiple: string;
   webkitdirectory: string;
 
@@ -42,7 +43,9 @@ export class TextFileComponent implements OnInit {
   onFileDropped($event) {
     this.files =$event
     for (let index = 0; index < this.files.length; index++)
-    {  let obj={file:this.files[index],name:this.files[index]['name'],size:this.files[index]['size'],type:this.files[index]['type']}
+    {
+      let fileresult = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(this.files[index]));
+      let obj={file:this.files[index],name:this.files[index]['name'],size:this.files[index]['size'],type:this.files[index]['type'], url:fileresult}
       this.filex.push(obj);
 
     }

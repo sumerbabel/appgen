@@ -16,12 +16,13 @@
 <div class="container-drag_drop" drag-and-drop-file (fileDropped)="onFileDropped($event)">
     <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
     <label style="text-align:center" >
-        <i style="font-size:30px; color: #d4d8d9;" class="fa fa-cloud-upload"></i> Arrastre uno o mas archivos
+        <i style="font-size:30px; color: #2a2a2a;" class="fa fa-cloud-upload"></i> Arrastre uno o mas archivos
     </label>
 </div>
 </div>
 <div>
     <div *ngFor="let file of filex">
+        <img  [src]="file.url" [alt]="file['name']">
         <span class="custom-file-upload">{{file['name']}}</span>
         <span class="custom-file-upload">{{file['type']}}</span>
         <span class="custom-file-upload">{{file['size']}}</span>

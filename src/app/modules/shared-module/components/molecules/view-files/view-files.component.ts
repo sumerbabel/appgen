@@ -64,7 +64,6 @@ export class ViewFilesComponent implements OnInit {
   }
 
   getImageFromService(urlFile: string, fileId: any) {
-
     this.isImageLoading = true;
     this.viewFileService.getFile(urlFile, fileId.id).subscribe(data => {
       if (data.type === 'image/jpeg') {
@@ -72,7 +71,6 @@ export class ViewFilesComponent implements OnInit {
       } else {
         this.createFileFromBlob(data, fileId)
       }
-
       this.isImageLoading = false;
     }, error => {
       this.isImageLoading = false;

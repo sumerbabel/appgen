@@ -8,6 +8,7 @@ import { Filter2Component } from '../components/filter/filter.component';
 import { ProgramaRegisterComponent } from '../components/programa-register/programa-register.component';
 import { EditDialogComponent } from '../components/edit-dialog/edit-dialog.component';
 import { EditHistorialComponent } from '../components/edit-historial/edit-historial.component';
+import { CableComponent } from '../components/gestion-programa/cable/cable.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EditHistorialComponent } from '../components/edit-historial/edit-histor
     Filter2Component,
     ProgramaRegisterComponent,
     EditDialogComponent,
-    EditHistorialComponent
+    EditHistorialComponent,
+    CableComponent
   ],
   imports: [
     CommonModule,
