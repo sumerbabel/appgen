@@ -43,6 +43,7 @@ import { TextDateNativeComponent } from './components/molecules/inputs/text-date
 import { TextTableToArrayComponent } from './components/organims/text-table-to-array/text-table-to-array.component';
 import { DragAndDropFileDirective } from './components/molecules/inputs/text-file/directives/drag-and-drop-file.directive';
 import { TabComponent } from './components/molecules/tab/tab.component';
+import { HtmlEditorComponent } from './components/organims/html-editor/html-editor.component';
 @NgModule({
   declarations: [
     KeyfocusDirective,
@@ -81,7 +82,8 @@ import { TabComponent } from './components/molecules/tab/tab.component';
     ButtonCloseComponent,
     TextTableToArrayComponent,
     TabComponent,
-    DragAndDropFileDirective
+    DragAndDropFileDirective,
+    HtmlEditorComponent
 
   ],
   exports: [
@@ -120,7 +122,8 @@ import { TabComponent } from './components/molecules/tab/tab.component';
     ButtonCloseComponent,
     TextTableToArrayComponent,
     TabComponent,
-    DragAndDropFileDirective
+    DragAndDropFileDirective,
+    HtmlEditorComponent
   ],
   imports: [
     MatRippleModule,

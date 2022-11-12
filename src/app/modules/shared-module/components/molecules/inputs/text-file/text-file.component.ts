@@ -32,7 +32,7 @@ export class TextFileComponent implements OnInit {
       this.multiple = '';
     }
   }
-  files:[];
+  //files:[];
   filex=[]
   changeControlEvent(event: any) {
     this.inputControlChange.emit(event);
@@ -41,11 +41,12 @@ export class TextFileComponent implements OnInit {
   }
 
   onFileDropped($event) {
-    this.files =$event
-    for (let index = 0; index < this.files.length; index++)
+    console.log('event files', $event)
+    let files :[] =$event
+    for (let index = 0; index < files.length; index++)
     {
-      let fileresult = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(this.files[index]));
-      let obj={file:this.files[index],name:this.files[index]['name'],size:this.files[index]['size'],type:this.files[index]['type'], url:fileresult}
+      let fileresult = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(files[index]));
+      let obj={file:files[index],name:files[index]['name'],size:files[index]['size'],type:files[index]['type'], url:fileresult}
       this.filex.push(obj);
 
     }

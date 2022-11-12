@@ -83,6 +83,7 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
 
   modalInput(inputObject: any): void {
     this.INITIAL_ACTION = inputObject.action;
+    console.log('this.INITIAL_ACTION ',this.INITIAL_ACTION )
     this.INITIAL_ID_GROUP_NODE = inputObject.idGroupCode;
   }
 
@@ -123,7 +124,7 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
         );
 
         if(this.INITIAL_ACTION=== ActionGeneric.UPDATE){
-          this.createGroupCode(false);
+          this.EditGroupCode(false);
          }
       }
 
@@ -149,7 +150,7 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
           this.alertService.openAlertWarning(resultado.message);
         } else {
            if(this.INITIAL_ACTION=== ActionGeneric.UPDATE){
-            this.createGroupCode(false);
+            this.EditGroupCode(false);
            }
         }
       }
@@ -170,7 +171,7 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
           generator.type
         );
         if(this.INITIAL_ACTION=== ActionGeneric.UPDATE){
-          this.createGroupCode(false);
+          this.EditGroupCode(false);
          }
       }
     });
@@ -195,14 +196,15 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
           this.alertService.openAlertWarning(resultado.message);
         } else {
           if(this.INITIAL_ACTION=== ActionGeneric.UPDATE){
-            this.createGroupCode(false);
+            this.EditGroupCode(false);
            }
         }
       }
     });
   }
 
-  createGroupCode(isGenerate: boolean) {
+  EditGroupCode(isGenerate: boolean) {
+    console.log('edit this.groupCode.toDataPersistJsonAll()',this.groupCode.toDataPersistJsonAll())
     this.groupCodeService
       .putGroupCode(this.groupCode.toDataPersistJsonAll())
       .subscribe(
@@ -222,6 +224,21 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
       );
   }
 
+  createGroupCode() {
+    console.log('create this.groupCode.toDataPersistJsonAll()',this.groupCode.toDataPersistJsonAll())
+    this.groupCodeService
+      .postGroupCode(this.groupCode.toDataPersistJsonAll())
+      .subscribe(
+        (resultPost) => {
+          this.INITIAL_ACTION = ActionGeneric.EDIT;
+          this.groupCode.updateSaveGroupCodeNodes();
+        },
+        (errorArray) => {
+          this.groupCode.errors = errorArray;
+        }
+      );
+  }
+
   validateSaveRegister() {
     if (this.groupCode.isValid) {
       this.dialogService
@@ -231,7 +248,13 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
         })
         .subscribe((resultDialog) => {
           if (resultDialog === ActionGeneric.YES) {
-            this.createGroupCode(false);
+            if (this.INITIAL_ACTION === ActionGeneric.NEW){
+              this.createGroupCode()
+            }
+            if (this.INITIAL_ACTION === ActionGeneric.EDIT){
+              this.EditGroupCode(false);
+            }
+
           }
         });
     }
@@ -261,7 +284,7 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
         this.validateSaveRegister();
         break;
       case ActionGeneric.CREATE:
-        this.createGroupCode(true);
+        this.EditGroupCode(true);
         break;
       case ActionGeneric.CANCEL:
         this.cancelRegister();

@@ -25,6 +25,7 @@ import { PROGRAMA_REPOSITORY_TYPE } from './modules/demo/test-programas/c-infrae
 
 import { ProgramaHttpRepository } from './modules/demo/test-programas/c-infraestructure/programa-http-repository';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { ProgramaHttpRepository } from './modules/demo/test-programas/c-infraest
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    LoginExpiredTokenComponent
+    LoginExpiredTokenComponent,
   ],
   imports: [
     BrowserModule,

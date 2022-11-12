@@ -4,8 +4,8 @@
   (formAction)="actionFormEvent($event)"
   [errors]="programa.listErrorsRulesBussines"
   >
-
-    <ui-filter-panel [(searchFilter)]="tableModelSistem.searchFilter" (openFilter)="filterOpenModal()" style="width:98% ;"
+<ui-html-editor></ui-html-editor>
+    <!-- <ui-filter-panel [(searchFilter)]="tableModelSistem.searchFilter" (openFilter)="filterOpenModal()" style="width:98% ;"
       (cleartFilter)="filterClear()">
     </ui-filter-panel>
 
@@ -13,7 +13,7 @@
      <ui-button [actionProperties]="ACTION_BUTTON_CREATE"
 
       >  <p>Nuevo registrodddd</p></ui-button>
-  </div>
+  </div> -->
 
 <!--
     <ui-button class="line-key" isActionOpenModal="true" [actionProperties]="ACTION_BUTTON_CREATE" [autoFocus]="true"
@@ -27,8 +27,8 @@
       <ui-input-text-model (valueChange)="programa.setName($event)" [value]="programa.name" isRequired="true"
       placeholder="Name" label="Name" autoFocus="true">
     </ui-input-text-model> </div> -->
-        <ui-table *ngIf="tableModelSistem" [columns]="tableModelSistem.columnArray"
+        <!-- <ui-table *ngIf="tableModelSistem" [columns]="tableModelSistem.columnArray"
           [actions]="tableModelSistem.actionArray" [data]="tableModelSistem.dataArray"
-          [paginationData]="tableModelSistem.pagination" (actionEvent)="tableSistemActions($event)"></ui-table>
+          [paginationData]="tableModelSistem.pagination" (actionEvent)="tableSistemActions($event)"></ui-table> -->
   </ui-form-base>
 

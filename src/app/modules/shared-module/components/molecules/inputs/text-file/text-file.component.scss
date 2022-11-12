@@ -82,7 +82,7 @@ input[type="file"] {
   color: $iu-global-font-color;
   background: $iu-global-input-background;
   //box-shadow: (15, 15, 15, 0.2) 0px 0px 0px 1px inset, rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
-  box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
+ // box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
 
 }
 
@@ -92,7 +92,7 @@ input[type="file"] {
   display: flex;
   padding: 4px;
   box-sizing: border-box;
-  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
+ // box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 1px 5px 9px;
   margin-top: 5px;
   margin-bottom: 5px;
   background-color: #f2eee2eb;
@@ -103,8 +103,8 @@ input[type="file"] {
   width: 100%;
   min-height: 70px;
   display: flex;
-  box-shadow: (15, 15, 15, 0.2) 0px 0px 0px 1px inset,
-  rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
+  //box-shadow: (15, 15, 15, 0.2) 0px 0px 0px 1px inset,
+  //rgba(15, 15, 15, 0.2) 0px 1px 1px inset;
 
 }
 
@@ -128,4 +128,36 @@ input[type="file"] {
   to {
       background-position: 100% 0%, 0% 100%, 0% 0%, 100% 100%;
   }
+}
+
+.card-file {
+  display: flex;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px rgb(197, 196, 196) solid;
+  flex-direction: row;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+.image-file {
+  width: 20%;
+  display: flex;
+  vertical-align: middle;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-file >img{
+  border-radius: 5px;
+  max-width: 60px;
+}
+
+.data-file{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  // column-gap: 13px;
 }

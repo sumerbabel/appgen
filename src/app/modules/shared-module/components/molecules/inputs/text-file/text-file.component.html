@@ -14,17 +14,43 @@
 
 <div   class="contenido">
 <div class="container-drag_drop" drag-and-drop-file (fileDropped)="onFileDropped($event)">
-    <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+    <input type="file" #fileDropRef id="fileDropRef" multiple  (change)="fileBrowseHandler($event.target)" />
     <label style="text-align:center" >
-        <i style="font-size:30px; color: #2a2a2a;" class="fa fa-cloud-upload"></i> Arrastre uno o mas archivos
+        <i style="font-size:30px; color: #7d7c7c;" class="fa fa-cloud-upload"></i> Arrastre uno o mas archivos
     </label>
+
+
+      <div *ngFor="let file of filex">
+        <img  [src]="file.url" [alt]="file['name']"
+        *ngIf="
+        file['type']==='image/png'
+        ||file['type']==='image/jpg'
+        ||file['type']==='image/gif'
+        ||file['type']==='image/tif'
+        ||file['type']==='image/svg'
+        ">
+      </div>
 </div>
 </div>
-<div>
-    <div *ngFor="let file of filex">
-        <img  [src]="file.url" [alt]="file['name']">
-        <span class="custom-file-upload">{{file['name']}}</span>
-        <span class="custom-file-upload">{{file['type']}}</span>
-        <span class="custom-file-upload">{{file['size']}}</span>
+
+<div style="margin-top: 10px;">
+    <div class="card-file" *ngFor="let file of filex">
+        <div class="image-file">
+          <img  [src]="file.url" [alt]="file['name']"
+          *ngIf="
+          file['type']==='image/png'
+          ||file['type']==='image/jpg'
+          ||file['type']==='image/gif'
+          ||file['type']==='image/tif'
+          ||file['type']==='image/svg'
+          ">
+        </div>
+
+        <div class="data-file">
+          <span>Nombre :{{file['name']}}</span>
+          <span>Tipo :{{file['type']}}</span>
+          <span>Perso :{{file['size']}}</span>
+        </div>
+
     </div>
 </div>

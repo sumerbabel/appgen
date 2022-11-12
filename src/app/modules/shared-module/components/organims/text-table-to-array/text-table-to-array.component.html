@@ -1,6 +1,6 @@
 <div class="ui-multiline-view" style="display: flex; width: 100%; flex-wrap: wrap;">
     <div class="ui-multiline-conteiner">
-      <ui-form-base (formAction)="accionFormulario($event)" titleHeader="Dividir Texto"
+      <ui-form-base (formAction)="accionFormulario($event)" titleHeader="Dividir Texto 1"
         [showCloseButton]="true">
         <div style="display:inline-flex; width: 100%;">
           <div style="width: 100%;">
@@ -21,7 +21,7 @@
         </div>
       </ui-form-base>
     </div>
-  
+
     <div>
       <ui-form-base *ngIf="arrayResult.length>0" titleHeader="Texto Resultante" [actions]="actions" (formAction)="accionFormulario($event)">
         <ui-table
@@ -36,7 +36,7 @@
           <ui-input-checkbox [(value)]="data.col1"></ui-input-checkbox>
         </td>
         <td>
-          <ui-input-select-model [(value)]="data.col2" 
+          <ui-input-select-model [(value)]="data.col2"
           [items]="[{'id':'col1','name':'nombre 1'},{'id':'col2','name':'nombre 2'},{'id':'col3','name':'nombre 3'}]"
           ></ui-input-select-model>
         </td>
@@ -52,8 +52,7 @@
       </ng-template>
 
     </ui-table>
-    
+
       </ui-form-base>
     </div>
   </div>
-  

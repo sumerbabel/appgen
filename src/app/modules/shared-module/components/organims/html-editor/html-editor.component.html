@@ -1,0 +1,15 @@
+<div class="rich">
+
+  <div id="toolBar2">
+    <button type="button" class="intLink controls"  (click)="formatDoc('bold');">Bolt </button>
+    <button type="button" class="intLink controls"  (click)="formatDoc('italic');">Italic  </button>
+    <button type="button" class="intLink controls"  (click)="formatDoc('underline');">undeline  </button>
+    <button type="button" class="intLink controls"  (click)="formatDoc('justifyleft');">left</button>
+    <button type="button" class="intLink controls"  (click)="formatDoc('justifycenter');">center  </button>
+    <button type="button" class="intLink controls"  (click)="formatDoc('justifyright');">rigth </button>
+  </div>
+
+    <input class="hidden" type="text">
+    <div #richText class="full" id="textBox" contenteditable="true"></div>
+
+  </div>
