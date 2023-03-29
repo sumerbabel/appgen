@@ -65,7 +65,7 @@
   </div>
 
   <div *ngIf="groupCode" class="ui-panel" style="display: flex; justify-content: center; margin-top: 5px;">
-    <ui-button *ngIf="INITIAL_ACTION ==='NEW'" [actionProperties]="ACTION_SAVE" (on-click)="actionFormEvent($event)" style="margin-right: 15px">
+    <ui-button  [actionProperties]="ACTION_SAVE" (on-click)="actionFormEvent($event)" style="margin-right: 15px">
     </ui-button>
     <ui-button *ngIf="groupCode.groupCodeNodesCode.length>0" [actionProperties]="ACTION_BUTTON_GENERATE"
       (on-click)="actionFormEvent($event)" style="margin-right: 15px;"></ui-button>

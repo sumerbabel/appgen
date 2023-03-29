@@ -1,4 +1,4 @@
-import {Component } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {Observable } from 'rxjs';
 import {LoaderService } from './loader.service';
 @Component({
@@ -6,9 +6,11 @@ import {LoaderService } from './loader.service';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss']
 })
-export class LoaderComponent{
+export class LoaderComponent {
   visibleLoader$: Observable<boolean>
-  constructor( loaderService: LoaderService) {
-    this.visibleLoader$ =loaderService.isVisible()
+  constructor( private loaderService: LoaderService) {
+    this.visibleLoader$ =this.loaderService.isVisible()
+    console.log('creado')
   }
+
 }

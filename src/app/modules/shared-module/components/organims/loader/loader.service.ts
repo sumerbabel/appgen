@@ -6,9 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoaderService {
 
-  private visible$ : BehaviorSubject<boolean>;
-  constructor() { this.visible$ = new BehaviorSubject(false) }
-
+  private visible$ : BehaviorSubject<boolean> =new BehaviorSubject(false);
   show() {
     this.visible$.next(true);
   }

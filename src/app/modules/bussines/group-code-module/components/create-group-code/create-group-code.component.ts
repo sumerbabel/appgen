@@ -204,7 +204,6 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
   }
 
   EditGroupCode(isGenerate: boolean) {
-    console.log('edit this.groupCode.toDataPersistJsonAll()',this.groupCode.toDataPersistJsonAll())
     this.groupCodeService
       .putGroupCode(this.groupCode.toDataPersistJsonAll())
       .subscribe(
@@ -217,6 +216,20 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
           } else {
             this.alertService.openAlertSucsses(resultPost);
           }
+        },
+        (errorArray) => {
+          this.groupCode.errors = errorArray;
+        }
+      );
+  }
+
+  Generate() {
+    this.groupCodeService
+      .putGroupCode(this.groupCode.toDataPersistJsonAll())
+      .subscribe(
+        (resultPost) => {
+          this.groupCode.updateSaveGroupCodeNodes();
+            this.getGenerateCode();
         },
         (errorArray) => {
           this.groupCode.errors = errorArray;
@@ -284,7 +297,7 @@ export class CreateGroupCodeComponent extends Modal implements OnInit {
         this.validateSaveRegister();
         break;
       case ActionGeneric.CREATE:
-        this.EditGroupCode(true);
+        this.Generate()
         break;
       case ActionGeneric.CANCEL:
         this.cancelRegister();
